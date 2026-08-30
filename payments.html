@@ -1,0 +1,2898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payments | Mahnoor Dietitian</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#FBF8F3;
+  color:#2D2D2D;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+  background:#ffffff;
+  border-bottom:1px solid #eadfe9;
+  padding:18px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.brand{
+  color:#6E4A7E;
+  font-size:24px;
+  font-weight:700;
+}
+
+.header-right{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.back-btn,
+.logout-btn{
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.back-btn{
+  background:#f1eaf2;
+  color:#6E4A7E;
+}
+
+.logout-btn{
+  background:#6E4A7E;
+  color:#ffffff;
+}
+
+.back-btn:hover,
+.logout-btn:hover,
+.primary-btn:hover,
+.action-btn:hover{
+  opacity:.92;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+  max-width:1300px;
+  margin:auto;
+  padding:35px 20px 70px;
+}
+
+.page-heading{
+  margin-bottom:28px;
+}
+
+.page-heading h1{
+  margin:0 0 8px;
+  font-size:34px;
+  color:#2D2D2D;
+}
+
+.page-heading p{
+  margin:0;
+  color:#777;
+  line-height:1.6;
+}
+
+.page-badge{
+  display:inline-block;
+  margin-top:14px;
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.summary{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.summary-card{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:20px;
+}
+
+.summary-label{
+  color:#777;
+  font-size:13px;
+  margin-bottom:9px;
+}
+
+.summary-number{
+  color:#6E4A7E;
+  font-size:27px;
+  font-weight:700;
+}
+
+.summary-small{
+  margin-top:6px;
+  color:#999;
+  font-size:11px;
+}
+
+
+/* =====================================================
+   PAYMENT CONTROL
+===================================================== */
+
+.payment-control{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:24px;
+}
+
+.control-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.control-header h2{
+  margin:0;
+  color:#6E4A7E;
+  font-size:20px;
+}
+
+.control-header p{
+  margin:5px 0 0;
+  color:#777;
+  font-size:13px;
+}
+
+.control-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.primary-btn{
+  border:none;
+  background:#6E4A7E;
+  color:#ffffff;
+  border-radius:8px;
+  padding:11px 17px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.secondary-btn{
+  border:1px solid #d8cbd9;
+  background:#ffffff;
+  color:#6E4A7E;
+  border-radius:8px;
+  padding:11px 17px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar{
+  display:grid;
+  grid-template-columns:1fr 190px 190px;
+  gap:12px;
+}
+
+input,
+select{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #d9d0d9;
+  border-radius:8px;
+  font-family:inherit;
+  font-size:14px;
+  background:#ffffff;
+}
+
+input:focus,
+select:focus{
+  outline:none;
+  border-color:#6E4A7E;
+  box-shadow:0 0 0 3px rgba(110,74,126,.08);
+}
+
+
+/* =====================================================
+   PAYMENT SECTION
+===================================================== */
+
+.section{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:25px;
+}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.section-heading h2{
+  margin:0;
+  font-size:21px;
+}
+
+.section-heading span{
+  color:#777;
+  font-size:13px;
+}
+
+
+/* =====================================================
+   PAYMENT CARDS
+===================================================== */
+
+.payment-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.payment-card{
+  border:1px solid #ece5ec;
+  border-radius:13px;
+  padding:20px;
+  transition:.15s;
+}
+
+.payment-card:hover{
+  border-color:#cdb9d1;
+  box-shadow:0 4px 15px rgba(110,74,126,.06);
+}
+
+.payment-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+  margin-bottom:17px;
+}
+
+.client-area{
+  min-width:0;
+  flex:1;
+}
+
+.client-name-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:6px;
+}
+
+.client-name{
+  font-size:18px;
+  font-weight:700;
+}
+
+.client-email{
+  color:#777;
+  font-size:13px;
+  word-break:break-word;
+}
+
+.payment-status{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.payment-status.paid{
+  background:#e9f5ec;
+  color:#28733a;
+}
+
+.payment-status.partial{
+  background:#f5efe1;
+  color:#86651e;
+}
+
+.payment-status.pending{
+  background:#f4eeee;
+  color:#8b3333;
+}
+
+.payment-status.other{
+  background:#eee5f0;
+  color:#6E4A7E;
+}
+
+
+/* =====================================================
+   PAYMENT GRID
+===================================================== */
+
+.payment-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin-bottom:17px;
+}
+
+.payment-item{
+  background:#FBF8F3;
+  border-radius:9px;
+  padding:13px;
+  min-width:0;
+}
+
+.payment-label{
+  color:#777;
+  font-size:11px;
+  margin-bottom:6px;
+}
+
+.payment-value{
+  color:#2D2D2D;
+  font-size:14px;
+  font-weight:700;
+  word-break:break-word;
+}
+
+.payment-value.received{
+  color:#28733a;
+}
+
+.payment-value.remaining{
+  color:#8b3333;
+}
+
+
+/* =====================================================
+   PAYMENT PROGRESS
+===================================================== */
+
+.progress-area{
+  margin-bottom:17px;
+}
+
+.progress-header{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:7px;
+  font-size:12px;
+}
+
+.progress-label{
+  color:#777;
+}
+
+.progress-percent{
+  color:#6E4A7E;
+  font-weight:700;
+}
+
+.progress-bar{
+  width:100%;
+  height:8px;
+  background:#eee7ee;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  background:#6E4A7E;
+  border-radius:20px;
+  transition:.3s;
+}
+
+
+/* =====================================================
+   CARD FOOTER
+===================================================== */
+
+.payment-footer{
+  border-top:1px solid #eee7ee;
+  padding-top:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.program-info{
+  color:#777;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.program-info strong{
+  color:#6E4A7E;
+}
+
+.card-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.action-btn{
+  border:none;
+  border-radius:8px;
+  padding:9px 13px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:600;
+}
+
+.open-btn{
+  background:#eee5f0;
+  color:#6E4A7E;
+}
+
+.edit-btn{
+  background:#6E4A7E;
+  color:#ffffff;
+}
+
+
+/* =====================================================
+   EMPTY / ERROR / LOADING
+===================================================== */
+
+.empty{
+  text-align:center;
+  padding:55px 20px;
+  color:#777;
+}
+
+.empty-icon{
+  font-size:34px;
+  margin-bottom:12px;
+  color:#6E4A7E;
+}
+
+.loading{
+  text-align:center;
+  padding:45px;
+  color:#777;
+}
+
+.loading-dot{
+  color:#6E4A7E;
+  font-weight:700;
+}
+
+.error-box{
+  background:#fff0f0;
+  border:1px solid #efd2d2;
+  color:#8b3333;
+  padding:15px;
+  border-radius:9px;
+  line-height:1.6;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(45,45,45,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:100;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:700px;
+  max-height:90vh;
+  overflow:auto;
+  background:#ffffff;
+  border-radius:17px;
+  padding:28px;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:22px;
+}
+
+.modal-header h2{
+  margin:0;
+  color:#6E4A7E;
+}
+
+.close-btn{
+  border:none;
+  background:#f0eaf2;
+  color:#6E4A7E;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:19px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.form-group.full{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  font-size:12px;
+  color:#666;
+  font-weight:600;
+}
+
+.form-group input,
+.form-group select{
+  padding:11px 12px;
+}
+
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid #eee7ee;
+}
+
+.cancel-btn{
+  border:1px solid #d8cbd9;
+  background:#ffffff;
+  color:#6E4A7E;
+  border-radius:8px;
+  padding:11px 17px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.save-btn{
+  border:none;
+  background:#6E4A7E;
+  color:#ffffff;
+  border-radius:8px;
+  padding:11px 20px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1100px){
+
+  .summary{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .payment-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+}
+
+@media(max-width:750px){
+
+  header{
+    padding:15px;
+  }
+
+  .brand{
+    font-size:19px;
+  }
+
+  .back-btn{
+    display:none;
+  }
+
+  main{
+    padding:25px 15px 50px;
+  }
+
+  .page-heading h1{
+    font-size:28px;
+  }
+
+  .summary{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .toolbar{
+    grid-template-columns:1fr;
+  }
+
+  .payment-top{
+    flex-direction:column;
+  }
+
+  .payment-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .payment-footer{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .card-actions{
+    width:100%;
+  }
+
+  .card-actions button{
+    flex:1;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:450px){
+
+  .summary{
+    grid-template-columns:1fr;
+  }
+
+  .payment-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section{
+    padding:18px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+  <div class="brand">
+    Mahnoor Dietitian
+  </div>
+
+  <div class="header-right">
+
+    <button
+      class="back-btn"
+      id="dashboardBtn"
+    >
+      ← Admin Dashboard
+    </button>
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      Logout
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+  <!-- PAGE HEADING -->
+
+  <div class="page-heading">
+
+    <h1>
+      Payments
+    </h1>
+
+    <p>
+      Track client payments, outstanding balances and payment
+      status across your programs.
+    </p>
+
+    <span class="page-badge">
+      PAYMENT MANAGEMENT
+    </span>
+
+  </div>
+
+
+  <!-- ===================================================
+       SUMMARY
+  ==================================================== -->
+
+  <div class="summary">
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Total Clients
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalClients"
+      >
+        0
+      </div>
+
+      <div class="summary-small">
+        All enrolled clients
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Total Program Value
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalValue"
+      >
+        Rs. 0
+      </div>
+
+      <div class="summary-small">
+        Total amount billed
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Payments Received
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalReceived"
+      >
+        Rs. 0
+      </div>
+
+      <div class="summary-small">
+        Amount collected
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Outstanding
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalOutstanding"
+      >
+        Rs. 0
+      </div>
+
+      <div class="summary-small">
+        Amount still due
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Fully Paid
+      </div>
+
+      <div
+        class="summary-number"
+        id="paidClients"
+      >
+        0
+      </div>
+
+      <div class="summary-small">
+        Clients with paid status
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ===================================================
+       PAYMENT CONTROL
+  ==================================================== -->
+
+  <section class="payment-control">
+
+    <div class="control-header">
+
+      <div>
+
+        <h2>
+          Payment Management
+        </h2>
+
+        <p>
+          Payment information is loaded directly from your
+          existing clients collection.
+        </p>
+
+      </div>
+
+      <div class="control-actions">
+
+        <button
+          class="secondary-btn"
+          id="refreshBtn"
+        >
+          ↻ Refresh
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="toolbar">
+
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search client by name or email..."
+      >
+
+
+      <select id="statusFilter">
+
+        <option value="all">
+          All Payments
+        </option>
+
+        <option value="paid">
+          Paid
+        </option>
+
+        <option value="partial">
+          Partial
+        </option>
+
+        <option value="pending">
+          Pending
+        </option>
+
+        <option value="outstanding">
+          Has Outstanding
+        </option>
+
+      </select>
+
+
+      <select id="programFilter">
+
+        <option value="all">
+          All Programs
+        </option>
+
+        <option value="1:1">
+          1:1 Coaching
+        </option>
+
+        <option value="club">
+          Freedom Women's Health Club
+        </option>
+
+        <option value="short">
+          Short Program
+        </option>
+
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       PAYMENT LIST
+  ==================================================== -->
+
+  <section class="section">
+
+    <div class="section-heading">
+
+      <h2>
+        Client Payments
+      </h2>
+
+      <span id="clientCountText">
+        0 clients
+      </span>
+
+    </div>
+
+
+    <div
+      class="payment-list"
+      id="paymentList"
+    >
+
+      <div class="loading">
+        Loading payments<span class="loading-dot">...</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     EDIT PAYMENT MODAL
+===================================================== -->
+
+<div
+  class="modal"
+  id="paymentModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>
+        Edit Payment
+      </h2>
+
+      <button
+        class="close-btn"
+        id="closeModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <form id="paymentForm">
+
+
+      <div class="form-grid">
+
+
+        <div class="form-group full">
+
+          <label>
+            Client
+          </label>
+
+          <input
+            type="text"
+            id="editClientName"
+            readonly
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Program Price
+          </label>
+
+          <input
+            type="number"
+            id="editProgramPrice"
+            min="0"
+            step="1"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Amount Paid
+          </label>
+
+          <input
+            type="number"
+            id="editAmountPaid"
+            min="0"
+            step="1"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Payment Status
+          </label>
+
+          <select
+            id="editPaymentStatus"
+          >
+
+            <option value="Paid">
+              Paid
+            </option>
+
+            <option value="Partial">
+              Partial
+            </option>
+
+            <option value="Pending">
+              Pending
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Payment Method
+          </label>
+
+          <select
+            id="editPaymentMethod"
+          >
+
+            <option value="">
+              Select method
+            </option>
+
+            <option value="Bank Transfer">
+              Bank Transfer
+            </option>
+
+            <option value="JazzCash">
+              JazzCash
+            </option>
+
+            <option value="EasyPaisa">
+              EasyPaisa
+            </option>
+
+            <option value="Cash">
+              Cash
+            </option>
+
+            <option value="Online">
+              Online
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label>
+            Remaining Amount
+          </label>
+
+          <input
+            type="number"
+            id="editRemainingAmount"
+            readonly
+          >
+
+        </div>
+
+
+      </div>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          id="cancelBtn"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="save-btn"
+        >
+          Save Payment
+        </button>
+
+      </div>
+
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script type="module">
+
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  updateDoc
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
+
+  authDomain:
+    "mahnoor-dietitian.firebaseapp.com",
+
+  projectId:
+    "mahnoor-dietitian",
+
+  storageBucket:
+    "mahnoor-dietitian.firebasestorage.app",
+
+  messagingSenderId:
+    "900688855173",
+
+  appId:
+    "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
+
+};
+
+
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+const ADMIN_EMAIL =
+  "mahnoordietitian3@gmail.com";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const paymentList =
+  document.getElementById(
+    "paymentList"
+  );
+
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
+
+const statusFilter =
+  document.getElementById(
+    "statusFilter"
+  );
+
+const programFilter =
+  document.getElementById(
+    "programFilter"
+  );
+
+const paymentModal =
+  document.getElementById(
+    "paymentModal"
+  );
+
+const paymentForm =
+  document.getElementById(
+    "paymentForm"
+  );
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let clients = [];
+
+let editingClientId = null;
+
+
+/* =====================================================
+   AUTHENTICATION
+===================================================== */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    if(
+      user.email?.toLowerCase()
+      !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      alert(
+        "You do not have permission to access the Admin Panel."
+      );
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    await loadClients();
+
+  }
+);
+
+
+/* =====================================================
+   LOAD CLIENTS
+===================================================== */
+
+async function loadClients(){
+
+  paymentList.innerHTML = `
+    <div class="loading">
+      Loading payments<span class="loading-dot">...</span>
+    </div>
+  `;
+
+
+  try{
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "clients"
+        )
+      );
+
+
+    clients =
+      snapshot.docs.map(
+        item => ({
+
+          id:item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    updateSummary();
+
+    renderPayments();
+
+  }
+  catch(error){
+
+    console.error(
+      "Error loading clients:",
+      error
+    );
+
+
+    paymentList.innerHTML = `
+      <div class="error-box">
+
+        <strong>
+          Unable to load payment information.
+        </strong>
+
+        <br><br>
+
+        ${escapeHtml(
+          error.message ||
+          "Unknown Firebase error."
+        )}
+
+        <br><br>
+
+        Make sure your admin account has permission
+        to read the <strong>clients</strong> collection.
+
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+function updateSummary(){
+
+  const totalClients =
+    clients.length;
+
+
+  let totalValue = 0;
+
+  let totalReceived = 0;
+
+  let totalOutstanding = 0;
+
+  let paidClients = 0;
+
+
+  clients.forEach(
+    client => {
+
+      const price =
+        getNumber(
+          client.programPrice
+        );
+
+
+      const paid =
+        getNumber(
+          client.amountPaid
+        );
+
+
+      const remaining =
+        getRemaining(
+          client
+        );
+
+
+      totalValue += price;
+
+      totalReceived += paid;
+
+      totalOutstanding += remaining;
+
+
+      if(
+        normalizeStatus(
+          client.paymentStatus
+        )
+        ===
+        "paid"
+        ||
+        (
+          price > 0
+          &&
+          paid >= price
+        )
+      ){
+
+        paidClients++;
+
+      }
+
+    }
+  );
+
+
+  document.getElementById(
+    "totalClients"
+  ).textContent =
+    totalClients;
+
+
+  document.getElementById(
+    "totalValue"
+  ).textContent =
+    formatMoney(
+      totalValue
+    );
+
+
+  document.getElementById(
+    "totalReceived"
+  ).textContent =
+    formatMoney(
+      totalReceived
+    );
+
+
+  document.getElementById(
+    "totalOutstanding"
+  ).textContent =
+    formatMoney(
+      totalOutstanding
+    );
+
+
+  document.getElementById(
+    "paidClients"
+  ).textContent =
+    paidClients;
+
+}
+
+
+/* =====================================================
+   RENDER PAYMENTS
+===================================================== */
+
+function renderPayments(){
+
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  const status =
+    statusFilter.value;
+
+
+  const program =
+    programFilter.value;
+
+
+  const filtered =
+    clients.filter(
+      client => {
+
+
+        const name =
+          String(
+            client.name || ""
+          )
+          .toLowerCase();
+
+
+        const email =
+          String(
+            client.email || ""
+          )
+          .toLowerCase();
+
+
+        const matchesSearch =
+          !search
+          ||
+          name.includes(search)
+          ||
+          email.includes(search);
+
+
+        if(!matchesSearch){
+
+          return false;
+
+        }
+
+
+        /* STATUS */
+
+        const clientStatus =
+          normalizeStatus(
+            client.paymentStatus
+          );
+
+
+        const remaining =
+          getRemaining(
+            client
+          );
+
+
+        if(
+          status === "paid"
+          &&
+          !(
+            clientStatus === "paid"
+            ||
+            remaining <= 0
+          )
+        ){
+
+          return false;
+
+        }
+
+
+        if(
+          status === "partial"
+          &&
+          clientStatus !== "partial"
+        ){
+
+          return false;
+
+        }
+
+
+        if(
+          status === "pending"
+          &&
+          clientStatus !== "pending"
+        ){
+
+          return false;
+
+        }
+
+
+        if(
+          status === "outstanding"
+          &&
+          remaining <= 0
+        ){
+
+          return false;
+
+        }
+
+
+        /* PROGRAM */
+
+        if(
+          program !== "all"
+        ){
+
+          const type =
+            String(
+              client.programType || ""
+            )
+            .trim()
+            .toLowerCase();
+
+
+          if(
+            program === "1:1"
+            &&
+            !(
+              type.includes("1:1")
+              ||
+              type.includes("1on1")
+              ||
+              type.includes("one on one")
+            )
+          ){
+
+            return false;
+
+          }
+
+
+          if(
+            program === "club"
+            &&
+            !(
+              type.includes("club")
+              ||
+              String(
+                client.programName || ""
+              )
+              .toLowerCase()
+              .includes("club")
+            )
+          ){
+
+            return false;
+
+          }
+
+
+          if(
+            program === "short"
+            &&
+            !(
+              type.includes("short")
+              ||
+              String(
+                client.programName || ""
+              )
+              .toLowerCase()
+              .includes("short")
+            )
+          ){
+
+            return false;
+
+          }
+
+        }
+
+
+        return true;
+
+      }
+    );
+
+
+  document.getElementById(
+    "clientCountText"
+  ).textContent =
+    filtered.length +
+    (
+      filtered.length === 1
+      ? " client"
+      : " clients"
+    );
+
+
+  if(
+    filtered.length === 0
+  ){
+
+    paymentList.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          ₹
+        </div>
+
+        <strong>
+          No payment records found
+        </strong>
+
+        <br><br>
+
+        ${
+          clients.length === 0
+          ? "No clients have been added yet."
+          : "Try changing your search or filters."
+        }
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  paymentList.innerHTML =
+    filtered
+      .map(
+        paymentCardHTML
+      )
+      .join("");
+
+
+  attachEvents();
+
+}
+
+
+/* =====================================================
+   PAYMENT CARD
+===================================================== */
+
+function paymentCardHTML(
+  client
+){
+
+  const price =
+    getNumber(
+      client.programPrice
+    );
+
+
+  const paid =
+    getNumber(
+      client.amountPaid
+    );
+
+
+  const remaining =
+    getRemaining(
+      client
+    );
+
+
+  let percentage =
+    price > 0
+    ? (
+        paid / price
+      ) * 100
+    : 0;
+
+
+  percentage =
+    Math.max(
+      0,
+      Math.min(
+        100,
+        percentage
+      )
+    );
+
+
+  const status =
+    getDisplayStatus(
+      client
+    );
+
+
+  const statusClass =
+    getStatusClass(
+      status
+    );
+
+
+  const programName =
+    client.programName
+    ||
+    client.programType
+    ||
+    "Program not specified";
+
+
+  return `
+
+    <div class="payment-card">
+
+
+      <div class="payment-top">
+
+
+        <div class="client-area">
+
+          <div class="client-name-row">
+
+            <div class="client-name">
+
+              ${escapeHtml(
+                client.name ||
+                "Unnamed Client"
+              )}
+
+            </div>
+
+
+            <span
+              class="payment-status ${statusClass}"
+            >
+
+              ${escapeHtml(
+                status
+              )}
+
+            </span>
+
+          </div>
+
+
+          <div class="client-email">
+
+            ${escapeHtml(
+              client.email ||
+              "No email"
+            )}
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="payment-grid">
+
+
+        <div class="payment-item">
+
+          <div class="payment-label">
+            Program Price
+          </div>
+
+          <div class="payment-value">
+            ${formatMoney(
+              price
+            )}
+          </div>
+
+        </div>
+
+
+        <div class="payment-item">
+
+          <div class="payment-label">
+            Amount Paid
+          </div>
+
+          <div class="payment-value received">
+            ${formatMoney(
+              paid
+            )}
+          </div>
+
+        </div>
+
+
+        <div class="payment-item">
+
+          <div class="payment-label">
+            Remaining
+          </div>
+
+          <div class="payment-value remaining">
+            ${formatMoney(
+              remaining
+            )}
+          </div>
+
+        </div>
+
+
+        <div class="payment-item">
+
+          <div class="payment-label">
+            Payment Method
+          </div>
+
+          <div class="payment-value">
+
+            ${escapeHtml(
+              client.paymentMethod ||
+              "—"
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div class="payment-item">
+
+          <div class="payment-label">
+            Payment Status
+          </div>
+
+          <div class="payment-value">
+
+            ${escapeHtml(
+              client.paymentStatus ||
+              "Pending"
+            )}
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="progress-area">
+
+        <div class="progress-header">
+
+          <span class="progress-label">
+            Payment Progress
+          </span>
+
+          <span class="progress-percent">
+            ${Math.round(
+              percentage
+            )}%
+          </span>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+          <div
+            class="progress-fill"
+            style="width:${percentage}%"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <div class="payment-footer">
+
+
+        <div class="program-info">
+
+          Program:
+          <strong>
+            ${escapeHtml(
+              programName
+            )}
+          </strong>
+
+          <br>
+
+          ${
+            client.startDate
+            ? "Start: " +
+              escapeHtml(
+                client.startDate
+              )
+            : ""
+          }
+
+          ${
+            client.endDate
+            ? " &nbsp; | &nbsp; End: " +
+              escapeHtml(
+                client.endDate
+              )
+            : ""
+          }
+
+        </div>
+
+
+        <div class="card-actions">
+
+
+          <button
+            class="action-btn open-btn"
+            data-open="${client.id}"
+          >
+            Open Client
+          </button>
+
+
+          <button
+            class="action-btn edit-btn"
+            data-edit="${client.id}"
+          >
+            Edit Payment
+          </button>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+function attachEvents(){
+
+  document
+    .querySelectorAll(
+      "[data-open]"
+    )
+    .forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            openClient(
+              button.dataset.open
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      "[data-edit]"
+    )
+    .forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            openEditPayment(
+              button.dataset.edit
+            );
+
+          }
+        );
+
+      }
+    );
+
+}
+
+
+/* =====================================================
+   OPEN CLIENT
+===================================================== */
+
+function openClient(id){
+
+  window.location.href =
+    "admin-client.html?id=" +
+    encodeURIComponent(
+      id
+    );
+
+}
+
+
+/* =====================================================
+   OPEN EDIT PAYMENT
+===================================================== */
+
+function openEditPayment(id){
+
+  const client =
+    clients.find(
+      item =>
+        item.id === id
+    );
+
+
+  if(!client){
+
+    return;
+
+  }
+
+
+  editingClientId =
+    id;
+
+
+  document.getElementById(
+    "editClientName"
+  ).value =
+    client.name ||
+    "Unnamed Client";
+
+
+  document.getElementById(
+    "editProgramPrice"
+  ).value =
+    getNumber(
+      client.programPrice
+    );
+
+
+  document.getElementById(
+    "editAmountPaid"
+  ).value =
+    getNumber(
+      client.amountPaid
+    );
+
+
+  document.getElementById(
+    "editPaymentStatus"
+  ).value =
+    normalizeStatus(
+      client.paymentStatus
+    ) === "paid"
+    ? "Paid"
+    : normalizeStatus(
+        client.paymentStatus
+      ) === "partial"
+      ? "Partial"
+      : "Pending";
+
+
+  document.getElementById(
+    "editPaymentMethod"
+  ).value =
+    client.paymentMethod ||
+    "";
+
+
+  calculateEditRemaining();
+
+
+  paymentModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   CALCULATE REMAINING
+===================================================== */
+
+function calculateEditRemaining(){
+
+  const price =
+    Number(
+      document.getElementById(
+        "editProgramPrice"
+      ).value
+    ) || 0;
+
+
+  const paid =
+    Number(
+      document.getElementById(
+        "editAmountPaid"
+      ).value
+    ) || 0;
+
+
+  const remaining =
+    Math.max(
+      0,
+      price - paid
+    );
+
+
+  document.getElementById(
+    "editRemainingAmount"
+  ).value =
+    remaining;
+
+}
+
+
+/* =====================================================
+   SAVE PAYMENT
+===================================================== */
+
+paymentForm.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    if(!editingClientId){
+
+      return;
+
+    }
+
+
+    const price =
+      Number(
+        document.getElementById(
+          "editProgramPrice"
+        ).value
+      ) || 0;
+
+
+    const paid =
+      Number(
+        document.getElementById(
+          "editAmountPaid"
+        ).value
+      ) || 0;
+
+
+    const remaining =
+      Math.max(
+        0,
+        price - paid
+      );
+
+
+    let status =
+      document.getElementById(
+        "editPaymentStatus"
+      ).value;
+
+
+    /*
+      Automatically correct status when payment
+      values clearly show the actual state.
+    */
+
+    if(
+      price > 0
+      &&
+      paid >= price
+    ){
+
+      status =
+        "Paid";
+
+    }
+    else if(
+      paid > 0
+      &&
+      paid < price
+    ){
+
+      status =
+        "Partial";
+
+    }
+    else if(
+      paid <= 0
+    ){
+
+      status =
+        "Pending";
+
+    }
+
+
+    const paymentMethod =
+      document.getElementById(
+        "editPaymentMethod"
+      ).value;
+
+
+    try{
+
+      await updateDoc(
+        doc(
+          db,
+          "clients",
+          editingClientId
+        ),
+        {
+
+          programPrice:
+            price,
+
+          amountPaid:
+            paid,
+
+          remainingAmount:
+            remaining,
+
+          paymentStatus:
+            status,
+
+          paymentMethod:
+            paymentMethod
+
+        }
+      );
+
+
+      closeModal();
+
+
+      await loadClients();
+
+
+      alert(
+        "Payment information updated successfully."
+      );
+
+    }
+    catch(error){
+
+      console.error(
+        "Payment update error:",
+        error
+      );
+
+
+      alert(
+        "Unable to update payment: " +
+        error.message
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   INPUT CALCULATIONS
+===================================================== */
+
+document.getElementById(
+  "editProgramPrice"
+).addEventListener(
+  "input",
+  calculateEditRemaining
+);
+
+
+document.getElementById(
+  "editAmountPaid"
+).addEventListener(
+  "input",
+  calculateEditRemaining
+);
+
+
+/* =====================================================
+   SEARCH / FILTER
+===================================================== */
+
+searchInput.addEventListener(
+  "input",
+  renderPayments
+);
+
+
+statusFilter.addEventListener(
+  "change",
+  renderPayments
+);
+
+
+programFilter.addEventListener(
+  "change",
+  renderPayments
+);
+
+
+/* =====================================================
+   REFRESH
+===================================================== */
+
+document.getElementById(
+  "refreshBtn"
+).addEventListener(
+  "click",
+  loadClients
+);
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+document.getElementById(
+  "dashboardBtn"
+).addEventListener(
+  "click",
+  () => {
+
+    window.location.href =
+      "admin.html";
+
+  }
+);
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document.getElementById(
+  "logoutBtn"
+).addEventListener(
+  "click",
+  async () => {
+
+    try{
+
+      await signOut(
+        auth
+      );
+
+
+      window.location.href =
+        "login.html";
+
+    }
+    catch(error){
+
+      console.error(
+        error
+      );
+
+
+      alert(
+        "Unable to logout. Please try again."
+      );
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+document.getElementById(
+  "closeModal"
+).addEventListener(
+  "click",
+  closeModal
+);
+
+
+document.getElementById(
+  "cancelBtn"
+).addEventListener(
+  "click",
+  closeModal
+);
+
+
+paymentModal.addEventListener(
+  "click",
+  event => {
+
+    if(
+      event.target ===
+      paymentModal
+    ){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+function closeModal(){
+
+  paymentModal.classList.remove(
+    "show"
+  );
+
+  editingClientId =
+    null;
+
+}
+
+
+/* =====================================================
+   NUMBER HELPERS
+===================================================== */
+
+function getNumber(value){
+
+  const number =
+    Number(
+      String(
+        value ?? ""
+      )
+      .replace(
+        /,/g,
+        ""
+      )
+      .replace(
+        /Rs\.?/gi,
+        ""
+      )
+      .trim()
+    );
+
+
+  return Number.isFinite(
+    number
+  )
+  ? number
+  : 0;
+
+}
+
+
+/* =====================================================
+   REMAINING
+===================================================== */
+
+function getRemaining(
+  client
+){
+
+  const explicitRemaining =
+    client.remainingAmount;
+
+
+  /*
+    If remainingAmount already exists,
+    use it.
+
+    Otherwise calculate it from programPrice
+    and amountPaid.
+  */
+
+  if(
+    explicitRemaining !== undefined
+    &&
+    explicitRemaining !== null
+    &&
+    explicitRemaining !== ""
+  ){
+
+    return Math.max(
+      0,
+      getNumber(
+        explicitRemaining
+      )
+    );
+
+  }
+
+
+  const price =
+    getNumber(
+      client.programPrice
+    );
+
+
+  const paid =
+    getNumber(
+      client.amountPaid
+    );
+
+
+  return Math.max(
+    0,
+    price - paid
+  );
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function normalizeStatus(
+  value
+){
+
+  return String(
+    value || ""
+  )
+  .trim()
+  .toLowerCase()
+  .replace(
+    /[-_]/g,
+    " "
+  );
+
+}
+
+
+function getDisplayStatus(
+  client
+){
+
+  const price =
+    getNumber(
+      client.programPrice
+    );
+
+
+  const paid =
+    getNumber(
+      client.amountPaid
+    );
+
+
+  const explicit =
+    normalizeStatus(
+      client.paymentStatus
+    );
+
+
+  if(
+    price > 0
+    &&
+    paid >= price
+  ){
+
+    return "Paid";
+
+  }
+
+
+  if(
+    explicit === "paid"
+  ){
+
+    return "Paid";
+
+  }
+
+
+  if(
+    explicit.includes(
+      "partial"
+    )
+    ||
+    (
+      paid > 0
+      &&
+      paid < price
+    )
+  ){
+
+    return "Partial";
+
+  }
+
+
+  return "Pending";
+
+}
+
+
+function getStatusClass(
+  status
+){
+
+  const normalized =
+    normalizeStatus(
+      status
+    );
+
+
+  if(
+    normalized === "paid"
+  ){
+
+    return "paid";
+
+  }
+
+
+  if(
+    normalized === "partial"
+  ){
+
+    return "partial";
+
+  }
+
+
+  if(
+    normalized === "pending"
+  ){
+
+    return "pending";
+
+  }
+
+
+  return "other";
+
+}
+
+
+/* =====================================================
+   MONEY
+===================================================== */
+
+function formatMoney(
+  amount
+){
+
+  return (
+    "Rs. " +
+    Number(
+      amount || 0
+    )
+    .toLocaleString(
+      "en-PK"
+    )
+  );
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHtml(
+  value
+){
+
+  return String(
+    value ?? ""
+  )
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
