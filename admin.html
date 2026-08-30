@@ -1,17 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Admin Panel | Mahnoor Dietitian</title>
-
 
   <style>
 
@@ -19,524 +14,456 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --cream: #FBF8F3;
+      --plum: #6E4A7E;
+      --charcoal: #2D2D2D;
+      --champagne: #DCCBB3;
+      --taupe: #B7A89A;
+      --white: #FFFFFF;
+      --border: #EAE6E1;
+      --muted: #777;
+    }
 
     body {
-
       margin: 0;
-
+      background: var(--cream);
+      color: var(--charcoal);
       font-family: Arial, sans-serif;
-
-      background: #FBF8F3;
-
-      color: #2D2D2D;
-
     }
 
+    /* =========================
+       LAYOUT
+    ========================= */
 
-    header {
-
-      background: white;
-
-      border-bottom: 1px solid #eee;
-
-      padding: 18px 30px;
-
+    .app {
+      min-height: 100vh;
       display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
     }
 
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar {
+      width: 250px;
+      background: var(--white);
+      border-right: 1px solid var(--border);
+      min-height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      overflow-y: auto;
+      z-index: 100;
+    }
 
     .brand {
+      padding: 25px 20px;
+      border-bottom: 1px solid var(--border);
+    }
 
-      font-size: 24px;
-
+    .brand-name {
+      color: var(--plum);
+      font-size: 21px;
       font-weight: 600;
-
-      color: #6E4A7E;
-
     }
 
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
 
-    .logout {
+    .nav {
+      padding: 18px 12px;
+    }
 
+    .nav-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--taupe);
+      letter-spacing: 1px;
+      margin: 18px 10px 8px;
+    }
+
+    .nav-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 12px;
+      margin-bottom: 4px;
       border: none;
-
-      background: #6E4A7E;
-
-      color: white;
-
-      padding: 10px 18px;
-
       border-radius: 8px;
-
+      background: transparent;
+      color: var(--charcoal);
+      text-align: left;
       cursor: pointer;
-
+      font-size: 14px;
     }
 
+    .nav-button:hover {
+      background: var(--cream);
+    }
 
-    main {
+    .nav-button.active {
+      background: #F0EAF2;
+      color: var(--plum);
+      font-weight: 600;
+    }
 
-      max-width: 1200px;
+    .nav-icon {
+      width: 22px;
+      text-align: center;
+      font-size: 15px;
+    }
 
+    .sidebar-bottom {
+      padding: 15px 12px 25px;
+      border-top: 1px solid var(--border);
+      margin-top: 15px;
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #E4D4D4;
+      background: #FFF7F7;
+      color: #8B3333;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main {
+      margin-left: 250px;
+      width: calc(100% - 250px);
+      min-height: 100vh;
+    }
+
+    .topbar {
+      height: 72px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .admin-email {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .content {
+      padding: 35px;
+      max-width: 1400px;
       margin: 0 auto;
-
-      padding: 40px 20px;
-
     }
 
+    /* =========================
+       WELCOME
+    ========================= */
 
     .welcome {
-
       margin-bottom: 30px;
-
     }
-
 
     .welcome h1 {
-
       margin: 0 0 8px;
-
-      font-size: 32px;
-
+      font-size: 30px;
     }
-
 
     .welcome p {
-
       margin: 0;
-
-      color: #666;
-
+      color: var(--muted);
+      font-size: 15px;
     }
 
+    /* =========================
+       STAT CARDS
+    ========================= */
 
-    .cards {
-
+    .stats {
       display: grid;
-
-      grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(200px, 1fr)
-        );
-
-      gap: 20px;
-
-      margin-bottom: 35px;
-
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 30px;
     }
 
-
-    .card {
-
-      background: white;
-
-      padding: 25px;
-
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 14px;
-
-      border: 1px solid #eee;
-
+      padding: 22px;
     }
 
-
-    .card-title {
-
-      color: #777;
-
-      font-size: 14px;
-
-      margin-bottom: 10px;
-
+    .stat-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 12px;
     }
 
-
-    .card-number {
-
-      font-size: 30px;
-
+    .stat-number {
+      color: var(--plum);
+      font-size: 29px;
       font-weight: 600;
-
-      color: #6E4A7E;
-
     }
 
+    .stat-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* =========================
+       GRID
+    ========================= */
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 22px;
+    }
 
     .section {
-
-      background: white;
-
-      padding: 25px;
-
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 14px;
-
-      border: 1px solid #eee;
-
-      margin-bottom: 25px;
-
+      padding: 24px;
+      margin-bottom: 22px;
     }
-
 
     .section-header {
-
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
-      margin-bottom: 20px;
-
       gap: 15px;
-
+      margin-bottom: 20px;
     }
-
 
     .section-header h2 {
-
       margin: 0;
-
+      font-size: 19px;
     }
 
-
-    .add-btn {
-
-      background: #6E4A7E;
-
-      color: white;
-
+    .view-all {
       border: none;
-
-      border-radius: 8px;
-
-      padding: 11px 18px;
-
-      cursor: pointer;
-
-    }
-
-
-    .form-container {
-
-      display: none;
-
-      margin-top: 25px;
-
-      padding-top: 25px;
-
-      border-top: 1px solid #eee;
-
-    }
-
-
-    .form-grid {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(250px, 1fr)
-        );
-
-      gap: 18px;
-
-    }
-
-
-    .field {
-
-      display: flex;
-
-      flex-direction: column;
-
-    }
-
-
-    .field.full {
-
-      grid-column: 1 / -1;
-
-    }
-
-
-    label {
-
-      margin-bottom: 7px;
-
-      font-size: 14px;
-
+      background: none;
+      color: var(--plum);
       font-weight: 600;
-
-    }
-
-
-    input,
-    select,
-    textarea {
-
-      width: 100%;
-
-      padding: 12px;
-
-      border: 1px solid #ddd;
-
-      border-radius: 8px;
-
-      font-family: inherit;
-
-      font-size: 15px;
-
-      background: white;
-
-    }
-
-
-    textarea {
-
-      min-height: 90px;
-
-      resize: vertical;
-
-    }
-
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-
-      outline: none;
-
-      border-color: #6E4A7E;
-
-    }
-
-
-    .calculated {
-
-      background: #FBF8F3;
-
-      border-color: #DCCBB3;
-
-    }
-
-
-    .form-actions {
-
-      margin-top: 25px;
-
-      display: flex;
-
-      gap: 12px;
-
-      flex-wrap: wrap;
-
-    }
-
-
-    .save-btn {
-
-      background: #6E4A7E;
-
-      color: white;
-
-      border: none;
-
-      border-radius: 8px;
-
-      padding: 13px 25px;
-
       cursor: pointer;
-
-    }
-
-
-    .cancel-btn {
-
-      background: white;
-
-      color: #2D2D2D;
-
-      border: 1px solid #ccc;
-
-      border-radius: 8px;
-
-      padding: 13px 25px;
-
-      cursor: pointer;
-
-    }
-
-
-    .message {
-
-      margin-top: 15px;
-
-      min-height: 20px;
-
-      font-size: 14px;
-
-    }
-
-
-    .client-list {
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 12px;
-
-    }
-
-
-    .client {
-
-      border: 1px solid #eee;
-
-      border-radius: 10px;
-
-      padding: 18px;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      gap: 20px;
-
-    }
-
-
-    .client-info strong {
-
-      font-size: 17px;
-
-    }
-
-
-    .client-info p {
-
-      margin: 5px 0 0;
-
-      color: #777;
-
-      font-size: 14px;
-
-    }
-
-
-    .client-actions {
-
-      display: flex;
-
-      gap: 8px;
-
-      flex-wrap: wrap;
-
-    }
-
-
-    .small-btn {
-
-      border: none;
-
-      border-radius: 7px;
-
-      padding: 8px 12px;
-
       font-size: 13px;
+    }
 
+    /* =========================
+       PROGRAM CARDS
+    ========================= */
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .program-card {
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 18px;
       cursor: pointer;
-
+      transition: 0.2s;
     }
 
-
-    .edit-btn {
-
-      background: #eee;
-
+    .program-card:hover {
+      border-color: var(--champagne);
+      transform: translateY(-1px);
     }
 
-
-    .delete-btn {
-
-      background: #f5dddd;
-
-      color: #8b2222;
-
+    .program-card h3 {
+      margin: 0 0 7px;
+      font-size: 16px;
     }
 
-
-    .empty {
-
-      padding: 35px 10px;
-
-      text-align: center;
-
-      color: #777;
-
+    .program-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
     }
 
-
-    .uid-status {
-
+    .program-link {
       display: inline-block;
+      margin-top: 14px;
+      color: var(--plum);
+      font-size: 13px;
+      font-weight: 600;
+    }
 
-      margin-top: 8px;
+    /* =========================
+       ACTIVITY
+    ========================= */
 
-      padding: 5px 9px;
+    .activity {
+      display: flex;
+      flex-direction: column;
+    }
 
-      border-radius: 6px;
+    .activity-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
 
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .activity-time {
+      margin-top: 5px;
       font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       QUICK ACTIONS
+    ========================= */
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .quick-btn {
+      padding: 13px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      border-radius: 9px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--charcoal);
+    }
+
+    .quick-btn:hover {
+      background: var(--cream);
+    }
+
+    .quick-btn strong {
+      display: block;
+      color: var(--plum);
+      margin-bottom: 4px;
+    }
+
+    .quick-btn span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       LOADING
+    ========================= */
+
+    .loading {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    .mobile-header {
+      display: none;
+    }
+
+    @media (max-width: 1000px) {
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
 
     }
 
+    @media (max-width: 700px) {
 
-    .connected {
+      .sidebar {
+        display: none;
+      }
 
-      background: #edf7ef;
+      .main {
+        margin-left: 0;
+        width: 100%;
+      }
 
-      color: #286b35;
+      .mobile-header {
+        display: flex;
+        height: 60px;
+        padding: 0 18px;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .mobile-brand {
+        color: var(--plum);
+        font-weight: 600;
+      }
+
+      .topbar {
+        display: none;
+      }
+
+      .content {
+        padding: 22px 15px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 16px;
+      }
+
+      .stat-number {
+        font-size: 24px;
+      }
+
+      .program-grid {
+        grid-template-columns: 1fr;
+      }
 
     }
 
+    @media (max-width: 450px) {
 
-    .not-connected {
-
-      background: #fff4df;
-
-      color: #946200;
-
-    }
-
-
-    @media (max-width: 650px) {
-
-      header {
-        padding: 15px;
+      .stats {
+        grid-template-columns: 1fr;
       }
 
-      main {
-        padding: 25px 15px;
-      }
-
-      .section {
-        padding: 18px;
-      }
-
-      .client {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
+      .quick-actions {
+        grid-template-columns: 1fr;
       }
 
     }
@@ -545,584 +472,640 @@
 
 </head>
 
-
 <body>
 
+<div class="app">
 
-<header>
+  <!-- ==================================================
+       SIDEBAR
+  =================================================== -->
 
-  <div class="brand">
-    Mahnoor Dietitian
-  </div>
+  <aside class="sidebar">
 
+    <div class="brand">
 
-  <button
-    class="logout"
-    id="logoutBtn"
-  >
-    Logout
-  </button>
-
-</header>
-
-
-
-<main>
-
-
-  <div class="welcome">
-
-    <h1>
-      Hi, Mahnoor!
-    </h1>
-
-    <p>
-      Welcome to your client management panel.
-    </p>
-
-  </div>
-
-
-
-  <!-- =================================================
-       DASHBOARD
-  ================================================== -->
-
-  <div class="cards">
-
-
-    <div class="card">
-
-      <div class="card-title">
-        Total Clients
+      <div class="brand-name">
+        Mahnoor Dietitian
       </div>
 
-      <div
-        class="card-number"
-        id="clientCount"
-      >
-        0
+      <div class="brand-subtitle">
+        Admin Control Center
       </div>
 
     </div>
 
 
-    <div class="card">
+    <nav class="nav">
 
-      <div class="card-title">
-        Active Programs
+      <div class="nav-label">
+        MAIN
       </div>
 
-      <div
-        class="card-number"
-        id="activeProgramCount"
+      <button
+        class="nav-button active"
+        data-page="dashboard"
       >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="card-title">
-        Check-ins Due
-      </div>
-
-      <div
-        class="card-number"
-        id="checkinCount"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="card-title">
-        Payments Received
-      </div>
-
-      <div
-        class="card-number"
-        id="paymentTotal"
-      >
-        Rs. 0
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =================================================
-       CLIENTS
-  ================================================== -->
-
-  <div class="section">
-
-
-    <div class="section-header">
-
-      <h2>
-        Clients
-      </h2>
+        <span class="nav-icon">⌂</span>
+        Dashboard
+      </button>
 
 
       <button
-        class="add-btn"
-        id="addClientBtn"
+        class="nav-button"
+        data-page="clients"
       >
-        + Add Client
+        <span class="nav-icon">♙</span>
+        Clients
+      </button>
+
+
+      <button
+        class="nav-button"
+        data-page="applications"
+      >
+        <span class="nav-icon">▣</span>
+        Applications
+      </button>
+
+
+      <button
+        class="nav-button"
+        data-page="assessments"
+      >
+        <span class="nav-icon">☑</span>
+        Assessments
+      </button>
+
+
+      <div class="nav-label">
+        PROGRAMS
+      </div>
+
+
+      <button
+        class="nav-button"
+        data-page="1on1"
+      >
+        <span class="nav-icon">◉</span>
+        1:1 Coaching
+      </button>
+
+
+      <button
+        class="nav-button"
+        data-page="club"
+      >
+        <span class="nav-icon">◌</span>
+        Freedom Women's Health Club
+      </button>
+
+
+      <button
+        class="nav-button"
+        data-page="short"
+      >
+        <span class="nav-icon">◆</span>
+        Short Programs
+      </button>
+
+
+      <div class="nav-label">
+        BUSINESS
+      </div>
+
+
+      <button
+        class="nav-button"
+        data-page="payments"
+      >
+        <span class="nav-icon">₨</span>
+        Payments
+      </button>
+
+
+      <button
+        class="nav-button"
+        data-page="notifications"
+      >
+        <span class="nav-icon">♢</span>
+        Notifications
+      </button>
+
+
+      <button
+        class="nav-button"
+        data-page="settings"
+      >
+        <span class="nav-icon">⚙</span>
+        Settings
+      </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <button
+        class="logout-btn"
+        id="logoutBtn"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ==================================================
+       MAIN
+  =================================================== -->
+
+  <main class="main">
+
+    <div class="mobile-header">
+
+      <div class="mobile-brand">
+        Mahnoor Dietitian
+      </div>
+
+      <button
+        class="logout-btn"
+        id="mobileLogout"
+        style="width:auto;padding:8px 12px;"
+      >
+        Logout
       </button>
 
     </div>
 
 
+    <header class="topbar">
 
-    <!-- =================================================
-         FORM
-    ================================================== -->
+      <div class="page-title">
+        Admin Dashboard
+      </div>
 
-    <div
-      class="form-container"
-      id="clientFormContainer"
-    >
+      <div
+        class="admin-email"
+        id="adminEmail"
+      >
+        Loading...
+      </div>
 
-
-      <form id="clientForm">
-
-
-        <div class="form-grid">
+    </header>
 
 
-          <div class="field full">
+    <div class="content">
 
-            <h3>
-              Client Information
-            </h3>
+      <!-- ==================================================
+           WELCOME
+      =================================================== -->
 
+      <div class="welcome">
+
+        <h1>
+          Hi, Mahnoor!
+        </h1>
+
+        <p>
+          Welcome to your client management panel.
+        </p>
+
+      </div>
+
+
+      <!-- ==================================================
+           STATISTICS
+      =================================================== -->
+
+      <div class="stats">
+
+        <div class="stat-card">
+
+          <div class="stat-label">
+            Total Clients
           </div>
 
-
-          <div class="field">
-
-            <label>
-              Full Name *
-            </label>
-
-            <input
-              type="text"
-              id="name"
-              required
-            >
-
+          <div
+            class="stat-number"
+            id="totalClients"
+          >
+            0
           </div>
 
-
-          <div class="field">
-
-            <label>
-              Email *
-            </label>
-
-            <input
-              type="email"
-              id="email"
-              required
-            >
-
+          <div class="stat-note">
+            All registered clients
           </div>
 
+        </div>
 
-          <div class="field">
 
-            <label>
-              Phone
-            </label>
+        <div class="stat-card">
 
-            <input
-              type="tel"
-              id="phone"
-            >
-
+          <div class="stat-label">
+            Active Programs
           </div>
 
-
-          <div class="field">
-
-            <label>
-              Date of Birth
-            </label>
-
-            <input
-              type="date"
-              id="dob"
-            >
-
+          <div
+            class="stat-number"
+            id="activePrograms"
+          >
+            0
           </div>
 
-
-          <div class="field">
-
-            <label>
-              City
-            </label>
-
-            <input
-              type="text"
-              id="city"
-            >
-
+          <div class="stat-note">
+            Currently active enrollments
           </div>
 
+        </div>
 
 
-          <div class="field full">
+        <div class="stat-card">
 
-            <h3>
-              Enrollment
-            </h3>
-
+          <div class="stat-label">
+            Check-ins Due
           </div>
 
-
-          <div class="field">
-
-            <label>
-              Program Type *
-            </label>
-
-            <select
-              id="programType"
-              required
-            >
-
-              <option value="">
-                Select program type
-              </option>
-
-              <option value="1:1 Coaching">
-                1:1 Coaching
-              </option>
-
-              <option value="Membership">
-                Membership
-              </option>
-
-              <option value="Short Program">
-                Short Program
-              </option>
-
-            </select>
-
+          <div
+            class="stat-number"
+            id="checkinsDue"
+          >
+            0
           </div>
 
-
-          <div class="field">
-
-            <label>
-              Program Name *
-            </label>
-
-            <input
-              type="text"
-              id="programName"
-              required
-            >
-
+          <div class="stat-note">
+            Requires your attention
           </div>
 
+        </div>
 
-          <div class="field">
 
-            <label>
-              Duration *
-            </label>
+        <div class="stat-card">
 
-            <select
-              id="duration"
-              required
-            >
-
-              <option value="">
-                Select duration
-              </option>
-
-              <option value="30">
-                30 Days
-              </option>
-
-              <option value="45">
-                45 Days
-              </option>
-
-              <option value="60">
-                60 Days
-              </option>
-
-              <option value="90">
-                90 Days
-              </option>
-
-              <option value="180">
-                6 Months
-              </option>
-
-              <option value="365">
-                12 Months
-              </option>
-
-            </select>
-
+          <div class="stat-label">
+            Payments Received
           </div>
 
-
-          <div class="field">
-
-            <label>
-              Start Date *
-            </label>
-
-            <input
-              type="date"
-              id="startDate"
-              required
-            >
-
+          <div
+            class="stat-number"
+            id="paymentsReceived"
+          >
+            Rs. 0
           </div>
 
-
-          <div class="field">
-
-            <label>
-              End Date
-            </label>
-
-            <input
-              type="date"
-              id="endDate"
-              class="calculated"
-              readonly
-            >
-
+          <div class="stat-note">
+            Total amount paid
           </div>
 
+        </div>
+
+      </div>
 
 
-          <div class="field full">
+      <!-- ==================================================
+           DASHBOARD COLUMNS
+      =================================================== -->
 
-            <h3>
-              Payment
-            </h3>
-
-          </div>
+      <div class="dashboard-grid">
 
 
-          <div class="field">
+        <!-- LEFT -->
 
-            <label>
-              Program Price (Rs.) *
-            </label>
-
-            <input
-              type="number"
-              id="programPrice"
-              min="0"
-              required
-            >
-
-          </div>
+        <div>
 
 
-          <div class="field">
+          <!-- PROGRAMS -->
 
-            <label>
-              Amount Paid (Rs.) *
-            </label>
+          <section class="section">
 
-            <input
-              type="number"
-              id="amountPaid"
-              min="0"
-              required
-            >
+            <div class="section-header">
 
-          </div>
+              <h2>
+                Programs
+              </h2>
+
+            </div>
 
 
-          <div class="field">
-
-            <label>
-              Remaining Amount
-            </label>
-
-            <input
-              type="number"
-              id="remainingAmount"
-              class="calculated"
-              readonly
-            >
-
-          </div>
+            <div class="program-grid">
 
 
-          <div class="field">
+              <div
+                class="program-card"
+                data-program="1on1"
+              >
 
-            <label>
-              Payment Status *
-            </label>
+                <h3>
+                  1:1 Coaching
+                </h3>
 
-            <select
-              id="paymentStatus"
-              required
-            >
+                <p>
+                  Manage private coaching clients,
+                  personalized plans, check-ins,
+                  progress and private communication.
+                </p>
 
-              <option value="">
-                Select status
-              </option>
+                <span class="program-link">
+                  Open 1:1 →
+                </span>
 
-              <option value="Paid">
-                Paid
-              </option>
-
-              <option value="Partially Paid">
-                Partially Paid
-              </option>
-
-              <option value="Pending">
-                Pending
-              </option>
-
-            </select>
-
-          </div>
+              </div>
 
 
-          <div class="field">
+              <div
+                class="program-card"
+                data-program="club"
+              >
 
-            <label>
-              Payment Method
-            </label>
+                <h3>
+                  Freedom Women's Health Club
+                </h3>
 
-            <select
-              id="paymentMethod"
-            >
+                <p>
+                  Manage memberships, classroom,
+                  community, check-ins and member progress.
+                </p>
 
-              <option value="">
-                Select method
-              </option>
+                <span class="program-link">
+                  Open Club →
+                </span>
 
-              <option value="Cash">
-                Cash
-              </option>
-
-              <option value="Bank Transfer">
-                Bank Transfer
-              </option>
-
-              <option value="JazzCash">
-                JazzCash
-              </option>
-
-              <option value="EasyPaisa">
-                EasyPaisa
-              </option>
-
-              <option value="Other">
-                Other
-              </option>
-
-            </select>
-
-          </div>
+              </div>
 
 
-          <div class="field full">
+              <div
+                class="program-card"
+                data-program="short"
+              >
 
-            <label>
-              Admin Notes
-            </label>
+                <h3>
+                  Short Programs
+                </h3>
 
-            <textarea
-              id="notes"
-              placeholder="Private notes..."
-            ></textarea>
+                <p>
+                  Manage challenges and flexible
+                  programs such as 30, 45 or 60-day programs.
+                </p>
 
-          </div>
+                <span class="program-link">
+                  Open Short Programs →
+                </span>
+
+              </div>
+
+
+              <div
+                class="program-card"
+                id="createProgramCard"
+              >
+
+                <h3>
+                  + Create New Program
+                </h3>
+
+                <p>
+                  Create a new program without changing
+                  the website code.
+                </p>
+
+                <span class="program-link">
+                  Coming in Program Management →
+                </span>
+
+              </div>
+
+
+            </div>
+
+          </section>
+
+
+          <!-- QUICK ACTIONS -->
+
+          <section class="section">
+
+            <div class="section-header">
+
+              <h2>
+                Quick Actions
+              </h2>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+              <button
+                class="quick-btn"
+                data-action="clients"
+              >
+
+                <strong>
+                  + Add Client
+                </strong>
+
+                <span>
+                  Create a client enrollment
+                </span>
+
+              </button>
+
+
+              <button
+                class="quick-btn"
+                data-action="applications"
+              >
+
+                <strong>
+                  Applications
+                </strong>
+
+                <span>
+                  Review new applications
+                </span>
+
+              </button>
+
+
+              <button
+                class="quick-btn"
+                data-action="payments"
+              >
+
+                <strong>
+                  Payments
+                </strong>
+
+                <span>
+                  View payment records
+                </span>
+
+              </button>
+
+
+              <button
+                class="quick-btn"
+                data-action="notifications"
+              >
+
+                <strong>
+                  Notifications
+                </strong>
+
+                <span>
+                  View important alerts
+                </span>
+
+              </button>
+
+
+            </div>
+
+          </section>
 
 
         </div>
 
 
+        <!-- RIGHT -->
 
-        <div class="form-actions">
-
-          <button
-            type="submit"
-            class="save-btn"
-            id="saveClientBtn"
-          >
-            Save Client
-          </button>
+        <div>
 
 
-          <button
-            type="button"
-            class="cancel-btn"
-            id="cancelClientBtn"
-          >
-            Cancel
-          </button>
+          <!-- RECENT ACTIVITY -->
+
+          <section class="section">
+
+            <div class="section-header">
+
+              <h2>
+                Recent Activity
+              </h2>
+
+            </div>
+
+
+            <div
+              class="activity"
+              id="activityArea"
+            >
+
+              <div class="activity-item">
+
+                <div class="activity-title">
+                  Admin dashboard loaded
+                </div>
+
+                <div class="activity-time">
+                  Just now
+                </div>
+
+              </div>
+
+              <div class="activity-item">
+
+                <div class="activity-title">
+                  Client activity will appear here
+                </div>
+
+                <div class="activity-time">
+                  Activity system will be connected
+                  as the remaining modules are built.
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- SYSTEM STATUS -->
+
+          <section class="section">
+
+            <div class="section-header">
+
+              <h2>
+                System Status
+              </h2>
+
+            </div>
+
+
+            <div class="activity-item">
+
+              <div class="activity-title">
+                Firebase Authentication
+              </div>
+
+              <div
+                class="activity-time"
+                id="authStatus"
+              >
+                Checking...
+              </div>
+
+            </div>
+
+
+            <div class="activity-item">
+
+              <div class="activity-title">
+                Firestore
+              </div>
+
+              <div
+                class="activity-time"
+                id="firestoreStatus"
+              >
+                Checking...
+              </div>
+
+            </div>
+
+
+            <div class="activity-item">
+
+              <div class="activity-title">
+                Admin Access
+              </div>
+
+              <div
+                class="activity-time"
+                id="adminStatus"
+              >
+                Checking...
+              </div>
+
+            </div>
+
+          </section>
+
 
         </div>
 
-
-        <div
-          class="message"
-          id="formMessage"
-        ></div>
-
-
-      </form>
-
-    </div>
-
-
-
-    <!-- =================================================
-         CLIENT LIST
-    ================================================== -->
-
-    <div
-      class="client-list"
-      id="clientsArea"
-    >
-
-      <div class="empty">
-        Loading clients...
       </div>
 
     </div>
 
+  </main>
 
-  </div>
-
-
-</main>
+</div>
 
 
+<!-- =====================================================
+     FIREBASE
+====================================================== -->
 
 <script type="module">
-
 
   import {
     initializeApp
   } from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
   import {
@@ -1130,25 +1113,19 @@
     onAuthStateChanged,
     signOut
   } from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
   import {
     getFirestore,
     collection,
-    getDocs,
-    addDoc,
-    doc,
-    updateDoc,
-    deleteDoc,
-    serverTimestamp
+    getDocs
   } from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
   // =====================================================
-  // FIREBASE
+  // FIREBASE CONFIG
   // =====================================================
 
   const firebaseConfig = {
@@ -1190,46 +1167,53 @@
     "mahnoordietitian3@gmail.com";
 
 
-
   // =====================================================
   // ELEMENTS
   // =====================================================
 
-  const form =
+  const totalClients =
     document.getElementById(
-      "clientForm"
+      "totalClients"
     );
 
-
-  const formContainer =
+  const activePrograms =
     document.getElementById(
-      "clientFormContainer"
+      "activePrograms"
     );
 
-
-  const clientsArea =
+  const checkinsDue =
     document.getElementById(
-      "clientsArea"
+      "checkinsDue"
     );
 
-
-  const formMessage =
+  const paymentsReceived =
     document.getElementById(
-      "formMessage"
+      "paymentsReceived"
     );
 
+  const adminEmail =
+    document.getElementById(
+      "adminEmail"
+    );
 
-  let editingClientId =
-    null;
+  const authStatus =
+    document.getElementById(
+      "authStatus"
+    );
 
+  const firestoreStatus =
+    document.getElementById(
+      "firestoreStatus"
+    );
 
-  let clientsCache =
-    [];
-
+  const adminStatus =
+    document.getElementById(
+      "adminStatus"
+    );
 
 
   // =====================================================
-  // ADMIN AUTH
+  // AUTHENTICATION
   // =====================================================
 
   onAuthStateChanged(
@@ -1246,10 +1230,24 @@
       }
 
 
+      adminEmail.textContent =
+        user.email || "";
+
+
+      authStatus.textContent =
+        "Connected";
+
+
       if (
-        user.email !==
+        user.email
+          ?.toLowerCase()
+        !==
         ADMIN_EMAIL
+          .toLowerCase()
       ) {
+
+        adminStatus.textContent =
+          "Access denied";
 
         alert(
           "You do not have permission to access the Admin Panel."
@@ -1265,30 +1263,23 @@
       }
 
 
-      await loadClients();
+      adminStatus.textContent =
+        "Authorized";
+
+
+      await loadDashboard();
 
     }
   );
 
 
-
   // =====================================================
-  // LOAD CLIENTS
+  // LOAD DASHBOARD
   // =====================================================
 
-  async function loadClients() {
-
-
-    clientsArea.innerHTML =
-      `
-        <div class="empty">
-          Loading clients...
-        </div>
-      `;
-
+  async function loadDashboard() {
 
     try {
-
 
       const snapshot =
         await getDocs(
@@ -1299,1058 +1290,121 @@
         );
 
 
-      clientsCache =
+      const clients =
         snapshot.docs.map(
           item => ({
-
-            id:
-              item.id,
-
+            id: item.id,
             ...item.data()
-
           })
         );
 
 
-      updateDashboard(
-        clientsCache
-      );
+      totalClients.textContent =
+        clients.length;
 
 
-      renderClients(
-        clientsCache
-      );
-
-    }
-
-    catch (error) {
-
-      console.error(error);
+      const today =
+        getToday();
 
 
-      clientsArea.innerHTML =
-        `
-          <div class="empty">
-            Unable to load clients.
-            <br><br>
-            ${escapeHtml(error.message)}
-          </div>
-        `;
-
-    }
-
-  }
-
-
-
-  // =====================================================
-  // RENDER CLIENTS
-  // =====================================================
-
-  function renderClients(
-    clients
-  ) {
-
-
-    if (
-      clients.length === 0
-    ) {
-
-      clientsArea.innerHTML =
-        `
-          <div class="empty">
-            No clients added yet.
-            <br><br>
-            Click "+ Add Client" to add one.
-          </div>
-        `;
-
-      return;
-
-    }
-
-
-    clientsArea.innerHTML =
-      clients
-        .map(
+      const active =
+        clients.filter(
           client => {
 
-            const connected =
-              !!client.uid;
-
-
-            return `
-
-              <div class="client">
-
-                <div class="client-info">
-
-                  <strong>
-                    ${escapeHtml(
-                      client.name ||
-                      "Unnamed Client"
-                    )}
-                  </strong>
-
-                  <p>
-                    ${escapeHtml(
-                      client.email ||
-                      ""
-                    )}
-                  </p>
-
-                  <p>
-                    ${escapeHtml(
-                      client.programName ||
-                      "No program"
-                    )}
-                    •
-                    ${escapeHtml(
-                      String(
-                        client.duration ||
-                        ""
-                      )
-                    )}
-                    days
-                  </p>
-
-                  <p>
-                    Start:
-                    ${escapeHtml(
-                      client.startDate ||
-                      "-"
-                    )}
-                    |
-                    End:
-                    ${escapeHtml(
-                      client.endDate ||
-                      "-"
-                    )}
-                  </p>
-
-                  <p>
-                    Paid:
-                    Rs.
-                    ${Number(
-                      client.amountPaid ||
-                      0
-                    ).toLocaleString()}
-                    |
-                    Remaining:
-                    Rs.
-                    ${Number(
-                      client.remainingAmount ||
-                      0
-                    ).toLocaleString()}
-                  </p>
-
-                  <span
-                    class="uid-status ${
-                      connected
-                        ? "connected"
-                        : "not-connected"
-                    }"
-                  >
-                    ${
-                      connected
-                        ? "✓ Account connected"
-                        : "Account not created yet"
-                    }
-                  </span>
-
-                </div>
-
-
-                <div class="client-actions">
-
-                  <button
-                    class="small-btn edit-btn"
-                    data-edit="${client.id}"
-                  >
-                    Edit
-                  </button>
-
-
-                  <button
-                    class="small-btn delete-btn"
-                    data-delete="${client.id}"
-                  >
-                    Delete
-                  </button>
-
-                </div>
-
-              </div>
-
-            `;
+            return (
+              client.startDate &&
+              client.endDate &&
+              client.startDate <= today &&
+              client.endDate >= today
+            );
 
           }
-        )
-        .join("");
+        );
 
 
-    document
-      .querySelectorAll(
-        "[data-edit]"
-      )
-      .forEach(
-        button => {
+      activePrograms.textContent =
+        active.length;
 
-          button.addEventListener(
-            "click",
-            () => {
 
-              editClient(
-                button.dataset.edit
-              );
+      /*
+        Check-ins are not yet stored in the
+        current client structure.
 
-            }
-          );
+        Therefore we deliberately show 0
+        until the Check-in system is built.
+      */
 
-        }
-      );
-
-
-    document
-      .querySelectorAll(
-        "[data-delete]"
-      )
-      .forEach(
-        button => {
-
-          button.addEventListener(
-            "click",
-            () => {
-
-              deleteClient(
-                button.dataset.delete
-              );
-
-            }
-          );
-
-        }
-      );
-
-  }
-
-
-
-  // =====================================================
-  // DASHBOARD
-  // =====================================================
-
-  function updateDashboard(
-    clients
-  ) {
-
-
-    document.getElementById(
-      "clientCount"
-    ).textContent =
-      clients.length;
-
-
-    const today =
-      new Date()
-        .toISOString()
-        .split("T")[0];
-
-
-    const active =
-      clients.filter(
-        client => {
-
-          return (
-            client.startDate &&
-            client.endDate &&
-            client.startDate <= today &&
-            client.endDate >= today
-          );
-
-        }
-      );
-
-
-    document.getElementById(
-      "activeProgramCount"
-    ).textContent =
-      active.length;
-
-
-    const totalPaid =
-      clients.reduce(
-        (sum, client) => {
-
-          return (
-            sum +
-            Number(
-              client.amountPaid ||
-              0
-            )
-          );
-
-        },
-        0
-      );
-
-
-    document.getElementById(
-      "paymentTotal"
-    ).textContent =
-      "Rs. " +
-      totalPaid.toLocaleString();
-
-  }
-
-
-
-  // =====================================================
-  // OPEN ADD FORM
-  // =====================================================
-
-  document
-    .getElementById(
-      "addClientBtn"
-    )
-    .addEventListener(
-      "click",
-      () => {
-
-        editingClientId =
-          null;
-
-        form.reset();
-
-        formMessage.textContent =
-          "";
-
-        document.getElementById(
-          "saveClientBtn"
-        ).textContent =
-          "Save Client";
-
-        formContainer.style.display =
-          "block";
-
-        document.getElementById(
-          "name"
-        ).focus();
-
-      }
-    );
-
-
-
-  // =====================================================
-  // CANCEL
-  // =====================================================
-
-  document
-    .getElementById(
-      "cancelClientBtn"
-    )
-    .addEventListener(
-      "click",
-      () => {
-
-        form.reset();
-
-        editingClientId =
-          null;
-
-        formMessage.textContent =
-          "";
-
-        formContainer.style.display =
-          "none";
-
-      }
-    );
-
-
-
-  // =====================================================
-  // PROGRAM TYPE
-  // =====================================================
-
-  document
-    .getElementById(
-      "programType"
-    )
-    .addEventListener(
-      "change",
-      event => {
-
-        const type =
-          event.target.value;
-
-
-        const programName =
-          document.getElementById(
-            "programName"
-          );
-
-
-        if (
-          type ===
-          "1:1 Coaching"
-        ) {
-
-          programName.value =
-            "90-Day Freedom Mentorship™";
-
-        }
-
-
-        else if (
-          type ===
-          "Membership"
-        ) {
-
-          programName.value =
-            "Freedom Women's Health Club";
-
-        }
-
-
-        else {
-
-          programName.value =
-            "";
-
-        }
-
-      }
-    );
-
-
-
-  // =====================================================
-  // END DATE
-  // =====================================================
-
-  function calculateEndDate() {
-
-
-    const start =
-      document.getElementById(
-        "startDate"
-      ).value;
-
-
-    const duration =
-      Number(
-        document.getElementById(
-          "duration"
-        ).value
-      );
-
-
-    if (
-      !start ||
-      !duration
-    ) {
-
-      document.getElementById(
-        "endDate"
-      ).value =
-        "";
-
-      return;
-
-    }
-
-
-    const date =
-      new Date(
-        start +
-        "T00:00:00"
-      );
-
-
-    date.setDate(
-      date.getDate() +
-      duration -
-      1
-    );
-
-
-    document.getElementById(
-      "endDate"
-    ).value =
-      formatDate(
-        date
-      );
-
-  }
-
-
-
-  document
-    .getElementById(
-      "startDate"
-    )
-    .addEventListener(
-      "change",
-      calculateEndDate
-    );
-
-
-  document
-    .getElementById(
-      "duration"
-    )
-    .addEventListener(
-      "change",
-      calculateEndDate
-    );
-
-
-
-  // =====================================================
-  // REMAINING PAYMENT
-  // =====================================================
-
-  function calculateRemaining() {
-
-
-    const price =
-      Number(
-        document.getElementById(
-          "programPrice"
-        ).value
-      ) || 0;
-
-
-    const paid =
-      Number(
-        document.getElementById(
-          "amountPaid"
-        ).value
-      ) || 0;
-
-
-    document.getElementById(
-      "remainingAmount"
-    ).value =
-      Math.max(
-        price -
-        paid,
-        0
-      );
-
-  }
-
-
-
-  document
-    .getElementById(
-      "programPrice"
-    )
-    .addEventListener(
-      "input",
-      calculateRemaining
-    );
-
-
-  document
-    .getElementById(
-      "amountPaid"
-    )
-    .addEventListener(
-      "input",
-      calculateRemaining
-    );
-
-
-
-  // =====================================================
-  // SAVE CLIENT
-  // =====================================================
-
-  form.addEventListener(
-    "submit",
-    async event => {
-
-      event.preventDefault();
-
-
-      formMessage.textContent =
-        "Saving...";
-
-
-      const price =
-        Number(
-          document.getElementById(
-            "programPrice"
-          ).value
-        ) || 0;
+      checkinsDue.textContent =
+        "0";
 
 
       const paid =
-        Number(
-          document.getElementById(
-            "amountPaid"
-          ).value
-        ) || 0;
+        clients.reduce(
+          (
+            total,
+            client
+          ) => {
 
+            return (
+              total +
+              Number(
+                client.amountPaid || 0
+              )
+            );
 
-      const remaining =
-        Math.max(
-          price -
-          paid,
+          },
           0
         );
 
 
-      const clientData = {
+      paymentsReceived.textContent =
+        "Rs. " +
+        paid.toLocaleString();
 
-        name:
-          document.getElementById(
-            "name"
-          ).value.trim(),
 
-        email:
-          document.getElementById(
-            "email"
-          ).value
-            .trim()
-            .toLowerCase(),
-
-        phone:
-          document.getElementById(
-            "phone"
-          ).value.trim(),
-
-        dob:
-          document.getElementById(
-            "dob"
-          ).value,
-
-        city:
-          document.getElementById(
-            "city"
-          ).value.trim(),
-
-        programType:
-          document.getElementById(
-            "programType"
-          ).value,
-
-        programName:
-          document.getElementById(
-            "programName"
-          ).value.trim(),
-
-        duration:
-          Number(
-            document.getElementById(
-              "duration"
-            ).value
-          ),
-
-        startDate:
-          document.getElementById(
-            "startDate"
-          ).value,
-
-        endDate:
-          document.getElementById(
-            "endDate"
-          ).value,
-
-        programPrice:
-          price,
-
-        amountPaid:
-          paid,
-
-        remainingAmount:
-          remaining,
-
-        paymentStatus:
-          document.getElementById(
-            "paymentStatus"
-          ).value,
-
-        paymentMethod:
-          document.getElementById(
-            "paymentMethod"
-          ).value,
-
-        notes:
-          document.getElementById(
-            "notes"
-          ).value.trim(),
-
-        updatedAt:
-          serverTimestamp()
-
-      };
-
-
-
-      try {
-
-
-        // =================================================
-        // EDIT
-        // =================================================
-
-        if (
-          editingClientId
-        ) {
-
-
-          await updateDoc(
-
-            doc(
-              db,
-              "clients",
-              editingClientId
-            ),
-
-            clientData
-
-          );
-
-
-          formMessage.textContent =
-            "Client updated successfully ✓";
-
-        }
-
-
-        // =================================================
-        // CREATE
-        // =================================================
-
-        else {
-
-
-          clientData.createdAt =
-            serverTimestamp();
-
-
-          // IMPORTANT:
-          //
-          // addDoc() creates a RANDOM FIRESTORE ID.
-          //
-          // This is intentional.
-          //
-          await addDoc(
-
-            collection(
-              db,
-              "clients"
-            ),
-
-            clientData
-
-          );
-
-
-          formMessage.textContent =
-            "Client added successfully ✓";
-
-        }
-
-
-        await loadClients();
-
-
-        setTimeout(
-          () => {
-
-            form.reset();
-
-            editingClientId =
-              null;
-
-            formContainer.style.display =
-              "none";
-
-            formMessage.textContent =
-              "";
-
-          },
-          700
-        );
-
-      }
-
-      catch (error) {
-
-        console.error(error);
-
-
-        formMessage.textContent =
-          "Unable to save client: " +
-          error.message;
-
-      }
-
-    }
-  );
-
-
-
-  // =====================================================
-  // EDIT
-  // =====================================================
-
-  function editClient(
-    id
-  ) {
-
-
-    const client =
-      clientsCache.find(
-        item =>
-          item.id === id
-      );
-
-
-    if (!client) {
-
-      return;
-
-    }
-
-
-    editingClientId =
-      id;
-
-
-    document.getElementById(
-      "name"
-    ).value =
-      client.name ||
-      "";
-
-
-    document.getElementById(
-      "email"
-    ).value =
-      client.email ||
-      "";
-
-
-    document.getElementById(
-      "phone"
-    ).value =
-      client.phone ||
-      "";
-
-
-    document.getElementById(
-      "dob"
-    ).value =
-      client.dob ||
-      "";
-
-
-    document.getElementById(
-      "city"
-    ).value =
-      client.city ||
-      "";
-
-
-    document.getElementById(
-      "programType"
-    ).value =
-      client.programType ||
-      "";
-
-
-    document.getElementById(
-      "programName"
-    ).value =
-      client.programName ||
-      "";
-
-
-    document.getElementById(
-      "duration"
-    ).value =
-      client.duration ||
-      "";
-
-
-    document.getElementById(
-      "startDate"
-    ).value =
-      client.startDate ||
-      "";
-
-
-    document.getElementById(
-      "endDate"
-    ).value =
-      client.endDate ||
-      "";
-
-
-    document.getElementById(
-      "programPrice"
-    ).value =
-      client.programPrice ||
-      0;
-
-
-    document.getElementById(
-      "amountPaid"
-    ).value =
-      client.amountPaid ||
-      0;
-
-
-    document.getElementById(
-      "remainingAmount"
-    ).value =
-      client.remainingAmount ||
-      0;
-
-
-    document.getElementById(
-      "paymentStatus"
-    ).value =
-      client.paymentStatus ||
-      "";
-
-
-    document.getElementById(
-      "paymentMethod"
-    ).value =
-      client.paymentMethod ||
-      "";
-
-
-    document.getElementById(
-      "notes"
-    ).value =
-      client.notes ||
-      "";
-
-
-    document.getElementById(
-      "saveClientBtn"
-    ).textContent =
-      "Update Client";
-
-
-    formMessage.textContent =
-      "";
-
-
-    formContainer.style.display =
-      "block";
-
-
-    window.scrollTo({
-
-      top:
-        formContainer.offsetTop -
-        30,
-
-      behavior:
-        "smooth"
-
-    });
-
-  }
-
-
-
-  // =====================================================
-  // DELETE
-  // =====================================================
-
-  async function deleteClient(
-    id
-  ) {
-
-
-    const confirmed =
-      confirm(
-        "Are you sure you want to delete this client?"
-      );
-
-
-    if (!confirmed) {
-
-      return;
-
-    }
-
-
-    try {
-
-
-      await deleteDoc(
-
-        doc(
-          db,
-          "clients",
-          id
-        )
-
-      );
-
-
-      await loadClients();
+      firestoreStatus.textContent =
+        "Connected";
 
     }
 
     catch (error) {
 
-      console.error(error);
-
-
-      alert(
-        "Unable to delete client: " +
-        error.message
+      console.error(
+        "Dashboard error:",
+        error
       );
+
+
+      firestoreStatus.textContent =
+        "Connection error";
+
+
+      totalClients.textContent =
+        "—";
+
+      activePrograms.textContent =
+        "—";
+
+      checkinsDue.textContent =
+        "—";
+
+      paymentsReceived.textContent =
+        "—";
 
     }
 
   }
 
 
-
   // =====================================================
-  // LOGOUT
-  // =====================================================
-
-  document
-    .getElementById(
-      "logoutBtn"
-    )
-    .addEventListener(
-      "click",
-      async () => {
-
-        await signOut(
-          auth
-        );
-
-        window.location.href =
-          "login.html";
-
-      }
-    );
-
-
-
-  // =====================================================
-  // HELPERS
+  // TODAY
   // =====================================================
 
-  function formatDate(
-    date
-  ) {
+  function getToday() {
+
+    const date =
+      new Date();
+
 
     const year =
       date.getFullYear();
@@ -2358,8 +1412,7 @@
 
     const month =
       String(
-        date.getMonth() +
-        1
+        date.getMonth() + 1
       ).padStart(
         2,
         "0"
@@ -2386,45 +1439,186 @@
   }
 
 
+  // =====================================================
+  // NAVIGATION
+  // =====================================================
 
-  function escapeHtml(
-    value
-  ) {
+  function navigate(page) {
 
-    return String(
-      value
-    )
+    const routes = {
 
-      .replaceAll(
-        "&",
-        "&amp;"
-      )
+      dashboard:
+        "admin-panel.html",
 
-      .replaceAll(
-        "<",
-        "&lt;"
-      )
+      clients:
+        "client-management.html",
 
-      .replaceAll(
-        ">",
-        "&gt;"
-      )
+      applications:
+        "applications.html",
 
-      .replaceAll(
-        '"',
-        "&quot;"
-      )
+      assessments:
+        "assessments.html",
 
-      .replaceAll(
-        "'",
-        "&#039;"
-      );
+      "1on1":
+        "program-1on1.html",
+
+      club:
+        "program-club.html",
+
+      short:
+        "program-short.html",
+
+      payments:
+        "payments.html",
+
+      notifications:
+        "notifications.html",
+
+      settings:
+        "admin-settings.html"
+
+    };
+
+
+    if (
+      routes[page]
+    ) {
+
+      window.location.href =
+        routes[page];
+
+    }
 
   }
 
-</script>
 
+  // =====================================================
+  // SIDEBAR NAVIGATION
+  // =====================================================
+
+  document
+    .querySelectorAll(
+      ".nav-button"
+    )
+    .forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            navigate(
+              button.dataset.page
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+  // =====================================================
+  // PROGRAM CARDS
+  // =====================================================
+
+  document
+    .querySelectorAll(
+      ".program-card[data-program]"
+    )
+    .forEach(
+      card => {
+
+        card.addEventListener(
+          "click",
+          () => {
+
+            navigate(
+              card.dataset.program
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+  // =====================================================
+  // QUICK ACTIONS
+  // =====================================================
+
+  document
+    .querySelectorAll(
+      ".quick-btn"
+    )
+    .forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            navigate(
+              button.dataset.action
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+  // =====================================================
+  // LOGOUT
+  // =====================================================
+
+  async function logout() {
+
+    try {
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+    }
+
+    catch (error) {
+
+      console.error(
+        "Logout error:",
+        error
+      );
+
+    }
+
+  }
+
+
+  document
+    .getElementById(
+      "logoutBtn"
+    )
+    .addEventListener(
+      "click",
+      logout
+    );
+
+
+  document
+    .getElementById(
+      "mobileLogout"
+    )
+    .addEventListener(
+      "click",
+      logout
+    );
+
+</script>
 
 </body>
 
 </html>
+```
