@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +21,17 @@ body{
   color:#2D2D2D;
 }
 
+button,
+input,
+textarea,
+select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
 /* =====================================================
    HEADER
 ===================================================== */
@@ -36,7 +46,7 @@ header{
   padding:0 30px;
   position:sticky;
   top:0;
-  z-index:100;
+  z-index:1000;
 }
 
 .brand{
@@ -48,12 +58,41 @@ header{
 .header-right{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:10px;
 }
 
 .welcome{
   font-size:13px;
   color:#777;
+}
+
+.admin-badge{
+  display:none;
+  background:#6E4A7E;
+  color:#fff;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.admin-badge.show{
+  display:inline-block;
+}
+
+.preview-btn{
+  display:none;
+  border:1px solid #6E4A7E;
+  background:#fff;
+  color:#6E4A7E;
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.preview-btn.show{
+  display:block;
 }
 
 .logout-btn{
@@ -64,6 +103,45 @@ header{
   border-radius:8px;
   cursor:pointer;
   font-weight:600;
+}
+
+/* =====================================================
+   ADMIN BAR
+===================================================== */
+
+.admin-bar{
+  display:none;
+  background:#2D2D2D;
+  color:white;
+  padding:10px 25px;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  font-size:13px;
+}
+
+.admin-bar.show{
+  display:flex;
+}
+
+.admin-bar strong{
+  color:#DCCBB3;
+}
+
+.admin-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.admin-small-btn{
+  border:none;
+  background:#ffffff;
+  color:#6E4A7E;
+  padding:7px 11px;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:700;
 }
 
 /* =====================================================
@@ -128,12 +206,20 @@ main{
   flex:1;
   min-width:0;
   padding:35px;
-  max-width:1200px;
+  max-width:1250px;
 }
 
 /* =====================================================
-   PAGE HEADER
+   PAGE
 ===================================================== */
+
+.page-section{
+  display:none;
+}
+
+.page-section.active{
+  display:block;
+}
 
 .page-header{
   margin-bottom:28px;
@@ -185,21 +271,14 @@ main{
 }
 
 /* =====================================================
-   SECTION
+   SECTION TITLE
 ===================================================== */
-
-.page-section{
-  display:none;
-}
-
-.page-section.active{
-  display:block;
-}
 
 .section-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:15px;
   margin-bottom:18px;
 }
 
@@ -211,6 +290,50 @@ main{
 .section-title span{
   font-size:12px;
   color:#888;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.primary-btn{
+  border:none;
+  background:#6E4A7E;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.secondary-btn{
+  border:1px solid #d9ccd9;
+  background:#fff;
+  color:#6E4A7E;
+  padding:9px 13px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.danger-btn{
+  border:none;
+  background:#9b4b4b;
+  color:#fff;
+  padding:8px 11px;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.edit-btn{
+  border:none;
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:8px 11px;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:700;
 }
 
 /* =====================================================
@@ -236,10 +359,16 @@ main{
   justify-content:space-between;
   align-items:center;
   cursor:pointer;
+  gap:15px;
 }
 
 .week-header:hover{
   background:#fcfafc;
+}
+
+.week-main{
+  flex:1;
+  min-width:0;
 }
 
 .week-number{
@@ -259,6 +388,16 @@ main{
   color:#777;
   font-size:13px;
   margin-top:5px;
+}
+
+.week-actions{
+  display:none;
+  gap:5px;
+  flex-shrink:0;
+}
+
+.admin-mode .week-actions{
+  display:flex;
 }
 
 .arrow{
@@ -300,6 +439,7 @@ main{
 
 .day-left{
   min-width:0;
+  flex:1;
 }
 
 .day-label{
@@ -321,12 +461,151 @@ main{
   margin-top:5px;
 }
 
+.day-actions{
+  display:none;
+  gap:5px;
+}
+
+.admin-mode .day-actions{
+  display:flex;
+}
+
 .day-arrow{
   color:#6E4A7E;
 }
 
+.add-day-area{
+  margin-top:12px;
+  display:none;
+}
+
+.admin-mode .add-day-area{
+  display:block;
+}
+
 /* =====================================================
-   CONTENT CARDS
+   DAY CONTENT
+===================================================== */
+
+.back-link{
+  border:none;
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:9px 13px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-bottom:18px;
+  font-weight:600;
+}
+
+.day-content-box{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:25px;
+}
+
+.day-content-box h2{
+  margin:0 0 8px;
+  color:#6E4A7E;
+}
+
+.day-subtitle{
+  color:#777;
+  margin-bottom:25px;
+}
+
+.lesson{
+  border-top:1px solid #eee6ee;
+  padding:20px 0;
+}
+
+.lesson:first-child{
+  border-top:none;
+  padding-top:0;
+}
+
+.lesson-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+}
+
+.lesson-title-area{
+  flex:1;
+}
+
+.lesson h3{
+  margin:0 0 9px;
+}
+
+.lesson p{
+  color:#555;
+  line-height:1.7;
+}
+
+.lesson-actions{
+  display:none;
+  gap:5px;
+  flex-shrink:0;
+}
+
+.admin-mode .lesson-actions{
+  display:flex;
+}
+
+.video-wrapper{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  margin-top:15px;
+  border-radius:12px;
+  overflow:hidden;
+  background:#f3edf4;
+}
+
+.video-wrapper iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.lesson-image{
+  width:100%;
+  max-height:500px;
+  object-fit:contain;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+.resource-button{
+  display:inline-block;
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:10px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  margin:6px 5px 0 0;
+  font-size:12px;
+  font-weight:600;
+}
+
+.add-lesson-area{
+  display:none;
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid #eee6ee;
+}
+
+.admin-mode .add-lesson-area{
+  display:block;
+}
+
+/* =====================================================
+   CONTENT GRID
 ===================================================== */
 
 .content-grid{
@@ -379,85 +658,14 @@ main{
   font-weight:600;
 }
 
-/* =====================================================
-   DAY CONTENT
-===================================================== */
-
-.back-link{
-  border:none;
-  background:#eee5f0;
-  color:#6E4A7E;
-  padding:9px 13px;
-  border-radius:8px;
-  cursor:pointer;
-  margin-bottom:18px;
-  font-weight:600;
-}
-
-.day-content-box{
-  background:#ffffff;
-  border:1px solid #eadfe9;
-  border-radius:16px;
-  padding:25px;
-}
-
-.day-content-box h2{
-  margin:0 0 8px;
-  color:#6E4A7E;
-}
-
-.day-content-box .day-subtitle{
-  color:#777;
-  margin-bottom:25px;
-}
-
-.lesson{
-  border-top:1px solid #eee6ee;
-  padding:20px 0;
-}
-
-.lesson:first-child{
-  border-top:none;
-  padding-top:0;
-}
-
-.lesson h3{
-  margin:0 0 9px;
-}
-
-.lesson p{
-  color:#555;
-  line-height:1.7;
-}
-
-.video-wrapper{
-  position:relative;
-  width:100%;
-  padding-top:56.25%;
+.card-actions{
+  display:none;
+  gap:6px;
   margin-top:15px;
-  border-radius:12px;
-  overflow:hidden;
-  background:#f3edf4;
 }
 
-.video-wrapper iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:0;
-}
-
-.resource-button{
-  display:inline-block;
-  background:#eee5f0;
-  color:#6E4A7E;
-  padding:10px 14px;
-  border-radius:8px;
-  text-decoration:none;
-  margin:6px 5px 0 0;
-  font-size:12px;
-  font-weight:600;
+.admin-mode .card-actions{
+  display:flex;
 }
 
 /* =====================================================
@@ -525,6 +733,12 @@ textarea:focus{
   margin-bottom:7px;
 }
 
+.post-header{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
 .post h3{
   margin:0 0 8px;
 }
@@ -534,8 +748,142 @@ textarea:focus{
   line-height:1.7;
 }
 
+.post-actions{
+  display:none;
+  gap:5px;
+}
+
+.admin-mode .post-actions{
+  display:flex;
+}
+
 /* =====================================================
-   LOADING
+   ADMIN CLIENTS
+===================================================== */
+
+.client-panel{
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:20px;
+}
+
+.client-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.client-row{
+  border:1px solid #eee6ee;
+  border-radius:10px;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.client-name{
+  font-weight:700;
+}
+
+.client-email{
+  color:#777;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.client-id{
+  color:#aaa;
+  font-size:10px;
+  margin-top:3px;
+  word-break:break-all;
+}
+
+/* =====================================================
+   FORMS / MODAL
+===================================================== */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(45,45,45,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:3000;
+}
+
+.modal-overlay.show{
+  display:flex;
+}
+
+.modal{
+  width:100%;
+  max-width:650px;
+  max-height:90vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:16px;
+  padding:25px;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+.modal h2{
+  margin:0 0 20px;
+  color:#6E4A7E;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  color:#555;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  border:1px solid #d9d0d9;
+  border-radius:8px;
+  padding:11px;
+  outline:none;
+  background:#fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:#6E4A7E;
+}
+
+.form-group textarea{
+  min-height:100px;
+}
+
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:20px;
+}
+
+.modal-message{
+  margin-top:10px;
+  font-size:12px;
+}
+
+/* =====================================================
+   LOADING / EMPTY
 ===================================================== */
 
 .loading{
@@ -554,8 +902,46 @@ textarea:focus{
 }
 
 /* =====================================================
+   ADMIN DASHBOARD
+===================================================== */
+
+.admin-stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.admin-stat{
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:20px;
+}
+
+.admin-stat-number{
+  color:#6E4A7E;
+  font-size:28px;
+  font-weight:700;
+}
+
+.admin-stat-label{
+  color:#777;
+  font-size:12px;
+  margin-top:5px;
+}
+
+/* =====================================================
    MOBILE
 ===================================================== */
+
+@media(max-width:900px){
+
+  .admin-stat-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
 
 @media(max-width:800px){
 
@@ -563,8 +949,9 @@ textarea:focus{
     padding:0 15px;
   }
 
-  .welcome{
-    display:none;
+  .welcome,
+  .admin-badge{
+    display:none !important;
   }
 
   .layout{
@@ -603,15 +990,43 @@ textarea:focus{
     font-size:27px;
   }
 
+  .section-title{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .week-header{
+    align-items:flex-start;
+  }
+
+  .week-actions,
+  .day-actions,
+  .lesson-actions,
+  .post-actions{
+    flex-wrap:wrap;
+  }
+
+  .admin-bar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .client-row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .admin-stat-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <!-- =====================================================
      HEADER
@@ -632,6 +1047,20 @@ textarea:focus{
       Welcome
     </div>
 
+    <span
+      class="admin-badge"
+      id="adminBadge"
+    >
+      ADMIN
+    </span>
+
+    <button
+      class="preview-btn"
+      id="previewBtn"
+    >
+      Client Preview
+    </button>
+
     <button
       class="logout-btn"
       id="logoutBtn"
@@ -644,7 +1073,45 @@ textarea:focus{
 </header>
 
 
-<div class="layout">
+<!-- =====================================================
+     ADMIN BAR
+===================================================== -->
+
+<div
+  class="admin-bar"
+  id="adminBar"
+>
+
+  <div>
+    <strong>ADMIN MODE</strong>
+    — You can add, edit and delete coaching content.
+  </div>
+
+  <div class="admin-actions">
+
+    <button
+      class="admin-small-btn"
+      id="adminHomeBtn"
+    >
+      Dashboard
+    </button>
+
+    <button
+      class="admin-small-btn"
+      id="adminClientsBtn"
+    >
+      Clients
+    </button>
+
+  </div>
+
+</div>
+
+
+<div
+  class="layout"
+  id="appLayout"
+>
 
 
 <!-- =====================================================
@@ -710,6 +1177,140 @@ textarea:focus{
 
 
 <!-- =====================================================
+     ADMIN DASHBOARD
+===================================================== -->
+
+<section
+  class="page-section"
+  id="adminDashboard"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Admin Dashboard
+    </h1>
+
+    <p>
+      Manage your 1:1 coaching content from one place.
+    </p>
+
+  </div>
+
+
+  <div class="admin-stat-grid">
+
+    <div class="admin-stat">
+      <div
+        class="admin-stat-number"
+        id="statClients"
+      >
+        0
+      </div>
+      <div class="admin-stat-label">
+        Clients
+      </div>
+    </div>
+
+    <div class="admin-stat">
+      <div
+        class="admin-stat-number"
+        id="statWeeks"
+      >
+        0
+      </div>
+      <div class="admin-stat-label">
+        Program Weeks
+      </div>
+    </div>
+
+    <div class="admin-stat">
+      <div
+        class="admin-stat-number"
+        id="statMealPlans"
+      >
+        0
+      </div>
+      <div class="admin-stat-label">
+        Meal Plans
+      </div>
+    </div>
+
+    <div class="admin-stat">
+      <div
+        class="admin-stat-number"
+        id="statWorkouts"
+      >
+        0
+      </div>
+      <div class="admin-stat-label">
+        Workouts
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="hero">
+
+    <h2>
+      Welcome, Mahnoor
+    </h2>
+
+    <p>
+      This is your private admin area. Use the navigation
+      to manage your program, meal plans, workouts,
+      resources and community posts.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CLIENT MANAGEMENT
+===================================================== -->
+
+<section
+  class="page-section"
+  id="adminClients"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Clients
+    </h1>
+
+    <p>
+      View the clients connected to your coaching system.
+    </p>
+
+  </div>
+
+
+  <div
+    class="client-panel"
+  >
+
+    <div
+      class="client-list"
+      id="clientList"
+    >
+
+      <div class="loading">
+        Loading clients...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
      PROGRAM
 ===================================================== -->
 
@@ -757,9 +1358,21 @@ textarea:focus{
       Your Program
     </h2>
 
-    <span id="weekCount">
-      Loading...
-    </span>
+    <div style="display:flex;align-items:center;gap:10px;">
+
+      <span id="weekCount">
+        Loading...
+      </span>
+
+      <button
+        class="primary-btn admin-only"
+        id="addWeekBtn"
+        style="display:none;"
+      >
+        + Add Week
+      </button>
+
+    </div>
 
   </div>
 
@@ -827,6 +1440,23 @@ textarea:focus{
   </div>
 
 
+  <div class="section-title">
+
+    <h2>
+      Meal Plans
+    </h2>
+
+    <button
+      class="primary-btn admin-only"
+      id="addMealPlanBtn"
+      style="display:none;"
+    >
+      + Add Meal Plan
+    </button>
+
+  </div>
+
+
   <div
     class="content-grid"
     id="mealPlanList"
@@ -863,6 +1493,23 @@ textarea:focus{
   </div>
 
 
+  <div class="section-title">
+
+    <h2>
+      Workouts
+    </h2>
+
+    <button
+      class="primary-btn admin-only"
+      id="addWorkoutBtn"
+      style="display:none;"
+    >
+      + Add Workout
+    </button>
+
+  </div>
+
+
   <div
     class="content-grid"
     id="workoutList"
@@ -895,6 +1542,23 @@ textarea:focus{
     <p>
       Videos, PDFs, guides and other resources from your coach.
     </p>
+
+  </div>
+
+
+  <div class="section-title">
+
+    <h2>
+      Resources
+    </h2>
+
+    <button
+      class="primary-btn admin-only"
+      id="addResourceBtn"
+      style="display:none;"
+    >
+      + Add Resource
+    </button>
 
   </div>
 
@@ -994,6 +1658,23 @@ textarea:focus{
   </div>
 
 
+  <div class="section-title">
+
+    <h2>
+      Community Updates
+    </h2>
+
+    <button
+      class="primary-btn admin-only"
+      id="addCommunityBtn"
+      style="display:none;"
+    >
+      + Add Post
+    </button>
+
+  </div>
+
+
   <div id="communityList">
 
     <div class="loading">
@@ -1006,6 +1687,51 @@ textarea:focus{
 
 
 </main>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+  class="modal-overlay"
+  id="modalOverlay"
+>
+
+  <div class="modal">
+
+    <h2 id="modalTitle">
+      Add Content
+    </h2>
+
+    <div id="modalBody"></div>
+
+    <div
+      class="modal-message"
+      id="modalMessage"
+    ></div>
+
+    <div class="modal-actions">
+
+      <button
+        class="secondary-btn"
+        id="modalCancel"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="primary-btn"
+        id="modalSave"
+      >
+        Save
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
@@ -1034,7 +1760,12 @@ import {
   query,
   where,
   getDocs,
+  getDoc,
+  doc,
   addDoc,
+  setDoc,
+  updateDoc,
+  deleteDoc,
   serverTimestamp
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
@@ -1078,17 +1809,40 @@ const db =
 
 
 /* =====================================================
+   ADMIN EMAIL
+===================================================== */
+
+const ADMIN_EMAIL =
+  "mahnoordietitian3@gmail.com";
+
+
+/* =====================================================
    GLOBAL DATA
 ===================================================== */
 
 let currentUser = null;
+
 let currentClient = null;
 
+let isAdmin = false;
+
+let previewMode = false;
+
 let weeks = [];
+
 let mealPlans = [];
+
 let workouts = [];
+
 let resources = [];
+
 let communityPosts = [];
+
+let clients = [];
+
+let currentModalSave = null;
+
+let currentDayContext = null;
 
 
 /* =====================================================
@@ -1108,23 +1862,168 @@ onAuthStateChanged(
 
     }
 
-    currentUser = user;
+
+    currentUser =
+      user;
+
+
+    isAdmin =
+      String(
+        user.email || ""
+      ).toLowerCase()
+      ===
+      ADMIN_EMAIL.toLowerCase();
+
 
     document.getElementById(
       "welcomeText"
     ).textContent =
       "Welcome, " +
-      (user.displayName || user.email);
+      (
+        user.displayName ||
+        user.email
+      );
 
 
-    await loadClient();
+    setupUserMode();
+
+
+    if(isAdmin){
+
+      await loadAdminData();
+
+    }
+    else{
+
+      await loadClient();
+
+    }
 
   }
 );
 
 
 /* =====================================================
-   LOAD CLIENT
+   SET USER MODE
+===================================================== */
+
+function setupUserMode(){
+
+  const body =
+    document.body;
+
+
+  if(isAdmin){
+
+    body.classList.add(
+      "admin-mode"
+    );
+
+
+    document.getElementById(
+      "adminBadge"
+    ).classList.add(
+      "show"
+    );
+
+
+    document.getElementById(
+      "adminBar"
+    ).classList.add(
+      "show"
+    );
+
+
+    document.getElementById(
+      "previewBtn"
+    ).classList.add(
+      "show"
+    );
+
+
+    document
+      .querySelectorAll(
+        ".admin-only"
+      )
+      .forEach(el => {
+
+        el.style.display =
+          "block";
+
+      });
+
+
+    showSection(
+      "adminDashboard"
+    );
+
+  }
+  else{
+
+    body.classList.remove(
+      "admin-mode"
+    );
+
+    document.getElementById(
+      "adminBar"
+    ).classList.remove(
+      "show"
+    );
+
+    document.getElementById(
+      "adminBadge"
+    ).classList.remove(
+      "show"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ADMIN DATA
+===================================================== */
+
+async function loadAdminData(){
+
+  try{
+
+    await Promise.all([
+
+      loadAllClients(),
+
+      loadWeeks(),
+
+      loadAllMealPlans(),
+
+      loadAllWorkouts(),
+
+      loadAllResources(),
+
+      loadAllCommunity()
+
+    ]);
+
+
+    updateAdminStats();
+
+
+  }
+  catch(error){
+
+    console.error(
+      "Admin loading error:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   CLIENT LOAD
 ===================================================== */
 
 async function loadClient(){
@@ -1133,9 +2032,17 @@ async function loadClient(){
 
     const q =
       query(
-        collection(db,"clients"),
-        where("uid","==",currentUser.uid)
+        collection(
+          db,
+          "clients"
+        ),
+        where(
+          "uid",
+          "==",
+          currentUser.uid
+        )
       );
+
 
     const snapshot =
       await getDocs(q);
@@ -1152,15 +2059,16 @@ async function loadClient(){
     }
 
 
-    const doc =
+    const clientDoc =
       snapshot.docs[0];
 
 
     currentClient = {
 
-      id:doc.id,
+      id:
+        clientDoc.id,
 
-      ...doc.data()
+      ...clientDoc.data()
 
     };
 
@@ -1172,7 +2080,7 @@ async function loadClient(){
       "Your private 1:1 coaching classroom.";
 
 
-    await loadAllContent();
+    await loadClientContent();
 
   }
   catch(error){
@@ -1189,22 +2097,22 @@ async function loadClient(){
 
 
 /* =====================================================
-   LOAD ALL PROGRAM CONTENT
+   CLIENT CONTENT
 ===================================================== */
 
-async function loadAllContent(){
+async function loadClientContent(){
 
   await Promise.all([
 
     loadWeeks(),
 
-    loadMealPlans(),
+    loadClientMealPlans(),
 
-    loadWorkouts(),
+    loadClientWorkouts(),
 
-    loadResources(),
+    loadClientResources(),
 
-    loadCommunity()
+    loadClientCommunity()
 
   ]);
 
@@ -1212,7 +2120,7 @@ async function loadAllContent(){
 
 
 /* =====================================================
-   WEEKS
+   CLIENT WEEKS
 ===================================================== */
 
 async function loadWeeks(){
@@ -1222,20 +2130,8 @@ async function loadWeeks(){
       "weekList"
     );
 
+
   try{
-
-    /*
-      Expected Firestore:
-
-      programs
-        oneOnOne
-          weeks
-            week1
-            week2
-              days
-                day1
-                day2
-    */
 
     const weeksRef =
       collection(
@@ -1247,33 +2143,47 @@ async function loadWeeks(){
 
 
     const snapshot =
-      await getDocs(weeksRef);
+      await getDocs(
+        weeksRef
+      );
 
 
     weeks =
-      snapshot.docs.map(doc => ({
+      snapshot.docs.map(
+        item => ({
 
-        id:doc.id,
+          id:
+            item.id,
 
-        ...doc.data()
+          ...item.data()
 
-      }));
+        })
+      );
 
 
     weeks.sort(
       (a,b) =>
-        Number(a.order || 0)
+        Number(
+          a.order || 0
+        )
         -
-        Number(b.order || 0)
+        Number(
+          b.order || 0
+        )
     );
 
 
     renderWeeks();
 
+
   }
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Weeks error:",
+      error
+    );
+
 
     list.innerHTML = `
       <div class="empty">
@@ -1313,7 +2223,11 @@ function renderWeeks(){
 
     list.innerHTML = `
       <div class="empty">
-        Your coaching program content will appear here.
+        ${
+          isAdmin
+          ? "No weeks have been created yet. Click + Add Week to create your first week."
+          : "Your coaching program content will appear here."
+        }
       </div>
     `;
 
@@ -1323,74 +2237,106 @@ function renderWeeks(){
 
 
   list.innerHTML =
-    weeks.map(
-      week => `
-
-        <div
-          class="week-card"
-          data-week="${week.id}"
-        >
+    weeks
+      .map(
+        week => `
 
           <div
-            class="week-header"
-            data-toggle-week="${week.id}"
+            class="week-card"
+            data-week="${escapeAttribute(
+              week.id
+            )}"
           >
 
-            <div>
+            <div
+              class="week-header"
+              data-toggle-week="${escapeAttribute(
+                week.id
+              )}"
+            >
 
-              <div class="week-number">
-                Week ${escapeHtml(
-                  week.number ||
-                  week.order ||
-                  ""
-                )}
-              </div>
+              <div class="week-main">
 
-              <div class="week-title">
-                ${escapeHtml(
-                  week.title ||
-                  "Untitled Week"
-                )}
-              </div>
-
-              ${
-                week.description
-                ?
-                `
-                <div class="week-description">
-                  ${escapeHtml(
-                    week.description
+                <div class="week-number">
+                  Week ${escapeHtml(
+                    week.number ||
+                    week.order ||
+                    ""
                   )}
                 </div>
-                `
-                :
-                ""
-              }
+
+                <div class="week-title">
+                  ${escapeHtml(
+                    week.title ||
+                    "Untitled Week"
+                  )}
+                </div>
+
+                ${
+                  week.description
+                  ?
+                  `
+                  <div class="week-description">
+                    ${escapeHtml(
+                      week.description
+                    )}
+                  </div>
+                  `
+                  :
+                  ""
+                }
+
+              </div>
+
+
+              <div class="week-actions">
+
+                <button
+                  class="edit-btn"
+                  data-edit-week="${escapeAttribute(
+                    week.id
+                  )}"
+                >
+                  Edit
+                </button>
+
+                <button
+                  class="danger-btn"
+                  data-delete-week="${escapeAttribute(
+                    week.id
+                  )}"
+                >
+                  Delete
+                </button>
+
+              </div>
+
+
+              <div class="arrow">
+                ›
+              </div>
 
             </div>
 
-            <div class="arrow">
-              ›
+
+            <div
+              class="week-days"
+              id="days-${escapeAttribute(
+                week.id
+              )}"
+            >
+
+              <div class="loading">
+                Loading days...
+              </div>
+
             </div>
 
           </div>
 
-
-          <div
-            class="week-days"
-            id="days-${week.id}"
-          >
-
-            <div class="loading">
-              Loading days...
-            </div>
-
-          </div>
-
-        </div>
-
-      `
-    ).join("");
+        `
+      )
+      .join("");
 
 
   document
@@ -1401,15 +2347,32 @@ function renderWeeks(){
 
       button.addEventListener(
         "click",
-        async () => {
+        async event => {
+
+          if(
+            event.target.closest(
+              "[data-edit-week]"
+            )
+            ||
+            event.target.closest(
+              "[data-delete-week]"
+            )
+          ){
+
+            return;
+
+          }
+
 
           const id =
             button.dataset.toggleWeek;
 
+
           const card =
             document.querySelector(
-              `[data-week="${id}"]`
+              `[data-week="${CSS.escape(id)}"]`
             );
+
 
           card.classList.toggle(
             "open"
@@ -1417,12 +2380,72 @@ function renderWeeks(){
 
 
           if(
-            card.classList.contains("open")
+            card.classList.contains(
+              "open"
+            )
           ){
 
-            await loadDays(id);
+            await loadDays(
+              id
+            );
 
           }
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-edit-week]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        event => {
+
+          event.stopPropagation();
+
+          const week =
+            weeks.find(
+              item =>
+                item.id ===
+                button.dataset.editWeek
+            );
+
+
+          if(week){
+
+            openWeekModal(
+              week
+            );
+
+          }
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-delete-week]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        event => {
+
+          event.stopPropagation();
+
+          deleteWeek(
+            button.dataset.deleteWeek
+          );
 
         }
       );
@@ -1436,12 +2459,21 @@ function renderWeeks(){
    LOAD DAYS
 ===================================================== */
 
-async function loadDays(weekId){
+async function loadDays(
+  weekId
+){
 
   const container =
     document.getElementById(
       "days-" + weekId
     );
+
+
+  if(!container){
+
+    return;
+
+  }
 
 
   try{
@@ -1458,34 +2490,74 @@ async function loadDays(weekId){
 
 
     const snapshot =
-      await getDocs(daysRef);
+      await getDocs(
+        daysRef
+      );
 
 
     let days =
-      snapshot.docs.map(doc => ({
+      snapshot.docs.map(
+        item => ({
 
-        id:doc.id,
+          id:
+            item.id,
 
-        ...doc.data()
+          ...item.data()
 
-      }));
+        })
+      );
 
 
     days.sort(
       (a,b) =>
-        Number(a.order || 0)
+        Number(
+          a.order || 0
+        )
         -
-        Number(b.order || 0)
+        Number(
+          b.order || 0
+        )
     );
 
 
     if(!days.length){
 
       container.innerHTML = `
+
         <div class="empty">
-          Content for this week is being prepared.
+
+          ${
+            isAdmin
+            ? "No days yet."
+            : "Content for this week is being prepared."
+          }
+
         </div>
+
+
+        ${
+          isAdmin
+          ?
+          `
+          <div class="add-day-area">
+            <button
+              class="primary-btn"
+              data-add-day="${escapeAttribute(
+                weekId
+              )}"
+            >
+              + Add Day
+            </button>
+          </div>
+          `
+          :
+          ""
+        }
+
       `;
+
+
+      bindAddDayButton();
 
       return;
 
@@ -1493,67 +2565,143 @@ async function loadDays(weekId){
 
 
     container.innerHTML =
-      days.map(
-        day => `
+      days
+        .map(
+          day => `
 
-          <div
-            class="day-card"
-            data-day-id="${day.id}"
-            data-week-id="${weekId}"
-          >
+            <div
+              class="day-card"
+              data-day-id="${escapeAttribute(
+                day.id
+              )}"
+              data-week-id="${escapeAttribute(
+                weekId
+              )}"
+            >
 
-            <div class="day-left">
+              <div class="day-left">
 
-              <div class="day-label">
-                Day ${escapeHtml(
-                  day.number ||
-                  day.order ||
-                  ""
-                )}
-              </div>
-
-              <div class="day-title">
-                ${escapeHtml(
-                  day.title ||
-                  "Daily Coaching"
-                )}
-              </div>
-
-              ${
-                day.description
-                ?
-                `
-                <div class="day-description">
-                  ${escapeHtml(
-                    day.description
+                <div class="day-label">
+                  Day ${escapeHtml(
+                    day.number ||
+                    day.order ||
+                    ""
                   )}
                 </div>
-                `
-                :
-                ""
-              }
+
+                <div class="day-title">
+                  ${escapeHtml(
+                    day.title ||
+                    "Daily Coaching"
+                  )}
+                </div>
+
+                ${
+                  day.description
+                  ?
+                  `
+                  <div class="day-description">
+                    ${escapeHtml(
+                      day.description
+                    )}
+                  </div>
+                  `
+                  :
+                  ""
+                }
+
+              </div>
+
+
+              <div class="day-actions">
+
+                <button
+                  class="edit-btn"
+                  data-edit-day="${escapeAttribute(
+                    day.id
+                  )}"
+                  data-edit-day-week="${escapeAttribute(
+                    weekId
+                  )}"
+                >
+                  Edit
+                </button>
+
+                <button
+                  class="danger-btn"
+                  data-delete-day="${escapeAttribute(
+                    day.id
+                  )}"
+                  data-delete-day-week="${escapeAttribute(
+                    weekId
+                  )}"
+                >
+                  Delete
+                </button>
+
+              </div>
+
+
+              <div class="day-arrow">
+                →
+              </div>
 
             </div>
 
-            <div class="day-arrow">
-              →
-            </div>
+          `
+        )
+        .join("")
+      +
+      `
 
-          </div>
+        <div class="add-day-area">
 
-        `
-      ).join("");
+          ${
+            isAdmin
+            ?
+            `
+            <button
+              class="primary-btn"
+              data-add-day="${escapeAttribute(
+                weekId
+              )}"
+            >
+              + Add Day
+            </button>
+            `
+            :
+            ""
+          }
+
+        </div>
+
+      `;
 
 
     container
       .querySelectorAll(
-        "[data-day-id]"
+        ".day-card"
       )
       .forEach(card => {
 
         card.addEventListener(
           "click",
-          () => {
+          event => {
+
+            if(
+              event.target.closest(
+                "[data-edit-day]"
+              )
+              ||
+              event.target.closest(
+                "[data-delete-day]"
+              )
+            ){
+
+              return;
+
+            }
+
 
             openDay(
               card.dataset.weekId,
@@ -1565,10 +2713,63 @@ async function loadDays(weekId){
 
       });
 
+
+    container
+      .querySelectorAll(
+        "[data-edit-day]"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+            openDayModal(
+              button.dataset.editDayWeek,
+              button.dataset.editDay
+            );
+
+          }
+        );
+
+      });
+
+
+    container
+      .querySelectorAll(
+        "[data-delete-day]"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+            deleteDay(
+              button.dataset.deleteDayWeek,
+              button.dataset.deleteDay
+            );
+
+          }
+        );
+
+      });
+
+
+    bindAddDayButton();
+
   }
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Days error:",
+      error
+    );
+
 
     container.innerHTML = `
       <div class="empty">
@@ -1582,6 +2783,35 @@ async function loadDays(weekId){
 
 
 /* =====================================================
+   ADD DAY BUTTON
+===================================================== */
+
+function bindAddDayButton(){
+
+  document
+    .querySelectorAll(
+      "[data-add-day]"
+    )
+    .forEach(button => {
+
+      button.onclick =
+        event => {
+
+          event.stopPropagation();
+
+          openDayModal(
+            button.dataset.addDay,
+            null
+          );
+
+        };
+
+    });
+
+}
+
+
+/* =====================================================
    OPEN DAY
 ===================================================== */
 
@@ -1589,6 +2819,17 @@ async function openDay(
   weekId,
   dayId
 ){
+
+  currentDayContext = {
+
+    weekId:
+      weekId,
+
+    dayId:
+      dayId
+
+  };
+
 
   document
     .querySelectorAll(
@@ -1627,7 +2868,27 @@ async function openDay(
 
   try{
 
-    const dayRef =
+    const dayDoc =
+      await getDoc(
+        doc(
+          db,
+          "programs",
+          "oneOnOne",
+          "weeks",
+          weekId,
+          "days",
+          dayId
+        )
+      );
+
+
+    const dayData =
+      dayDoc.exists()
+      ? dayDoc.data()
+      : {};
+
+
+    const lessonsRef =
       collection(
         db,
         "programs",
@@ -1641,59 +2902,92 @@ async function openDay(
 
 
     const snapshot =
-      await getDocs(dayRef);
+      await getDocs(
+        lessonsRef
+      );
 
 
     const lessons =
-      snapshot.docs.map(doc => ({
+      snapshot.docs
+        .map(
+          item => ({
 
-        id:doc.id,
+            id:
+              item.id,
 
-        ...doc.data()
+            ...item.data()
 
-      }));
-
-
-    lessons.sort(
-      (a,b) =>
-        Number(a.order || 0)
-        -
-        Number(b.order || 0)
-    );
-
-
-    let dayTitle =
-      "Your Daily Lesson";
+          })
+        )
+        .sort(
+          (a,b) =>
+            Number(
+              a.order || 0
+            )
+            -
+            Number(
+              b.order || 0
+            )
+        );
 
 
     const week =
       weeks.find(
         item =>
-          item.id === weekId
+          item.id ===
+          weekId
       );
 
 
-    if(week){
+    const dayNumber =
+      dayData.number ||
+      dayData.order ||
+      "";
 
-      dayTitle =
-        "Week " +
-        (
-          week.number ||
-          week.order ||
-          ""
-        );
 
-    }
+    const title =
+      dayData.title ||
+      (
+        dayNumber
+        ?
+        "Day " + dayNumber
+        :
+        "Your Daily Lesson"
+      );
 
 
     let html = `
 
       <h2>
-        ${escapeHtml(dayTitle)}
+        ${escapeHtml(title)}
       </h2>
 
       <div class="day-subtitle">
-        Your coaching lessons and resources
+
+        ${
+          dayData.description
+          ?
+          escapeHtml(
+            dayData.description
+          )
+          :
+          `
+          ${
+            week
+            ?
+            "Week " +
+            escapeHtml(
+              week.number ||
+              week.order ||
+              ""
+            )
+            :
+            ""
+          }
+          — Your coaching lessons and resources
+          `
+        }
+
       </div>
 
     `;
@@ -1702,9 +2996,19 @@ async function openDay(
     if(!lessons.length){
 
       html += `
+
         <div class="empty">
-          Your coach is preparing this day's content.
+
+          ${
+            isAdmin
+            ?
+            "No lessons yet. Add your first lesson below."
+            :
+            "Your coach is preparing this day's content."
+          }
+
         </div>
+
       `;
 
     }
@@ -1720,13 +3024,103 @@ async function openDay(
     }
 
 
+    if(isAdmin){
+
+      html += `
+
+        <div class="add-lesson-area">
+
+          <button
+            class="primary-btn"
+            id="addLessonBtn"
+          >
+            + Add Lesson
+          </button>
+
+        </div>
+
+      `;
+
+    }
+
+
     box.innerHTML =
       html;
+
+
+    if(isAdmin){
+
+      const addButton =
+        document.getElementById(
+          "addLessonBtn"
+        );
+
+
+      if(addButton){
+
+        addButton.onclick =
+          () => {
+
+            openLessonModal(
+              weekId,
+              dayId,
+              null
+            );
+
+          };
+
+      }
+
+
+      document
+        .querySelectorAll(
+          "[data-edit-lesson]"
+        )
+        .forEach(button => {
+
+          button.onclick =
+            () => {
+
+              openLessonModal(
+                weekId,
+                dayId,
+                button.dataset.editLesson
+              );
+
+            };
+
+        });
+
+
+      document
+        .querySelectorAll(
+          "[data-delete-lesson]"
+        )
+        .forEach(button => {
+
+          button.onclick =
+            () => {
+
+              deleteLesson(
+                weekId,
+                dayId,
+                button.dataset.deleteLesson
+              );
+
+            };
+
+        });
+
+    }
 
   }
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Day content error:",
+      error
+    );
+
 
     box.innerHTML = `
       <div class="empty">
@@ -1740,21 +3134,61 @@ async function openDay(
 
 
 /* =====================================================
-   LESSON RENDER
+   RENDER LESSON
 ===================================================== */
 
-function renderLesson(lesson){
+function renderLesson(
+  lesson
+){
 
   let html = `
 
     <div class="lesson">
 
-      <h3>
-        ${escapeHtml(
-          lesson.title ||
-          "Lesson"
-        )}
-      </h3>
+      <div class="lesson-header">
+
+        <div class="lesson-title-area">
+
+          <h3>
+            ${escapeHtml(
+              lesson.title ||
+              "Lesson"
+            )}
+          </h3>
+
+        </div>
+
+        ${
+          isAdmin
+          ?
+          `
+          <div class="lesson-actions">
+
+            <button
+              class="edit-btn"
+              data-edit-lesson="${escapeAttribute(
+                lesson.id
+              )}"
+            >
+              Edit
+            </button>
+
+            <button
+              class="danger-btn"
+              data-delete-lesson="${escapeAttribute(
+                lesson.id
+              )}"
+            >
+              Delete
+            </button>
+
+          </div>
+          `
+          :
+          ""
+        }
+
+      </div>
 
   `;
 
@@ -1831,17 +3265,11 @@ function renderLesson(lesson){
 
     html += `
       <img
+        class="lesson-image"
         src="${safeUrl(
           lesson.imageUrl
         )}"
         alt=""
-        style="
-          width:100%;
-          max-height:500px;
-          object-fit:contain;
-          border-radius:12px;
-          margin-top:15px;
-        "
       >
     `;
 
@@ -1879,10 +3307,38 @@ function renderLesson(lesson){
 
 
 /* =====================================================
-   MEAL PLANS
+   MEAL PLANS - CLIENT
 ===================================================== */
 
-async function loadMealPlans(){
+async function loadClientMealPlans(){
+
+  await loadMealPlansForQuery(
+    true
+  );
+
+}
+
+
+/* =====================================================
+   MEAL PLANS - ADMIN
+===================================================== */
+
+async function loadAllMealPlans(){
+
+  await loadMealPlansForQuery(
+    false
+  );
+
+}
+
+
+/* =====================================================
+   MEAL PLANS QUERY
+===================================================== */
+
+async function loadMealPlansForQuery(
+  onlyClient
+){
 
   const container =
     document.getElementById(
@@ -1892,41 +3348,93 @@ async function loadMealPlans(){
 
   try{
 
-    const q =
-      query(
-        collection(
-          db,
-          "oneOnOneMealPlans"
-        ),
-        where(
-          "clientId",
-          "==",
-          currentClient.id
-        )
-      );
+    let snapshot;
 
 
-    const snapshot =
-      await getDocs(q);
+    if(
+      onlyClient
+      &&
+      !currentClient
+    ){
+
+      container.innerHTML = `
+        <div class="empty">
+          No client account connected.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    if(
+      onlyClient
+    ){
+
+      const q =
+        query(
+          collection(
+            db,
+            "oneOnOneMealPlans"
+          ),
+          where(
+            "clientId",
+            "==",
+            currentClient.id
+          )
+        );
+
+
+      snapshot =
+        await getDocs(q);
+
+    }
+    else{
+
+      snapshot =
+        await getDocs(
+          collection(
+            db,
+            "oneOnOneMealPlans"
+          )
+        );
+
+    }
 
 
     mealPlans =
-      snapshot.docs.map(doc => ({
+      snapshot.docs.map(
+        item => ({
 
-        id:doc.id,
+          id:
+            item.id,
 
-        ...doc.data()
+          ...item.data()
 
-      }));
+        })
+      );
 
 
     if(!mealPlans.length){
 
       container.innerHTML = `
+
         <div class="empty">
-          Your meal plans will appear here.
+
+          ${
+            isAdmin
+            ?
+            "No meal plans yet. Click + Add Meal Plan."
+            :
+            "Your meal plans will appear here."
+          }
+
         </div>
+
       `;
+
+      updateAdminStats();
 
       return;
 
@@ -1936,26 +3444,40 @@ async function loadMealPlans(){
     container.innerHTML =
       mealPlans
         .map(
-          item => contentCard(
-            "🥗",
-            item.title ||
-            "Meal Plan",
-            item.description ||
-            "Your personalized meal plan.",
-            item.url ||
-            item.pdfUrl
-          )
+          item =>
+            contentCard(
+              "🥗",
+              item.title ||
+              "Meal Plan",
+              item.description ||
+              "Your personalized meal plan.",
+              item.url ||
+              item.pdfUrl,
+              item
+            )
         )
         .join("");
+
+
+    bindContentCardActions(
+      "meal"
+    );
+
+
+    updateAdminStats();
 
   }
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Meal plans error:",
+      error
+    );
+
 
     container.innerHTML = `
       <div class="empty">
-        Meal plans will appear here once assigned.
+        Unable to load meal plans.
       </div>
     `;
 
@@ -1965,10 +3487,38 @@ async function loadMealPlans(){
 
 
 /* =====================================================
-   WORKOUTS
+   WORKOUTS - CLIENT
 ===================================================== */
 
-async function loadWorkouts(){
+async function loadClientWorkouts(){
+
+  await loadWorkoutsForQuery(
+    true
+  );
+
+}
+
+
+/* =====================================================
+   WORKOUTS - ADMIN
+===================================================== */
+
+async function loadAllWorkouts(){
+
+  await loadWorkoutsForQuery(
+    false
+  );
+
+}
+
+
+/* =====================================================
+   WORKOUTS QUERY
+===================================================== */
+
+async function loadWorkoutsForQuery(
+  onlyClient
+){
 
   const container =
     document.getElementById(
@@ -1978,41 +3528,93 @@ async function loadWorkouts(){
 
   try{
 
-    const q =
-      query(
-        collection(
-          db,
-          "oneOnOneWorkouts"
-        ),
-        where(
-          "clientId",
-          "==",
-          currentClient.id
-        )
-      );
+    let snapshot;
 
 
-    const snapshot =
-      await getDocs(q);
+    if(
+      onlyClient
+      &&
+      !currentClient
+    ){
+
+      container.innerHTML = `
+        <div class="empty">
+          No client account connected.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    if(
+      onlyClient
+    ){
+
+      const q =
+        query(
+          collection(
+            db,
+            "oneOnOneWorkouts"
+          ),
+          where(
+            "clientId",
+            "==",
+            currentClient.id
+          )
+        );
+
+
+      snapshot =
+        await getDocs(q);
+
+    }
+    else{
+
+      snapshot =
+        await getDocs(
+          collection(
+            db,
+            "oneOnOneWorkouts"
+          )
+        );
+
+    }
 
 
     workouts =
-      snapshot.docs.map(doc => ({
+      snapshot.docs.map(
+        item => ({
 
-        id:doc.id,
+          id:
+            item.id,
 
-        ...doc.data()
+          ...item.data()
 
-      }));
+        })
+      );
 
 
     if(!workouts.length){
 
       container.innerHTML = `
+
         <div class="empty">
-          Your assigned workouts will appear here.
+
+          ${
+            isAdmin
+            ?
+            "No workouts yet. Click + Add Workout."
+            :
+            "Your assigned workouts will appear here."
+          }
+
         </div>
+
       `;
+
+      updateAdminStats();
 
       return;
 
@@ -2022,26 +3624,40 @@ async function loadWorkouts(){
     container.innerHTML =
       workouts
         .map(
-          item => contentCard(
-            "🏋️",
-            item.title ||
-            "Workout",
-            item.description ||
-            "Your assigned workout.",
-            item.url ||
-            item.videoUrl
-          )
+          item =>
+            contentCard(
+              "🏋️",
+              item.title ||
+              "Workout",
+              item.description ||
+              "Your assigned workout.",
+              item.url ||
+              item.videoUrl,
+              item
+            )
         )
         .join("");
+
+
+    bindContentCardActions(
+      "workout"
+    );
+
+
+    updateAdminStats();
 
   }
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Workout error:",
+      error
+    );
+
 
     container.innerHTML = `
       <div class="empty">
-        Workouts will appear here once assigned.
+        Unable to load workouts.
       </div>
     `;
 
@@ -2051,10 +3667,38 @@ async function loadWorkouts(){
 
 
 /* =====================================================
-   RESOURCES
+   RESOURCES - CLIENT
 ===================================================== */
 
-async function loadResources(){
+async function loadClientResources(){
+
+  await loadResourcesForQuery(
+    true
+  );
+
+}
+
+
+/* =====================================================
+   RESOURCES - ADMIN
+===================================================== */
+
+async function loadAllResources(){
+
+  await loadResourcesForQuery(
+    false
+  );
+
+}
+
+
+/* =====================================================
+   RESOURCES QUERY
+===================================================== */
+
+async function loadResourcesForQuery(
+  onlyClient
+){
 
   const container =
     document.getElementById(
@@ -2064,40 +3708,90 @@ async function loadResources(){
 
   try{
 
-    const q =
-      query(
-        collection(
-          db,
-          "oneOnOneResources"
-        ),
-        where(
-          "clientId",
-          "==",
-          currentClient.id
-        )
-      );
+    let snapshot;
 
 
-    const snapshot =
-      await getDocs(q);
+    if(
+      onlyClient
+      &&
+      !currentClient
+    ){
+
+      container.innerHTML = `
+        <div class="empty">
+          No client account connected.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    if(
+      onlyClient
+    ){
+
+      const q =
+        query(
+          collection(
+            db,
+            "oneOnOneResources"
+          ),
+          where(
+            "clientId",
+            "==",
+            currentClient.id
+          )
+        );
+
+
+      snapshot =
+        await getDocs(q);
+
+    }
+    else{
+
+      snapshot =
+        await getDocs(
+          collection(
+            db,
+            "oneOnOneResources"
+          )
+        );
+
+    }
 
 
     resources =
-      snapshot.docs.map(doc => ({
+      snapshot.docs.map(
+        item => ({
 
-        id:doc.id,
+          id:
+            item.id,
 
-        ...doc.data()
+          ...item.data()
 
-      }));
+        })
+      );
 
 
     if(!resources.length){
 
       container.innerHTML = `
+
         <div class="empty">
-          Your resources will appear here.
+
+          ${
+            isAdmin
+            ?
+            "No resources yet. Click + Add Resource."
+            :
+            "Your resources will appear here."
+          }
+
         </div>
+
       `;
 
       return;
@@ -2108,26 +3802,37 @@ async function loadResources(){
     container.innerHTML =
       resources
         .map(
-          item => contentCard(
-            "📄",
-            item.title ||
-            "Resource",
-            item.description ||
-            "A resource from your coach.",
-            item.url ||
-            item.pdfUrl
-          )
+          item =>
+            contentCard(
+              "📄",
+              item.title ||
+              "Resource",
+              item.description ||
+              "A resource from your coach.",
+              item.url ||
+              item.pdfUrl,
+              item
+            )
         )
         .join("");
+
+
+    bindContentCardActions(
+      "resource"
+    );
 
   }
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Resources error:",
+      error
+    );
+
 
     container.innerHTML = `
       <div class="empty">
-        Resources will appear here once added.
+        Unable to load resources.
       </div>
     `;
 
@@ -2137,10 +3842,38 @@ async function loadResources(){
 
 
 /* =====================================================
-   COMMUNITY
+   COMMUNITY - CLIENT
 ===================================================== */
 
-async function loadCommunity(){
+async function loadClientCommunity(){
+
+  await loadCommunityForQuery(
+    true
+  );
+
+}
+
+
+/* =====================================================
+   COMMUNITY - ADMIN
+===================================================== */
+
+async function loadAllCommunity(){
+
+  await loadCommunityForQuery(
+    false
+  );
+
+}
+
+
+/* =====================================================
+   COMMUNITY QUERY
+===================================================== */
+
+async function loadCommunityForQuery(
+  onlyClient
+){
 
   const container =
     document.getElementById(
@@ -2150,45 +3883,72 @@ async function loadCommunity(){
 
   try{
 
-    const q =
-      query(
-        collection(
-          db,
-          "oneOnOneCommunity"
-        ),
-        where(
-          "clientId",
-          "==",
-          currentClient.id
-        )
-      );
+    let snapshot;
 
 
-    const snapshot =
-      await getDocs(q);
-
-
-    communityPosts =
-      snapshot.docs.map(doc => ({
-
-        id:doc.id,
-
-        ...doc.data()
-
-      }));
-
-
-    if(!communityPosts.length){
+    if(
+      onlyClient
+      &&
+      !currentClient
+    ){
 
       container.innerHTML = `
         <div class="empty">
-          No private community updates yet.
+          No client account connected.
         </div>
       `;
 
       return;
 
     }
+
+
+    if(
+      onlyClient
+    ){
+
+      const q =
+        query(
+          collection(
+            db,
+            "oneOnOneCommunity"
+          ),
+          where(
+            "clientId",
+            "==",
+            currentClient.id
+          )
+        );
+
+
+      snapshot =
+        await getDocs(q);
+
+    }
+    else{
+
+      snapshot =
+        await getDocs(
+          collection(
+            db,
+            "oneOnOneCommunity"
+          )
+        );
+
+    }
+
+
+    communityPosts =
+      snapshot.docs.map(
+        item => ({
+
+          id:
+            item.id,
+
+          ...item.data()
+
+        })
+      );
 
 
     communityPosts.sort(
@@ -2208,6 +3968,29 @@ async function loadCommunity(){
     );
 
 
+    if(!communityPosts.length){
+
+      container.innerHTML = `
+
+        <div class="empty">
+
+          ${
+            isAdmin
+            ?
+            "No community posts yet. Click + Add Post."
+            :
+            "No private community updates yet."
+          }
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
     container.innerHTML =
       communityPosts
         .map(
@@ -2215,18 +3998,58 @@ async function loadCommunity(){
 
             <div class="post">
 
-              <div class="post-date">
-                ${formatTimestamp(
-                  post.createdAt
-                )}
+              <div class="post-header">
+
+                <div>
+
+                  <div class="post-date">
+                    ${formatTimestamp(
+                      post.createdAt
+                    )}
+                  </div>
+
+                  <h3>
+                    ${escapeHtml(
+                      post.title ||
+                      "Update"
+                    )}
+                  </h3>
+
+                </div>
+
+
+                ${
+                  isAdmin
+                  ?
+                  `
+                  <div class="post-actions">
+
+                    <button
+                      class="edit-btn"
+                      data-edit-community="${escapeAttribute(
+                        post.id
+                      )}"
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      class="danger-btn"
+                      data-delete-community="${escapeAttribute(
+                        post.id
+                      )}"
+                    >
+                      Delete
+                    </button>
+
+                  </div>
+                  `
+                  :
+                  ""
+                }
+
               </div>
 
-              <h3>
-                ${escapeHtml(
-                  post.title ||
-                  "Update"
-                )}
-              </h3>
 
               <p>
                 ${escapeHtml(
@@ -2241,14 +4064,66 @@ async function loadCommunity(){
         )
         .join("");
 
+
+    document
+      .querySelectorAll(
+        "[data-edit-community]"
+      )
+      .forEach(button => {
+
+        button.onclick =
+          () => {
+
+            const post =
+              communityPosts.find(
+                item =>
+                  item.id ===
+                  button.dataset.editCommunity
+              );
+
+
+            if(post){
+
+              openCommunityModal(
+                post
+              );
+
+            }
+
+          };
+
+      });
+
+
+    document
+      .querySelectorAll(
+        "[data-delete-community]"
+      )
+      .forEach(button => {
+
+        button.onclick =
+          () => {
+
+            deleteCommunity(
+              button.dataset.deleteCommunity
+            );
+
+          };
+
+      });
+
   }
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Community error:",
+      error
+    );
+
 
     container.innerHTML = `
       <div class="empty">
-        Private community updates will appear here.
+        Unable to load community updates.
       </div>
     `;
 
@@ -2265,7 +4140,8 @@ function contentCard(
   icon,
   title,
   description,
-  url
+  url,
+  item
 ){
 
   return `
@@ -2284,6 +4160,7 @@ function contentCard(
         ${escapeHtml(description)}
       </p>
 
+
       ${
         url
         ?
@@ -2301,9 +4178,2404 @@ function contentCard(
         ""
       }
 
+
+      ${
+        isAdmin
+        ?
+        `
+        <div class="card-actions">
+
+          <button
+            class="edit-btn"
+            data-edit-content="${escapeAttribute(
+              item.id
+            )}"
+            data-content-type="${escapeAttribute(
+              item.type ||
+              ""
+            )}"
+          >
+            Edit
+          </button>
+
+          <button
+            class="danger-btn"
+            data-delete-content="${escapeAttribute(
+              item.id
+            )}"
+            data-content-type="${escapeAttribute(
+              item.type ||
+              ""
+            )}"
+          >
+            Delete
+          </button>
+
+        </div>
+        `
+        :
+        ""
+      }
+
     </div>
 
   `;
+
+}
+
+
+/* =====================================================
+   BIND CONTENT ACTIONS
+===================================================== */
+
+function bindContentCardActions(
+  type
+){
+
+  const collectionName =
+    type === "meal"
+    ? "oneOnOneMealPlans"
+    : type === "workout"
+    ? "oneOnOneWorkouts"
+    : "oneOnOneResources";
+
+
+  document
+    .querySelectorAll(
+      `[data-content-type=""]`
+    );
+
+
+  document
+    .querySelectorAll(
+      "[data-edit-content]"
+    )
+    .forEach(button => {
+
+      button.onclick =
+        () => {
+
+          if(type === "meal"){
+
+            const item =
+              mealPlans.find(
+                x =>
+                  x.id ===
+                  button.dataset.editContent
+              );
+
+            if(item){
+
+              openContentModal(
+                "meal",
+                item
+              );
+
+            }
+
+          }
+
+
+          if(type === "workout"){
+
+            const item =
+              workouts.find(
+                x =>
+                  x.id ===
+                  button.dataset.editContent
+              );
+
+            if(item){
+
+              openContentModal(
+                "workout",
+                item
+              );
+
+            }
+
+          }
+
+
+          if(type === "resource"){
+
+            const item =
+              resources.find(
+                x =>
+                  x.id ===
+                  button.dataset.editContent
+              );
+
+            if(item){
+
+              openContentModal(
+                "resource",
+                item
+              );
+
+            }
+
+          }
+
+        };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-delete-content]"
+    )
+    .forEach(button => {
+
+      button.onclick =
+        () => {
+
+          deleteContent(
+            collectionName,
+            button.dataset.deleteContent,
+            type
+          );
+
+        };
+
+    });
+
+}
+
+
+/* =====================================================
+   ADMIN CLIENTS
+===================================================== */
+
+async function loadAllClients(){
+
+  const container =
+    document.getElementById(
+      "clientList"
+    );
+
+
+  try{
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "clients"
+        )
+      );
+
+
+    clients =
+      snapshot.docs.map(
+        item => ({
+
+          id:
+            item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    if(!clients.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          No clients found in the clients collection.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      clients
+        .map(
+          client => `
+
+            <div class="client-row">
+
+              <div>
+
+                <div class="client-name">
+                  ${escapeHtml(
+                    client.name ||
+                    client.displayName ||
+                    "Unnamed Client"
+                  )}
+                </div>
+
+                <div class="client-email">
+                  ${escapeHtml(
+                    client.email ||
+                    "No email"
+                  )}
+                </div>
+
+                <div class="client-id">
+                  Client ID: ${escapeHtml(
+                    client.id
+                  )}
+                </div>
+
+              </div>
+
+              <button
+                class="secondary-btn"
+                data-preview-client="${escapeAttribute(
+                  client.id
+                )}"
+              >
+                Preview
+              </button>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+
+    document
+      .querySelectorAll(
+        "[data-preview-client]"
+      )
+      .forEach(button => {
+
+        button.onclick =
+          () => {
+
+            const client =
+              clients.find(
+                x =>
+                  x.id ===
+                  button.dataset.previewClient
+              );
+
+
+            if(client){
+
+              startClientPreview(
+                client
+              );
+
+            }
+
+          };
+
+      });
+
+  }
+  catch(error){
+
+    console.error(
+      "Clients error:",
+      error
+    );
+
+
+    container.innerHTML = `
+      <div class="empty">
+        Unable to load clients.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   ADMIN STATS
+===================================================== */
+
+function updateAdminStats(){
+
+  if(!isAdmin){
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "statClients"
+  ).textContent =
+    clients.length;
+
+
+  document.getElementById(
+    "statWeeks"
+  ).textContent =
+    weeks.length;
+
+
+  document.getElementById(
+    "statMealPlans"
+  ).textContent =
+    mealPlans.length;
+
+
+  document.getElementById(
+    "statWorkouts"
+  ).textContent =
+    workouts.length;
+
+}
+
+
+/* =====================================================
+   WEEK MODAL
+===================================================== */
+
+async function openWeekModal(
+  week = null
+){
+
+  openModal(
+    week
+    ? "Edit Week"
+    : "Add Week",
+    `
+      <div class="form-group">
+        <label>Week Number</label>
+        <input
+          id="formWeekNumber"
+          type="number"
+          min="1"
+          value="${escapeAttribute(
+            week?.number ||
+            week?.order ||
+            ""
+          )}"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Week Title</label>
+        <input
+          id="formWeekTitle"
+          value="${escapeAttribute(
+            week?.title ||
+            ""
+          )}"
+          placeholder="Example: Reset & Foundation"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea
+          id="formWeekDescription"
+          placeholder="Short description for this week"
+        >${escapeHtml(
+          week?.description ||
+          ""
+        )}</textarea>
+      </div>
+    `,
+    async () => {
+
+      const number =
+        Number(
+          document.getElementById(
+            "formWeekNumber"
+          ).value
+        );
+
+
+      const title =
+        document.getElementById(
+          "formWeekTitle"
+        ).value.trim();
+
+
+      const description =
+        document.getElementById(
+          "formWeekDescription"
+        ).value.trim();
+
+
+      if(!number || !title){
+
+        showModalMessage(
+          "Please enter the week number and title."
+        );
+
+        return false;
+
+      }
+
+
+      const data = {
+
+        number:
+          number,
+
+        order:
+          number,
+
+        title:
+          title,
+
+        description:
+          description,
+
+        updatedAt:
+          serverTimestamp()
+
+      };
+
+
+      if(week){
+
+        await updateDoc(
+          doc(
+            db,
+            "programs",
+            "oneOnOne",
+            "weeks",
+            week.id
+          ),
+          data
+        );
+
+      }
+      else{
+
+        await addDoc(
+          collection(
+            db,
+            "programs",
+            "oneOnOne",
+            "weeks"
+          ),
+          {
+
+            ...data,
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+      }
+
+
+      closeModal();
+
+      await loadWeeks();
+
+      return true;
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   DELETE WEEK
+===================================================== */
+
+async function deleteWeek(
+  weekId
+){
+
+  if(!isAdmin){
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      "Delete this week?\n\nThis will delete the week document only. Days and lessons inside it may remain in Firestore."
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks",
+        weekId
+      )
+    );
+
+
+    await loadWeeks();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Unable to delete this week."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   DAY MODAL
+===================================================== */
+
+async function openDayModal(
+  weekId,
+  dayId
+){
+
+  const week =
+    weeks.find(
+      item =>
+        item.id ===
+        weekId
+    );
+
+
+  let day = null;
+
+
+  if(dayId){
+
+    const dayDoc =
+      await getDoc(
+        doc(
+          db,
+          "programs",
+          "oneOnOne",
+          "weeks",
+          weekId,
+          "days",
+          dayId
+        )
+      );
+
+
+    if(dayDoc.exists()){
+
+      day = {
+
+        id:
+          dayDoc.id,
+
+        ...dayDoc.data()
+
+      };
+
+    }
+
+  }
+
+
+  openModal(
+    day
+    ? "Edit Day"
+    : "Add Day",
+    `
+      <div class="form-group">
+        <label>Day Number</label>
+        <input
+          id="formDayNumber"
+          type="number"
+          min="1"
+          value="${escapeAttribute(
+            day?.number ||
+            day?.order ||
+            ""
+          )}"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Day Title</label>
+        <input
+          id="formDayTitle"
+          value="${escapeAttribute(
+            day?.title ||
+            ""
+          )}"
+          placeholder="Example: Build Your Morning Routine"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea
+          id="formDayDescription"
+          placeholder="Short description"
+        >${escapeHtml(
+          day?.description ||
+          ""
+        )}</textarea>
+      </div>
+    `,
+    async () => {
+
+      const number =
+        Number(
+          document.getElementById(
+            "formDayNumber"
+          ).value
+        );
+
+
+      const title =
+        document.getElementById(
+          "formDayTitle"
+        ).value.trim();
+
+
+      const description =
+        document.getElementById(
+          "formDayDescription"
+        ).value.trim();
+
+
+      if(!number || !title){
+
+        showModalMessage(
+          "Please enter the day number and title."
+        );
+
+        return false;
+
+      }
+
+
+      const data = {
+
+        number:
+          number,
+
+        order:
+          number,
+
+        title:
+          title,
+
+        description:
+          description,
+
+        updatedAt:
+          serverTimestamp()
+
+      };
+
+
+      const daysPath = [
+
+        "programs",
+
+        "oneOnOne",
+
+        "weeks",
+
+        weekId,
+
+        "days"
+
+      ];
+
+
+      if(day){
+
+        await updateDoc(
+          doc(
+            db,
+            ...daysPath,
+            day.id
+          ),
+          data
+        );
+
+      }
+      else{
+
+        await addDoc(
+          collection(
+            db,
+            ...daysPath
+          ),
+          {
+
+            ...data,
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+      }
+
+
+      closeModal();
+
+
+      const weekCard =
+        document.querySelector(
+          `[data-week="${CSS.escape(
+            weekId
+          )}"]`
+        );
+
+
+      if(
+        weekCard &&
+        !weekCard.classList.contains(
+          "open"
+        )
+      ){
+
+        weekCard.classList.add(
+          "open"
+        );
+
+      }
+
+
+      await loadDays(
+        weekId
+      );
+
+
+      return true;
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   DELETE DAY
+===================================================== */
+
+async function deleteDay(
+  weekId,
+  dayId
+){
+
+  if(!isAdmin){
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      "Delete this day?"
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks",
+        weekId,
+        "days",
+        dayId
+      )
+    );
+
+
+    await loadDays(
+      weekId
+    );
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Unable to delete this day."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   LESSON MODAL
+===================================================== */
+
+async function openLessonModal(
+  weekId,
+  dayId,
+  lessonId
+){
+
+  let lesson = null;
+
+
+  if(lessonId){
+
+    const lessonDoc =
+      await getDoc(
+        doc(
+          db,
+          "programs",
+          "oneOnOne",
+          "weeks",
+          weekId,
+          "days",
+          dayId,
+          "lessons",
+          lessonId
+        )
+      );
+
+
+    if(lessonDoc.exists()){
+
+      lesson = {
+
+        id:
+          lessonDoc.id,
+
+        ...lessonDoc.data()
+
+      };
+
+    }
+
+  }
+
+
+  openModal(
+    lesson
+    ? "Edit Lesson"
+    : "Add Lesson",
+    `
+      <div class="form-group">
+        <label>Lesson Order</label>
+        <input
+          id="formLessonOrder"
+          type="number"
+          min="1"
+          value="${escapeAttribute(
+            lesson?.order ||
+            ""
+          )}"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Lesson Title</label>
+        <input
+          id="formLessonTitle"
+          value="${escapeAttribute(
+            lesson?.title ||
+            ""
+          )}"
+          placeholder="Example: Protein at Breakfast"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Short Description</label>
+        <textarea
+          id="formLessonDescription"
+        >${escapeHtml(
+          lesson?.description ||
+          ""
+        )}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Lesson Content</label>
+        <textarea
+          id="formLessonContent"
+          style="min-height:160px;"
+        >${escapeHtml(
+          lesson?.content ||
+          ""
+        )}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Video URL</label>
+        <input
+          id="formLessonVideo"
+          type="url"
+          value="${escapeAttribute(
+            lesson?.videoUrl ||
+            ""
+          )}"
+          placeholder="https://..."
+        >
+      </div>
+
+      <div class="form-group">
+        <label>PDF URL</label>
+        <input
+          id="formLessonPdf"
+          type="url"
+          value="${escapeAttribute(
+            lesson?.pdfUrl ||
+            ""
+          )}"
+          placeholder="https://..."
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Image URL</label>
+        <input
+          id="formLessonImage"
+          type="url"
+          value="${escapeAttribute(
+            lesson?.imageUrl ||
+            ""
+          )}"
+          placeholder="https://..."
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Other Resource URL</label>
+        <input
+          id="formLessonLink"
+          type="url"
+          value="${escapeAttribute(
+            lesson?.linkUrl ||
+            ""
+          )}"
+          placeholder="https://..."
+        >
+      </div>
+    `,
+    async () => {
+
+      const order =
+        Number(
+          document.getElementById(
+            "formLessonOrder"
+          ).value
+        );
+
+
+      const title =
+        document.getElementById(
+          "formLessonTitle"
+        ).value.trim();
+
+
+      const description =
+        document.getElementById(
+          "formLessonDescription"
+        ).value.trim();
+
+
+      const content =
+        document.getElementById(
+          "formLessonContent"
+        ).value.trim();
+
+
+      const videoUrl =
+        document.getElementById(
+          "formLessonVideo"
+        ).value.trim();
+
+
+      const pdfUrl =
+        document.getElementById(
+          "formLessonPdf"
+        ).value.trim();
+
+
+      const imageUrl =
+        document.getElementById(
+          "formLessonImage"
+        ).value.trim();
+
+
+      const linkUrl =
+        document.getElementById(
+          "formLessonLink"
+        ).value.trim();
+
+
+      if(!order || !title){
+
+        showModalMessage(
+          "Please enter the lesson order and title."
+        );
+
+        return false;
+
+      }
+
+
+      const data = {
+
+        order:
+          order,
+
+        title:
+          title,
+
+        description:
+          description,
+
+        content:
+          content,
+
+        videoUrl:
+          videoUrl,
+
+        pdfUrl:
+          pdfUrl,
+
+        imageUrl:
+          imageUrl,
+
+        linkUrl:
+          linkUrl,
+
+        updatedAt:
+          serverTimestamp()
+
+      };
+
+
+      const lessonPath = [
+
+        "programs",
+
+        "oneOnOne",
+
+        "weeks",
+
+        weekId,
+
+        "days",
+
+        dayId,
+
+        "lessons"
+
+      ];
+
+
+      if(lesson){
+
+        await updateDoc(
+          doc(
+            db,
+            ...lessonPath,
+            lesson.id
+          ),
+          data
+        );
+
+      }
+      else{
+
+        await addDoc(
+          collection(
+            db,
+            ...lessonPath
+          ),
+          {
+
+            ...data,
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+      }
+
+
+      closeModal();
+
+
+      await openDay(
+        weekId,
+        dayId
+      );
+
+
+      return true;
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   DELETE LESSON
+===================================================== */
+
+async function deleteLesson(
+  weekId,
+  dayId,
+  lessonId
+){
+
+  if(!isAdmin){
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      "Delete this lesson?"
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks",
+        weekId,
+        "days",
+        dayId,
+        "lessons",
+        lessonId
+      )
+    );
+
+
+    await openDay(
+      weekId,
+      dayId
+    );
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Unable to delete this lesson."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   GENERIC CONTENT MODAL
+===================================================== */
+
+function openContentModal(
+  type,
+  item = null
+){
+
+  const names = {
+
+    meal:
+      "Meal Plan",
+
+    workout:
+      "Workout",
+
+    resource:
+      "Resource"
+
+  };
+
+
+  const collectionName = {
+
+    meal:
+      "oneOnOneMealPlans",
+
+    workout:
+      "oneOnOneWorkouts",
+
+    resource:
+      "oneOnOneResources"
+
+  }[type];
+
+
+  openModal(
+    item
+    ? "Edit " + names[type]
+    : "Add " + names[type],
+    `
+      <div class="form-group">
+
+        <label>
+          Assign To Client
+        </label>
+
+        <select
+          id="formContentClient"
+        >
+
+          <option value="">
+            ${
+              type === "resource"
+              ? "All / General Resource"
+              : "Select client"
+            }
+          </option>
+
+          ${
+
+            clients
+              .map(
+                client => `
+
+                  <option
+                    value="${escapeAttribute(
+                      client.id
+                    )}"
+                    ${
+                      item?.clientId ===
+                      client.id
+                      ?
+                      "selected"
+                      :
+                      ""
+                    }
+                  >
+                    ${escapeHtml(
+                      client.name ||
+                      client.displayName ||
+                      client.email ||
+                      client.id
+                    )}
+                  </option>
+
+                `
+              )
+              .join("")
+
+          }
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Title
+        </label>
+
+        <input
+          id="formContentTitle"
+          value="${escapeAttribute(
+            item?.title ||
+            ""
+          )}"
+          placeholder="${escapeAttribute(
+            names[type]
+          )}"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Description
+        </label>
+
+        <textarea
+          id="formContentDescription"
+        >${escapeHtml(
+          item?.description ||
+          ""
+        )}</textarea>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          ${
+            type === "workout"
+            ? "Video / Resource URL"
+            : type === "resource"
+            ? "Resource URL"
+            : "Meal Plan URL / PDF URL"
+          }
+        </label>
+
+        <input
+          id="formContentUrl"
+          type="url"
+          value="${escapeAttribute(
+            item?.url ||
+            item?.pdfUrl ||
+            item?.videoUrl ||
+            ""
+          )}"
+          placeholder="https://..."
+        >
+
+      </div>
+
+
+      ${
+        type === "workout"
+        ?
+        `
+        <div class="form-group">
+
+          <label>
+            Video URL
+          </label>
+
+          <input
+            id="formWorkoutVideo"
+            type="url"
+            value="${escapeAttribute(
+              item?.videoUrl ||
+              ""
+            )}"
+            placeholder="https://..."
+          >
+
+        </div>
+        `
+        :
+        ""
+      }
+    `,
+    async () => {
+
+      const clientId =
+        document.getElementById(
+          "formContentClient"
+        ).value;
+
+
+      const title =
+        document.getElementById(
+          "formContentTitle"
+        ).value.trim();
+
+
+      const description =
+        document.getElementById(
+          "formContentDescription"
+        ).value.trim();
+
+
+      const url =
+        document.getElementById(
+          "formContentUrl"
+        ).value.trim();
+
+
+      if(!title){
+
+        showModalMessage(
+          "Please enter a title."
+        );
+
+        return false;
+
+      }
+
+
+      if(
+        type !== "resource"
+        &&
+        !clientId
+      ){
+
+        showModalMessage(
+          "Please select a client."
+        );
+
+        return false;
+
+      }
+
+
+      const data = {
+
+        clientId:
+          clientId,
+
+        title:
+          title,
+
+        description:
+          description,
+
+        url:
+          url,
+
+        updatedAt:
+          serverTimestamp()
+
+      };
+
+
+      if(type === "meal"){
+
+        data.pdfUrl =
+          url;
+
+      }
+
+
+      if(type === "workout"){
+
+        data.videoUrl =
+          document.getElementById(
+            "formWorkoutVideo"
+          )?.value.trim()
+          ||
+          url;
+
+      }
+
+
+      if(type === "resource"){
+
+        data.pdfUrl =
+          url;
+
+      }
+
+
+      if(item){
+
+        await updateDoc(
+          doc(
+            db,
+            collectionName,
+            item.id
+          ),
+          data
+        );
+
+      }
+      else{
+
+        await addDoc(
+          collection(
+            db,
+            collectionName
+          ),
+          {
+
+            ...data,
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+      }
+
+
+      closeModal();
+
+
+      if(type === "meal"){
+
+        if(isAdmin){
+
+          await loadAllMealPlans();
+
+        }
+        else{
+
+          await loadClientMealPlans();
+
+        }
+
+      }
+
+
+      if(type === "workout"){
+
+        if(isAdmin){
+
+          await loadAllWorkouts();
+
+        }
+        else{
+
+          await loadClientWorkouts();
+
+        }
+
+      }
+
+
+      if(type === "resource"){
+
+        if(isAdmin){
+
+          await loadAllResources();
+
+        }
+        else{
+
+          await loadClientResources();
+
+        }
+
+      }
+
+
+      return true;
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   DELETE GENERIC CONTENT
+===================================================== */
+
+async function deleteContent(
+  collectionName,
+  id,
+  type
+){
+
+  if(!isAdmin){
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      "Delete this content?"
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        collectionName,
+        id
+      )
+    );
+
+
+    if(type === "meal"){
+
+      await loadAllMealPlans();
+
+    }
+
+    if(type === "workout"){
+
+      await loadAllWorkouts();
+
+    }
+
+    if(type === "resource"){
+
+      await loadAllResources();
+
+    }
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Unable to delete this content."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   COMMUNITY MODAL
+===================================================== */
+
+function openCommunityModal(
+  post = null
+){
+
+  openModal(
+    post
+    ? "Edit Community Post"
+    : "Add Community Post",
+    `
+      <div class="form-group">
+
+        <label>
+          Assign To Client
+        </label>
+
+        <select
+          id="formCommunityClient"
+        >
+
+          <option value="">
+            Select client
+          </option>
+
+          ${
+
+            clients
+              .map(
+                client => `
+
+                  <option
+                    value="${escapeAttribute(
+                      client.id
+                    )}"
+                    ${
+                      post?.clientId ===
+                      client.id
+                      ?
+                      "selected"
+                      :
+                      ""
+                    }
+                  >
+                    ${escapeHtml(
+                      client.name ||
+                      client.displayName ||
+                      client.email ||
+                      client.id
+                    )}
+                  </option>
+
+                `
+              )
+              .join("")
+
+          }
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Post Title
+        </label>
+
+        <input
+          id="formCommunityTitle"
+          value="${escapeAttribute(
+            post?.title ||
+            ""
+          )}"
+          placeholder="Post title"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Post Content
+        </label>
+
+        <textarea
+          id="formCommunityContent"
+          style="min-height:180px;"
+        >${escapeHtml(
+          post?.content ||
+          ""
+        )}</textarea>
+
+      </div>
+    `,
+    async () => {
+
+      const clientId =
+        document.getElementById(
+          "formCommunityClient"
+        ).value;
+
+
+      const title =
+        document.getElementById(
+          "formCommunityTitle"
+        ).value.trim();
+
+
+      const content =
+        document.getElementById(
+          "formCommunityContent"
+        ).value.trim();
+
+
+      if(!clientId){
+
+        showModalMessage(
+          "Please select a client."
+        );
+
+        return false;
+
+      }
+
+
+      if(!title || !content){
+
+        showModalMessage(
+          "Please enter a title and content."
+        );
+
+        return false;
+
+      }
+
+
+      const data = {
+
+        clientId:
+          clientId,
+
+        title:
+          title,
+
+        content:
+          content,
+
+        updatedAt:
+          serverTimestamp()
+
+      };
+
+
+      if(post){
+
+        await updateDoc(
+          doc(
+            db,
+            "oneOnOneCommunity",
+            post.id
+          ),
+          data
+        );
+
+      }
+      else{
+
+        await addDoc(
+          collection(
+            db,
+            "oneOnOneCommunity"
+          ),
+          {
+
+            ...data,
+
+            createdAt:
+              serverTimestamp()
+
+          }
+        );
+
+      }
+
+
+      closeModal();
+
+      await loadAllCommunity();
+
+      return true;
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   DELETE COMMUNITY
+===================================================== */
+
+async function deleteCommunity(
+  id
+){
+
+  if(!isAdmin){
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      "Delete this community post?"
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "oneOnOneCommunity",
+        id
+      )
+    );
+
+
+    await loadAllCommunity();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Unable to delete this post."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   MODAL SYSTEM
+===================================================== */
+
+function openModal(
+  title,
+  body,
+  saveFunction
+){
+
+  document.getElementById(
+    "modalTitle"
+  ).textContent =
+    title;
+
+
+  document.getElementById(
+    "modalBody"
+  ).innerHTML =
+    body;
+
+
+  document.getElementById(
+    "modalMessage"
+  ).textContent =
+    "";
+
+
+  currentModalSave =
+    saveFunction;
+
+
+  document
+    .getElementById(
+      "modalOverlay"
+    )
+    .classList.add(
+      "show"
+    );
+
+}
+
+
+function closeModal(){
+
+  document
+    .getElementById(
+      "modalOverlay"
+    )
+    .classList.remove(
+      "show"
+    );
+
+
+  currentModalSave =
+    null;
+
+}
+
+
+function showModalMessage(
+  message
+){
+
+  document.getElementById(
+    "modalMessage"
+  ).style.color =
+    "#8b3333";
+
+
+  document.getElementById(
+    "modalMessage"
+  ).textContent =
+    message;
+
+}
+
+
+document
+  .getElementById(
+    "modalCancel"
+  )
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+document
+  .getElementById(
+    "modalOverlay"
+  )
+  .addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target.id ===
+        "modalOverlay"
+      ){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "modalSave"
+  )
+  .addEventListener(
+    "click",
+    async () => {
+
+      if(!currentModalSave){
+
+        return;
+
+      }
+
+
+      const button =
+        document.getElementById(
+          "modalSave"
+        );
+
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        "Saving...";
+
+
+      try{
+
+        const result =
+          await currentModalSave();
+
+
+        if(result !== false){
+
+          closeModal();
+
+        }
+
+      }
+      catch(error){
+
+        console.error(
+          "Save error:",
+          error
+        );
+
+
+        showModalMessage(
+          "Unable to save. Check Firebase permissions and try again."
+        );
+
+      }
+
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        "Save";
+
+    }
+  );
+
+
+/* =====================================================
+   ADD WEEK
+===================================================== */
+
+document
+  .getElementById(
+    "addWeekBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(isAdmin){
+
+        openWeekModal();
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ADD MEAL PLAN
+===================================================== */
+
+document
+  .getElementById(
+    "addMealPlanBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(isAdmin){
+
+        openContentModal(
+          "meal"
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ADD WORKOUT
+===================================================== */
+
+document
+  .getElementById(
+    "addWorkoutBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(isAdmin){
+
+        openContentModal(
+          "workout"
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ADD RESOURCE
+===================================================== */
+
+document
+  .getElementById(
+    "addResourceBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(isAdmin){
+
+        openContentModal(
+          "resource"
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ADD COMMUNITY
+===================================================== */
+
+document
+  .getElementById(
+    "addCommunityBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(isAdmin){
+
+        openCommunityModal();
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ADMIN DASHBOARD BUTTON
+===================================================== */
+
+document
+  .getElementById(
+    "adminHomeBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(isAdmin){
+
+        showSection(
+          "adminDashboard"
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ADMIN CLIENTS BUTTON
+===================================================== */
+
+document
+  .getElementById(
+    "adminClientsBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(isAdmin){
+
+        showSection(
+          "adminClients"
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   CLIENT PREVIEW
+===================================================== */
+
+document
+  .getElementById(
+    "previewBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if(!isAdmin){
+
+        return;
+
+      }
+
+
+      previewMode =
+        !previewMode;
+
+
+      document
+        .body
+        .classList.toggle(
+          "admin-mode",
+          !previewMode
+        );
+
+
+      document.getElementById(
+        "previewBtn"
+      ).textContent =
+        previewMode
+        ?
+        "Exit Preview"
+        :
+        "Client Preview";
+
+
+      document
+        .querySelectorAll(
+          ".admin-only"
+        )
+        .forEach(el => {
+
+          el.style.display =
+            previewMode
+            ?
+            "none"
+            :
+            "block";
+
+        });
+
+
+      showSection(
+        "program"
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   CLIENT PREVIEW SELECTED CLIENT
+===================================================== */
+
+async function startClientPreview(
+  client
+){
+
+  if(!isAdmin){
+
+    return;
+
+  }
+
+
+  currentClient =
+    client;
+
+
+  previewMode =
+    true;
+
+
+  document
+    .body
+    .classList.remove(
+      "admin-mode"
+    );
+
+
+  document.getElementById(
+    "previewBtn"
+  ).textContent =
+    "Exit Preview";
+
+
+  document.getElementById(
+    "programSubtitle"
+  ).textContent =
+    client.programName ||
+    "Client Preview";
+
+
+  await loadClientMealPlans();
+
+  await loadClientWorkouts();
+
+  await loadClientResources();
+
+  await loadClientCommunity();
+
+  showSection(
+    "program"
+  );
 
 }
 
@@ -2322,53 +6594,63 @@ document
       "click",
       () => {
 
-        const section =
-          button.dataset.section;
-
-
-        document
-          .querySelectorAll(
-            ".nav-btn"
-          )
-          .forEach(btn => {
-
-            btn.classList.remove(
-              "active"
-            );
-
-          });
-
-
-        button.classList.add(
-          "active"
+        showSection(
+          button.dataset.section
         );
-
-
-        document
-          .querySelectorAll(
-            ".page-section"
-          )
-          .forEach(page => {
-
-            page.classList.remove(
-              "active"
-            );
-
-          });
-
-
-        document
-          .getElementById(
-            section
-          )
-          .classList.add(
-            "active"
-          );
 
       }
     );
 
   });
+
+
+function showSection(
+  sectionId
+){
+
+  document
+    .querySelectorAll(
+      ".page-section"
+    )
+    .forEach(page => {
+
+      page.classList.remove(
+        "active"
+      );
+
+    });
+
+
+  const target =
+    document.getElementById(
+      sectionId
+    );
+
+
+  if(target){
+
+    target.classList.add(
+      "active"
+    );
+
+  }
+
+
+  document
+    .querySelectorAll(
+      ".nav-btn"
+    )
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.section ===
+        sectionId
+      );
+
+    });
+
+}
 
 
 /* =====================================================
@@ -2383,22 +6665,9 @@ document
     "click",
     () => {
 
-      document
-        .getElementById(
-          "dayContent"
-        )
-        .classList.remove(
-          "active"
-        );
-
-
-      document
-        .getElementById(
-          "program"
-        )
-        .classList.add(
-          "active"
-        );
+      showSection(
+        "program"
+      );
 
     }
   );
@@ -2415,6 +6684,15 @@ document
   .addEventListener(
     "click",
     async () => {
+
+      if(
+        !currentClient
+      ){
+
+        return;
+
+      }
+
 
       const text =
         document
@@ -2447,7 +6725,9 @@ document
         );
 
 
-      button.disabled = true;
+      button.disabled =
+        true;
+
 
       button.textContent =
         "Submitting...";
@@ -2468,7 +6748,8 @@ document
             uid:
               currentUser.uid,
 
-            text:text,
+            text:
+              text,
 
             createdAt:
               serverTimestamp(),
@@ -2484,7 +6765,8 @@ document
           .getElementById(
             "checkinText"
           )
-          .value = "";
+          .value =
+          "";
 
 
         message.style.color =
@@ -2508,7 +6790,9 @@ document
       }
 
 
-      button.disabled = false;
+      button.disabled =
+        false;
+
 
       button.textContent =
         "Submit Check-in";
@@ -2529,7 +6813,9 @@ document
     "click",
     async () => {
 
-      await signOut(auth);
+      await signOut(
+        auth
+      );
 
       window.location.href =
         "login.html";
@@ -2539,10 +6825,12 @@ document
 
 
 /* =====================================================
-   ERROR
+   CLIENT ERROR
 ===================================================== */
 
-function showClientError(message){
+function showClientError(
+  message
+){
 
   document.getElementById(
     "weekList"
@@ -2550,7 +6838,9 @@ function showClientError(message){
 
     <div class="empty">
 
-      ${escapeHtml(message)}
+      ${escapeHtml(
+        message
+      )}
 
     </div>
 
@@ -2563,17 +6853,25 @@ function showClientError(message){
    URL SAFETY
 ===================================================== */
 
-function safeUrl(value){
+function safeUrl(
+  value
+){
 
   const url =
-    String(value || "")
-      .trim();
+    String(
+      value || ""
+    )
+    .trim();
 
 
   if(
-    url.startsWith("https://")
+    url.startsWith(
+      "https://"
+    )
     ||
-    url.startsWith("http://")
+    url.startsWith(
+      "http://"
+    )
   ){
 
     return escapeAttribute(
@@ -2592,21 +6890,40 @@ function safeUrl(value){
    ESCAPE HTML
 ===================================================== */
 
-function escapeHtml(value){
+function escapeHtml(
+  value
+){
 
   return String(
     value ?? ""
   )
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;")
-  .replaceAll('"',"&quot;")
-  .replaceAll("'","&#039;");
+  .replaceAll(
+    "&",
+    "&amp;"
+  )
+  .replaceAll(
+    "<",
+    "&lt;"
+  )
+  .replaceAll(
+    ">",
+    "&gt;"
+  )
+  .replaceAll(
+    '"',
+    "&quot;"
+  )
+  .replaceAll(
+    "'",
+    "&#039;"
+  );
 
 }
 
 
-function escapeAttribute(value){
+function escapeAttribute(
+  value
+){
 
   return escapeHtml(
     value
@@ -2619,7 +6936,9 @@ function escapeAttribute(value){
    TIMESTAMP
 ===================================================== */
 
-function formatTimestamp(timestamp){
+function formatTimestamp(
+  timestamp
+){
 
   if(
     !timestamp ||
@@ -2633,16 +6952,22 @@ function formatTimestamp(timestamp){
 
   const date =
     new Date(
-      timestamp.seconds * 1000
+      timestamp.seconds *
+      1000
     );
 
 
   return date.toLocaleDateString(
     "en-PK",
     {
-      day:"numeric",
-      month:"short",
-      year:"numeric"
+      day:
+        "numeric",
+
+      month:
+        "short",
+
+      year:
+        "numeric"
     }
   );
 
@@ -2651,5 +6976,5 @@ function formatTimestamp(timestamp){
 </script>
 
 </body>
+
 </html>
-```
