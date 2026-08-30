@@ -12,19 +12,27 @@
 
   <title>Client Login | Mahnoor Dietitian</title>
 
+
   <style>
 
     * {
       box-sizing: border-box;
     }
 
+
     body {
+
       margin: 0;
+
       min-height: 100vh;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
+      padding: 20px;
 
       background: #FBF8F3;
 
@@ -33,28 +41,30 @@
         sans-serif;
 
       color: #2D2D2D;
+
     }
+
 
     .box {
 
       width: 100%;
+
       max-width: 450px;
 
-      margin: 20px;
+      padding: 36px;
 
-      padding: 35px;
+      background: #ffffff;
 
-      background: white;
-
-      border-radius: 16px;
+      border-radius: 18px;
 
       border: 1px solid #eee;
 
       box-shadow:
-        0 10px 30px
-        rgba(0,0,0,0.05);
+        0 12px 35px
+        rgba(0, 0, 0, 0.07);
 
     }
+
 
     .brand {
 
@@ -62,7 +72,7 @@
 
       color: #6E4A7E;
 
-      font-size: 25px;
+      font-size: 26px;
 
       font-weight: 600;
 
@@ -70,15 +80,19 @@
 
     }
 
+
     h1 {
 
       text-align: center;
 
-      font-size: 26px;
+      font-size: 27px;
 
-      margin: 20px 0 8px;
+      margin: 20px 0 10px;
+
+      color: #2D2D2D;
 
     }
+
 
     .subtitle {
 
@@ -88,11 +102,26 @@
 
       font-size: 14px;
 
+      line-height: 1.6;
+
       margin-bottom: 28px;
 
-      line-height: 1.5;
+    }
+
+
+    form {
+
+      width: 100%;
 
     }
+
+
+    .field {
+
+      margin-bottom: 18px;
+
+    }
+
 
     label {
 
@@ -102,27 +131,37 @@
 
       font-weight: 600;
 
-      margin-bottom: 7px;
+      margin-bottom: 8px;
+
+      color: #2D2D2D;
 
     }
+
 
     input {
 
       width: 100%;
 
-      padding: 13px;
+      height: 48px;
 
-      margin-bottom: 17px;
+      padding: 0 14px;
 
-      border:
+      border: 1px solid #d9d9d9;
 
-        1px solid #ddd;
+      border-radius: 9px;
 
-      border-radius: 8px;
+      background: #ffffff;
+
+      color: #2D2D2D;
 
       font-size: 15px;
 
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+
     }
+
 
     input:focus {
 
@@ -130,29 +169,43 @@
 
       border-color: #6E4A7E;
 
+      box-shadow:
+        0 0 0 3px
+        rgba(110, 74, 126, 0.10);
+
     }
+
 
     button {
 
       width: 100%;
 
-      padding: 13px;
+      min-height: 48px;
+
+      padding: 13px 16px;
+
+      margin-top: 4px;
 
       border: none;
 
-      border-radius: 8px;
+      border-radius: 9px;
 
       background: #6E4A7E;
 
-      color: white;
+      color: #ffffff;
 
       font-size: 15px;
 
+      font-weight: 600;
+
       cursor: pointer;
 
-      margin-top: 5px;
+      transition:
+        opacity 0.2s,
+        transform 0.1s;
 
     }
+
 
     button:hover {
 
@@ -160,17 +213,37 @@
 
     }
 
+
+    button:active {
+
+      transform: scale(0.99);
+
+    }
+
+
+    button:disabled {
+
+      opacity: 0.6;
+
+      cursor: not-allowed;
+
+    }
+
+
     .switch {
 
       text-align: center;
 
-      margin-top: 20px;
+      margin-top: 22px;
 
       font-size: 14px;
 
       color: #777;
 
+      line-height: 1.6;
+
     }
+
 
     .switch a {
 
@@ -180,25 +253,44 @@
 
       font-weight: 600;
 
+      text-decoration: none;
+
     }
+
+
+    .switch a:hover {
+
+      text-decoration: underline;
+
+    }
+
+
+    /* ==================================
+       MESSAGE BOX
+       ================================== */
 
     .message {
 
-      margin-top: 18px;
+      width: 100%;
 
-      padding: 12px;
+      margin-top: 20px;
 
-      border-radius: 8px;
+      padding: 15px 16px;
+
+      border-radius: 10px;
 
       display: none;
 
       font-size: 14px;
 
-      line-height: 1.5;
+      line-height: 1.6;
+
+      word-break: break-word;
 
     }
 
-    .success {
+
+    .message.success {
 
       display: block;
 
@@ -206,9 +298,12 @@
 
       color: #286b35;
 
+      border: 1px solid #cce8d1;
+
     }
 
-    .error {
+
+    .message.error {
 
       display: block;
 
@@ -216,11 +311,54 @@
 
       color: #9b2c2c;
 
+      border: 1px solid #f0caca;
+
     }
+
+
+    .message-title {
+
+      font-weight: 700;
+
+      display: block;
+
+      margin-bottom: 4px;
+
+    }
+
 
     .hidden {
 
-      display: none;
+      display: none !important;
+
+    }
+
+
+    /* ==================================
+       MOBILE
+       ================================== */
+
+    @media (max-width: 500px) {
+
+      .box {
+
+        padding: 28px 22px;
+
+      }
+
+
+      .brand {
+
+        font-size: 24px;
+
+      }
+
+
+      h1 {
+
+        font-size: 24px;
+
+      }
 
     }
 
@@ -232,625 +370,441 @@
 <body>
 
 
-<div class="box">
+  <div class="box">
 
 
-  <div class="brand">
-    Mahnoor Dietitian
+    <!-- ==================================
+         BRAND
+         ================================== -->
+
+    <div class="brand">
+      Mahnoor Dietitian
+    </div>
+
+
+    <!-- ==================================
+         LOGIN SECTION
+         ================================== -->
+
+    <div id="loginSection">
+
+      <h1>
+        Client Login
+      </h1>
+
+
+      <div class="subtitle">
+
+        Sign in to access your personal
+        nutrition coaching dashboard.
+
+      </div>
+
+
+      <form id="loginForm">
+
+
+        <div class="field">
+
+          <label for="loginEmail">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="loginPassword">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          id="loginButton"
+        >
+          Login
+        </button>
+
+
+      </form>
+
+
+      <div class="switch">
+
+        Don't have an account?
+
+        <a id="showSignup">
+          Create account
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ==================================
+         SIGNUP SECTION
+         ================================== -->
+
+    <div
+      id="signupSection"
+      class="hidden"
+    >
+
+      <h1>
+        Create Your Account
+      </h1>
+
+
+      <div class="subtitle">
+
+        Use the same email address
+        that you provided to Mahnoor Dietitian.
+
+      </div>
+
+
+      <form id="signupForm">
+
+
+        <div class="field">
+
+          <label for="signupEmail">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="signupEmail"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="signupPassword">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create a password"
+            minlength="6"
+            autocomplete="new-password"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="confirmPassword">
+            Confirm Password
+          </label>
+
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Enter password again"
+            minlength="6"
+            autocomplete="new-password"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          id="signupButton"
+        >
+          Create Account
+        </button>
+
+
+      </form>
+
+
+      <div class="switch">
+
+        Already have an account?
+
+        <a id="showLogin">
+          Login
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ==================================
+         MESSAGE
+         ================================== -->
+
+    <div
+      id="message"
+      class="message"
+      role="alert"
+    ></div>
+
+
   </div>
 
 
-  <div id="loginSection">
 
-    <h1>
-      Client Login
-    </h1>
+  <!-- ==================================
+       FIREBASE
+       ================================== -->
 
-    <div class="subtitle">
-      Sign in to access your personal
-      nutrition coaching dashboard.
-    </div>
+  <script type="module">
 
 
-    <form id="loginForm">
+    import {
+      initializeApp
+    }
+    from
+      "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-      <label>
-        Email
-      </label>
 
-      <input
-        type="email"
-        id="loginEmail"
-        required
-      >
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      sendEmailVerification
+    }
+    from
+      "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-      <label>
-        Password
-      </label>
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      query,
+      where,
+      updateDoc,
+      doc
+    }
+    from
+      "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-      <input
-        type="password"
-        id="loginPassword"
-        required
-      >
 
 
-      <button type="submit">
-        Login
-      </button>
+    // ======================================
+    // FIREBASE CONFIG
+    // ======================================
 
-    </form>
+    const firebaseConfig = {
 
+      apiKey:
+        "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
 
-    <div class="switch">
+      authDomain:
+        "mahnoor-dietitian.firebaseapp.com",
 
-      Don't have an account?
+      projectId:
+        "mahnoor-dietitian",
 
-      <a id="showSignup">
-        Create account
-      </a>
+      storageBucket:
+        "mahnoor-dietitian.firebasestorage.app",
 
-    </div>
+      messagingSenderId:
+        "900688855173",
 
-  </div>
+      appId:
+        "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
 
+    };
 
 
-  <div
-    id="signupSection"
-    class="hidden"
-  >
+    const app =
+      initializeApp(firebaseConfig);
 
-    <h1>
-      Create Your Account
-    </h1>
 
-    <div class="subtitle">
+    const auth =
+      getAuth(app);
 
-      Use the same email address
-      that you provided to Mahnoor Dietitian.
 
-    </div>
+    const db =
+      getFirestore(app);
 
 
-    <form id="signupForm">
 
+    // ======================================
+    // ELEMENTS
+    // ======================================
 
-      <label>
-        Email
-      </label>
+    const loginSection =
+      document.getElementById(
+        "loginSection"
+      );
 
-      <input
-        type="email"
-        id="signupEmail"
-        required
-      >
 
+    const signupSection =
+      document.getElementById(
+        "signupSection"
+      );
 
-      <label>
-        Password
-      </label>
 
-      <input
-        type="password"
-        id="signupPassword"
-        minlength="6"
-        required
-      >
+    const message =
+      document.getElementById(
+        "message"
+      );
 
 
-      <label>
-        Confirm Password
-      </label>
+    const signupButton =
+      document.getElementById(
+        "signupButton"
+      );
 
-      <input
-        type="password"
-        id="confirmPassword"
-        minlength="6"
-        required
-      >
 
+    const loginButton =
+      document.getElementById(
+        "loginButton"
+      );
 
-      <button type="submit">
-        Create Account
-      </button>
 
-    </form>
 
+    // ======================================
+    // SHOW SIGNUP
+    // ======================================
 
-    <div class="switch">
+    document
+      .getElementById("showSignup")
+      .addEventListener(
+        "click",
+        () => {
 
-      Already have an account?
+          loginSection
+            .classList
+            .add("hidden");
 
-      <a id="showLogin">
-        Login
-      </a>
+          signupSection
+            .classList
+            .remove("hidden");
 
-    </div>
-
-  </div>
-
-
-
-  <div
-    id="message"
-    class="message"
-  ></div>
-
-
-</div>
-
-
-
-<script type="module">
-
-
-  import {
-    initializeApp
-  }
-  from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    sendEmailVerification,
-    onAuthStateChanged
-  }
-  from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-
-  import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    where,
-    updateDoc,
-    doc
-  }
-  from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-
-  // ======================================
-  // FIREBASE
-  // ======================================
-
-
-  const firebaseConfig = {
-
-    apiKey:
-      "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
-
-    authDomain:
-      "mahnoor-dietitian.firebaseapp.com",
-
-    projectId:
-      "mahnoor-dietitian",
-
-    storageBucket:
-      "mahnoor-dietitian.firebasestorage.app",
-
-    messagingSenderId:
-      "900688855173",
-
-    appId:
-      "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
-
-  };
-
-
-  const app =
-    initializeApp(firebaseConfig);
-
-
-  const auth =
-    getAuth(app);
-
-
-  const db =
-    getFirestore(app);
-
-
-
-  // ======================================
-  // ELEMENTS
-  // ======================================
-
-
-  const loginSection =
-    document.getElementById(
-      "loginSection"
-    );
-
-
-  const signupSection =
-    document.getElementById(
-      "signupSection"
-    );
-
-
-  const message =
-    document.getElementById(
-      "message"
-    );
-
-
-
-  // ======================================
-  // SHOW LOGIN / SIGNUP
-  // ======================================
-
-
-  document
-    .getElementById("showSignup")
-    .addEventListener(
-      "click",
-      () => {
-
-        loginSection
-          .classList
-          .add("hidden");
-
-        signupSection
-          .classList
-          .remove("hidden");
-
-        clearMessage();
-
-      }
-    );
-
-
-  document
-    .getElementById("showLogin")
-    .addEventListener(
-      "click",
-      () => {
-
-        signupSection
-          .classList
-          .add("hidden");
-
-        loginSection
-          .classList
-          .remove("hidden");
-
-        clearMessage();
-
-      }
-    );
-
-
-
-  // ======================================
-  // CLIENT SIGNUP
-  // ======================================
-
-
-  document
-    .getElementById("signupForm")
-    .addEventListener(
-      "submit",
-      async event => {
-
-
-        event.preventDefault();
-
-
-        clearMessage();
-
-
-        const email =
-          document
-            .getElementById(
-              "signupEmail"
-            )
-            .value
-            .trim()
-            .toLowerCase();
-
-
-        const password =
-          document
-            .getElementById(
-              "signupPassword"
-            )
-            .value;
-
-
-        const confirmPassword =
-          document
-            .getElementById(
-              "confirmPassword"
-            )
-            .value;
-
-
-
-        if (
-          password !==
-          confirmPassword
-        ) {
-
-          showError(
-            "Passwords do not match."
-          );
-
-          return;
+          clearMessage();
 
         }
+      );
 
 
 
-        try {
+    // ======================================
+    // SHOW LOGIN
+    // ======================================
+
+    document
+      .getElementById("showLogin")
+      .addEventListener(
+        "click",
+        () => {
+
+          signupSection
+            .classList
+            .add("hidden");
+
+          loginSection
+            .classList
+            .remove("hidden");
+
+          clearMessage();
+
+        }
+      );
 
 
-          /*
-            FIRST:
-            Check whether this email
-            already exists as a client.
-          */
+
+    // ======================================
+    // CLIENT SIGNUP
+    // ======================================
+
+    document
+      .getElementById("signupForm")
+      .addEventListener(
+        "submit",
+        async event => {
+
+          event.preventDefault();
+
+          clearMessage();
+
+          signupButton.disabled = true;
+
+          signupButton.textContent =
+            "Creating Account...";
 
 
-          const clientQuery =
-            query(
-
-              collection(
-                db,
-                "clients"
-              ),
-
-              where(
-                "email",
-                "==",
-                email
+          const email =
+            document
+              .getElementById(
+                "signupEmail"
               )
-
-            );
-
-
-          const clientSnapshot =
-            await getDocs(
-              clientQuery
-            );
-
-
-          if (
-            clientSnapshot.empty
-          ) {
-
-            showError(
-              "We could not find an enrollment for this email. Please contact Mahnoor Dietitian."
-            );
-
-            return;
-
-          }
-
-
-
-          /*
-            Check whether this enrollment
-            is already connected.
-          */
-
-
-          const existingClient =
-            clientSnapshot.docs[0];
-
-
-          const existingData =
-            existingClient.data();
-
-
-          if (
-            existingData.uid
-          ) {
-
-            showError(
-              "This client account has already been created. Please use Login instead."
-            );
-
-            return;
-
-          }
-
-
-
-          /*
-            Create Firebase Auth account.
-          */
-
-
-          const credential =
-            await createUserWithEmailAndPassword(
-
-              auth,
-
-              email,
-
-              password
-
-            );
-
-
-          const user =
-            credential.user;
-
-
-
-          /*
-            Send verification email.
-          */
-
-
-          await sendEmailVerification(
-            user
-          );
-
-
-
-          /*
-            We DO NOT connect the UID
-            until the email is verified.
-          */
-
-
-          showSuccess(
-
-            "Account created successfully. Please check your email and verify your email address. After verification, return here and log in."
-
-          );
-
-
-          document
-            .getElementById(
-              "signupForm"
-            )
-            .reset();
-
-
-        } catch (error) {
-
-
-          console.error(error);
-
-
-          showError(
-            firebaseErrorMessage(
-              error
-            )
-          );
-
-        }
-
-      }
-    );
-
-
-
-  // ======================================
-  // CLIENT LOGIN
-  // ======================================
-
-
-  document
-    .getElementById("loginForm")
-    .addEventListener(
-      "submit",
-      async event => {
-
-
-        event.preventDefault();
-
-
-        clearMessage();
-
-
-        const email =
-          document
-            .getElementById(
-              "loginEmail"
-            )
-            .value
-            .trim()
-            .toLowerCase();
-
-
-        const password =
-          document
-            .getElementById(
-              "loginPassword"
-            )
-            .value;
-
-
-
-        try {
-
-
-          const credential =
-            await signInWithEmailAndPassword(
-
-              auth,
-
-              email,
-
-              password
-
-            );
-
-
-          const user =
-            credential.user;
-
-
-
-          await user.reload();
-
-
-
-          if (
-            !user.emailVerified
-          ) {
-
-            showError(
-
-              "Please verify your email first. Check your inbox for the Firebase verification email."
-
-            );
-
-            return;
-
-          }
-
-
-
-          /*
-            Find existing client
-            by verified email.
-          */
-
-
-          const clientQuery =
-            query(
-
-              collection(
-                db,
-                "clients"
-              ),
-
-              where(
-                "email",
-                "==",
-                email
+              .value
+              .trim()
+              .toLowerCase();
+
+
+          const password =
+            document
+              .getElementById(
+                "signupPassword"
               )
+              .value;
 
-            );
+
+          const confirmPassword =
+            document
+              .getElementById(
+                "confirmPassword"
+              )
+              .value;
 
 
-          const snapshot =
-            await getDocs(
-              clientQuery
-            );
 
+          // ==================================
+          // PASSWORD CHECK
+          // ==================================
 
           if (
-            snapshot.empty
+            password !==
+            confirmPassword
           ) {
 
             showError(
-
-              "Your account was created, but no client enrollment was found for this email. Please contact Mahnoor Dietitian."
-
+              "Passwords do not match. Please enter the same password in both fields."
             );
+
+            resetSignupButton();
 
             return;
 
@@ -858,195 +812,568 @@
 
 
 
-          const clientDoc =
-            snapshot.docs[0];
+          try {
 
 
-          const clientData =
-            clientDoc.data();
+            // ==================================
+            // FIND CLIENT ENROLLMENT
+            // ==================================
+
+            const clientQuery =
+              query(
+
+                collection(
+                  db,
+                  "clients"
+                ),
+
+                where(
+                  "email",
+                  "==",
+                  email
+                )
+
+              );
+
+
+            const clientSnapshot =
+              await getDocs(
+                clientQuery
+              );
+
+
+            if (
+              clientSnapshot.empty
+            ) {
+
+              showError(
+
+                "We couldn't find an enrollment for this email. Please make sure you are using the same email that was registered by Mahnoor Dietitian."
+
+              );
+
+              resetSignupButton();
+
+              return;
+
+            }
 
 
 
-          /*
-            If UID isn't connected,
-            connect it now.
-          */
+            // ==================================
+            // EXISTING CLIENT
+            // ==================================
+
+            const existingClient =
+              clientSnapshot.docs[0];
 
 
-          if (
-            !clientData.uid
-          ) {
+            const existingData =
+              existingClient.data();
 
 
-            await updateDoc(
 
-              doc(
-                db,
-                "clients",
-                clientDoc.id
-              ),
+            if (
+              existingData.uid
+            ) {
 
-              {
-                uid: user.uid
-              }
+              showError(
+
+                "An account has already been connected to this enrollment. Please use the Login option instead."
+
+              );
+
+              resetSignupButton();
+
+              return;
+
+            }
+
+
+
+            // ==================================
+            // CREATE AUTH ACCOUNT
+            // ==================================
+
+            const credential =
+              await createUserWithEmailAndPassword(
+
+                auth,
+
+                email,
+
+                password
+
+              );
+
+
+            const user =
+              credential.user;
+
+
+
+            // ==================================
+            // SEND VERIFICATION EMAIL
+            // ==================================
+
+            await sendEmailVerification(
+              user
+            );
+
+
+
+            // ==================================
+            // IMPORTANT
+            // UID IS NOT CONNECTED YET
+            // ==================================
+
+            showSuccess(
+
+              "Account created successfully. " +
+              "Please check your email and click the verification link. " +
+              "After verifying your email, return to this page and log in."
 
             );
 
-          }
 
+            document
+              .getElementById(
+                "signupForm"
+              )
+              .reset();
 
-          else if (
-            clientData.uid !==
-            user.uid
-          ) {
-
-
-            showError(
-
-              "This enrollment is already connected to another account."
-
-            );
-
-            return;
 
           }
 
+          catch (error) {
 
-
-          /*
-            SUCCESS
-          */
-
-
-          showSuccess(
-            "Login successful. Opening your dashboard..."
-          );
-
-
-          setTimeout(
-            () => {
-
-              window.location.href =
-                "client-dashboard.html";
-
-            },
-            1000
-          );
-
-
-        } catch (error) {
-
-
-          console.error(error);
-
-
-          showError(
-            firebaseErrorMessage(
+            console.error(
+              "Signup error:",
               error
-            )
-          );
+            );
+
+
+            showError(
+              firebaseErrorMessage(
+                error
+              )
+            );
+
+          }
+
+
+          resetSignupButton();
 
         }
 
-      }
-    );
+      );
 
 
 
-  // ======================================
-  // MESSAGE HELPERS
-  // ======================================
+    // ======================================
+    // CLIENT LOGIN
+    // ======================================
+
+    document
+      .getElementById("loginForm")
+      .addEventListener(
+        "submit",
+        async event => {
+
+          event.preventDefault();
+
+          clearMessage();
+
+          loginButton.disabled = true;
+
+          loginButton.textContent =
+            "Logging in...";
 
 
-  function showSuccess(text) {
-
-    message.textContent =
-      text;
-
-    message.className =
-      "message success";
-
-  }
-
-
-  function showError(text) {
-
-    message.textContent =
-      text;
-
-    message.className =
-      "message error";
-
-  }
+          const email =
+            document
+              .getElementById(
+                "loginEmail"
+              )
+              .value
+              .trim()
+              .toLowerCase();
 
 
-  function clearMessage() {
-
-    message.textContent =
-      "";
-
-    message.className =
-      "message";
-
-  }
+          const password =
+            document
+              .getElementById(
+                "loginPassword"
+              )
+              .value;
 
 
 
-  // ======================================
-  // FIREBASE ERROR MESSAGES
-  // ======================================
+          try {
 
 
-  function firebaseErrorMessage(
-    error
-  ) {
+            // ==================================
+            // FIREBASE LOGIN
+            // ==================================
+
+            const credential =
+              await signInWithEmailAndPassword(
+
+                auth,
+
+                email,
+
+                password
+
+              );
 
 
-    switch (
-      error.code
-    ) {
+            const user =
+              credential.user;
 
 
-      case
-        "auth/email-already-in-use":
-
-        return
-          "An account already exists for this email. Please use Login.";
+            await user.reload();
 
 
-      case
-        "auth/weak-password":
 
-        return
-          "Password must be at least 6 characters.";
+            // ==================================
+            // EMAIL VERIFICATION
+            // ==================================
+
+            if (
+              !user.emailVerified
+            ) {
+
+              showError(
+
+                "Your email is not verified yet. Please check your inbox and click the Firebase verification link before logging in."
+
+              );
+
+              loginButton.disabled = false;
+
+              loginButton.textContent =
+                "Login";
+
+              return;
+
+            }
 
 
-      case
-        "auth/invalid-email":
 
-        return
-          "Please enter a valid email address.";
+            // ==================================
+            // FIND CLIENT
+            // ==================================
+
+            const clientQuery =
+              query(
+
+                collection(
+                  db,
+                  "clients"
+                ),
+
+                where(
+                  "email",
+                  "==",
+                  email
+                )
+
+              );
 
 
-      case
-        "auth/invalid-credential":
+            const snapshot =
+              await getDocs(
+                clientQuery
+              );
 
-        return
-          "Incorrect email or password.";
 
 
-      default:
+            if (
+              snapshot.empty
+            ) {
 
-        return
-          error.message ||
-          "Something went wrong.";
+              showError(
+
+                "Your account exists, but we could not find your client enrollment. Please contact Mahnoor Dietitian."
+
+              );
+
+              loginButton.disabled = false;
+
+              loginButton.textContent =
+                "Login";
+
+              return;
+
+            }
+
+
+
+            const clientDoc =
+              snapshot.docs[0];
+
+
+            const clientData =
+              clientDoc.data();
+
+
+
+            // ==================================
+            // CONNECT UID
+            // ==================================
+
+            if (
+              !clientData.uid
+            ) {
+
+
+              await updateDoc(
+
+                doc(
+                  db,
+                  "clients",
+                  clientDoc.id
+                ),
+
+                {
+
+                  uid:
+                    user.uid
+
+                }
+
+              );
+
+            }
+
+
+            else if (
+              clientData.uid !==
+              user.uid
+            ) {
+
+              showError(
+
+                "This enrollment is already connected to another account."
+
+              );
+
+              loginButton.disabled = false;
+
+              loginButton.textContent =
+                "Login";
+
+              return;
+
+            }
+
+
+
+            // ==================================
+            // SUCCESS
+            // ==================================
+
+            showSuccess(
+              "Login successful. Opening your dashboard..."
+            );
+
+
+            setTimeout(
+              () => {
+
+                window.location.href =
+                  "client-dashboard.html";
+
+              },
+              1200
+            );
+
+          }
+
+
+          catch (error) {
+
+            console.error(
+              "Login error:",
+              error
+            );
+
+
+            showError(
+              firebaseErrorMessage(
+                error
+              )
+            );
+
+
+            loginButton.disabled = false;
+
+            loginButton.textContent =
+              "Login";
+
+          }
+
+        }
+
+      );
+
+
+
+    // ======================================
+    // SUCCESS MESSAGE
+    // ======================================
+
+    function showSuccess(text) {
+
+      message.innerHTML =
+        `<span class="message-title">✓ Success</span>${text}`;
+
+      message.className =
+        "message success";
+
+      message.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
 
     }
 
-  }
 
 
-</script>
+    // ======================================
+    // ERROR MESSAGE
+    // ======================================
+
+    function showError(text) {
+
+      message.innerHTML =
+        `<span class="message-title">Something needs your attention</span>${text}`;
+
+      message.className =
+        "message error";
+
+      message.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+
+    }
+
+
+
+    // ======================================
+    // CLEAR MESSAGE
+    // ======================================
+
+    function clearMessage() {
+
+      message.innerHTML =
+        "";
+
+      message.className =
+        "message";
+
+    }
+
+
+
+    // ======================================
+    // RESET SIGNUP BUTTON
+    // ======================================
+
+    function resetSignupButton() {
+
+      signupButton.disabled = false;
+
+      signupButton.textContent =
+        "Create Account";
+
+    }
+
+
+
+    // ======================================
+    // FIREBASE ERROR MESSAGES
+    // ======================================
+
+    function firebaseErrorMessage(
+      error
+    ) {
+
+      switch (
+        error.code
+      ) {
+
+
+        case
+          "auth/email-already-in-use":
+
+          return
+            "An account already exists for this email. Please use Login.";
+
+
+        case
+          "auth/weak-password":
+
+          return
+            "Your password is too weak. Please use at least 6 characters.";
+
+
+        case
+          "auth/invalid-email":
+
+          return
+            "Please enter a valid email address.";
+
+
+        case
+          "auth/invalid-credential":
+
+          return
+            "The email or password is incorrect.";
+
+
+        case
+          "auth/user-not-found":
+
+          return
+            "No account was found with this email.";
+
+
+        case
+          "auth/wrong-password":
+
+          return
+            "The password is incorrect.";
+
+
+        case
+          "auth/too-many-requests":
+
+          return
+            "Too many attempts were made. Please wait a little and try again.";
+
+
+        case
+          "auth/network-request-failed":
+
+          return
+            "Network error. Please check your internet connection and try again.";
+
+
+        default:
+
+          return
+            error.message ||
+            "Something went wrong. Please try again.";
+
+      }
+
+    }
+
+
+  </script>
 
 
 </body>
