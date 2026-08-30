@@ -1,0 +1,2673 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assessments | Mahnoor Dietitian</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#FBF8F3;
+  color:#2D2D2D;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  background:#ffffff;
+  border-bottom:1px solid #eadfe9;
+  padding:18px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.brand{
+  color:#6E4A7E;
+  font-size:24px;
+  font-weight:700;
+}
+
+.header-right{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.back-btn,
+.logout-btn{
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.back-btn{
+  background:#f1eaf2;
+  color:#6E4A7E;
+}
+
+.logout-btn{
+  background:#6E4A7E;
+  color:#ffffff;
+}
+
+.back-btn:hover,
+.logout-btn:hover,
+.primary-btn:hover{
+  opacity:.92;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+  max-width:1250px;
+  margin:auto;
+  padding:35px 20px 60px;
+}
+
+.page-title{
+  margin-bottom:28px;
+}
+
+.page-title h1{
+  margin:0 0 7px;
+  font-size:32px;
+}
+
+.page-title p{
+  margin:0;
+  color:#777;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:18px;
+  margin-bottom:28px;
+}
+
+.summary-card{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:22px;
+}
+
+.summary-title{
+  color:#777;
+  font-size:14px;
+  margin-bottom:9px;
+}
+
+.summary-number{
+  color:#6E4A7E;
+  font-size:29px;
+  font-weight:700;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:25px;
+  margin-bottom:25px;
+}
+
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:22px;
+}
+
+.section-header h2{
+  margin:0;
+}
+
+.primary-btn{
+  background:#6E4A7E;
+  color:#ffffff;
+  border:none;
+  border-radius:9px;
+  padding:11px 18px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.toolbar{
+  display:grid;
+  grid-template-columns:1fr 220px;
+  gap:12px;
+  margin-bottom:22px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #d9d0d9;
+  border-radius:8px;
+  font-family:inherit;
+  font-size:14px;
+  background:#ffffff;
+}
+
+textarea{
+  min-height:105px;
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  outline:none;
+  border-color:#6E4A7E;
+  box-shadow:0 0 0 3px rgba(110,74,126,.08);
+}
+
+/* =========================
+   CLIENT CARDS
+========================= */
+
+.client-list{
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+}
+
+.client-card{
+  border:1px solid #ece5ec;
+  border-radius:12px;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.client-card:hover{
+  border-color:#cdb9d1;
+}
+
+.client-name{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.client-email{
+  color:#777;
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+.client-program{
+  color:#555;
+  font-size:14px;
+}
+
+.client-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.small-btn{
+  border:none;
+  border-radius:7px;
+  padding:8px 12px;
+  font-size:13px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.assess-btn{
+  background:#6E4A7E;
+  color:#ffffff;
+}
+
+.history-btn{
+  background:#f0eaf2;
+  color:#6E4A7E;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+  text-align:center;
+  padding:45px 15px;
+  color:#777;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(45,45,45,.48);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:50;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:900px;
+  max-height:92vh;
+  overflow:auto;
+  background:#ffffff;
+  border-radius:16px;
+  padding:28px;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:22px;
+}
+
+.modal-header h2{
+  margin:0;
+  color:#6E4A7E;
+}
+
+.close-btn{
+  border:none;
+  background:#f0eaf2;
+  color:#6E4A7E;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:18px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:17px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+label{
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.form-actions{
+  display:flex;
+  gap:10px;
+  margin-top:24px;
+}
+
+.save-btn{
+  border:none;
+  background:#6E4A7E;
+  color:#ffffff;
+  border-radius:8px;
+  padding:12px 20px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.cancel-btn{
+  border:1px solid #ccc;
+  background:#ffffff;
+  color:#333;
+  border-radius:8px;
+  padding:12px 20px;
+  cursor:pointer;
+}
+
+/* =========================
+   CLIENT SELECTED
+========================= */
+
+.selected-client{
+  background:#f4edf5;
+  border:1px solid #ddcce1;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:22px;
+}
+
+.selected-client strong{
+  color:#6E4A7E;
+}
+
+.selected-client span{
+  display:block;
+  margin-top:4px;
+  color:#666;
+  font-size:13px;
+}
+
+/* =========================
+   HISTORY
+========================= */
+
+.history-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.history-card{
+  border:1px solid #ece5ec;
+  border-radius:11px;
+  padding:17px;
+}
+
+.history-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.history-type{
+  color:#6E4A7E;
+  font-weight:700;
+}
+
+.history-date{
+  color:#777;
+  font-size:13px;
+}
+
+.history-summary{
+  color:#666;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.history-actions{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+}
+
+.edit-history{
+  background:#f0eaf2;
+  color:#6E4A7E;
+}
+
+.delete-history{
+  background:#f7e1e1;
+  color:#8b2222;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+  margin-top:15px;
+  padding:12px;
+  border-radius:8px;
+  display:none;
+  font-size:14px;
+}
+
+.message.show{
+  display:block;
+}
+
+.message.success{
+  background:#edf7ef;
+  color:#286b35;
+}
+
+.message.error{
+  background:#fff0f0;
+  color:#9b2c2c;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.badge.initial{
+  background:#f1e7f4;
+  color:#6E4A7E;
+}
+
+.badge.progress{
+  background:#e9f5ec;
+  color:#28733a;
+}
+
+.badge.final{
+  background:#e9eef8;
+  color:#365a91;
+}
+
+.badge.followup{
+  background:#f5efe1;
+  color:#86651e;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+  header{
+    padding:15px;
+  }
+
+  .brand{
+    font-size:19px;
+  }
+
+  .back-btn{
+    display:none;
+  }
+
+  main{
+    padding:25px 15px;
+  }
+
+  .section{
+    padding:18px;
+  }
+
+  .toolbar{
+    grid-template-columns:1fr;
+  }
+
+  .client-card{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .client-actions{
+    width:100%;
+  }
+
+  .client-actions button{
+    flex:1;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .history-top{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="brand">
+    Mahnoor Dietitian
+  </div>
+
+  <div class="header-right">
+
+    <button
+      class="back-btn"
+      onclick="window.location.href='admin.html'"
+    >
+      ← Admin Dashboard
+    </button>
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      Logout
+    </button>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <div class="page-title">
+
+    <h1>Client Assessments</h1>
+
+    <p>
+      Track client assessments, measurements, progress and dietitian notes.
+    </p>
+
+  </div>
+
+
+  <!-- SUMMARY -->
+
+  <div class="summary">
+
+    <div class="summary-card">
+
+      <div class="summary-title">
+        Total Clients
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalClients"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-title">
+        Total Assessments
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalAssessments"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-title">
+        Initial Assessments
+      </div>
+
+      <div
+        class="summary-number"
+        id="initialAssessments"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-title">
+        Progress Assessments
+      </div>
+
+      <div
+        class="summary-number"
+        id="progressAssessments"
+      >
+        0
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CLIENTS -->
+
+  <section class="section">
+
+    <div class="section-header">
+
+      <h2>Select Client</h2>
+
+    </div>
+
+
+    <div class="toolbar">
+
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search client by name or email..."
+      >
+
+      <select id="programFilter">
+
+        <option value="all">
+          All Programs
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div
+      class="client-list"
+      id="clientList"
+    >
+
+      <div class="empty">
+        Loading clients...
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- =========================
+     ASSESSMENT MODAL
+========================== -->
+
+<div
+  class="modal"
+  id="assessmentModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2 id="modalTitle">
+        New Assessment
+      </h2>
+
+      <button
+        class="close-btn"
+        id="closeAssessment"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      class="selected-client"
+      id="selectedClient"
+    ></div>
+
+
+    <form id="assessmentForm">
+
+      <div class="form-grid">
+
+
+        <div class="field">
+
+          <label>
+            Assessment Type *
+          </label>
+
+          <select
+            id="assessmentType"
+            required
+          >
+
+            <option value="">
+              Select assessment type
+            </option>
+
+            <option value="Initial Assessment">
+              Initial Assessment
+            </option>
+
+            <option value="Progress Assessment">
+              Progress Assessment
+            </option>
+
+            <option value="Final Assessment">
+              Final Assessment
+            </option>
+
+            <option value="Follow-Up">
+              Follow-Up
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Assessment Date *
+          </label>
+
+          <input
+            type="date"
+            id="assessmentDate"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Weight (kg)
+          </label>
+
+          <input
+            type="number"
+            id="weight"
+            step="0.1"
+            min="0"
+            placeholder="e.g. 72.5"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Waist (cm)
+          </label>
+
+          <input
+            type="number"
+            id="waist"
+            step="0.1"
+            min="0"
+            placeholder="e.g. 86"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Hips (cm)
+          </label>
+
+          <input
+            type="number"
+            id="hips"
+            step="0.1"
+            min="0"
+            placeholder="e.g. 102"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Blood Pressure
+          </label>
+
+          <input
+            type="text"
+            id="bloodPressure"
+            placeholder="e.g. 120/80"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Energy Level
+          </label>
+
+          <select id="energy">
+
+            <option value="">
+              Select
+            </option>
+
+            <option value="Very Low">
+              Very Low
+            </option>
+
+            <option value="Low">
+              Low
+            </option>
+
+            <option value="Moderate">
+              Moderate
+            </option>
+
+            <option value="Good">
+              Good
+            </option>
+
+            <option value="Excellent">
+              Excellent
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Sleep
+          </label>
+
+          <input
+            type="text"
+            id="sleep"
+            placeholder="e.g. 7 hours"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Water Intake
+          </label>
+
+          <input
+            type="text"
+            id="water"
+            placeholder="e.g. 8 glasses"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Daily Steps
+          </label>
+
+          <input
+            type="number"
+            id="steps"
+            min="0"
+            placeholder="e.g. 7000"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Digestion
+          </label>
+
+          <select id="digestion">
+
+            <option value="">
+              Select
+            </option>
+
+            <option value="Poor">
+              Poor
+            </option>
+
+            <option value="Needs Improvement">
+              Needs Improvement
+            </option>
+
+            <option value="Good">
+              Good
+            </option>
+
+            <option value="Excellent">
+              Excellent
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Hunger / Cravings
+          </label>
+
+          <select id="cravings">
+
+            <option value="">
+              Select
+            </option>
+
+            <option value="High">
+              High
+            </option>
+
+            <option value="Moderate">
+              Moderate
+            </option>
+
+            <option value="Low">
+              Low
+            </option>
+
+            <option value="Controlled">
+              Controlled
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            Exercise / Movement
+          </label>
+
+          <textarea
+            id="exercise"
+            placeholder="Describe exercise routine, walking, strength training, consistency, etc."
+          ></textarea>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            Client Progress
+          </label>
+
+          <textarea
+            id="progress"
+            placeholder="What improvements or changes have you noticed?"
+          ></textarea>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            Current Challenges
+          </label>
+
+          <textarea
+            id="challenges"
+            placeholder="What is the client struggling with currently?"
+          ></textarea>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            Dietitian Notes
+          </label>
+
+          <textarea
+            id="dietitianNotes"
+            placeholder="Private notes for your records..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            Next Goals
+          </label>
+
+          <textarea
+            id="nextGoals"
+            placeholder="Goals for the next check-in..."
+          ></textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="form-actions">
+
+        <button
+          type="submit"
+          class="save-btn"
+          id="saveBtn"
+        >
+          Save Assessment
+        </button>
+
+        <button
+          type="button"
+          class="cancel-btn"
+          id="cancelAssessment"
+        >
+          Cancel
+        </button>
+
+      </div>
+
+
+      <div
+        class="message"
+        id="formMessage"
+      ></div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     HISTORY MODAL
+========================== -->
+
+<div
+  class="modal"
+  id="historyModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2 id="historyTitle">
+        Assessment History
+      </h2>
+
+      <button
+        class="close-btn"
+        id="closeHistory"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      class="history-list"
+      id="historyList"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  doc,
+  updateDoc,
+  deleteDoc,
+  serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =========================
+   FIREBASE
+========================= */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
+
+  authDomain:
+    "mahnoor-dietitian.firebaseapp.com",
+
+  projectId:
+    "mahnoor-dietitian",
+
+  storageBucket:
+    "mahnoor-dietitian.firebasestorage.app",
+
+  messagingSenderId:
+    "900688855173",
+
+  appId:
+    "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
+
+};
+
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+
+const ADMIN_EMAIL =
+  "mahnoordietitian3@gmail.com";
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const clientList =
+  document.getElementById("clientList");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const programFilter =
+  document.getElementById("programFilter");
+
+const assessmentModal =
+  document.getElementById("assessmentModal");
+
+const historyModal =
+  document.getElementById("historyModal");
+
+const assessmentForm =
+  document.getElementById("assessmentForm");
+
+const formMessage =
+  document.getElementById("formMessage");
+
+let clients = [];
+
+let assessments = [];
+
+let selectedClient = null;
+
+let editingAssessmentId = null;
+
+
+/* =========================
+   AUTH
+========================= */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    if(
+      user.email?.toLowerCase()
+      !== ADMIN_EMAIL.toLowerCase()
+    ){
+
+      alert(
+        "You do not have permission to access the Admin Panel."
+      );
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    await loadData();
+
+  }
+);
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+async function loadData(){
+
+  clientList.innerHTML =
+    `<div class="empty">Loading clients...</div>`;
+
+  try{
+
+    const clientSnapshot =
+      await getDocs(
+        collection(
+          db,
+          "clients"
+        )
+      );
+
+
+    clients =
+      clientSnapshot.docs.map(item => ({
+
+        id:item.id,
+
+        ...item.data()
+
+      }));
+
+
+    const assessmentSnapshot =
+      await getDocs(
+        collection(
+          db,
+          "assessments"
+        )
+      );
+
+
+    assessments =
+      assessmentSnapshot.docs.map(item => ({
+
+        id:item.id,
+
+        ...item.data()
+
+      }));
+
+
+    updateSummary();
+
+    populateProgramFilter();
+
+    renderClients();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    clientList.innerHTML =
+      `<div class="empty">
+        Unable to load data.<br><br>
+        ${escapeHtml(error.message)}
+      </div>`;
+
+  }
+
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+function updateSummary(){
+
+  document.getElementById(
+    "totalClients"
+  ).textContent =
+    clients.length;
+
+
+  document.getElementById(
+    "totalAssessments"
+  ).textContent =
+    assessments.length;
+
+
+  document.getElementById(
+    "initialAssessments"
+  ).textContent =
+    assessments.filter(
+      item =>
+        item.assessmentType
+        === "Initial Assessment"
+    ).length;
+
+
+  document.getElementById(
+    "progressAssessments"
+  ).textContent =
+    assessments.filter(
+      item =>
+        item.assessmentType
+        === "Progress Assessment"
+    ).length;
+
+}
+
+
+/* =========================
+   PROGRAM FILTER
+========================= */
+
+function populateProgramFilter(){
+
+  const programs =
+    [
+      ...new Set(
+        clients
+          .map(
+            client =>
+              client.programName
+          )
+          .filter(Boolean)
+      )
+    ]
+    .sort();
+
+
+  programFilter.innerHTML =
+    `<option value="all">
+      All Programs
+    </option>`;
+
+
+  programs.forEach(program => {
+
+    const option =
+      document.createElement("option");
+
+    option.value =
+      program;
+
+    option.textContent =
+      program;
+
+    programFilter.appendChild(
+      option
+    );
+
+  });
+
+}
+
+
+/* =========================
+   RENDER CLIENTS
+========================= */
+
+function renderClients(){
+
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  const program =
+    programFilter.value;
+
+
+  const filtered =
+    clients.filter(client => {
+
+      const name =
+        String(
+          client.name || ""
+        ).toLowerCase();
+
+
+      const email =
+        String(
+          client.email || ""
+        ).toLowerCase();
+
+
+      const matchesSearch =
+        !search ||
+        name.includes(search) ||
+        email.includes(search);
+
+
+      const matchesProgram =
+        program === "all" ||
+        client.programName === program;
+
+
+      return (
+        matchesSearch &&
+        matchesProgram
+      );
+
+    });
+
+
+  if(filtered.length === 0){
+
+    clientList.innerHTML =
+      `<div class="empty">
+        No clients found.
+      </div>`;
+
+    return;
+
+  }
+
+
+  clientList.innerHTML =
+    filtered
+      .map(client => clientHTML(client))
+      .join("");
+
+
+  document
+    .querySelectorAll("[data-assess]")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const client =
+            clients.find(
+              item =>
+                item.id
+                === button.dataset.assess
+            );
+
+          if(client)
+            openAssessment(client);
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll("[data-history]")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const client =
+            clients.find(
+              item =>
+                item.id
+                === button.dataset.history
+            );
+
+          if(client)
+            openHistory(client);
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================
+   CLIENT HTML
+========================= */
+
+function clientHTML(client){
+
+  const clientAssessments =
+    assessments.filter(
+      item =>
+        item.clientId
+        === client.id
+    );
+
+
+  return `
+
+    <div class="client-card">
+
+      <div>
+
+        <div class="client-name">
+          ${escapeHtml(
+            client.name ||
+            "Unnamed Client"
+          )}
+        </div>
+
+        <div class="client-email">
+          ${escapeHtml(
+            client.email || ""
+          )}
+        </div>
+
+        <div class="client-program">
+          ${escapeHtml(
+            client.programName ||
+            "No program"
+          )}
+        </div>
+
+        <div style="
+          margin-top:7px;
+          color:#777;
+          font-size:13px;
+        ">
+          ${clientAssessments.length}
+          assessment(s)
+        </div>
+
+      </div>
+
+
+      <div class="client-actions">
+
+        <button
+          class="small-btn assess-btn"
+          data-assess="${client.id}"
+        >
+          + Assessment
+        </button>
+
+        <button
+          class="small-btn history-btn"
+          data-history="${client.id}"
+        >
+          View History
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   OPEN ASSESSMENT
+========================= */
+
+function openAssessment(client){
+
+  selectedClient =
+    client;
+
+  editingAssessmentId =
+    null;
+
+
+  assessmentForm.reset();
+
+
+  document.getElementById(
+    "modalTitle"
+  ).textContent =
+    "New Assessment";
+
+
+  document.getElementById(
+    "saveBtn"
+  ).textContent =
+    "Save Assessment";
+
+
+  document.getElementById(
+    "selectedClient"
+  ).innerHTML = `
+
+    <strong>
+      ${escapeHtml(
+        client.name ||
+        "Unnamed Client"
+      )}
+    </strong>
+
+    <span>
+      ${escapeHtml(
+        client.email || ""
+      )}
+    </span>
+
+    <span>
+      ${escapeHtml(
+        client.programName ||
+        "No program"
+      )}
+    </span>
+
+  `;
+
+
+  document.getElementById(
+    "assessmentDate"
+  ).value =
+    getToday();
+
+
+  formMessage.className =
+    "message";
+
+  formMessage.textContent =
+    "";
+
+
+  assessmentModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   SAVE ASSESSMENT
+========================= */
+
+assessmentForm.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    if(!selectedClient)
+      return;
+
+
+    const data = {
+
+      clientId:
+        selectedClient.id,
+
+      clientName:
+        selectedClient.name || "",
+
+      clientEmail:
+        selectedClient.email || "",
+
+      programName:
+        selectedClient.programName || "",
+
+      assessmentType:
+        value("assessmentType"),
+
+      assessmentDate:
+        value("assessmentDate"),
+
+      weight:
+        numberValue("weight"),
+
+      waist:
+        numberValue("waist"),
+
+      hips:
+        numberValue("hips"),
+
+      bloodPressure:
+        value("bloodPressure"),
+
+      energy:
+        value("energy"),
+
+      sleep:
+        value("sleep"),
+
+      water:
+        value("water"),
+
+      steps:
+        numberValue("steps"),
+
+      digestion:
+        value("digestion"),
+
+      cravings:
+        value("cravings"),
+
+      exercise:
+        value("exercise").trim(),
+
+      progress:
+        value("progress").trim(),
+
+      challenges:
+        value("challenges").trim(),
+
+      dietitianNotes:
+        value("dietitianNotes").trim(),
+
+      nextGoals:
+        value("nextGoals").trim(),
+
+      updatedAt:
+        serverTimestamp()
+
+    };
+
+
+    const saveButton =
+      document.getElementById(
+        "saveBtn"
+      );
+
+
+    saveButton.disabled =
+      true;
+
+    saveButton.textContent =
+      "Saving...";
+
+
+    try{
+
+      if(editingAssessmentId){
+
+        await updateDoc(
+
+          doc(
+            db,
+            "assessments",
+            editingAssessmentId
+          ),
+
+          data
+
+        );
+
+
+        showMessage(
+          "Assessment updated successfully.",
+          "success"
+        );
+
+      }
+      else{
+
+        data.createdAt =
+          serverTimestamp();
+
+
+        await addDoc(
+
+          collection(
+            db,
+            "assessments"
+          ),
+
+          data
+
+        );
+
+
+        showMessage(
+          "Assessment saved successfully.",
+          "success"
+        );
+
+      }
+
+
+      await loadData();
+
+
+      setTimeout(
+        closeAssessmentModal,
+        700
+      );
+
+    }
+    catch(error){
+
+      console.error(error);
+
+      showMessage(
+        firebaseErrorMessage(error),
+        "error"
+      );
+
+    }
+
+
+    saveButton.disabled =
+      false;
+
+    saveButton.textContent =
+      editingAssessmentId
+        ? "Update Assessment"
+        : "Save Assessment";
+
+  }
+);
+
+
+/* =========================
+   HISTORY
+========================= */
+
+function openHistory(client){
+
+  selectedClient =
+    client;
+
+
+  document.getElementById(
+    "historyTitle"
+  ).textContent =
+    `${client.name || "Client"} — Assessment History`;
+
+
+  const clientAssessments =
+    assessments
+      .filter(
+        item =>
+          item.clientId
+          === client.id
+      )
+      .sort(
+        (a,b) =>
+          String(
+            b.assessmentDate || ""
+          )
+          .localeCompare(
+            String(
+              a.assessmentDate || ""
+            )
+          )
+      );
+
+
+  const historyList =
+    document.getElementById(
+      "historyList"
+    );
+
+
+  if(clientAssessments.length === 0){
+
+    historyList.innerHTML =
+      `<div class="empty">
+        No assessments have been recorded for this client yet.
+      </div>`;
+
+  }
+  else{
+
+    historyList.innerHTML =
+      clientAssessments
+        .map(
+          assessment =>
+            historyHTML(
+              assessment
+            )
+        )
+        .join("");
+
+
+    document
+      .querySelectorAll("[data-edit-assessment]")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const assessment =
+              assessments.find(
+                item =>
+                  item.id
+                  === button.dataset.editAssessment
+              );
+
+            if(assessment)
+              editAssessment(
+                assessment
+              );
+
+          }
+        );
+
+      });
+
+
+    document
+      .querySelectorAll("[data-delete-assessment]")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            deleteAssessment(
+              button.dataset.deleteAssessment
+            );
+
+          }
+        );
+
+      });
+
+  }
+
+
+  historyModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   HISTORY HTML
+========================= */
+
+function historyHTML(assessment){
+
+  const badgeClass =
+    getBadgeClass(
+      assessment.assessmentType
+    );
+
+
+  return `
+
+    <div class="history-card">
+
+      <div class="history-top">
+
+        <div>
+
+          <div class="history-type">
+
+            <span class="badge ${badgeClass}">
+              ${escapeHtml(
+                assessment.assessmentType ||
+                "Assessment"
+              )}
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="history-date">
+          ${escapeHtml(
+            assessment.assessmentDate ||
+            "-"
+          )}
+        </div>
+
+      </div>
+
+
+      <div class="history-summary">
+
+        ${
+          assessment.weight
+          ? `<strong>Weight:</strong>
+             ${escapeHtml(
+               String(
+                 assessment.weight
+               )
+             )} kg &nbsp;`
+          : ""
+        }
+
+        ${
+          assessment.waist
+          ? `<strong>Waist:</strong>
+             ${escapeHtml(
+               String(
+                 assessment.waist
+               )
+             )} cm &nbsp;`
+          : ""
+        }
+
+        ${
+          assessment.hips
+          ? `<strong>Hips:</strong>
+             ${escapeHtml(
+               String(
+                 assessment.hips
+               )
+             )} cm`
+          : ""
+        }
+
+      </div>
+
+
+      <div class="history-actions">
+
+        <button
+          class="small-btn edit-history"
+          data-edit-assessment="${assessment.id}"
+        >
+          Edit
+        </button>
+
+        <button
+          class="small-btn delete-history"
+          data-delete-assessment="${assessment.id}"
+        >
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   EDIT ASSESSMENT
+========================= */
+
+function editAssessment(assessment){
+
+  selectedClient =
+    clients.find(
+      client =>
+        client.id
+        === assessment.clientId
+    );
+
+
+  if(!selectedClient){
+
+    alert(
+      "The client connected to this assessment could not be found."
+    );
+
+    return;
+
+  }
+
+
+  editingAssessmentId =
+    assessment.id;
+
+
+  setValue(
+    "assessmentType",
+    assessment.assessmentType
+  );
+
+  setValue(
+    "assessmentDate",
+    assessment.assessmentDate
+  );
+
+  setValue(
+    "weight",
+    assessment.weight
+  );
+
+  setValue(
+    "waist",
+    assessment.waist
+  );
+
+  setValue(
+    "hips",
+    assessment.hips
+  );
+
+  setValue(
+    "bloodPressure",
+    assessment.bloodPressure
+  );
+
+  setValue(
+    "energy",
+    assessment.energy
+  );
+
+  setValue(
+    "sleep",
+    assessment.sleep
+  );
+
+  setValue(
+    "water",
+    assessment.water
+  );
+
+  setValue(
+    "steps",
+    assessment.steps
+  );
+
+  setValue(
+    "digestion",
+    assessment.digestion
+  );
+
+  setValue(
+    "cravings",
+    assessment.cravings
+  );
+
+  setValue(
+    "exercise",
+    assessment.exercise
+  );
+
+  setValue(
+    "progress",
+    assessment.progress
+  );
+
+  setValue(
+    "challenges",
+    assessment.challenges
+  );
+
+  setValue(
+    "dietitianNotes",
+    assessment.dietitianNotes
+  );
+
+  setValue(
+    "nextGoals",
+    assessment.nextGoals
+  );
+
+
+  document.getElementById(
+    "modalTitle"
+  ).textContent =
+    "Edit Assessment";
+
+
+  document.getElementById(
+    "saveBtn"
+  ).textContent =
+    "Update Assessment";
+
+
+  document.getElementById(
+    "selectedClient"
+  ).innerHTML = `
+
+    <strong>
+      ${escapeHtml(
+        selectedClient.name ||
+        "Unnamed Client"
+      )}
+    </strong>
+
+    <span>
+      ${escapeHtml(
+        selectedClient.email || ""
+      )}
+    </span>
+
+    <span>
+      ${escapeHtml(
+        selectedClient.programName ||
+        "No program"
+      )}
+    </span>
+
+  `;
+
+
+  historyModal.classList.remove(
+    "show"
+  );
+
+
+  formMessage.className =
+    "message";
+
+  formMessage.textContent =
+    "";
+
+
+  assessmentModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   DELETE ASSESSMENT
+========================= */
+
+async function deleteAssessment(id){
+
+  const assessment =
+    assessments.find(
+      item =>
+        item.id === id
+    );
+
+
+  if(!assessment)
+    return;
+
+
+  const confirmed =
+    confirm(
+      `Delete this assessment?\n\n${assessment.assessmentType || "Assessment"} — ${assessment.assessmentDate || ""}`
+    );
+
+
+  if(!confirmed)
+    return;
+
+
+  try{
+
+    await deleteDoc(
+
+      doc(
+        db,
+        "assessments",
+        id
+      )
+
+    );
+
+
+    await loadData();
+
+
+    if(selectedClient){
+
+      openHistory(
+        selectedClient
+      );
+
+    }
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      firebaseErrorMessage(error)
+    );
+
+  }
+
+}
+
+
+/* =========================
+   BADGE CLASS
+========================= */
+
+function getBadgeClass(type){
+
+  if(type === "Initial Assessment")
+    return "initial";
+
+  if(type === "Progress Assessment")
+    return "progress";
+
+  if(type === "Final Assessment")
+    return "final";
+
+  return "followup";
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+searchInput.addEventListener(
+  "input",
+  renderClients
+);
+
+
+programFilter.addEventListener(
+  "change",
+  renderClients
+);
+
+
+/* =========================
+   CLOSE ASSESSMENT
+========================= */
+
+function closeAssessmentModal(){
+
+  assessmentModal.classList.remove(
+    "show"
+  );
+
+  assessmentForm.reset();
+
+  selectedClient =
+    null;
+
+  editingAssessmentId =
+    null;
+
+}
+
+
+document
+  .getElementById("closeAssessment")
+  .addEventListener(
+    "click",
+    closeAssessmentModal
+  );
+
+
+document
+  .getElementById("cancelAssessment")
+  .addEventListener(
+    "click",
+    closeAssessmentModal
+  );
+
+
+/* =========================
+   CLOSE HISTORY
+========================= */
+
+document
+  .getElementById("closeHistory")
+  .addEventListener(
+    "click",
+    () => {
+
+      historyModal.classList.remove(
+        "show"
+      );
+
+    }
+  );
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+document
+  .getElementById("logoutBtn")
+  .addEventListener(
+    "click",
+    async () => {
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+    }
+  );
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function value(id){
+
+  return document
+    .getElementById(id)
+    .value;
+
+}
+
+
+function numberValue(id){
+
+  const value =
+    document
+      .getElementById(id)
+      .value;
+
+  if(value === "")
+    return null;
+
+  return Number(value);
+
+}
+
+
+function setValue(
+  id,
+  value
+){
+
+  document
+    .getElementById(id)
+    .value =
+    value ?? "";
+
+}
+
+
+function getToday(){
+
+  return formatDate(
+    new Date()
+  );
+
+}
+
+
+function formatDate(date){
+
+  return [
+
+    date.getFullYear(),
+
+    String(
+      date.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    ),
+
+    String(
+      date.getDate()
+    ).padStart(
+      2,
+      "0"
+    )
+
+  ].join("-");
+
+}
+
+
+function showMessage(
+  text,
+  type
+){
+
+  formMessage.textContent =
+    text;
+
+  formMessage.className =
+    "message show " +
+    type;
+
+}
+
+
+function firebaseErrorMessage(
+  error
+){
+
+  if(
+    error?.message
+      ?.includes(
+        "Missing or insufficient permissions"
+      )
+  ){
+
+    return(
+      "Firebase denied access. Please check your Firestore rules for the assessments collection."
+    );
+
+  }
+
+
+  if(
+    error?.code ===
+    "permission-denied"
+  ){
+
+    return(
+      "You do not have permission to perform this action."
+    );
+
+  }
+
+
+  return(
+    error?.message ||
+    "Something went wrong. Please try again."
+  );
+
+}
+
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
+```
