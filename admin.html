@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Panel | Mahnoor Dietitian</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #FBF8F3;
+      color: #2D2D2D;
+    }
+
+    header {
+      background: white;
+      padding: 20px 30px;
+      border-bottom: 1px solid #eee;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: 600;
+      color: #6E4A7E;
+    }
+
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      background: #6E4A7E;
+      color: white;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .welcome {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .email {
+      color: #666;
+    }
+
+    .status {
+      margin-top: 20px;
+      padding: 15px;
+      background: #FBF8F3;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="brand">
+    Mahnoor Dietitian
+  </div>
+
+  <button id="logoutBtn">
+    Logout
+  </button>
+
+</header>
+
+
+<main>
+
+  <div class="welcome">
+
+    <h1>
+      Hi, Mahnoor!
+    </h1>
+
+    <p>
+      Welcome from Mahnoor Dietitian.
+    </p>
+
+    <p class="email" id="adminEmail">
+      Checking account...
+    </p>
+
+    <div class="status">
+      Admin Panel foundation is working.
+    </div>
+
+  </div>
+
+</main>
+
+
+<script type="module">
+
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+  import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
+
+    authDomain:
+      "mahnoor-dietitian.firebaseapp.com",
+
+    projectId:
+      "mahnoor-dietitian",
+
+    storageBucket:
+      "mahnoor-dietitian.firebasestorage.app",
+
+    messagingSenderId:
+      "900688855173",
+
+    appId:
+      "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
+
+  };
+
+
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
+
+
+  const ADMIN_EMAIL =
+    "mahnoordietitian3@gmail.com";
+
+
+  onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    if (user.email !== ADMIN_EMAIL) {
+
+      alert(
+        "You do not have permission to access the Admin Panel."
+      );
+
+      signOut(auth);
+
+      return;
+
+    }
+
+
+    document.getElementById("adminEmail")
+      .textContent =
+      "Logged in as: " + user.email;
+
+  });
+
+
+  document.getElementById("logoutBtn")
+    .addEventListener("click", async () => {
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+    });
+
+</script>
+
+</body>
+</html>
