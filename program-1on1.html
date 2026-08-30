@@ -740,4 +740,3386 @@ textarea:focus{
 
   .nav-btn{
     width:auto;
-    white-space
+    white-space:nowrap;
+    margin:0;
+  }
+
+  main{
+    padding:25px 15px 50px;
+  }
+
+  .content-grid{
+    grid-template-columns:1fr;
+  }
+
+  .page-header h1{
+    font-size:27px;
+  }
+
+  .day-right{
+    gap:5px;
+  }
+
+  .completed-badge{
+    font-size:9px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+  <div class="brand">
+    Mahnoor Dietitian
+  </div>
+
+  <div class="header-right">
+
+    <div
+      class="welcome"
+      id="welcomeText"
+    >
+      Welcome
+    </div>
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      Logout
+    </button>
+
+  </div>
+
+</header>
+
+
+<div class="layout">
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+  <div class="sidebar-title">
+    My Coaching
+  </div>
+
+  <button
+    class="nav-btn active"
+    data-section="program"
+  >
+    📚 My Program
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="mealplans"
+  >
+    🥗 Meal Plans
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="workouts"
+  >
+    🏋️ Workouts
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="resources"
+  >
+    📄 Resources
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="checkins"
+  >
+    ✅ Check-ins
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="community"
+  >
+    💬 Private Community
+  </button>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     PROGRAM
+===================================================== -->
+
+<section
+  class="page-section active"
+  id="program"
+>
+
+  <div class="page-header">
+
+    <h1>
+      My 1:1 Coaching
+    </h1>
+
+    <p id="programSubtitle">
+      Your private coaching classroom.
+    </p>
+
+    <span class="program-badge">
+      PRIVATE 1:1 COACHING
+    </span>
+
+  </div>
+
+
+  <div class="hero">
+
+    <h2>
+      Welcome to your coaching journey
+    </h2>
+
+    <p>
+      Your program is organized phase by phase,
+      week by week and day by day. Open each day
+      to view your coaching lessons and resources.
+      When you finish a day, mark it as complete.
+    </p>
+
+  </div>
+
+
+  <div class="section-title">
+
+    <h2>
+      Your Program
+    </h2>
+
+    <span id="weekCount">
+      Loading...
+    </span>
+
+  </div>
+
+
+  <div
+    id="programList"
+  >
+
+    <div class="loading">
+      Loading your program...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     DAY CONTENT
+===================================================== -->
+
+<section
+  class="page-section"
+  id="dayContent"
+>
+
+  <button
+    class="back-link"
+    id="backToProgram"
+  >
+    ← Back to My Program
+  </button>
+
+
+  <div
+    class="day-content-box"
+    id="dayContentBox"
+  >
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEAL PLANS
+===================================================== -->
+
+<section
+  class="page-section"
+  id="mealplans"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Meal Plans
+    </h1>
+
+    <p>
+      Your personalized nutrition plans and meal guidance.
+    </p>
+
+  </div>
+
+
+  <div
+    class="content-grid"
+    id="mealPlanList"
+  >
+
+    <div class="loading">
+      Loading meal plans...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     WORKOUTS
+===================================================== -->
+
+<section
+  class="page-section"
+  id="workouts"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Workouts
+    </h1>
+
+    <p>
+      Your assigned workouts and movement guidance.
+    </p>
+
+  </div>
+
+
+  <div
+    class="content-grid"
+    id="workoutList"
+  >
+
+    <div class="loading">
+      Loading workouts...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     RESOURCES
+===================================================== -->
+
+<section
+  class="page-section"
+  id="resources"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Resources
+    </h1>
+
+    <p>
+      Videos, PDFs, guides and other resources from your coach.
+    </p>
+
+  </div>
+
+
+  <div
+    class="content-grid"
+    id="resourceList"
+  >
+
+    <div class="loading">
+      Loading resources...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CHECKINS
+===================================================== -->
+
+<section
+  class="page-section"
+  id="checkins"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Check-ins
+    </h1>
+
+    <p>
+      Share your weekly progress privately with your coach.
+    </p>
+
+  </div>
+
+
+  <div class="checkin-box">
+
+    <h2>
+      Weekly Check-in
+    </h2>
+
+    <p>
+      Tell your coach how your week went, what felt easy,
+      what felt difficult and where you need support.
+    </p>
+
+
+    <textarea
+      id="checkinText"
+      placeholder="Write your check-in here..."
+    ></textarea>
+
+
+    <button
+      class="save-btn"
+      id="saveCheckin"
+    >
+      Submit Check-in
+    </button>
+
+
+    <div
+      id="checkinMessage"
+      style="margin-top:12px;font-size:13px;"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     COMMUNITY
+===================================================== -->
+
+<section
+  class="page-section"
+  id="community"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Private Community
+    </h1>
+
+    <p>
+      Updates and conversations shared inside your private
+      coaching space.
+    </p>
+
+  </div>
+
+
+  <div id="communityList">
+
+    <div class="loading">
+      Loading community...
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script type="module">
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+  setDoc,
+  doc,
+  serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
+
+  authDomain:
+    "mahnoor-dietitian.firebaseapp.com",
+
+  projectId:
+    "mahnoor-dietitian",
+
+  storageBucket:
+    "mahnoor-dietitian.firebasestorage.app",
+
+  messagingSenderId:
+    "900688855173",
+
+  appId:
+    "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
+
+};
+
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+
+/* =====================================================
+   ADMIN EMAIL
+===================================================== */
+
+const ADMIN_EMAIL =
+  "mahnoordietitian3@gmail.com";
+
+
+/* =====================================================
+   GLOBAL DATA
+===================================================== */
+
+let currentUser = null;
+
+let currentClient = null;
+
+let phases = [];
+
+let weeks = [];
+
+let completedDays = {};
+
+let currentOpenedDay = null;
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+    currentUser = user;
+
+
+    document.getElementById(
+      "welcomeText"
+    ).textContent =
+      "Welcome, " +
+      (
+        user.displayName ||
+        user.email
+      );
+
+
+    await loadClient();
+
+  }
+);
+
+
+/* =====================================================
+   LOAD CLIENT
+===================================================== */
+
+async function loadClient(){
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "clients"
+        ),
+        where(
+          "uid",
+          "==",
+          currentUser.uid
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    if(snapshot.empty){
+
+      showClientError(
+        "Your coaching account has not been connected yet. Please contact Mahnoor Dietitian."
+      );
+
+      return;
+
+    }
+
+
+    const clientDoc =
+      snapshot.docs[0];
+
+
+    currentClient = {
+
+      id:
+        clientDoc.id,
+
+      ...clientDoc.data()
+
+    };
+
+
+    document.getElementById(
+      "programSubtitle"
+    ).textContent =
+      currentClient.programName ||
+      "Your private 1:1 coaching classroom.";
+
+
+    /*
+      IMPORTANT:
+
+      Load completion records before
+      rendering the program so every
+      completed day immediately shows
+      the green ✓ Completed badge.
+    */
+
+    await loadCompletedDays();
+
+
+    await loadAllContent();
+
+  }
+  catch(error){
+
+    console.error(
+      "Client loading error:",
+      error
+    );
+
+
+    showClientError(
+      "Unable to load your coaching account."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   LOAD ALL CONTENT
+===================================================== */
+
+async function loadAllContent(){
+
+  await Promise.all([
+
+    loadProgram(),
+
+    loadMealPlans(),
+
+    loadWorkouts(),
+
+    loadResources(),
+
+    loadCommunity()
+
+  ]);
+
+}
+
+
+/* =====================================================
+   LOAD COMPLETED DAYS
+===================================================== */
+
+async function loadCompletedDays(){
+
+  completedDays = {};
+
+
+  try{
+
+    /*
+      Completion documents are filtered
+      by the logged-in user's UID.
+
+      This means the client only loads
+      their own completion records.
+    */
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneCompletions"
+        ),
+        where(
+          "uid",
+          "==",
+          currentUser.uid
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    snapshot.docs.forEach(
+      completionDoc => {
+
+        const data =
+          completionDoc.data();
+
+
+        const key =
+          completionKey(
+            data.phase,
+            data.week,
+            data.day
+          );
+
+
+        completedDays[key] = {
+
+          completed:
+            data.completed === true,
+
+          completedAt:
+            data.completedAt || null
+
+        };
+
+      }
+    );
+
+  }
+  catch(error){
+
+    /*
+      If completion permissions have not
+      yet been added to Firebase rules,
+      the program can still load.
+    */
+
+    console.error(
+      "Unable to load completion records:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   COMPLETION KEY
+===================================================== */
+
+function completionKey(
+  phase,
+  week,
+  day
+){
+
+  return (
+    String(phase || 1) +
+    "_" +
+    String(week || 1) +
+    "_" +
+    String(day || 1)
+  );
+
+}
+
+
+/* =====================================================
+   CHECK WHETHER DAY IS COMPLETE
+===================================================== */
+
+function isDayCompleted(
+  phase,
+  week,
+  day
+){
+
+  const key =
+    completionKey(
+      phase,
+      week,
+      day
+    );
+
+
+  return (
+    completedDays[key] &&
+    completedDays[key].completed === true
+  );
+
+}
+
+
+/* =====================================================
+   MARK DAY COMPLETE
+===================================================== */
+
+async function markDayComplete(
+  phase,
+  week,
+  day
+){
+
+  if(!currentUser || !currentClient){
+
+    return;
+
+  }
+
+
+  if(
+    isDayCompleted(
+      phase,
+      week,
+      day
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "completeDayButton"
+    );
+
+
+  const status =
+    document.getElementById(
+      "completionStatus"
+    );
+
+
+  if(button){
+
+    button.disabled = true;
+
+    button.textContent =
+      "Saving...";
+
+  }
+
+
+  try{
+
+    /*
+      A fixed document ID prevents
+      duplicate completion records.
+
+      Example:
+
+      UID_p1_w2_d4
+    */
+
+    const completionId =
+      currentUser.uid +
+      "_p" +
+      String(phase) +
+      "_w" +
+      String(week) +
+      "_d" +
+      String(day);
+
+
+    await setDoc(
+
+      doc(
+        db,
+        "oneOnOneCompletions",
+        completionId
+      ),
+
+      {
+
+        clientId:
+          currentClient.id,
+
+        uid:
+          currentUser.uid,
+
+        clientEmail:
+          currentUser.email || "",
+
+        phase:
+          Number(phase || 1),
+
+        week:
+          Number(week || 1),
+
+        day:
+          Number(day || 1),
+
+        completed:
+          true,
+
+        completedAt:
+          serverTimestamp(),
+
+        updatedAt:
+          serverTimestamp()
+
+      },
+
+      {
+        merge:true
+      }
+
+    );
+
+
+    /*
+      Update local state immediately
+      so the user does not need to reload.
+    */
+
+    const key =
+      completionKey(
+        phase,
+        week,
+        day
+      );
+
+
+    completedDays[key] = {
+
+      completed:true,
+
+      completedAt:null
+
+    };
+
+
+    if(button){
+
+      button.disabled = true;
+
+      button.classList.add(
+        "completed"
+      );
+
+      button.textContent =
+        "✓ Day Completed";
+
+    }
+
+
+    if(status){
+
+      status.textContent =
+        "Great work! This day has been marked as completed.";
+
+      status.style.color =
+        "#28733a";
+
+    }
+
+
+    /*
+      Re-render the program in the
+      background so the day card also
+      receives its completed badge.
+    */
+
+    renderProgram();
+
+  }
+  catch(error){
+
+    console.error(
+      "Unable to save completion:",
+      error
+    );
+
+
+    if(button){
+
+      button.disabled = false;
+
+      button.textContent =
+        "✓ Mark Day Complete";
+
+    }
+
+
+    if(status){
+
+      status.textContent =
+        "Unable to save your progress. Please try again.";
+
+      status.style.color =
+        "#8b3333";
+
+    }
+
+  }
+
+}
+
+
+/* =====================================================
+   LOAD PROGRAM
+===================================================== */
+
+async function loadProgram(){
+
+  const container =
+    document.getElementById(
+      "programList"
+    );
+
+
+  try{
+
+    const weeksRef =
+      collection(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks"
+      );
+
+
+    const snapshot =
+      await getDocs(
+        weeksRef
+      );
+
+
+    weeks =
+      snapshot.docs.map(
+        item => ({
+
+          id:
+            item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    weeks.sort(
+      (a,b) =>
+        Number(
+          a.order ||
+          a.weekNumber ||
+          a.number ||
+          0
+        )
+        -
+        Number(
+          b.order ||
+          b.weekNumber ||
+          b.number ||
+          0
+        )
+    );
+
+
+    /*
+      Some admin data may already contain
+      phase information.
+
+      If it does not, everything is
+      treated as Phase 1.
+    */
+
+    phases =
+      buildPhasesFromWeeks(
+        weeks
+      );
+
+
+    renderProgram();
+
+  }
+  catch(error){
+
+    console.error(
+      "Program loading error:",
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="error-box">
+
+        Unable to load your program.
+
+        <br><br>
+
+        Please check your Firebase
+        Firestore permissions and make
+        sure the program has been added.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   BUILD PHASES
+===================================================== */
+
+function buildPhasesFromWeeks(
+  weekArray
+){
+
+  const phaseMap = {};
+
+
+  weekArray.forEach(
+    week => {
+
+      const phaseNumber =
+        Number(
+          week.phase ||
+          week.phaseNumber ||
+          1
+        );
+
+
+      if(
+        !phaseMap[phaseNumber]
+      ){
+
+        phaseMap[phaseNumber] = {
+
+          number:
+            phaseNumber,
+
+          title:
+            week.phaseTitle ||
+            "Phase " +
+            phaseNumber,
+
+          description:
+            week.phaseDescription ||
+            "",
+
+          weeks:[]
+
+        };
+
+      }
+
+
+      phaseMap[
+        phaseNumber
+      ].weeks.push(
+        week
+      );
+
+    }
+  );
+
+
+  return Object
+    .values(phaseMap)
+    .sort(
+      (a,b) =>
+        a.number - b.number
+    );
+
+}
+
+
+/* =====================================================
+   RENDER PROGRAM
+===================================================== */
+
+function renderProgram(){
+
+  const container =
+    document.getElementById(
+      "programList"
+    );
+
+
+  if(!weeks.length){
+
+    document.getElementById(
+      "weekCount"
+    ).textContent =
+      "0 weeks";
+
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        Your coaching program content
+        will appear here once it has
+        been added by your coach.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "weekCount"
+  ).textContent =
+    weeks.length +
+    (
+      weeks.length === 1
+      ? " week"
+      : " weeks"
+    );
+
+
+  container.innerHTML =
+    phases
+      .map(
+        phase => `
+
+          <div class="phase-card">
+
+            <div class="phase-header">
+
+              <div class="phase-number">
+
+                Phase
+                ${escapeHtml(
+                  phase.number
+                )}
+
+              </div>
+
+              <div class="phase-title">
+
+                ${escapeHtml(
+                  phase.title
+                )}
+
+              </div>
+
+              ${
+                phase.description
+                ?
+                `
+                <div class="phase-description">
+                  ${escapeHtml(
+                    phase.description
+                  )}
+                </div>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+
+            <div class="week-list">
+
+              ${
+                phase.weeks
+                  .map(
+                    week =>
+                      renderWeek(
+                        phase.number,
+                        week
+                      )
+                  )
+                  .join("")
+              }
+
+            </div>
+
+          </div>
+
+        `
+      )
+      .join("");
+
+
+  attachWeekEvents();
+
+}
+
+
+/* =====================================================
+   RENDER WEEK
+===================================================== */
+
+function renderWeek(
+  phaseNumber,
+  week
+){
+
+  const weekNumber =
+    Number(
+      week.weekNumber ||
+      week.number ||
+      week.order ||
+      1
+    );
+
+
+  return `
+
+    <div
+      class="week-card"
+      data-week="${escapeAttribute(
+        week.id
+      )}"
+    >
+
+      <div
+        class="week-header"
+        data-toggle-week="${escapeAttribute(
+          week.id
+        )}"
+      >
+
+        <div>
+
+          <div class="week-number">
+
+            Week
+            ${escapeHtml(
+              weekNumber
+            )}
+
+          </div>
+
+          <div class="week-title">
+
+            ${escapeHtml(
+              week.title ||
+              "Untitled Week"
+            )}
+
+          </div>
+
+          ${
+            week.description
+            ?
+            `
+            <div class="week-description">
+
+              ${escapeHtml(
+                week.description
+              )}
+
+            </div>
+            `
+            :
+            ""
+          }
+
+        </div>
+
+
+        <div class="arrow">
+          ›
+        </div>
+
+      </div>
+
+
+      <div
+        class="week-days"
+        id="days-${escapeAttribute(
+          week.id
+        )}"
+      >
+
+        <div class="loading">
+
+          Loading days...
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   ATTACH WEEK EVENTS
+===================================================== */
+
+function attachWeekEvents(){
+
+  document
+    .querySelectorAll(
+      "[data-toggle-week]"
+    )
+    .forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          async () => {
+
+            const weekId =
+              button.dataset.toggleWeek;
+
+
+            const card =
+              document.querySelector(
+                `[data-week="${CSS.escape(
+                  weekId
+                )}"]`
+              );
+
+
+            if(!card){
+
+              return;
+
+            }
+
+
+            card.classList.toggle(
+              "open"
+            );
+
+
+            if(
+              card.classList.contains(
+                "open"
+              )
+            ){
+
+              await loadDays(
+                weekId
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+}
+
+
+/* =====================================================
+   LOAD DAYS
+===================================================== */
+
+async function loadDays(
+  weekId
+){
+
+  const container =
+    document.getElementById(
+      "days-" + weekId
+    );
+
+
+  if(!container){
+
+    return;
+
+  }
+
+
+  try{
+
+    const daysRef =
+      collection(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks",
+        weekId,
+        "days"
+      );
+
+
+    const snapshot =
+      await getDocs(
+        daysRef
+      );
+
+
+    let days =
+      snapshot.docs.map(
+        item => ({
+
+          id:
+            item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    days.sort(
+      (a,b) =>
+        Number(
+          a.order ||
+          a.dayNumber ||
+          a.number ||
+          0
+        )
+        -
+        Number(
+          b.order ||
+          b.dayNumber ||
+          b.number ||
+          0
+        )
+    );
+
+
+    const week =
+      weeks.find(
+        item =>
+          item.id === weekId
+      );
+
+
+    const phase =
+      Number(
+        week?.phase ||
+        week?.phaseNumber ||
+        1
+      );
+
+
+    const weekNumber =
+      Number(
+        week?.weekNumber ||
+        week?.number ||
+        week?.order ||
+        1
+      );
+
+
+    if(!days.length){
+
+      container.innerHTML = `
+
+        <div class="empty">
+
+          Content for this week
+          is being prepared.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      days
+        .map(
+          day => {
+
+            const dayNumber =
+              Number(
+                day.dayNumber ||
+                day.number ||
+                day.order ||
+                1
+              );
+
+
+            const completed =
+              isDayCompleted(
+                phase,
+                weekNumber,
+                dayNumber
+              );
+
+
+            return `
+
+              <div
+                class="day-card ${
+                  completed
+                  ? "completed"
+                  : ""
+                }"
+                data-day-id="${escapeAttribute(
+                  day.id
+                )}"
+                data-week-id="${escapeAttribute(
+                  weekId
+                )}"
+                data-phase="${phase}"
+                data-week="${weekNumber}"
+                data-day="${dayNumber}"
+              >
+
+                <div class="day-left">
+
+                  <div class="day-label">
+
+                    Day
+                    ${escapeHtml(
+                      dayNumber
+                    )}
+
+                  </div>
+
+                  <div class="day-title">
+
+                    ${escapeHtml(
+                      day.title ||
+                      "Daily Coaching"
+                    )}
+
+                  </div>
+
+                  ${
+                    day.description
+                    ?
+                    `
+                    <div class="day-description">
+
+                      ${escapeHtml(
+                        day.description
+                      )}
+
+                    </div>
+                    `
+                    :
+                    ""
+                  }
+
+                </div>
+
+
+                <div class="day-right">
+
+                  ${
+                    completed
+                    ?
+                    `
+                    <span class="completed-badge">
+                      ✓ Completed
+                    </span>
+                    `
+                    :
+                    ""
+                  }
+
+                  <div class="day-arrow">
+                    →
+                  </div>
+
+                </div>
+
+              </div>
+
+            `;
+
+          }
+        )
+        .join("");
+
+
+    container
+      .querySelectorAll(
+        "[data-day-id]"
+      )
+      .forEach(
+        card => {
+
+          card.addEventListener(
+            "click",
+            () => {
+
+              openDay(
+                card.dataset.phase,
+                card.dataset.week,
+                card.dataset.day,
+                card.dataset.weekId,
+                card.dataset.dayId
+              );
+
+            }
+          );
+
+        }
+      );
+
+  }
+  catch(error){
+
+    console.error(
+      "Days loading error:",
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        Unable to load this week's content.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   OPEN DAY
+===================================================== */
+
+async function openDay(
+  phase,
+  weekNumber,
+  dayNumber,
+  weekId,
+  dayId
+){
+
+  currentOpenedDay = {
+
+    phase:
+      Number(phase),
+
+    week:
+      Number(weekNumber),
+
+    day:
+      Number(dayNumber),
+
+    weekId:
+      weekId,
+
+    dayId:
+      dayId
+
+  };
+
+
+  document
+    .querySelectorAll(
+      ".page-section"
+    )
+    .forEach(
+      section => {
+
+        section.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "dayContent"
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  const box =
+    document.getElementById(
+      "dayContentBox"
+    );
+
+
+  box.innerHTML = `
+
+    <div class="loading">
+
+      Loading today's content...
+
+    </div>
+
+  `;
+
+
+  try{
+
+    /*
+      First get the day document so
+      its title and description can
+      be displayed.
+    */
+
+    const daySnapshot =
+      await getDocs(
+        query(
+          collection(
+            db,
+            "programs",
+            "oneOnOne",
+            "weeks",
+            weekId,
+            "days"
+          ),
+          where(
+            "__name__",
+            "==",
+            dayId
+          )
+        )
+      );
+
+
+    let dayData = {};
+
+
+    if(
+      !daySnapshot.empty
+    ){
+
+      dayData =
+        daySnapshot.docs[0].data();
+
+    }
+
+
+    /*
+      Load lessons.
+    */
+
+    const lessonsRef =
+      collection(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks",
+        weekId,
+        "days",
+        dayId,
+        "lessons"
+      );
+
+
+    const snapshot =
+      await getDocs(
+        lessonsRef
+      );
+
+
+    const lessons =
+      snapshot.docs
+        .map(
+          item => ({
+
+            id:
+              item.id,
+
+            ...item.data()
+
+          })
+        )
+        .sort(
+          (a,b) =>
+            Number(
+              a.order || 0
+            )
+            -
+            Number(
+              b.order || 0
+            )
+        );
+
+
+    const completed =
+      isDayCompleted(
+        phase,
+        weekNumber,
+        dayNumber
+      );
+
+
+    let html = `
+
+      <h2>
+
+        Day
+        ${escapeHtml(
+          dayNumber
+        )}
+
+        ${
+          dayData.title
+          ?
+          " — " +
+          escapeHtml(
+            dayData.title
+          )
+          :
+          ""
+        }
+
+      </h2>
+
+
+      <div class="day-subtitle">
+
+        Phase
+        ${escapeHtml(
+          phase
+        )}
+
+        ·
+
+        Week
+        ${escapeHtml(
+          weekNumber
+        )}
+
+        ·
+
+        Day
+        ${escapeHtml(
+          dayNumber
+        )}
+
+        ${
+          dayData.description
+          ?
+          `
+          <br>
+          ${escapeHtml(
+            dayData.description
+          )}
+          `
+          :
+          ""
+        }
+
+      </div>
+
+
+      <div class="completion-box">
+
+        <div
+          class="completion-status"
+          id="completionStatus"
+        >
+
+          ${
+            completed
+            ?
+            "You have completed this day. Well done!"
+            :
+            "Complete today's coaching work and mark this day as completed."
+          }
+
+        </div>
+
+
+        <button
+          id="completeDayButton"
+          class="complete-day-btn ${
+            completed
+            ? "completed"
+            : ""
+          }"
+          ${
+            completed
+            ? "disabled"
+            : ""
+          }
+        >
+
+          ${
+            completed
+            ? "✓ Day Completed"
+            : "✓ Mark Day Complete"
+          }
+
+        </button>
+
+
+        ${
+          completed &&
+          completedDays[
+            completionKey(
+              phase,
+              weekNumber,
+              dayNumber
+            )
+          ]?.completedAt
+          ?
+          `
+          <div class="completion-date">
+
+            Completed on
+            ${formatTimestamp(
+              completedDays[
+                completionKey(
+                  phase,
+                  weekNumber,
+                  dayNumber
+                )
+              ].completedAt
+            )}
+
+          </div>
+          `
+          :
+          ""
+        }
+
+      </div>
+
+    `;
+
+
+    if(!lessons.length){
+
+      html += `
+
+        <div class="empty">
+
+          Your coach is preparing this
+          day's content.
+
+        </div>
+
+      `;
+
+    }
+    else{
+
+      html +=
+        lessons
+          .map(
+            renderLesson
+          )
+          .join("");
+
+    }
+
+
+    box.innerHTML =
+      html;
+
+
+    /*
+      Attach the completion button
+      after the HTML has been inserted.
+    */
+
+    const completeButton =
+      document.getElementById(
+        "completeDayButton"
+      );
+
+
+    if(
+      completeButton &&
+      !completed
+    ){
+
+      completeButton.addEventListener(
+        "click",
+        async () => {
+
+          await markDayComplete(
+            phase,
+            weekNumber,
+            dayNumber
+          );
+
+        }
+      );
+
+    }
+
+  }
+  catch(error){
+
+    console.error(
+      "Day loading error:",
+      error
+    );
+
+
+    box.innerHTML = `
+
+      <div class="error-box">
+
+        Unable to load today's content.
+
+        <br><br>
+
+        Please try again.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   LESSON RENDER
+===================================================== */
+
+function renderLesson(
+  lesson
+){
+
+  let html = `
+
+    <div class="lesson">
+
+      <h3>
+
+        ${escapeHtml(
+          lesson.title ||
+          "Lesson"
+        )}
+
+      </h3>
+
+  `;
+
+
+  if(lesson.description){
+
+    html += `
+
+      <p>
+
+        ${escapeHtml(
+          lesson.description
+        )}
+
+      </p>
+
+    `;
+
+  }
+
+
+  if(lesson.content){
+
+    html += `
+
+      <p>
+
+        ${escapeHtml(
+          lesson.content
+        )}
+
+      </p>
+
+    `;
+
+  }
+
+
+  if(
+    lesson.videoUrl
+  ){
+
+    html += `
+
+      <div class="video-wrapper">
+
+        <iframe
+          src="${safeUrl(
+            lesson.videoUrl
+          )}"
+          allowfullscreen
+        ></iframe>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if(
+    lesson.pdfUrl
+  ){
+
+    html += `
+
+      <a
+        class="resource-button"
+        href="${safeUrl(
+          lesson.pdfUrl
+        )}"
+        target="_blank"
+        rel="noopener"
+      >
+
+        📄 Open PDF
+
+      </a>
+
+    `;
+
+  }
+
+
+  if(
+    lesson.imageUrl
+  ){
+
+    html += `
+
+      <img
+        class="lesson-image"
+        src="${safeUrl(
+          lesson.imageUrl
+        )}"
+        alt=""
+      >
+
+    `;
+
+  }
+
+
+  if(
+    lesson.linkUrl
+  ){
+
+    html += `
+
+      <a
+        class="resource-button"
+        href="${safeUrl(
+          lesson.linkUrl
+        )}"
+        target="_blank"
+        rel="noopener"
+      >
+
+        🔗 Open Resource
+
+      </a>
+
+    `;
+
+  }
+
+
+  html += `
+
+    </div>
+
+  `;
+
+
+  return html;
+
+}
+
+
+/* =====================================================
+   MEAL PLANS
+===================================================== */
+
+async function loadMealPlans(){
+
+  const container =
+    document.getElementById(
+      "mealPlanList"
+    );
+
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneMealPlans"
+        ),
+        where(
+          "clientId",
+          "==",
+          currentClient.id
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    let mealPlans =
+      snapshot.docs.map(
+        item => ({
+
+          id:
+            item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    /*
+      If admin has assigned a display day,
+      keep it available in the card.
+    */
+
+    mealPlans.sort(
+      (a,b) =>
+        Number(
+          a.displayDay ||
+          0
+        )
+        -
+        Number(
+          b.displayDay ||
+          0
+        )
+    );
+
+
+    if(!mealPlans.length){
+
+      container.innerHTML = `
+
+        <div class="empty">
+
+          Your meal plans will appear here.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      mealPlans
+        .map(
+          item =>
+            contentCard(
+              "🥗",
+              item.title ||
+              "Meal Plan",
+              buildScheduledDescription(
+                item.description ||
+                "Your personalized meal plan.",
+                item
+              ),
+              item.url ||
+              item.pdfUrl
+            )
+        )
+        .join("");
+
+  }
+  catch(error){
+
+    console.error(
+      "Meal plan loading error:",
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        Meal plans will appear here once assigned.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   WORKOUTS
+===================================================== */
+
+async function loadWorkouts(){
+
+  const container =
+    document.getElementById(
+      "workoutList"
+    );
+
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneWorkouts"
+        ),
+        where(
+          "clientId",
+          "==",
+          currentClient.id
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    let workouts =
+      snapshot.docs.map(
+        item => ({
+
+          id:
+            item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    workouts.sort(
+      (a,b) =>
+        Number(
+          a.displayDay ||
+          0
+        )
+        -
+        Number(
+          b.displayDay ||
+          0
+        )
+    );
+
+
+    if(!workouts.length){
+
+      container.innerHTML = `
+
+        <div class="empty">
+
+          Your assigned workouts will appear here.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      workouts
+        .map(
+          item =>
+            contentCard(
+              "🏋️",
+              item.title ||
+              "Workout",
+              buildScheduledDescription(
+                item.description ||
+                "Your assigned workout.",
+                item
+              ),
+              item.url ||
+              item.videoUrl
+            )
+        )
+        .join("");
+
+  }
+  catch(error){
+
+    console.error(
+      "Workout loading error:",
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        Workouts will appear here once assigned.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   RESOURCES
+===================================================== */
+
+async function loadResources(){
+
+  const container =
+    document.getElementById(
+      "resourceList"
+    );
+
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneResources"
+        ),
+        where(
+          "clientId",
+          "==",
+          currentClient.id
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    let resources =
+      snapshot.docs.map(
+        item => ({
+
+          id:
+            item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    resources.sort(
+      (a,b) =>
+        Number(
+          a.displayDay ||
+          0
+        )
+        -
+        Number(
+          b.displayDay ||
+          0
+        )
+    );
+
+
+    if(!resources.length){
+
+      container.innerHTML = `
+
+        <div class="empty">
+
+          Your resources will appear here.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      resources
+        .map(
+          item =>
+            contentCard(
+              "📄",
+              item.title ||
+              "Resource",
+              buildScheduledDescription(
+                item.description ||
+                "A resource from your coach.",
+                item
+              ),
+              item.url ||
+              item.pdfUrl
+            )
+        )
+        .join("");
+
+  }
+  catch(error){
+
+    console.error(
+      "Resource loading error:",
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        Resources will appear here once added.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   SCHEDULE DESCRIPTION
+===================================================== */
+
+function buildScheduledDescription(
+  description,
+  item
+){
+
+  let result =
+    String(
+      description || ""
+    );
+
+
+  /*
+    These fields are optional.
+
+    If your admin panel saves them,
+    the client can see the schedule.
+  */
+
+  if(
+    item.displayPhase ||
+    item.displayWeek ||
+    item.displayDay
+  ){
+
+    result +=
+      "\n\nAvailable from: ";
+
+
+    if(item.displayPhase){
+
+      result +=
+        "Phase " +
+        item.displayPhase;
+
+    }
+
+
+    if(item.displayWeek){
+
+      result +=
+        " · Week " +
+        item.displayWeek;
+
+    }
+
+
+    if(item.displayDay){
+
+      result +=
+        " · Day " +
+        item.displayDay;
+
+    }
+
+  }
+
+
+  return result;
+
+}
+
+
+/* =====================================================
+   COMMUNITY
+===================================================== */
+
+async function loadCommunity(){
+
+  const container =
+    document.getElementById(
+      "communityList"
+    );
+
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneCommunity"
+        ),
+        where(
+          "clientId",
+          "==",
+          currentClient.id
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    let communityPosts =
+      snapshot.docs.map(
+        item => ({
+
+          id:
+            item.id,
+
+          ...item.data()
+
+        })
+      );
+
+
+    if(!communityPosts.length){
+
+      container.innerHTML = `
+
+        <div class="empty">
+
+          No private community updates yet.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    communityPosts.sort(
+      (a,b) => {
+
+        const aTime =
+          a.createdAt?.seconds ||
+          0;
+
+        const bTime =
+          b.createdAt?.seconds ||
+          0;
+
+        return bTime - aTime;
+
+      }
+    );
+
+
+    container.innerHTML =
+      communityPosts
+        .map(
+          post => `
+
+            <div class="post">
+
+              <div class="post-date">
+
+                ${formatTimestamp(
+                  post.createdAt
+                )}
+
+              </div>
+
+
+              <h3>
+
+                ${escapeHtml(
+                  post.title ||
+                  "Update"
+                )}
+
+              </h3>
+
+
+              <p>
+
+                ${escapeHtml(
+                  post.content ||
+                  ""
+                )}
+
+              </p>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+  }
+  catch(error){
+
+    console.error(
+      "Community loading error:",
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        Private community updates
+        will appear here.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   CONTENT CARD
+===================================================== */
+
+function contentCard(
+  icon,
+  title,
+  description,
+  url
+){
+
+  return `
+
+    <div class="content-card">
+
+      <div class="content-icon">
+
+        ${icon}
+
+      </div>
+
+
+      <h3>
+
+        ${escapeHtml(
+          title
+        )}
+
+      </h3>
+
+
+      <p>
+
+        ${escapeHtml(
+          description
+        )}
+
+      </p>
+
+
+      ${
+        url
+        ?
+        `
+        <a
+          class="content-link"
+          href="${safeUrl(
+            url
+          )}"
+          target="_blank"
+          rel="noopener"
+        >
+
+          Open
+
+        </a>
+        `
+        :
+        ""
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+document
+  .querySelectorAll(
+    ".nav-btn"
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const section =
+            button.dataset.section;
+
+
+          document
+            .querySelectorAll(
+              ".nav-btn"
+            )
+            .forEach(
+              btn => {
+
+                btn.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          document
+            .querySelectorAll(
+              ".page-section"
+            )
+            .forEach(
+              page => {
+
+                page.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+
+          const target =
+            document.getElementById(
+              section
+            );
+
+
+          if(target){
+
+            target.classList.add(
+              "active"
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   BACK TO PROGRAM
+===================================================== */
+
+document
+  .getElementById(
+    "backToProgram"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      document
+        .getElementById(
+          "dayContent"
+        )
+        .classList.remove(
+          "active"
+        );
+
+
+      document
+        .getElementById(
+          "program"
+        )
+        .classList.add(
+          "active"
+        );
+
+    }
+  );
+
+
+/* =====================================================
+   CHECK-IN
+===================================================== */
+
+document
+  .getElementById(
+    "saveCheckin"
+  )
+  .addEventListener(
+    "click",
+    async () => {
+
+      const text =
+        document
+          .getElementById(
+            "checkinText"
+          )
+          .value
+          .trim();
+
+
+      const message =
+        document.getElementById(
+          "checkinMessage"
+        );
+
+
+      if(!text){
+
+        message.style.color =
+          "#8b3333";
+
+        message.textContent =
+          "Please write your check-in first.";
+
+        return;
+
+      }
+
+
+      const button =
+        document.getElementById(
+          "saveCheckin"
+        );
+
+
+      button.disabled = true;
+
+      button.textContent =
+        "Submitting...";
+
+
+      try{
+
+        await addDoc(
+          collection(
+            db,
+            "oneOnOneCheckins"
+          ),
+          {
+
+            clientId:
+              currentClient.id,
+
+            uid:
+              currentUser.uid,
+
+            text:
+              text,
+
+            createdAt:
+              serverTimestamp(),
+
+            status:
+              "submitted"
+
+          }
+        );
+
+
+        document
+          .getElementById(
+            "checkinText"
+          )
+          .value = "";
+
+
+        message.style.color =
+          "#28733a";
+
+
+        message.textContent =
+          "Your check-in has been submitted to your coach.";
+
+      }
+      catch(error){
+
+        console.error(
+          "Check-in error:",
+          error
+        );
+
+
+        message.style.color =
+          "#8b3333";
+
+
+        message.textContent =
+          "Unable to submit your check-in. Please try again.";
+
+      }
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Submit Check-in";
+
+    }
+  );
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document
+  .getElementById(
+    "logoutBtn"
+  )
+  .addEventListener(
+    "click",
+    async () => {
+
+      try{
+
+        await signOut(
+          auth
+        );
+
+      }
+      catch(error){
+
+        console.error(
+          error
+        );
+
+      }
+
+
+      window.location.href =
+        "login.html";
+
+    }
+  );
+
+
+/* =====================================================
+   CLIENT ERROR
+===================================================== */
+
+function showClientError(
+  message
+){
+
+  document.getElementById(
+    "programList"
+  ).innerHTML = `
+
+    <div class="error-box">
+
+      ${escapeHtml(
+        message
+      )}
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   URL SAFETY
+===================================================== */
+
+function safeUrl(
+  value
+){
+
+  const url =
+    String(
+      value || ""
+    ).trim();
+
+
+  if(
+    url.startsWith(
+      "https://"
+    )
+    ||
+    url.startsWith(
+      "http://"
+    )
+  ){
+
+    return escapeAttribute(
+      url
+    );
+
+  }
+
+
+  return "#";
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(
+  value
+){
+
+  return String(
+    value ?? ""
+  )
+  .replaceAll(
+    "&",
+    "&amp;"
+  )
+  .replaceAll(
+    "<",
+    "&lt;"
+  )
+  .replaceAll(
+    ">",
+    "&gt;"
+  )
+  .replaceAll(
+    '"',
+    "&quot;"
+  )
+  .replaceAll(
+    "'",
+    "&#039;"
+  );
+
+}
+
+
+/* =====================================================
+   ESCAPE ATTRIBUTE
+===================================================== */
+
+function escapeAttribute(
+  value
+){
+
+  return escapeHtml(
+    value
+  );
+
+}
+
+
+/* =====================================================
+   TIMESTAMP
+===================================================== */
+
+function formatTimestamp(
+  timestamp
+){
+
+  if(!timestamp){
+
+    return "";
+
+  }
+
+
+  let date;
+
+
+  /*
+    Firestore Timestamp
+  */
+
+  if(
+    typeof timestamp.toDate ===
+    "function"
+  ){
+
+    date =
+      timestamp.toDate();
+
+  }
+
+  /*
+    Firestore serialized timestamp
+  */
+
+  else if(
+    timestamp.seconds
+  ){
+
+    date =
+      new Date(
+        timestamp.seconds *
+        1000
+      );
+
+  }
+
+  else{
+
+    return "";
+
+  }
+
+
+  return date.toLocaleDateString(
+    "en-PK",
+    {
+
+      day:
+        "numeric",
+
+      month:
+        "short",
+
+      year:
+        "numeric"
+
+    }
+  );
+
+}
+
+</script>
+
+</body>
+</html>
