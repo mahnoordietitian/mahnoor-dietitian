@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mahnoor Dietitian</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #FBF8F3;
+      color: #2D2D2D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 700px;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 42px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .status {
+      margin-top: 30px;
+      padding: 16px 20px;
+      border-radius: 10px;
+      background: white;
+      border: 1px solid #DCCBB3;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Mahnoor Dietitian</h1>
+
+    <p>
+      Personalized nutrition coaching and support for women.
+    </p>
+
+    <div class="status" id="firebase-status">
+      Connecting to your account system...
+    </div>
+
+  </div>
+
+  <script type="module">
+
+    // Firebase
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
+      authDomain: "mahnoor-dietitian.firebaseapp.com",
+      projectId: "mahnoor-dietitian",
+      storageBucket: "mahnoor-dietitian.firebasestorage.app",
+      messagingSenderId: "900688855173",
+      appId: "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
+    };
+
+    try {
+
+      const app = initializeApp(firebaseConfig);
+
+      document.getElementById("firebase-status").textContent =
+        "Firebase connected successfully ✓";
+
+    } catch (error) {
+
+      console.error(error);
+
+      document.getElementById("firebase-status").textContent =
+        "Firebase connection needs attention.";
+
+    }
+
+  </script>
+
+</body>
+</html>
