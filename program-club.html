@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Freedom Women's Health Club | Mahnoor Dietitian</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#FBF8F3;
+  color:#2D2D2D;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+  background:#ffffff;
+  border-bottom:1px solid #eadfe9;
+  padding:18px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.brand{
+  color:#6E4A7E;
+  font-size:24px;
+  font-weight:700;
+}
+
+.header-right{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.back-btn,
+.logout-btn{
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.back-btn{
+  background:#f1eaf2;
+  color:#6E4A7E;
+}
+
+.logout-btn{
+  background:#6E4A7E;
+  color:#ffffff;
+}
+
+.back-btn:hover,
+.logout-btn:hover,
+.primary-btn:hover,
+.action-btn:hover{
+  opacity:.92;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+  max-width:1300px;
+  margin:auto;
+  padding:35px 20px 70px;
+}
+
+.page-heading{
+  margin-bottom:28px;
+}
+
+.page-heading h1{
+  margin:0 0 8px;
+  font-size:34px;
+  color:#2D2D2D;
+}
+
+.page-heading p{
+  margin:0;
+  color:#777;
+  line-height:1.6;
+}
+
+.program-badge{
+  display:inline-block;
+  margin-top:14px;
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.summary{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:15px;
+  margin-bottom:28px;
+}
+
+.summary-card{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:20px;
+}
+
+.summary-label{
+  color:#777;
+  font-size:13px;
+  margin-bottom:9px;
+}
+
+.summary-number{
+  color:#6E4A7E;
+  font-size:28px;
+  font-weight:700;
+}
+
+
+/* =====================================================
+   PROGRAM CONTROL
+===================================================== */
+
+.program-control{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:24px;
+}
+
+.control-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.control-header h2{
+  margin:0;
+  color:#6E4A7E;
+  font-size:20px;
+}
+
+.control-header p{
+  margin:5px 0 0;
+  color:#777;
+  font-size:13px;
+}
+
+.control-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.primary-btn{
+  border:none;
+  background:#6E4A7E;
+  color:#ffffff;
+  border-radius:8px;
+  padding:11px 17px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.secondary-btn{
+  border:1px solid #d8cbd9;
+  background:#ffffff;
+  color:#6E4A7E;
+  border-radius:8px;
+  padding:11px 17px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.toolbar{
+  display:grid;
+  grid-template-columns:1fr 190px 190px;
+  gap:12px;
+}
+
+input,
+select{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #d9d0d9;
+  border-radius:8px;
+  font-family:inherit;
+  font-size:14px;
+  background:#ffffff;
+}
+
+input:focus,
+select:focus{
+  outline:none;
+  border-color:#6E4A7E;
+  box-shadow:0 0 0 3px rgba(110,74,126,.08);
+}
+
+
+/* =====================================================
+   CLIENT SECTION
+===================================================== */
+
+.section{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:25px;
+}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.section-heading h2{
+  margin:0;
+  font-size:21px;
+}
+
+.section-heading span{
+  color:#777;
+  font-size:13px;
+}
+
+
+/* =====================================================
+   CLIENT LIST
+===================================================== */
+
+.client-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.client-card{
+  border:1px solid #ece5ec;
+  border-radius:13px;
+  padding:19px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  transition:.15s;
+}
+
+.client-card:hover{
+  border-color:#cdb9d1;
+  box-shadow:0 4px 15px rgba(110,74,126,.06);
+}
+
+.client-left{
+  min-width:0;
+  flex:1;
+}
+
+.client-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:6px;
+}
+
+.client-name{
+  font-size:18px;
+  font-weight:700;
+}
+
+.client-email{
+  color:#777;
+  font-size:13px;
+  margin-bottom:9px;
+  word-break:break-word;
+}
+
+.client-info{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.info-chip{
+  background:#FBF8F3;
+  border:1px solid #eee6ee;
+  border-radius:7px;
+  padding:7px 9px;
+  font-size:12px;
+  color:#555;
+}
+
+.info-chip strong{
+  color:#6E4A7E;
+}
+
+.client-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.action-btn{
+  border:none;
+  border-radius:8px;
+  padding:9px 12px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:600;
+}
+
+.open-btn{
+  background:#6E4A7E;
+  color:#ffffff;
+}
+
+.checkin-btn{
+  background:#eee5f0;
+  color:#6E4A7E;
+}
+
+.assessment-btn{
+  background:#f3eee8;
+  color:#66594d;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.status.active{
+  background:#e8f5eb;
+  color:#28733a;
+}
+
+.status.expired{
+  background:#f5e7e7;
+  color:#8b3333;
+}
+
+.status.pending{
+  background:#f5efe1;
+  color:#86651e;
+}
+
+.status.connected{
+  background:#e9f5ec;
+  color:#28733a;
+}
+
+.status.not-connected{
+  background:#f4eeee;
+  color:#777;
+}
+
+.status.paid{
+  background:#e9f5ec;
+  color:#28733a;
+}
+
+.status.partial{
+  background:#f5efe1;
+  color:#86651e;
+}
+
+
+/* =====================================================
+   EMPTY / ERROR
+===================================================== */
+
+.empty{
+  text-align:center;
+  padding:55px 20px;
+  color:#777;
+}
+
+.empty-icon{
+  font-size:34px;
+  margin-bottom:12px;
+  color:#6E4A7E;
+}
+
+.error-box{
+  background:#fff0f0;
+  border:1px solid #efd2d2;
+  color:#8b3333;
+  padding:15px;
+  border-radius:9px;
+  line-height:1.6;
+}
+
+
+/* =====================================================
+   PROGRAM INFORMATION
+===================================================== */
+
+.info-section{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.info-card{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:20px;
+}
+
+.info-card h3{
+  margin:0 0 8px;
+  color:#6E4A7E;
+  font-size:16px;
+}
+
+.info-card p{
+  margin:0;
+  color:#666;
+  font-size:13px;
+  line-height:1.6;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(45,45,45,.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:100;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:850px;
+  max-height:90vh;
+  overflow:auto;
+  background:#ffffff;
+  border-radius:17px;
+  padding:28px;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:22px;
+}
+
+.modal-header h2{
+  margin:0;
+  color:#6E4A7E;
+}
+
+.close-btn{
+  border:none;
+  background:#f0eaf2;
+  color:#6E4A7E;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:19px;
+}
+
+.modal-content{
+  color:#555;
+}
+
+
+/* =====================================================
+   OVERVIEW
+===================================================== */
+
+.overview-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.overview-item{
+  background:#FBF8F3;
+  border-radius:9px;
+  padding:13px;
+}
+
+.overview-label{
+  color:#777;
+  font-size:11px;
+  margin-bottom:5px;
+}
+
+.overview-value{
+  color:#2D2D2D;
+  font-size:14px;
+  font-weight:600;
+  word-break:break-word;
+}
+
+.space-actions{
+  margin-top:22px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.space-btn{
+  border:none;
+  border-radius:8px;
+  padding:11px 16px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.space-primary{
+  background:#6E4A7E;
+  color:#ffffff;
+}
+
+.space-secondary{
+  background:#f0eaf2;
+  color:#6E4A7E;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+  text-align:center;
+  padding:45px;
+  color:#777;
+}
+
+.loading-dot{
+  color:#6E4A7E;
+  font-weight:700;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1000px){
+
+  .summary{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .info-section{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:750px){
+
+  header{
+    padding:15px;
+  }
+
+  .brand{
+    font-size:19px;
+  }
+
+  .back-btn{
+    display:none;
+  }
+
+  main{
+    padding:25px 15px 50px;
+  }
+
+  .page-heading h1{
+    font-size:28px;
+  }
+
+  .summary{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .toolbar{
+    grid-template-columns:1fr;
+  }
+
+  .client-card{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .client-actions{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  .client-actions button{
+    flex:1;
+  }
+
+  .overview-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:450px){
+
+  .summary{
+    grid-template-columns:1fr;
+  }
+
+  .summary-number{
+    font-size:25px;
+  }
+
+  .section{
+    padding:18px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+  <div class="brand">
+    Mahnoor Dietitian
+  </div>
+
+  <div class="header-right">
+
+    <button
+      class="back-btn"
+      id="dashboardBtn"
+    >
+      ← Admin Dashboard
+    </button>
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      Logout
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+  <!-- PAGE HEADING -->
+
+  <div class="page-heading">
+
+    <h1>
+      Freedom Women's Health Club
+    </h1>
+
+    <p>
+      Manage your club members, memberships, private spaces,
+      check-ins, assessments and program progress.
+    </p>
+
+    <span class="program-badge">
+      FREEDOM WOMEN'S HEALTH CLUB
+    </span>
+
+  </div>
+
+
+  <!-- ===================================================
+       SUMMARY
+  ==================================================== -->
+
+  <div class="summary">
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Total Club Members
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalClients"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Active Members
+      </div>
+
+      <div
+        class="summary-number"
+        id="activeClients"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Upcoming Members
+      </div>
+
+      <div
+        class="summary-number"
+        id="pendingClients"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Connected Accounts
+      </div>
+
+      <div
+        class="summary-number"
+        id="connectedClients"
+      >
+        0
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-label">
+        Payments Received
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalPayments"
+      >
+        Rs. 0
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ===================================================
+       PROGRAM CONTROL
+  ==================================================== -->
+
+  <section class="program-control">
+
+    <div class="control-header">
+
+      <div>
+
+        <h2>
+          Club Management
+        </h2>
+
+        <p>
+          Manage Freedom Women's Health Club members
+          separately from your private 1:1 coaching clients.
+        </p>
+
+      </div>
+
+      <div class="control-actions">
+
+        <button
+          class="primary-btn"
+          id="addClientBtn"
+        >
+          + Add Club Member
+        </button>
+
+        <button
+          class="secondary-btn"
+          id="refreshBtn"
+        >
+          ↻ Refresh
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="toolbar">
+
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search club members by name or email..."
+      >
+
+
+      <select id="statusFilter">
+
+        <option value="all">
+          All Members
+        </option>
+
+        <option value="active">
+          Active
+        </option>
+
+        <option value="upcoming">
+          Upcoming
+        </option>
+
+        <option value="expired">
+          Expired
+        </option>
+
+      </select>
+
+
+      <select id="connectionFilter">
+
+        <option value="all">
+          All Accounts
+        </option>
+
+        <option value="connected">
+          Connected
+        </option>
+
+        <option value="not-connected">
+          Not Connected
+        </option>
+
+      </select>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       MEMBERS
+  ==================================================== -->
+
+  <section class="section">
+
+    <div class="section-heading">
+
+      <h2>
+        Club Members
+      </h2>
+
+      <span id="clientCountText">
+        0 members
+      </span>
+
+    </div>
+
+
+    <div
+      class="client-list"
+      id="clientList"
+    >
+
+      <div class="loading">
+        Loading club members<span class="loading-dot">...</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       PROGRAM INFORMATION
+  ==================================================== -->
+
+  <div class="info-section">
+
+    <div class="info-card">
+
+      <h3>
+        Member Space
+      </h3>
+
+      <p>
+        Each club member can have an individual account
+        connected to the Freedom Women's Health Club
+        dashboard and their membership information.
+      </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+      <h3>
+        Member Progress
+      </h3>
+
+      <p>
+        Track membership dates, account connection,
+        progress, check-ins and other member activity
+        separately from private 1:1 coaching.
+      </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+      <h3>
+        Assessments
+      </h3>
+
+      <p>
+        Open the assessment area for a specific member
+        using their Firestore client ID so information
+        remains connected to the correct member.
+      </p>
+
+    </div>
+
+  </div>
+
+
+</main>
+
+
+<!-- =====================================================
+     CLIENT OVERVIEW MODAL
+===================================================== -->
+
+<div
+  class="modal"
+  id="clientModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>
+        Club Member Overview
+      </h2>
+
+      <button
+        class="close-btn"
+        id="closeModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      class="modal-content"
+      id="clientModalContent"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script type="module">
+
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
+
+  authDomain:
+    "mahnoor-dietitian.firebaseapp.com",
+
+  projectId:
+    "mahnoor-dietitian",
+
+  storageBucket:
+    "mahnoor-dietitian.firebasestorage.app",
+
+  messagingSenderId:
+    "900688855173",
+
+  appId:
+    "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
+
+};
+
+
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+
+/* =====================================================
+   ADMIN EMAIL
+===================================================== */
+
+const ADMIN_EMAIL =
+  "mahnoordietitian3@gmail.com";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const clientList =
+  document.getElementById(
+    "clientList"
+  );
+
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
+
+const statusFilter =
+  document.getElementById(
+    "statusFilter"
+  );
+
+const connectionFilter =
+  document.getElementById(
+    "connectionFilter"
+  );
+
+const clientModal =
+  document.getElementById(
+    "clientModal"
+  );
+
+const clientModalContent =
+  document.getElementById(
+    "clientModalContent"
+  );
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let clients = [];
+
+
+/* =====================================================
+   AUTHENTICATION
+===================================================== */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    if(
+      user.email?.toLowerCase()
+      !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      alert(
+        "You do not have permission to access the Admin Panel."
+      );
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    await loadClients();
+
+  }
+);
+
+
+/* =====================================================
+   LOAD CLUB MEMBERS
+===================================================== */
+
+async function loadClients(){
+
+  clientList.innerHTML = `
+    <div class="loading">
+      Loading club members<span class="loading-dot">...</span>
+    </div>
+  `;
+
+
+  try{
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "clients"
+        )
+      );
+
+
+    /*
+      We use the existing clients collection.
+
+      No new collection is required.
+
+      Club members are identified by their programType.
+
+      Accepted examples:
+
+      - Club
+      - club
+      - Freedom Women's Health Club
+      - Freedom Women’s Health Club
+      - Women's Health Club
+      - Membership
+
+      Any programType containing "club" is included.
+    */
+
+    clients =
+      snapshot.docs
+        .map(item => ({
+
+          id:item.id,
+
+          ...item.data()
+
+        }))
+        .filter(client => {
+
+          const type =
+            String(
+              client.programType || ""
+            )
+            .trim()
+            .toLowerCase();
+
+
+          const name =
+            String(
+              client.programName || ""
+            )
+            .trim()
+            .toLowerCase();
+
+
+          return (
+
+            type === "club"
+
+            ||
+
+            type.includes("club")
+
+            ||
+
+            name.includes("club")
+
+            ||
+
+            name.includes("freedom women's health")
+
+            ||
+
+            name.includes("freedom women’s health")
+
+          );
+
+        });
+
+
+    updateSummary();
+
+    renderClients();
+
+  }
+  catch(error){
+
+    console.error(
+      "Error loading club members:",
+      error
+    );
+
+
+    clientList.innerHTML = `
+      <div class="error-box">
+
+        <strong>
+          Unable to load club members.
+        </strong>
+
+        <br><br>
+
+        ${escapeHtml(
+          error.message ||
+          "Unknown Firebase error."
+        )}
+
+        <br><br>
+
+        Make sure your Firestore rules allow the admin
+        account to read the clients collection.
+
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+function updateSummary(){
+
+  const today =
+    getToday();
+
+
+  document.getElementById(
+    "totalClients"
+  ).textContent =
+    clients.length;
+
+
+  const active =
+    clients.filter(client => {
+
+      return (
+        client.startDate
+        &&
+        client.endDate
+        &&
+        client.startDate <= today
+        &&
+        client.endDate >= today
+      );
+
+    });
+
+
+  document.getElementById(
+    "activeClients"
+  ).textContent =
+    active.length;
+
+
+  const upcoming =
+    clients.filter(client => {
+
+      return (
+        client.startDate
+        &&
+        client.startDate > today
+      );
+
+    });
+
+
+  document.getElementById(
+    "pendingClients"
+  ).textContent =
+    upcoming.length;
+
+
+  const connected =
+    clients.filter(client =>
+      Boolean(client.uid)
+    );
+
+
+  document.getElementById(
+    "connectedClients"
+  ).textContent =
+    connected.length;
+
+
+  const payments =
+    clients.reduce(
+      (sum,client) => {
+
+        return (
+          sum +
+          Number(
+            client.amountPaid || 0
+          )
+        );
+
+      },
+      0
+    );
+
+
+  document.getElementById(
+    "totalPayments"
+  ).textContent =
+    "Rs. " +
+    payments.toLocaleString();
+
+}
+
+
+/* =====================================================
+   RENDER CLIENTS
+===================================================== */
+
+function renderClients(){
+
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  const status =
+    statusFilter.value;
+
+
+  const connection =
+    connectionFilter.value;
+
+
+  const filtered =
+    clients.filter(client => {
+
+      const name =
+        String(
+          client.name || ""
+        )
+        .toLowerCase();
+
+
+      const email =
+        String(
+          client.email || ""
+        )
+        .toLowerCase();
+
+
+      const matchesSearch =
+        !search
+        ||
+        name.includes(search)
+        ||
+        email.includes(search);
+
+
+      if(!matchesSearch){
+
+        return false;
+
+      }
+
+
+      const active =
+        isActive(client);
+
+
+      const upcoming =
+        isUpcoming(client);
+
+
+      if(
+        status === "active"
+        &&
+        !active
+      ){
+
+        return false;
+
+      }
+
+
+      if(
+        status === "upcoming"
+        &&
+        !upcoming
+      ){
+
+        return false;
+
+      }
+
+
+      if(
+        status === "expired"
+        &&
+        (
+          active
+          ||
+          upcoming
+        )
+      ){
+
+        return false;
+
+      }
+
+
+      const connected =
+        Boolean(client.uid);
+
+
+      if(
+        connection === "connected"
+        &&
+        !connected
+      ){
+
+        return false;
+
+      }
+
+
+      if(
+        connection === "not-connected"
+        &&
+        connected
+      ){
+
+        return false;
+
+      }
+
+
+      return true;
+
+    });
+
+
+  document.getElementById(
+    "clientCountText"
+  ).textContent =
+    filtered.length +
+    (
+      filtered.length === 1
+      ? " member"
+      : " members"
+    );
+
+
+  if(filtered.length === 0){
+
+    clientList.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          ♡
+        </div>
+
+        <strong>
+          No club members found
+        </strong>
+
+        <br><br>
+
+        ${
+          clients.length === 0
+          ? "No Freedom Women's Health Club members have been added yet."
+          : "Try changing your search or filters."
+        }
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  clientList.innerHTML =
+    filtered
+      .map(
+        clientHTML
+      )
+      .join("");
+
+
+  attachClientEvents();
+
+}
+
+
+/* =====================================================
+   CLIENT HTML
+===================================================== */
+
+function clientHTML(client){
+
+  const active =
+    isActive(client);
+
+
+  const upcoming =
+    isUpcoming(client);
+
+
+  const connected =
+    Boolean(client.uid);
+
+
+  let statusClass =
+    "expired";
+
+
+  let statusText =
+    "Expired";
+
+
+  if(active){
+
+    statusClass =
+      "active";
+
+    statusText =
+      "Active";
+
+  }
+  else if(upcoming){
+
+    statusClass =
+      "pending";
+
+    statusText =
+      "Upcoming";
+
+  }
+
+
+  let paymentClass =
+    "pending";
+
+
+  const paymentStatus =
+    String(
+      client.paymentStatus || ""
+    )
+    .trim()
+    .toLowerCase();
+
+
+  if(
+    paymentStatus ===
+    "paid"
+  ){
+
+    paymentClass =
+      "paid";
+
+  }
+  else if(
+    paymentStatus.includes(
+      "partial"
+    )
+  ){
+
+    paymentClass =
+      "partial";
+
+  }
+
+
+  return `
+
+    <div class="client-card">
+
+
+      <div class="client-left">
+
+
+        <div class="client-top">
+
+          <div class="client-name">
+
+            ${escapeHtml(
+              client.name ||
+              "Unnamed Member"
+            )}
+
+          </div>
+
+
+          <span class="status ${statusClass}">
+
+            ${statusText}
+
+          </span>
+
+
+          <span class="status ${
+            connected
+            ? "connected"
+            : "not-connected"
+          }">
+
+            ${
+              connected
+              ? "✓ Connected"
+              : "Not Connected"
+            }
+
+          </span>
+
+        </div>
+
+
+        <div class="client-email">
+
+          ${escapeHtml(
+            client.email || ""
+          )}
+
+        </div>
+
+
+        <div class="client-info">
+
+
+          <div class="info-chip">
+
+            Program:
+            <strong>
+              ${escapeHtml(
+                client.programName ||
+                "Freedom Women's Health Club"
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="info-chip">
+
+            Start:
+            <strong>
+              ${escapeHtml(
+                client.startDate ||
+                "—"
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="info-chip">
+
+            End:
+            <strong>
+              ${escapeHtml(
+                client.endDate ||
+                "—"
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="info-chip">
+
+            Paid:
+            <strong>
+              Rs.
+              ${Number(
+                client.amountPaid || 0
+              ).toLocaleString()}
+            </strong>
+
+          </div>
+
+
+          <div class="info-chip">
+
+            Payment:
+            <strong>
+              ${escapeHtml(
+                client.paymentStatus ||
+                "Pending"
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="info-chip">
+
+            ${
+              client.duration
+              ? escapeHtml(
+                  String(
+                    client.duration
+                  )
+                ) + " days"
+              : "Duration not set"
+            }
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <div class="client-actions">
+
+
+        <button
+          class="action-btn open-btn"
+          data-open="${client.id}"
+        >
+          Open Space
+        </button>
+
+
+        <button
+          class="action-btn checkin-btn"
+          data-checkin="${client.id}"
+        >
+          Check-ins
+        </button>
+
+
+        <button
+          class="action-btn assessment-btn"
+          data-assessment="${client.id}"
+        >
+          Assessment
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+function attachClientEvents(){
+
+  document
+    .querySelectorAll(
+      "[data-open]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          openClientSpace(
+            button.dataset.open
+          );
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-checkin]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          openCheckins(
+            button.dataset.checkin
+          );
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-assessment]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          openAssessment(
+            button.dataset.assessment
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =====================================================
+   OPEN CLIENT SPACE
+===================================================== */
+
+function openClientSpace(id){
+
+  const client =
+    clients.find(
+      item =>
+        item.id === id
+    );
+
+
+  if(!client){
+
+    return;
+
+  }
+
+
+  /*
+    The Firestore document ID is passed to
+    the individual client page.
+
+    This keeps the correct member connected
+    even when Firestore uses a random document ID.
+  */
+
+  window.location.href =
+    "admin-client.html?id=" +
+    encodeURIComponent(id);
+
+}
+
+
+/* =====================================================
+   CHECK-INS
+===================================================== */
+
+function openCheckins(id){
+
+  const client =
+    clients.find(
+      item =>
+        item.id === id
+    );
+
+
+  if(!client){
+
+    return;
+
+  }
+
+
+  window.location.href =
+    "admin-client.html?id=" +
+    encodeURIComponent(id) +
+    "&section=checkins";
+
+}
+
+
+/* =====================================================
+   ASSESSMENT
+===================================================== */
+
+function openAssessment(id){
+
+  const client =
+    clients.find(
+      item =>
+        item.id === id
+    );
+
+
+  if(!client){
+
+    return;
+
+  }
+
+
+  window.location.href =
+    "assessments.html?clientId=" +
+    encodeURIComponent(id);
+
+}
+
+
+/* =====================================================
+   ADD CLUB MEMBER
+===================================================== */
+
+document
+  .getElementById(
+    "addClientBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      /*
+        Opens your existing client-management page.
+
+        The program parameter allows your client-management
+        page to know that this is a club enrollment.
+      */
+
+      window.location.href =
+        "client-management.html?program=club";
+
+    }
+  );
+
+
+/* =====================================================
+   REFRESH
+===================================================== */
+
+document
+  .getElementById(
+    "refreshBtn"
+  )
+  .addEventListener(
+    "click",
+    async () => {
+
+      await loadClients();
+
+    }
+  );
+
+
+/* =====================================================
+   SEARCH / FILTER
+===================================================== */
+
+searchInput.addEventListener(
+  "input",
+  renderClients
+);
+
+
+statusFilter.addEventListener(
+  "change",
+  renderClients
+);
+
+
+connectionFilter.addEventListener(
+  "change",
+  renderClients
+);
+
+
+/* =====================================================
+   ADMIN DASHBOARD
+===================================================== */
+
+document
+  .getElementById(
+    "dashboardBtn"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      window.location.href =
+        "admin.html";
+
+    }
+  );
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document
+  .getElementById(
+    "logoutBtn"
+  )
+  .addEventListener(
+    "click",
+    async () => {
+
+      try{
+
+        await signOut(auth);
+
+        window.location.href =
+          "login.html";
+
+      }
+      catch(error){
+
+        console.error(error);
+
+        alert(
+          "Unable to logout. Please try again."
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   MODAL CLOSE
+===================================================== */
+
+document
+  .getElementById(
+    "closeModal"
+  )
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+clientModal.addEventListener(
+  "click",
+  event => {
+
+    if(
+      event.target ===
+      clientModal
+    ){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+function closeModal(){
+
+  clientModal.classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   DATE HELPERS
+===================================================== */
+
+function getToday(){
+
+  const now =
+    new Date();
+
+  return formatDate(
+    now
+  );
+
+}
+
+
+function isActive(client){
+
+  const today =
+    getToday();
+
+
+  return Boolean(
+
+    client.startDate
+    &&
+    client.endDate
+    &&
+    client.startDate <= today
+    &&
+    client.endDate >= today
+
+  );
+
+}
+
+
+function isUpcoming(client){
+
+  const today =
+    getToday();
+
+
+  return Boolean(
+
+    client.startDate
+    &&
+    client.startDate > today
+
+  );
+
+}
+
+
+function formatDate(date){
+
+  return [
+
+    date.getFullYear(),
+
+    String(
+      date.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    ),
+
+    String(
+      date.getDate()
+    ).padStart(
+      2,
+      "0"
+    )
+
+  ].join("-");
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
