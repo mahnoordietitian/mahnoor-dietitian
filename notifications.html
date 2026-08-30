@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notifications | Mahnoor Dietitian</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#FBF8F3;
+  color:#2D2D2D;
+}
+
+header{
+  background:#fff;
+  border-bottom:1px solid #eadfe9;
+  padding:18px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.brand{
+  color:#6E4A7E;
+  font-size:24px;
+  font-weight:700;
+}
+
+.header-right{
+  display:flex;
+  gap:10px;
+}
+
+button{
+  font-family:inherit;
+}
+
+.back-btn,
+.logout-btn{
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.back-btn{
+  background:#f1eaf2;
+  color:#6E4A7E;
+}
+
+.logout-btn{
+  background:#6E4A7E;
+  color:#fff;
+}
+
+main{
+  max-width:1250px;
+  margin:auto;
+  padding:35px 20px 70px;
+}
+
+.heading{
+  margin-bottom:28px;
+}
+
+.heading h1{
+  margin:0 0 8px;
+  font-size:34px;
+}
+
+.heading p{
+  margin:0;
+  color:#777;
+  line-height:1.6;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:14px;
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:390px 1fr;
+  gap:22px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:24px;
+}
+
+.card h2{
+  margin:0 0 6px;
+  color:#6E4A7E;
+  font-size:20px;
+}
+
+.card-subtitle{
+  color:#777;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:22px;
+}
+
+label{
+  display:block;
+  margin:15px 0 7px;
+  font-size:13px;
+  font-weight:600;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  border:1px solid #d9d0d9;
+  border-radius:8px;
+  padding:12px 13px;
+  font-family:inherit;
+  font-size:14px;
+  background:#fff;
+}
+
+textarea{
+  min-height:150px;
+  resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:none;
+  border-color:#6E4A7E;
+  box-shadow:0 0 0 3px rgba(110,74,126,.08);
+}
+
+.primary-btn{
+  width:100%;
+  margin-top:18px;
+  border:none;
+  background:#6E4A7E;
+  color:#fff;
+  padding:13px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.primary-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.notice{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  border-radius:8px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.notice.success{
+  display:block;
+  background:#e9f5ec;
+  color:#28733a;
+  border:1px solid #cfe8d4;
+}
+
+.notice.error{
+  display:block;
+  background:#fff0f0;
+  color:#8b3333;
+  border:1px solid #efd2d2;
+}
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.toolbar input{
+  flex:1;
+}
+
+.notification-list{
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+}
+
+.notification{
+  border:1px solid #ece5ec;
+  border-radius:12px;
+  padding:18px;
+}
+
+.notification-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:flex-start;
+}
+
+.notification-title{
+  font-size:17px;
+  font-weight:700;
+  color:#2D2D2D;
+}
+
+.recipient{
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.notification-message{
+  margin:12px 0;
+  color:#666;
+  font-size:14px;
+  line-height:1.6;
+  white-space:pre-wrap;
+}
+
+.notification-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  color:#888;
+  font-size:11px;
+}
+
+.delete-btn{
+  border:none;
+  background:#f5e7e7;
+  color:#8b3333;
+  border-radius:7px;
+  padding:7px 10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.empty,
+.loading{
+  text-align:center;
+  padding:50px 20px;
+  color:#777;
+}
+
+.empty-icon{
+  color:#6E4A7E;
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+@media(max-width:850px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  header{
+    padding:15px;
+  }
+
+  .brand{
+    font-size:19px;
+  }
+
+  .back-btn{
+    display:none;
+  }
+
+  main{
+    padding:25px 15px 50px;
+  }
+
+  .heading h1{
+    font-size:28px;
+  }
+
+  .notification-top{
+    flex-direction:column;
+  }
+
+  .notification-footer{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">Mahnoor Dietitian</div>
+
+  <div class="header-right">
+    <button class="back-btn" id="dashboardBtn">
+      ← Admin Dashboard
+    </button>
+
+    <button class="logout-btn" id="logoutBtn">
+      Logout
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <div class="heading">
+    <h1>Notifications</h1>
+
+    <p>
+      Create and manage announcements and notifications for your clients.
+    </p>
+
+    <span class="badge">ADMIN NOTIFICATIONS</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- CREATE -->
+    <section class="card">
+
+      <h2>Create Notification</h2>
+
+      <div class="card-subtitle">
+        Send an announcement to all clients or a specific program.
+      </div>
+
+      <label for="title">Notification Title</label>
+
+      <input
+        id="title"
+        type="text"
+        placeholder="e.g. Week 2 is now available"
+      >
+
+      <label for="message">Message</label>
+
+      <textarea
+        id="message"
+        placeholder="Write your notification..."
+      ></textarea>
+
+      <label for="recipient">Send To</label>
+
+      <select id="recipient">
+
+        <option value="all">
+          All Clients
+        </option>
+
+        <option value="1:1 Coaching">
+          1:1 Coaching
+        </option>
+
+        <option value="Freedom Women’s Health Club">
+          Freedom Women's Health Club
+        </option>
+
+        <option value="Short Program">
+          Short Program
+        </option>
+
+      </select>
+
+      <button
+        class="primary-btn"
+        id="sendBtn"
+      >
+        Publish Notification
+      </button>
+
+      <div id="formNotice" class="notice"></div>
+
+    </section>
+
+
+    <!-- HISTORY -->
+    <section class="card">
+
+      <h2>Notification History</h2>
+
+      <div class="card-subtitle">
+        Previously published notifications.
+      </div>
+
+      <div class="toolbar">
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search notifications..."
+        >
+
+      </div>
+
+      <div
+        class="notification-list"
+        id="notificationList"
+      >
+        <div class="loading">
+          Loading notifications...
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<script type="module">
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE
+===================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
+
+  authDomain:
+    "mahnoor-dietitian.firebaseapp.com",
+
+  projectId:
+    "mahnoor-dietitian",
+
+  storageBucket:
+    "mahnoor-dietitian.firebasestorage.app",
+
+  messagingSenderId:
+    "900688855173",
+
+  appId:
+    "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
+
+};
+
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+
+const ADMIN_EMAIL =
+  "mahnoordietitian3@gmail.com";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const titleInput =
+  document.getElementById("title");
+
+const messageInput =
+  document.getElementById("message");
+
+const recipientInput =
+  document.getElementById("recipient");
+
+const sendBtn =
+  document.getElementById("sendBtn");
+
+const formNotice =
+  document.getElementById("formNotice");
+
+const notificationList =
+  document.getElementById("notificationList");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+
+let notifications = [];
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      window.location.href =
+        "login.html";
+
+      return;
+    }
+
+    if(
+      user.email?.toLowerCase()
+      !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      alert(
+        "You do not have permission to access the Admin Panel."
+      );
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+      return;
+    }
+
+    await loadNotifications();
+
+  }
+);
+
+
+/* =====================================================
+   LOAD
+===================================================== */
+
+async function loadNotifications(){
+
+  notificationList.innerHTML =
+    `<div class="loading">
+      Loading notifications...
+    </div>`;
+
+  try{
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "notifications"
+        )
+      );
+
+    notifications =
+      snapshot.docs
+        .map(item => ({
+          id:item.id,
+          ...item.data()
+        }));
+
+    notifications.sort(
+      (a,b) =>
+        getTime(b.createdAt)
+        -
+        getTime(a.createdAt)
+    );
+
+    renderNotifications();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    notificationList.innerHTML =
+      `<div class="notice error" style="display:block">
+        Unable to load notifications.<br><br>
+        ${escapeHtml(error.message)}
+      </div>`;
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderNotifications(){
+
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+  const filtered =
+    notifications.filter(item => {
+
+      return (
+        String(item.title || "")
+          .toLowerCase()
+          .includes(search)
+        ||
+        String(item.message || "")
+          .toLowerCase()
+          .includes(search)
+        ||
+        String(item.recipient || "")
+          .toLowerCase()
+          .includes(search)
+      );
+
+    });
+
+
+  if(filtered.length === 0){
+
+    notificationList.innerHTML = `
+      <div class="empty">
+
+        <div class="empty-icon">♢</div>
+
+        <strong>
+          No notifications found
+        </strong>
+
+        <br><br>
+
+        ${
+          notifications.length === 0
+          ? "Create your first notification."
+          : "Try another search."
+        }
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  notificationList.innerHTML =
+    filtered
+      .map(notificationHTML)
+      .join("");
+
+
+  document
+    .querySelectorAll("[data-delete]")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          deleteNotification(
+            button.dataset.delete
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =====================================================
+   HTML
+===================================================== */
+
+function notificationHTML(item){
+
+  const date =
+    formatTimestamp(
+      item.createdAt
+    );
+
+  return `
+
+    <div class="notification">
+
+      <div class="notification-top">
+
+        <div class="notification-title">
+
+          ${escapeHtml(
+            item.title ||
+            "Untitled Notification"
+          )}
+
+        </div>
+
+        <span class="recipient">
+
+          ${escapeHtml(
+            item.recipient ||
+            "All Clients"
+          )}
+
+        </span>
+
+      </div>
+
+      <div class="notification-message">
+
+        ${escapeHtml(
+          item.message ||
+          ""
+        )}
+
+      </div>
+
+      <div class="notification-footer">
+
+        <span>
+          Published ${date}
+        </span>
+
+        <button
+          class="delete-btn"
+          data-delete="${item.id}"
+        >
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   CREATE
+===================================================== */
+
+sendBtn.addEventListener(
+  "click",
+  async () => {
+
+    const title =
+      titleInput.value.trim();
+
+    const message =
+      messageInput.value.trim();
+
+    const recipient =
+      recipientInput.value;
+
+
+    if(!title){
+
+      showNotice(
+        "Please enter a notification title.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    if(!message){
+
+      showNotice(
+        "Please enter a notification message.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    sendBtn.disabled = true;
+
+    sendBtn.textContent =
+      "Publishing...";
+
+
+    try{
+
+      await addDoc(
+        collection(
+          db,
+          "notifications"
+        ),
+        {
+
+          title:title,
+
+          message:message,
+
+          recipient:recipient,
+
+          createdAt:
+            serverTimestamp(),
+
+          createdBy:
+            auth.currentUser.email
+
+        }
+      );
+
+
+      titleInput.value = "";
+
+      messageInput.value = "";
+
+      recipientInput.value = "all";
+
+
+      showNotice(
+        "Notification published successfully.",
+        "success"
+      );
+
+
+      await loadNotifications();
+
+    }
+    catch(error){
+
+      console.error(error);
+
+      showNotice(
+        error.message ||
+        "Unable to publish notification.",
+        "error"
+      );
+
+    }
+    finally{
+
+      sendBtn.disabled = false;
+
+      sendBtn.textContent =
+        "Publish Notification";
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+async function deleteNotification(id){
+
+  const confirmed =
+    confirm(
+      "Delete this notification?"
+    );
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "notifications",
+        id
+      )
+    );
+
+    await loadNotifications();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    alert(
+      "Unable to delete notification: " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInput.addEventListener(
+  "input",
+  renderNotifications
+);
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+document
+  .getElementById("dashboardBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      window.location.href =
+        "admin.html";
+
+    }
+  );
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document
+  .getElementById("logoutBtn")
+  .addEventListener(
+    "click",
+    async () => {
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+    }
+  );
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function showNotice(
+  message,
+  type
+){
+
+  formNotice.className =
+    "notice " + type;
+
+  formNotice.textContent =
+    message;
+
+}
+
+
+function getTime(timestamp){
+
+  if(
+    timestamp
+    &&
+    typeof timestamp.toMillis ===
+    "function"
+  ){
+
+    return timestamp.toMillis();
+
+  }
+
+  return 0;
+
+}
+
+
+function formatTimestamp(timestamp){
+
+  if(
+    !timestamp
+    ||
+    typeof timestamp.toDate !==
+    "function"
+  ){
+
+    return "just now";
+
+  }
+
+
+  return timestamp
+    .toDate()
+    .toLocaleString(
+      "en-PK",
+      {
+        dateStyle:"medium",
+        timeStyle:"short"
+      }
+    );
+
+}
+
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+</script>
+
+</body>
+</html>
