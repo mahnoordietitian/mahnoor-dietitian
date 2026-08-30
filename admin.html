@@ -1,13 +1,17 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Admin Panel | Mahnoor Dietitian</title>
+
 
   <style>
 
@@ -15,300 +19,503 @@
       box-sizing: border-box;
     }
 
+
     body {
+
       margin: 0;
+
       font-family: Arial, sans-serif;
+
       background: #FBF8F3;
+
       color: #2D2D2D;
+
     }
 
+
     header {
+
       background: white;
+
       border-bottom: 1px solid #eee;
+
       padding: 18px 30px;
 
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
     }
+
 
     .brand {
+
       font-size: 24px;
+
       font-weight: 600;
+
       color: #6E4A7E;
+
     }
+
 
     .logout {
+
       border: none;
+
       background: #6E4A7E;
+
       color: white;
+
       padding: 10px 18px;
+
       border-radius: 8px;
+
       cursor: pointer;
+
     }
 
-    .logout:hover {
-      opacity: 0.9;
-    }
 
     main {
+
       max-width: 1200px;
+
       margin: 0 auto;
+
       padding: 40px 20px;
+
     }
+
 
     .welcome {
+
       margin-bottom: 30px;
+
     }
+
 
     .welcome h1 {
+
       margin: 0 0 8px;
+
       font-size: 32px;
+
     }
+
 
     .welcome p {
+
       margin: 0;
+
       color: #666;
+
     }
+
 
     .cards {
+
       display: grid;
+
       grid-template-columns:
-        repeat(auto-fit, minmax(200px, 1fr));
+        repeat(
+          auto-fit,
+          minmax(200px, 1fr)
+        );
 
       gap: 20px;
+
       margin-bottom: 35px;
+
     }
+
 
     .card {
+
       background: white;
+
       padding: 25px;
+
       border-radius: 14px;
+
       border: 1px solid #eee;
+
     }
+
 
     .card-title {
+
       color: #777;
+
       font-size: 14px;
+
       margin-bottom: 10px;
+
     }
+
 
     .card-number {
+
       font-size: 30px;
+
       font-weight: 600;
+
       color: #6E4A7E;
+
     }
+
 
     .section {
+
       background: white;
+
       padding: 25px;
+
       border-radius: 14px;
+
       border: 1px solid #eee;
+
       margin-bottom: 25px;
+
     }
+
 
     .section-header {
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       margin-bottom: 20px;
+
       gap: 15px;
+
     }
+
 
     .section-header h2 {
+
       margin: 0;
+
     }
 
-    button {
-      cursor: pointer;
-    }
 
     .add-btn {
+
       background: #6E4A7E;
+
       color: white;
+
       border: none;
+
       border-radius: 8px;
+
       padding: 11px 18px;
+
+      cursor: pointer;
+
     }
+
 
     .form-container {
+
       display: none;
+
       margin-top: 25px;
+
       padding-top: 25px;
+
       border-top: 1px solid #eee;
+
     }
+
 
     .form-grid {
+
       display: grid;
+
       grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
+        repeat(
+          auto-fit,
+          minmax(250px, 1fr)
+        );
 
       gap: 18px;
+
     }
+
 
     .field {
+
       display: flex;
+
       flex-direction: column;
+
     }
+
 
     .field.full {
+
       grid-column: 1 / -1;
+
     }
 
-    .field h3 {
-      margin: 5px 0 0;
-      color: #6E4A7E;
-      font-size: 18px;
-    }
 
     label {
+
       margin-bottom: 7px;
+
       font-size: 14px;
+
       font-weight: 600;
+
     }
+
 
     input,
     select,
     textarea {
+
       width: 100%;
+
       padding: 12px;
 
       border: 1px solid #ddd;
+
       border-radius: 8px;
 
       font-family: inherit;
+
       font-size: 15px;
+
       background: white;
+
     }
 
+
     textarea {
+
       min-height: 90px;
+
       resize: vertical;
+
     }
+
 
     input:focus,
     select:focus,
     textarea:focus {
+
       outline: none;
+
       border-color: #6E4A7E;
+
     }
+
 
     .calculated {
+
       background: #FBF8F3;
+
       border-color: #DCCBB3;
+
     }
 
+
     .form-actions {
+
       margin-top: 25px;
 
       display: flex;
+
       gap: 12px;
+
       flex-wrap: wrap;
+
     }
+
 
     .save-btn {
+
       background: #6E4A7E;
+
       color: white;
+
       border: none;
+
       border-radius: 8px;
+
       padding: 13px 25px;
+
+      cursor: pointer;
+
     }
+
 
     .cancel-btn {
+
       background: white;
+
       color: #2D2D2D;
+
       border: 1px solid #ccc;
+
       border-radius: 8px;
+
       padding: 13px 25px;
+
+      cursor: pointer;
+
     }
+
 
     .message {
+
       margin-top: 15px;
+
       min-height: 20px;
+
       font-size: 14px;
+
     }
 
-    .message.success {
-      color: #286b35;
-    }
-
-    .message.error {
-      color: #9b2c2c;
-    }
 
     .client-list {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 12px;
+
     }
 
+
     .client {
+
       border: 1px solid #eee;
+
       border-radius: 10px;
+
       padding: 18px;
 
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
 
       gap: 20px;
+
     }
 
-    .client-info {
-      min-width: 0;
-    }
 
     .client-info strong {
+
       font-size: 17px;
+
     }
+
 
     .client-info p {
+
       margin: 5px 0 0;
+
       color: #777;
+
       font-size: 14px;
-      word-break: break-word;
+
     }
+
 
     .client-actions {
+
       display: flex;
+
       gap: 8px;
+
       flex-wrap: wrap;
-      flex-shrink: 0;
+
     }
+
 
     .small-btn {
+
       border: none;
+
       border-radius: 7px;
+
       padding: 8px 12px;
+
       font-size: 13px;
+
+      cursor: pointer;
+
     }
+
 
     .edit-btn {
+
       background: #eee;
+
     }
+
 
     .delete-btn {
+
       background: #f5dddd;
+
       color: #8b2222;
+
     }
+
 
     .empty {
+
       padding: 35px 10px;
+
       text-align: center;
+
       color: #777;
+
     }
 
-    .program-note {
-      margin-top: 6px;
-      color: #777;
+
+    .uid-status {
+
+      display: inline-block;
+
+      margin-top: 8px;
+
+      padding: 5px 9px;
+
+      border-radius: 6px;
+
       font-size: 12px;
+
     }
 
-    .client-id {
-      margin-top: 8px !important;
-      font-size: 11px !important;
-      color: #aaa !important;
+
+    .connected {
+
+      background: #edf7ef;
+
+      color: #286b35;
+
     }
+
+
+    .not-connected {
+
+      background: #fff4df;
+
+      color: #946200;
+
+    }
+
 
     @media (max-width: 650px) {
 
@@ -325,12 +532,11 @@
       }
 
       .client {
-        align-items: flex-start;
-        flex-direction: column;
-      }
 
-      .client-actions {
-        width: 100%;
+        align-items: flex-start;
+
+        flex-direction: column;
+
       }
 
     }
@@ -349,6 +555,7 @@
     Mahnoor Dietitian
   </div>
 
+
   <button
     class="logout"
     id="logoutBtn"
@@ -362,10 +569,6 @@
 
 <main>
 
-
-  <!-- =========================================
-       WELCOME
-  ========================================== -->
 
   <div class="welcome">
 
@@ -381,9 +584,9 @@
 
 
 
-  <!-- =========================================
-       DASHBOARD CARDS
-  ========================================== -->
+  <!-- =================================================
+       DASHBOARD
+  ================================================== -->
 
   <div class="cards">
 
@@ -451,14 +654,13 @@
 
     </div>
 
-
   </div>
 
 
 
-  <!-- =========================================
+  <!-- =================================================
        CLIENTS
-  ========================================== -->
+  ================================================== -->
 
   <div class="section">
 
@@ -468,6 +670,7 @@
       <h2>
         Clients
       </h2>
+
 
       <button
         class="add-btn"
@@ -480,9 +683,9 @@
 
 
 
-    <!-- =========================================
+    <!-- =================================================
          FORM
-    ========================================== -->
+    ================================================== -->
 
     <div
       class="form-container"
@@ -496,8 +699,6 @@
         <div class="form-grid">
 
 
-          <!-- CLIENT INFORMATION -->
-
           <div class="field full">
 
             <h3>
@@ -509,7 +710,7 @@
 
           <div class="field">
 
-            <label for="name">
+            <label>
               Full Name *
             </label>
 
@@ -524,7 +725,7 @@
 
           <div class="field">
 
-            <label for="email">
+            <label>
               Email *
             </label>
 
@@ -539,7 +740,7 @@
 
           <div class="field">
 
-            <label for="phone">
+            <label>
               Phone
             </label>
 
@@ -553,7 +754,7 @@
 
           <div class="field">
 
-            <label for="dob">
+            <label>
               Date of Birth
             </label>
 
@@ -567,7 +768,7 @@
 
           <div class="field">
 
-            <label for="city">
+            <label>
               City
             </label>
 
@@ -580,8 +781,6 @@
 
 
 
-          <!-- ENROLLMENT -->
-
           <div class="field full">
 
             <h3>
@@ -593,7 +792,7 @@
 
           <div class="field">
 
-            <label for="programType">
+            <label>
               Program Type *
             </label>
 
@@ -625,14 +824,13 @@
 
           <div class="field">
 
-            <label for="programName">
+            <label>
               Program Name *
             </label>
 
             <input
               type="text"
               id="programName"
-              placeholder="e.g. 90-Day Freedom Mentorship"
               required
             >
 
@@ -641,7 +839,7 @@
 
           <div class="field">
 
-            <label for="duration">
+            <label>
               Duration *
             </label>
 
@@ -680,16 +878,12 @@
 
             </select>
 
-            <div class="program-note">
-              Duration is used to automatically calculate the end date.
-            </div>
-
           </div>
 
 
           <div class="field">
 
-            <label for="startDate">
+            <label>
               Start Date *
             </label>
 
@@ -704,7 +898,7 @@
 
           <div class="field">
 
-            <label for="endDate">
+            <label>
               End Date
             </label>
 
@@ -719,8 +913,6 @@
 
 
 
-          <!-- PAYMENT -->
-
           <div class="field full">
 
             <h3>
@@ -732,7 +924,7 @@
 
           <div class="field">
 
-            <label for="programPrice">
+            <label>
               Program Price (Rs.) *
             </label>
 
@@ -740,7 +932,6 @@
               type="number"
               id="programPrice"
               min="0"
-              step="1"
               required
             >
 
@@ -749,7 +940,7 @@
 
           <div class="field">
 
-            <label for="amountPaid">
+            <label>
               Amount Paid (Rs.) *
             </label>
 
@@ -757,7 +948,6 @@
               type="number"
               id="amountPaid"
               min="0"
-              step="1"
               required
             >
 
@@ -766,7 +956,7 @@
 
           <div class="field">
 
-            <label for="remainingAmount">
+            <label>
               Remaining Amount
             </label>
 
@@ -782,7 +972,7 @@
 
           <div class="field">
 
-            <label for="paymentStatus">
+            <label>
               Payment Status *
             </label>
 
@@ -814,7 +1004,7 @@
 
           <div class="field">
 
-            <label for="paymentMethod">
+            <label>
               Payment Method
             </label>
 
@@ -851,18 +1041,15 @@
           </div>
 
 
-
-          <!-- NOTES -->
-
           <div class="field full">
 
-            <label for="notes">
+            <label>
               Admin Notes
             </label>
 
             <textarea
               id="notes"
-              placeholder="Private notes about this client..."
+              placeholder="Private notes..."
             ></textarea>
 
           </div>
@@ -906,9 +1093,9 @@
 
 
 
-    <!-- =========================================
+    <!-- =================================================
          CLIENT LIST
-    ========================================== -->
+    ================================================== -->
 
     <div
       class="client-list"
@@ -932,14 +1119,10 @@
 <script type="module">
 
 
-  // =========================================
-  // FIREBASE IMPORTS
-  // =========================================
-
   import {
     initializeApp
   } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
   import {
@@ -947,7 +1130,7 @@
     onAuthStateChanged,
     signOut
   } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
   import {
@@ -960,13 +1143,13 @@
     deleteDoc,
     serverTimestamp
   } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 
-  // =========================================
-  // FIREBASE CONFIG
-  // =========================================
+  // =====================================================
+  // FIREBASE
+  // =====================================================
 
   const firebaseConfig = {
 
@@ -1008,49 +1191,46 @@
 
 
 
-  // =========================================
+  // =====================================================
   // ELEMENTS
-  // =========================================
+  // =====================================================
 
-  const clientForm =
-    document.getElementById("clientForm");
+  const form =
+    document.getElementById(
+      "clientForm"
+    );
 
 
   const formContainer =
-    document.getElementById("clientFormContainer");
+    document.getElementById(
+      "clientFormContainer"
+    );
 
 
   const clientsArea =
-    document.getElementById("clientsArea");
-
-
-  const clientCount =
-    document.getElementById("clientCount");
-
-
-  const activeProgramCount =
-    document.getElementById("activeProgramCount");
-
-
-  const checkinCount =
-    document.getElementById("checkinCount");
-
-
-  const paymentTotal =
-    document.getElementById("paymentTotal");
+    document.getElementById(
+      "clientsArea"
+    );
 
 
   const formMessage =
-    document.getElementById("formMessage");
+    document.getElementById(
+      "formMessage"
+    );
 
 
-  let editingClientId = null;
+  let editingClientId =
+    null;
+
+
+  let clientsCache =
+    [];
 
 
 
-  // =========================================
-  // AUTHENTICATION
-  // =========================================
+  // =====================================================
+  // ADMIN AUTH
+  // =====================================================
 
   onAuthStateChanged(
     auth,
@@ -1067,9 +1247,8 @@
 
 
       if (
-        !user.email ||
-        user.email.toLowerCase() !==
-        ADMIN_EMAIL.toLowerCase()
+        user.email !==
+        ADMIN_EMAIL
       ) {
 
         alert(
@@ -1093,32 +1272,39 @@
 
 
 
-  // =========================================
+  // =====================================================
   // LOAD CLIENTS
-  // =========================================
+  // =====================================================
 
   async function loadClients() {
 
-    clientsArea.innerHTML = `
-      <div class="empty">
-        Loading clients...
-      </div>
-    `;
+
+    clientsArea.innerHTML =
+      `
+        <div class="empty">
+          Loading clients...
+        </div>
+      `;
 
 
     try {
 
+
       const snapshot =
         await getDocs(
-          collection(db, "clients")
+          collection(
+            db,
+            "clients"
+          )
         );
 
 
-      const clients =
+      clientsCache =
         snapshot.docs.map(
           item => ({
 
-            id: item.id,
+            id:
+              item.id,
 
             ...item.data()
 
@@ -1126,178 +1312,211 @@
         );
 
 
-      updateDashboard(clients);
-
-
-      if (!clients.length) {
-
-        clientsArea.innerHTML = `
-          <div class="empty">
-            No clients added yet.
-            <br><br>
-            Click "+ Add Client" to add your first client.
-          </div>
-        `;
-
-        return;
-
-      }
-
-
-      // Sort newest first
-
-      clients.sort(
-        (a, b) => {
-
-          const aTime =
-            a.createdAt?.toMillis
-              ? a.createdAt.toMillis()
-              : 0;
-
-          const bTime =
-            b.createdAt?.toMillis
-              ? b.createdAt.toMillis()
-              : 0;
-
-          return bTime - aTime;
-
-        }
+      updateDashboard(
+        clientsCache
       );
 
 
+      renderClients(
+        clientsCache
+      );
+
+    }
+
+    catch (error) {
+
+      console.error(error);
+
+
       clientsArea.innerHTML =
-        clients.map(client => {
+        `
+          <div class="empty">
+            Unable to load clients.
+            <br><br>
+            ${escapeHtml(error.message)}
+          </div>
+        `;
 
-          return `
+    }
 
-            <div class="client">
+  }
 
-              <div class="client-info">
 
-                <strong>
-                  ${escapeHtml(
-                    client.name ||
-                    "Unnamed Client"
-                  )}
-                </strong>
 
-                <p>
-                  ${escapeHtml(
-                    client.email ||
-                    ""
-                  )}
-                </p>
+  // =====================================================
+  // RENDER CLIENTS
+  // =====================================================
 
-                <p>
-                  ${escapeHtml(
-                    client.programName ||
-                    "No program"
-                  )}
-                  •
-                  ${escapeHtml(
-                    String(
-                      client.duration ||
+  function renderClients(
+    clients
+  ) {
+
+
+    if (
+      clients.length === 0
+    ) {
+
+      clientsArea.innerHTML =
+        `
+          <div class="empty">
+            No clients added yet.
+            <br><br>
+            Click "+ Add Client" to add one.
+          </div>
+        `;
+
+      return;
+
+    }
+
+
+    clientsArea.innerHTML =
+      clients
+        .map(
+          client => {
+
+            const connected =
+              !!client.uid;
+
+
+            return `
+
+              <div class="client">
+
+                <div class="client-info">
+
+                  <strong>
+                    ${escapeHtml(
+                      client.name ||
+                      "Unnamed Client"
+                    )}
+                  </strong>
+
+                  <p>
+                    ${escapeHtml(
+                      client.email ||
                       ""
-                    )
-                  )}
-                  days
-                </p>
+                    )}
+                  </p>
 
-                <p>
-                  Start:
-                  ${escapeHtml(
-                    client.startDate ||
-                    "-"
-                  )}
-                  |
-                  End:
-                  ${escapeHtml(
-                    client.endDate ||
-                    "-"
-                  )}
-                </p>
+                  <p>
+                    ${escapeHtml(
+                      client.programName ||
+                      "No program"
+                    )}
+                    •
+                    ${escapeHtml(
+                      String(
+                        client.duration ||
+                        ""
+                      )
+                    )}
+                    days
+                  </p>
 
-                <p>
-                  Paid:
-                  Rs.
-                  ${Number(
-                    client.amountPaid ||
-                    0
-                  ).toLocaleString()}
+                  <p>
+                    Start:
+                    ${escapeHtml(
+                      client.startDate ||
+                      "-"
+                    )}
+                    |
+                    End:
+                    ${escapeHtml(
+                      client.endDate ||
+                      "-"
+                    )}
+                  </p>
 
-                  |
-                  Remaining:
-                  Rs.
-                  ${Number(
-                    client.remainingAmount ||
-                    0
-                  ).toLocaleString()}
-                </p>
+                  <p>
+                    Paid:
+                    Rs.
+                    ${Number(
+                      client.amountPaid ||
+                      0
+                    ).toLocaleString()}
+                    |
+                    Remaining:
+                    Rs.
+                    ${Number(
+                      client.remainingAmount ||
+                      0
+                    ).toLocaleString()}
+                  </p>
 
-                <p class="client-id">
-                  Enrollment ID:
-                  ${escapeHtml(client.id)}
-                </p>
+                  <span
+                    class="uid-status ${
+                      connected
+                        ? "connected"
+                        : "not-connected"
+                    }"
+                  >
+                    ${
+                      connected
+                        ? "✓ Account connected"
+                        : "Account not created yet"
+                    }
+                  </span>
+
+                </div>
+
+
+                <div class="client-actions">
+
+                  <button
+                    class="small-btn edit-btn"
+                    data-edit="${client.id}"
+                  >
+                    Edit
+                  </button>
+
+
+                  <button
+                    class="small-btn delete-btn"
+                    data-delete="${client.id}"
+                  >
+                    Delete
+                  </button>
+
+                </div>
 
               </div>
 
+            `;
 
-              <div class="client-actions">
-
-                <button
-                  class="small-btn edit-btn"
-                  data-edit="${escapeHtml(client.id)}"
-                >
-                  Edit
-                </button>
+          }
+        )
+        .join("");
 
 
-                <button
-                  class="small-btn delete-btn"
-                  data-delete="${escapeHtml(client.id)}"
-                >
-                  Delete
-                </button>
-
-              </div>
-
-            </div>
-
-          `;
-
-        }).join("");
-
-
-      // =====================================
-      // EDIT BUTTONS
-      // =====================================
-
-      document
-        .querySelectorAll("[data-edit]")
-        .forEach(button => {
+    document
+      .querySelectorAll(
+        "[data-edit]"
+      )
+      .forEach(
+        button => {
 
           button.addEventListener(
             "click",
             () => {
 
               editClient(
-                button.dataset.edit,
-                clients
+                button.dataset.edit
               );
 
             }
           );
 
-        });
+        }
+      );
 
 
-      // =====================================
-      // DELETE BUTTONS
-      // =====================================
-
-      document
-        .querySelectorAll("[data-delete]")
-        .forEach(button => {
+    document
+      .querySelectorAll(
+        "[data-delete]"
+      )
+      .forEach(
+        button => {
 
           button.addEventListener(
             "click",
@@ -1310,82 +1529,53 @@
             }
           );
 
-        });
-
-
-    }
-
-    catch (error) {
-
-      console.error(
-        "Load clients error:",
-        error
+        }
       );
-
-
-      clientsArea.innerHTML = `
-
-        <div class="empty">
-
-          Unable to load clients.
-
-          <br><br>
-
-          ${escapeHtml(
-            firebaseErrorMessage(error)
-          )}
-
-        </div>
-
-      `;
-
-    }
 
   }
 
 
 
-  // =========================================
+  // =====================================================
   // DASHBOARD
-  // =========================================
+  // =====================================================
 
-  function updateDashboard(clients) {
+  function updateDashboard(
+    clients
+  ) {
 
-    clientCount.textContent =
+
+    document.getElementById(
+      "clientCount"
+    ).textContent =
       clients.length;
 
 
     const today =
-      getLocalDateString(
-        new Date()
-      );
+      new Date()
+        .toISOString()
+        .split("T")[0];
 
 
     const active =
-      clients.filter(client => {
+      clients.filter(
+        client => {
 
-        return (
-          client.startDate &&
-          client.endDate &&
-          client.startDate <= today &&
-          client.endDate >= today
-        );
+          return (
+            client.startDate &&
+            client.endDate &&
+            client.startDate <= today &&
+            client.endDate >= today
+          );
 
-      });
+        }
+      );
 
 
-    activeProgramCount.textContent =
+    document.getElementById(
+      "activeProgramCount"
+    ).textContent =
       active.length;
-
-
-    /*
-      Check-ins due is kept at 0 for now
-      because your current client records
-      do not contain a check-in date field.
-    */
-
-    checkinCount.textContent =
-      "0";
 
 
     const totalPaid =
@@ -1405,7 +1595,9 @@
       );
 
 
-    paymentTotal.textContent =
+    document.getElementById(
+      "paymentTotal"
+    ).textContent =
       "Rs. " +
       totalPaid.toLocaleString();
 
@@ -1413,73 +1605,62 @@
 
 
 
-  // =========================================
-  // ADD CLIENT
-  // =========================================
+  // =====================================================
+  // OPEN ADD FORM
+  // =====================================================
 
   document
-    .getElementById("addClientBtn")
+    .getElementById(
+      "addClientBtn"
+    )
     .addEventListener(
       "click",
       () => {
 
-        editingClientId = null;
+        editingClientId =
+          null;
 
-        clientForm.reset();
+        form.reset();
 
-        formMessage.textContent = "";
+        formMessage.textContent =
+          "";
 
-        formMessage.className =
-          "message";
-
-        document
-          .getElementById("saveClientBtn")
-          .textContent =
+        document.getElementById(
+          "saveClientBtn"
+        ).textContent =
           "Save Client";
-
 
         formContainer.style.display =
           "block";
 
-
-        document
-          .getElementById("startDate")
-          .value =
-          getLocalDateString(
-            new Date()
-          );
-
-
-        calculateEndDate();
-
-
-        document
-          .getElementById("name")
-          .focus();
+        document.getElementById(
+          "name"
+        ).focus();
 
       }
     );
 
 
 
-  // =========================================
+  // =====================================================
   // CANCEL
-  // =========================================
+  // =====================================================
 
   document
-    .getElementById("cancelClientBtn")
+    .getElementById(
+      "cancelClientBtn"
+    )
     .addEventListener(
       "click",
       () => {
 
-        clientForm.reset();
+        form.reset();
 
-        editingClientId = null;
+        editingClientId =
+          null;
 
-        formMessage.textContent = "";
-
-        formMessage.className =
-          "message";
+        formMessage.textContent =
+          "";
 
         formContainer.style.display =
           "none";
@@ -1489,12 +1670,14 @@
 
 
 
-  // =========================================
+  // =====================================================
   // PROGRAM TYPE
-  // =========================================
+  // =====================================================
 
   document
-    .getElementById("programType")
+    .getElementById(
+      "programType"
+    )
     .addEventListener(
       "change",
       event => {
@@ -1515,7 +1698,7 @@
         ) {
 
           programName.value =
-            "90-Day Freedom Mentorship";
+            "90-Day Freedom Mentorship™";
 
         }
 
@@ -1531,14 +1714,10 @@
         }
 
 
-        else if (
-          type ===
-          "Short Program"
-        ) {
+        else {
 
-          programName.value = "";
-
-          programName.focus();
+          programName.value =
+            "";
 
         }
 
@@ -1547,34 +1726,36 @@
 
 
 
-  // =========================================
+  // =====================================================
   // END DATE
-  // =========================================
+  // =====================================================
 
   function calculateEndDate() {
 
-    const startDate =
-      document
-        .getElementById("startDate")
-        .value;
+
+    const start =
+      document.getElementById(
+        "startDate"
+      ).value;
 
 
     const duration =
       Number(
-        document
-          .getElementById("duration")
-          .value
+        document.getElementById(
+          "duration"
+        ).value
       );
 
 
     if (
-      !startDate ||
+      !start ||
       !duration
     ) {
 
-      document
-        .getElementById("endDate")
-        .value = "";
+      document.getElementById(
+        "endDate"
+      ).value =
+        "";
 
       return;
 
@@ -1583,7 +1764,7 @@
 
     const date =
       new Date(
-        startDate +
+        start +
         "T00:00:00"
       );
 
@@ -1595,17 +1776,21 @@
     );
 
 
-    document
-      .getElementById("endDate")
-      .value =
-      formatDate(date);
+    document.getElementById(
+      "endDate"
+    ).value =
+      formatDate(
+        date
+      );
 
   }
 
 
 
   document
-    .getElementById("startDate")
+    .getElementById(
+      "startDate"
+    )
     .addEventListener(
       "change",
       calculateEndDate
@@ -1613,7 +1798,9 @@
 
 
   document
-    .getElementById("duration")
+    .getElementById(
+      "duration"
+    )
     .addEventListener(
       "change",
       calculateEndDate
@@ -1621,52 +1808,46 @@
 
 
 
-  // =========================================
+  // =====================================================
   // REMAINING PAYMENT
-  // =========================================
+  // =====================================================
 
   function calculateRemaining() {
 
+
     const price =
       Number(
-        document
-          .getElementById(
-            "programPrice"
-          )
-          .value
+        document.getElementById(
+          "programPrice"
+        ).value
       ) || 0;
 
 
     const paid =
       Number(
-        document
-          .getElementById(
-            "amountPaid"
-          )
-          .value
+        document.getElementById(
+          "amountPaid"
+        ).value
       ) || 0;
 
 
-    const remaining =
+    document.getElementById(
+      "remainingAmount"
+    ).value =
       Math.max(
-        price - paid,
+        price -
+        paid,
         0
       );
-
-
-    document
-      .getElementById(
-        "remainingAmount"
-      )
-      .value =
-      remaining;
 
   }
 
 
 
   document
-    .getElementById("programPrice")
+    .getElementById(
+      "programPrice"
+    )
     .addEventListener(
       "input",
       calculateRemaining
@@ -1674,7 +1855,9 @@
 
 
   document
-    .getElementById("amountPaid")
+    .getElementById(
+      "amountPaid"
+    )
     .addEventListener(
       "input",
       calculateRemaining
@@ -1682,11 +1865,11 @@
 
 
 
-  // =========================================
+  // =====================================================
   // SAVE CLIENT
-  // =========================================
+  // =====================================================
 
-  clientForm.addEventListener(
+  form.addEventListener(
     "submit",
     async event => {
 
@@ -1694,43 +1877,29 @@
 
 
       formMessage.textContent =
-        "Saving client...";
-
-      formMessage.className =
-        "message";
-
-
-      const email =
-        document
-          .getElementById("email")
-          .value
-          .trim()
-          .toLowerCase();
+        "Saving...";
 
 
       const price =
         Number(
-          document
-            .getElementById(
-              "programPrice"
-            )
-            .value
+          document.getElementById(
+            "programPrice"
+          ).value
         ) || 0;
 
 
       const paid =
         Number(
-          document
-            .getElementById(
-              "amountPaid"
-            )
-            .value
+          document.getElementById(
+            "amountPaid"
+          ).value
         ) || 0;
 
 
       const remaining =
         Math.max(
-          price - paid,
+          price -
+          paid,
           0
         );
 
@@ -1738,69 +1907,58 @@
       const clientData = {
 
         name:
-          document
-            .getElementById("name")
-            .value
-            .trim(),
+          document.getElementById(
+            "name"
+          ).value.trim(),
 
         email:
-
-          email,
+          document.getElementById(
+            "email"
+          ).value
+            .trim()
+            .toLowerCase(),
 
         phone:
-          document
-            .getElementById("phone")
-            .value
-            .trim(),
+          document.getElementById(
+            "phone"
+          ).value.trim(),
 
         dob:
-          document
-            .getElementById("dob")
-            .value,
+          document.getElementById(
+            "dob"
+          ).value,
 
         city:
-          document
-            .getElementById("city")
-            .value
-            .trim(),
+          document.getElementById(
+            "city"
+          ).value.trim(),
 
         programType:
-          document
-            .getElementById(
-              "programType"
-            )
-            .value,
+          document.getElementById(
+            "programType"
+          ).value,
 
         programName:
-          document
-            .getElementById(
-              "programName"
-            )
-            .value
-            .trim(),
+          document.getElementById(
+            "programName"
+          ).value.trim(),
 
         duration:
           Number(
-            document
-              .getElementById(
-                "duration"
-              )
-              .value
+            document.getElementById(
+              "duration"
+            ).value
           ),
 
         startDate:
-          document
-            .getElementById(
-              "startDate"
-            )
-            .value,
+          document.getElementById(
+            "startDate"
+          ).value,
 
         endDate:
-          document
-            .getElementById(
-              "endDate"
-            )
-            .value,
+          document.getElementById(
+            "endDate"
+          ).value,
 
         programPrice:
           price,
@@ -1812,26 +1970,19 @@
           remaining,
 
         paymentStatus:
-          document
-            .getElementById(
-              "paymentStatus"
-            )
-            .value,
+          document.getElementById(
+            "paymentStatus"
+          ).value,
 
         paymentMethod:
-          document
-            .getElementById(
-              "paymentMethod"
-            )
-            .value,
+          document.getElementById(
+            "paymentMethod"
+          ).value,
 
         notes:
-          document
-            .getElementById(
-              "notes"
-            )
-            .value
-            .trim(),
+          document.getElementById(
+            "notes"
+          ).value.trim(),
 
         updatedAt:
           serverTimestamp()
@@ -1839,14 +1990,17 @@
       };
 
 
+
       try {
 
 
-        // =====================================
-        // EDIT EXISTING CLIENT
-        // =====================================
+        // =================================================
+        // EDIT
+        // =================================================
 
-        if (editingClientId) {
+        if (
+          editingClientId
+        ) {
 
 
           await updateDoc(
@@ -1862,50 +2016,29 @@
           );
 
 
-          showFormSuccess(
-            "Client updated successfully ✓"
-          );
-
+          formMessage.textContent =
+            "Client updated successfully ✓";
 
         }
 
 
-        // =====================================
-        // CREATE NEW CLIENT
-        // =====================================
+        // =================================================
+        // CREATE
+        // =================================================
 
         else {
-
-
-          /*
-            IMPORTANT:
-
-            addDoc() creates a RANDOM
-            Firestore document ID.
-
-            Example:
-
-            clients/
-              mdcr5vb7XugHCcwVld50twzFQxy2
-
-            The email is stored INSIDE
-            the document.
-
-            This matches client-login.html.
-          */
 
 
           clientData.createdAt =
             serverTimestamp();
 
 
-          // New clients start without a UID.
-          // The UID is added when the client
-          // creates their account.
-
-          clientData.uid = "";
-
-
+          // IMPORTANT:
+          //
+          // addDoc() creates a RANDOM FIRESTORE ID.
+          //
+          // This is intentional.
+          //
           await addDoc(
 
             collection(
@@ -1918,9 +2051,8 @@
           );
 
 
-          showFormSuccess(
-            "Client added successfully ✓"
-          );
+          formMessage.textContent =
+            "Client added successfully ✓";
 
         }
 
@@ -1931,38 +2063,31 @@
         setTimeout(
           () => {
 
-            clientForm.reset();
+            form.reset();
 
-            editingClientId = null;
+            editingClientId =
+              null;
 
             formContainer.style.display =
               "none";
 
-            formMessage.textContent = "";
-
-            formMessage.className =
-              "message";
+            formMessage.textContent =
+              "";
 
           },
-          900
+          700
         );
-
 
       }
 
       catch (error) {
 
-        console.error(
-          "Save client error:",
-          error
-        );
+        console.error(error);
 
 
         formMessage.textContent =
-          firebaseErrorMessage(error);
-
-        formMessage.className =
-          "message error";
+          "Unable to save client: " +
+          error.message;
 
       }
 
@@ -1971,27 +2096,23 @@
 
 
 
-  // =========================================
-  // EDIT CLIENT
-  // =========================================
+  // =====================================================
+  // EDIT
+  // =====================================================
 
   function editClient(
-    id,
-    clients
+    id
   ) {
 
+
     const client =
-      clients.find(
+      clientsCache.find(
         item =>
           item.id === id
       );
 
 
     if (!client) {
-
-      alert(
-        "Client record could not be found."
-      );
 
       return;
 
@@ -2002,136 +2123,126 @@
       id;
 
 
-    document
-      .getElementById("name")
-      .value =
-      client.name || "";
+    document.getElementById(
+      "name"
+    ).value =
+      client.name ||
+      "";
 
 
-    document
-      .getElementById("email")
-      .value =
-      client.email || "";
+    document.getElementById(
+      "email"
+    ).value =
+      client.email ||
+      "";
 
 
-    document
-      .getElementById("phone")
-      .value =
-      client.phone || "";
+    document.getElementById(
+      "phone"
+    ).value =
+      client.phone ||
+      "";
 
 
-    document
-      .getElementById("dob")
-      .value =
-      client.dob || "";
+    document.getElementById(
+      "dob"
+    ).value =
+      client.dob ||
+      "";
 
 
-    document
-      .getElementById("city")
-      .value =
-      client.city || "";
+    document.getElementById(
+      "city"
+    ).value =
+      client.city ||
+      "";
 
 
-    document
-      .getElementById(
-        "programType"
-      )
-      .value =
-      client.programType || "";
+    document.getElementById(
+      "programType"
+    ).value =
+      client.programType ||
+      "";
 
 
-    document
-      .getElementById(
-        "programName"
-      )
-      .value =
-      client.programName || "";
+    document.getElementById(
+      "programName"
+    ).value =
+      client.programName ||
+      "";
 
 
-    document
-      .getElementById(
-        "duration"
-      )
-      .value =
-      client.duration || "";
+    document.getElementById(
+      "duration"
+    ).value =
+      client.duration ||
+      "";
 
 
-    document
-      .getElementById(
-        "startDate"
-      )
-      .value =
-      client.startDate || "";
+    document.getElementById(
+      "startDate"
+    ).value =
+      client.startDate ||
+      "";
 
 
-    document
-      .getElementById(
-        "endDate"
-      )
-      .value =
-      client.endDate || "";
+    document.getElementById(
+      "endDate"
+    ).value =
+      client.endDate ||
+      "";
 
 
-    document
-      .getElementById(
-        "programPrice"
-      )
-      .value =
-      client.programPrice || 0;
+    document.getElementById(
+      "programPrice"
+    ).value =
+      client.programPrice ||
+      0;
 
 
-    document
-      .getElementById(
-        "amountPaid"
-      )
-      .value =
-      client.amountPaid || 0;
+    document.getElementById(
+      "amountPaid"
+    ).value =
+      client.amountPaid ||
+      0;
 
 
-    document
-      .getElementById(
-        "remainingAmount"
-      )
-      .value =
-      client.remainingAmount || 0;
+    document.getElementById(
+      "remainingAmount"
+    ).value =
+      client.remainingAmount ||
+      0;
 
 
-    document
-      .getElementById(
-        "paymentStatus"
-      )
-      .value =
-      client.paymentStatus || "";
+    document.getElementById(
+      "paymentStatus"
+    ).value =
+      client.paymentStatus ||
+      "";
 
 
-    document
-      .getElementById(
-        "paymentMethod"
-      )
-      .value =
-      client.paymentMethod || "";
+    document.getElementById(
+      "paymentMethod"
+    ).value =
+      client.paymentMethod ||
+      "";
 
 
-    document
-      .getElementById(
-        "notes"
-      )
-      .value =
-      client.notes || "";
+    document.getElementById(
+      "notes"
+    ).value =
+      client.notes ||
+      "";
 
 
-    document
-      .getElementById(
-        "saveClientBtn"
-      )
-      .textContent =
+    document.getElementById(
+      "saveClientBtn"
+    ).textContent =
       "Update Client";
 
 
-    formMessage.textContent = "";
-
-    formMessage.className =
-      "message";
+    formMessage.textContent =
+      "";
 
 
     formContainer.style.display =
@@ -2153,11 +2264,14 @@
 
 
 
-  // =========================================
-  // DELETE CLIENT
-  // =========================================
+  // =====================================================
+  // DELETE
+  // =====================================================
 
-  async function deleteClient(id) {
+  async function deleteClient(
+    id
+  ) {
+
 
     const confirmed =
       confirm(
@@ -2174,31 +2288,30 @@
 
     try {
 
+
       await deleteDoc(
+
         doc(
           db,
           "clients",
           id
         )
+
       );
 
 
       await loadClients();
 
-
     }
 
     catch (error) {
 
-      console.error(
-        "Delete error:",
-        error
-      );
+      console.error(error);
 
 
       alert(
         "Unable to delete client: " +
-        firebaseErrorMessage(error)
+        error.message
       );
 
     }
@@ -2207,55 +2320,37 @@
 
 
 
-  // =========================================
+  // =====================================================
   // LOGOUT
-  // =========================================
+  // =====================================================
 
   document
-    .getElementById("logoutBtn")
+    .getElementById(
+      "logoutBtn"
+    )
     .addEventListener(
       "click",
       async () => {
 
-        try {
+        await signOut(
+          auth
+        );
 
-          await signOut(auth);
-
-        }
-
-        finally {
-
-          window.location.href =
-            "login.html";
-
-        }
+        window.location.href =
+          "login.html";
 
       }
     );
 
 
 
-  // =========================================
-  // FORM SUCCESS
-  // =========================================
+  // =====================================================
+  // HELPERS
+  // =====================================================
 
-  function showFormSuccess(text) {
-
-    formMessage.textContent =
-      text;
-
-    formMessage.className =
-      "message success";
-
-  }
-
-
-
-  // =========================================
-  // DATE HELPERS
-  // =========================================
-
-  function formatDate(date) {
+  function formatDate(
+    date
+  ) {
 
     const year =
       date.getFullYear();
@@ -2263,14 +2358,21 @@
 
     const month =
       String(
-        date.getMonth() + 1
-      ).padStart(2, "0");
+        date.getMonth() +
+        1
+      ).padStart(
+        2,
+        "0"
+      );
 
 
     const day =
       String(
         date.getDate()
-      ).padStart(2, "0");
+      ).padStart(
+        2,
+        "0"
+      );
 
 
     return (
@@ -2285,71 +2387,13 @@
 
 
 
-  function getLocalDateString(date) {
+  function escapeHtml(
+    value
+  ) {
 
-    return formatDate(date);
-
-  }
-
-
-
-  // =========================================
-  // FIREBASE ERROR
-  // =========================================
-
-  function firebaseErrorMessage(error) {
-
-    if (!error) {
-
-      return (
-        "Something went wrong. Please try again."
-      );
-
-    }
-
-
-    if (
-      error.message &&
-      error.message.includes(
-        "Missing or insufficient permissions"
-      )
-    ) {
-
-      return (
-        "Firebase denied access. Please make sure the Firestore Rules are published."
-      );
-
-    }
-
-
-    if (
-      error.code ===
-      "permission-denied"
-    ) {
-
-      return (
-        "Firebase denied access. Please make sure the Firestore Rules are published."
-      );
-
-    }
-
-
-    return (
-      error.message ||
-      "Something went wrong. Please try again."
-    );
-
-  }
-
-
-
-  // =========================================
-  // ESCAPE HTML
-  // =========================================
-
-  function escapeHtml(value) {
-
-    return String(value)
+    return String(
+      value
+    )
 
       .replaceAll(
         "&",
@@ -2384,4 +2428,3 @@
 </body>
 
 </html>
-```
