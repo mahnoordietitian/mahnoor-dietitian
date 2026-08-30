@@ -1,469 +1,1104 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Admin Panel | Mahnoor Dietitian</title>
 
   <style>
 
+    :root {
+      --plum: #6E4A7E;
+      --plum-dark: #593966;
+      --plum-light: #F1EAF4;
+
+      --cream: #FBF8F3;
+      --champagne: #DCCBB3;
+      --taupe: #B7A89A;
+
+      --charcoal: #2D2D2D;
+      --muted: #777;
+      --white: #FFFFFF;
+
+      --border: #E8E2DD;
+
+      --success: #34734A;
+      --danger: #9B3434;
+    }
+
+
     * {
       box-sizing: border-box;
     }
 
-    :root {
-      --cream: #FBF8F3;
-      --plum: #6E4A7E;
-      --charcoal: #2D2D2D;
-      --champagne: #DCCBB3;
-      --taupe: #B7A89A;
-      --white: #FFFFFF;
-      --border: #EAE6E1;
-      --muted: #777;
-    }
 
     body {
+
       margin: 0;
-      background: var(--cream);
-      color: var(--charcoal);
-      font-family: Arial, sans-serif;
+
+      font-family:
+        Arial,
+        sans-serif;
+
+      background:
+        var(--cream);
+
+      color:
+        var(--charcoal);
+
     }
 
-    /* =========================
+
+    /* =====================================================
        LAYOUT
-    ========================= */
+    ===================================================== */
 
     .app {
-      min-height: 100vh;
+
       display: flex;
+
+      min-height: 100vh;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        SIDEBAR
-    ========================= */
+    ===================================================== */
 
     .sidebar {
+
       width: 250px;
-      background: var(--white);
-      border-right: 1px solid var(--border);
+
       min-height: 100vh;
+
+      background:
+        var(--plum);
+
+      color:
+        white;
+
       position: fixed;
+
       left: 0;
+
       top: 0;
+
       bottom: 0;
+
       overflow-y: auto;
+
       z-index: 100;
+
     }
 
-    .brand {
-      padding: 25px 20px;
-      border-bottom: 1px solid var(--border);
+
+    .sidebar-brand {
+
+      padding: 28px 22px;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.16);
+
     }
 
-    .brand-name {
-      color: var(--plum);
+
+    .sidebar-brand h2 {
+
+      margin: 0;
+
       font-size: 21px;
+
       font-weight: 600;
+
     }
 
-    .brand-subtitle {
-      color: var(--muted);
+
+    .sidebar-brand p {
+
+      margin: 6px 0 0;
+
       font-size: 12px;
-      margin-top: 5px;
+
+      opacity: 0.75;
+
     }
+
 
     .nav {
+
       padding: 18px 12px;
+
     }
+
 
     .nav-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--taupe);
-      letter-spacing: 1px;
-      margin: 18px 10px 8px;
+
+      padding:
+        12px 12px 7px;
+
+      font-size: 10px;
+
+      letter-spacing: 1.2px;
+
+      text-transform: uppercase;
+
+      opacity: 0.6;
+
     }
 
-    .nav-button {
-      width: 100%;
+
+    .nav-item {
+
       display: flex;
+
       align-items: center;
-      gap: 11px;
-      padding: 11px 12px;
+
+      gap: 12px;
+
+      width: 100%;
+
+      padding: 12px 13px;
+
       margin-bottom: 4px;
-      border: none;
-      border-radius: 8px;
-      background: transparent;
-      color: var(--charcoal);
-      text-align: left;
-      cursor: pointer;
+
+      border-radius: 9px;
+
+      color: white;
+
+      text-decoration: none;
+
       font-size: 14px;
+
+      transition:
+        0.2s ease;
+
     }
 
-    .nav-button:hover {
-      background: var(--cream);
+
+    .nav-item:hover {
+
+      background:
+        rgba(255,255,255,0.12);
+
     }
 
-    .nav-button.active {
-      background: #F0EAF2;
-      color: var(--plum);
+
+    .nav-item.active {
+
+      background:
+        white;
+
+      color:
+        var(--plum);
+
       font-weight: 600;
+
     }
+
 
     .nav-icon {
+
       width: 22px;
+
       text-align: center;
-      font-size: 15px;
+
+      font-size: 16px;
+
     }
 
-    .sidebar-bottom {
-      padding: 15px 12px 25px;
-      border-top: 1px solid var(--border);
-      margin-top: 15px;
-    }
-
-    .logout-btn {
-      width: 100%;
-      padding: 11px;
-      border: 1px solid #E4D4D4;
-      background: #FFF7F7;
-      color: #8B3333;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    /* =========================
-       MAIN
-    ========================= */
 
     .main {
+
       margin-left: 250px;
-      width: calc(100% - 250px);
+
+      width:
+        calc(100% - 250px);
+
       min-height: 100vh;
+
     }
+
+
+    /* =====================================================
+       TOP BAR
+    ===================================================== */
 
     .topbar {
+
       height: 72px;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 30px;
+
+      background:
+        white;
+
+      border-bottom:
+        1px solid var(--border);
+
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
+
+      justify-content: space-between;
+
+      padding:
+        0 30px;
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 50;
+
     }
 
-    .page-title {
-      font-size: 18px;
+
+    .topbar-title {
+
+      font-size: 15px;
+
       font-weight: 600;
+
+      color:
+        var(--plum);
+
     }
+
+
+    .admin-area {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+    }
+
 
     .admin-email {
-      color: var(--muted);
+
       font-size: 13px;
+
+      color:
+        var(--muted);
+
     }
+
+
+    .logout {
+
+      border: none;
+
+      background:
+        var(--plum);
+
+      color: white;
+
+      padding:
+        9px 16px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+    }
+
+
+    .logout:hover {
+
+      background:
+        var(--plum-dark);
+
+    }
+
+
+    /* =====================================================
+       CONTENT
+    ===================================================== */
 
     .content {
-      padding: 35px;
+
       max-width: 1400px;
+
       margin: 0 auto;
+
+      padding:
+        38px 30px 60px;
+
     }
 
-    /* =========================
-       WELCOME
-    ========================= */
 
     .welcome {
+
       margin-bottom: 30px;
+
     }
+
 
     .welcome h1 {
-      margin: 0 0 8px;
-      font-size: 30px;
+
+      margin: 0 0 7px;
+
+      font-size: 32px;
+
+      color:
+        var(--charcoal);
+
     }
+
+
+    .welcome h1 span {
+
+      color:
+        var(--plum);
+
+    }
+
 
     .welcome p {
+
       margin: 0;
-      color: var(--muted);
+
+      color:
+        var(--muted);
+
       font-size: 15px;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        STAT CARDS
-    ========================= */
+    ===================================================== */
 
     .stats {
+
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 18px;
+
       margin-bottom: 30px;
+
     }
+
 
     .stat-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px;
+
+      background:
+        white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 15px;
+
+      padding: 23px;
+
+      position: relative;
+
+      overflow: hidden;
+
     }
+
+
+    .stat-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+
+      top: 0;
+
+      bottom: 0;
+
+      width: 5px;
+
+      background:
+        var(--plum);
+
+    }
+
 
     .stat-label {
-      color: var(--muted);
+
+      color:
+        var(--muted);
+
       font-size: 13px;
-      margin-bottom: 12px;
+
+      margin-bottom: 10px;
+
     }
+
 
     .stat-number {
-      color: var(--plum);
+
+      color:
+        var(--plum);
+
       font-size: 29px;
-      font-weight: 600;
+
+      font-weight: 700;
+
     }
+
 
     .stat-note {
-      color: var(--muted);
+
+      margin-top: 7px;
+
       font-size: 12px;
-      margin-top: 8px;
+
+      color:
+        var(--taupe);
+
     }
 
-    /* =========================
-       GRID
-    ========================= */
 
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 22px;
-    }
+    /* =====================================================
+       QUICK ACTIONS
+    ===================================================== */
 
     .section {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      margin-bottom: 22px;
+
+      background:
+        white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 15px;
+
+      padding: 25px;
+
+      margin-bottom: 24px;
+
     }
+
 
     .section-header {
+
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
+
+      justify-content: space-between;
+
       gap: 15px;
+
       margin-bottom: 20px;
+
     }
+
 
     .section-header h2 {
+
       margin: 0;
-      font-size: 19px;
+
+      font-size: 20px;
+
+      color:
+        var(--charcoal);
+
     }
 
-    .view-all {
-      border: none;
-      background: none;
-      color: var(--plum);
-      font-weight: 600;
-      cursor: pointer;
+
+    .section-header p {
+
+      margin: 5px 0 0;
+
+      color:
+        var(--muted);
+
       font-size: 13px;
+
     }
 
-    /* =========================
-       PROGRAM CARDS
-    ========================= */
+
+    .quick-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 14px;
+
+    }
+
+
+    .quick-card {
+
+      display: block;
+
+      text-decoration: none;
+
+      color:
+        var(--charcoal);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 12px;
+
+      padding: 19px;
+
+      transition:
+        0.2s ease;
+
+      background:
+        #fff;
+
+    }
+
+
+    .quick-card:hover {
+
+      border-color:
+        var(--plum);
+
+      background:
+        var(--plum-light);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .quick-icon {
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 10px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+        var(--plum-light);
+
+      color:
+        var(--plum);
+
+      font-size: 18px;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .quick-card strong {
+
+      display: block;
+
+      font-size: 14px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .quick-card span {
+
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* =====================================================
+       PROGRAMS
+    ===================================================== */
 
     .program-grid {
+
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
     }
+
 
     .program-card {
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      padding: 18px;
-      cursor: pointer;
-      transition: 0.2s;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 13px;
+
+      padding: 21px;
+
+      position: relative;
+
+      background:
+        white;
+
     }
 
-    .program-card:hover {
-      border-color: var(--champagne);
-      transform: translateY(-1px);
+
+    .program-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+
+      left: 0;
+
+      right: 0;
+
+      height: 4px;
+
+      border-radius:
+        13px 13px 0 0;
+
+      background:
+        var(--plum);
+
     }
+
+
+    .program-type {
+
+      color:
+        var(--plum);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.8px;
+
+      margin-bottom: 8px;
+
+    }
+
 
     .program-card h3 {
-      margin: 0 0 7px;
-      font-size: 16px;
+
+      margin: 0 0 8px;
+
+      font-size: 17px;
+
     }
+
 
     .program-card p {
-      margin: 0;
-      color: var(--muted);
+
+      margin: 0 0 15px;
+
+      color:
+        var(--muted);
+
       font-size: 13px;
+
       line-height: 1.5;
+
     }
+
 
     .program-link {
+
       display: inline-block;
-      margin-top: 14px;
-      color: var(--plum);
+
+      color:
+        var(--plum);
+
       font-size: 13px;
+
       font-weight: 600;
+
+      text-decoration: none;
+
     }
 
-    /* =========================
-       ACTIVITY
-    ========================= */
 
-    .activity {
+    .program-link:hover {
+
+      text-decoration: underline;
+
+    }
+
+
+    /* =====================================================
+       CLIENTS
+    ===================================================== */
+
+    .client-list {
+
       display: flex;
+
       flex-direction: column;
+
+      gap: 11px;
+
     }
 
-    .activity-item {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
+
+    .client {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+
+      padding: 17px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 11px;
+
     }
 
-    .activity-item:last-child {
-      border-bottom: none;
+
+    .client:hover {
+
+      border-color:
+        var(--champagne);
+
     }
 
-    .activity-title {
-      font-size: 14px;
+
+    .client-info strong {
+
+      font-size: 16px;
+
+      color:
+        var(--charcoal);
+
+    }
+
+
+    .client-info p {
+
+      margin:
+        5px 0 0;
+
+      color:
+        var(--muted);
+
+      font-size: 13px;
+
+    }
+
+
+    .status {
+
+      display: inline-block;
+
+      margin-top: 8px;
+
+      padding:
+        5px 9px;
+
+      border-radius: 20px;
+
+      font-size: 11px;
+
       font-weight: 600;
+
     }
 
-    .activity-time {
-      margin-top: 5px;
+
+    .status.connected {
+
+      background:
+        #EDF7EF;
+
+      color:
+        var(--success);
+
+    }
+
+
+    .status.pending {
+
+      background:
+        #FFF5E6;
+
+      color:
+        #93651D;
+
+    }
+
+
+    .client-actions {
+
+      display: flex;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+
+    }
+
+
+    .small-btn {
+
+      border: none;
+
+      border-radius: 7px;
+
+      padding:
+        8px 12px;
+
       font-size: 12px;
-      color: var(--muted);
-    }
 
-    /* =========================
-       QUICK ACTIONS
-    ========================= */
-
-    .quick-actions {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .quick-btn {
-      padding: 13px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      border-radius: 9px;
       cursor: pointer;
-      text-align: left;
-      color: var(--charcoal);
+
+      font-weight: 600;
+
     }
 
-    .quick-btn:hover {
-      background: var(--cream);
+
+    .view-btn {
+
+      background:
+        var(--plum-light);
+
+      color:
+        var(--plum);
+
     }
 
-    .quick-btn strong {
-      display: block;
-      color: var(--plum);
-      margin-bottom: 4px;
+
+    .view-btn:hover {
+
+      background:
+        var(--plum);
+
+      color: white;
+
     }
 
-    .quick-btn span {
-      font-size: 12px;
-      color: var(--muted);
-    }
 
-    /* =========================
-       LOADING
-    ========================= */
+    /* =====================================================
+       EMPTY / LOADING
+    ===================================================== */
 
-    .loading {
-      color: var(--muted);
+    .empty {
+
+      padding:
+        30px 10px;
+
+      text-align: center;
+
+      color:
+        var(--muted);
+
       font-size: 14px;
+
     }
 
-    /* =========================
+
+    /* =====================================================
        MOBILE
-    ========================= */
+    ===================================================== */
 
-    .mobile-header {
-      display: none;
-    }
-
-    @media (max-width: 1000px) {
+    @media (max-width: 1050px) {
 
       .stats {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
       }
 
-      .dashboard-grid {
-        grid-template-columns: 1fr;
+
+      .quick-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
       }
 
-    }
-
-    @media (max-width: 700px) {
-
-      .sidebar {
-        display: none;
-      }
-
-      .main {
-        margin-left: 0;
-        width: 100%;
-      }
-
-      .mobile-header {
-        display: flex;
-        height: 60px;
-        padding: 0 18px;
-        background: var(--white);
-        border-bottom: 1px solid var(--border);
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .mobile-brand {
-        color: var(--plum);
-        font-weight: 600;
-      }
-
-      .topbar {
-        display: none;
-      }
-
-      .content {
-        padding: 22px 15px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
-      .stat-card {
-        padding: 16px;
-      }
-
-      .stat-number {
-        font-size: 24px;
-      }
 
       .program-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
       }
 
     }
 
-    @media (max-width: 450px) {
 
-      .stats {
-        grid-template-columns: 1fr;
+    @media (max-width: 750px) {
+
+      .sidebar {
+
+        width: 70px;
+
       }
 
-      .quick-actions {
-        grid-template-columns: 1fr;
+
+      .sidebar-brand {
+
+        padding:
+          20px 10px;
+
+        text-align: center;
+
+      }
+
+
+      .sidebar-brand h2 {
+
+        font-size: 12px;
+
+      }
+
+
+      .sidebar-brand p {
+
+        display: none;
+
+      }
+
+
+      .nav-label {
+
+        display: none;
+
+      }
+
+
+      .nav-item {
+
+        justify-content: center;
+
+        padding:
+          13px 8px;
+
+      }
+
+
+      .nav-item span:not(.nav-icon) {
+
+        display: none;
+
+      }
+
+
+      .main {
+
+        margin-left: 70px;
+
+        width:
+          calc(100% - 70px);
+
+      }
+
+
+      .topbar {
+
+        padding:
+          0 15px;
+
+      }
+
+
+      .admin-email {
+
+        display: none;
+
+      }
+
+
+      .content {
+
+        padding:
+          25px 15px 45px;
+
+      }
+
+    }
+
+
+    @media (max-width: 550px) {
+
+      .stats {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .quick-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .welcome h1 {
+
+        font-size: 27px;
+
+      }
+
+
+      .client {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+      }
+
+
+      .client-actions {
+
+        width: 100%;
+
+      }
+
+
+      .client-actions button {
+
+        flex: 1;
+
       }
 
     }
@@ -472,214 +1107,246 @@
 
 </head>
 
+
 <body>
+
 
 <div class="app">
 
-  <!-- ==================================================
+
+  <!-- ===================================================
        SIDEBAR
-  =================================================== -->
+  ==================================================== -->
 
   <aside class="sidebar">
 
-    <div class="brand">
 
-      <div class="brand-name">
+    <div class="sidebar-brand">
+
+      <h2>
         Mahnoor Dietitian
-      </div>
+      </h2>
 
-      <div class="brand-subtitle">
+      <p>
         Admin Control Center
-      </div>
+      </p>
 
     </div>
 
 
     <nav class="nav">
 
+
       <div class="nav-label">
-        MAIN
+        Main
       </div>
 
-      <button
-        class="nav-button active"
-        data-page="dashboard"
+
+      <a
+        href="admin-panel.html"
+        class="nav-item active"
       >
+
         <span class="nav-icon">⌂</span>
-        Dashboard
-      </button>
+
+        <span>Dashboard</span>
+
+      </a>
 
 
-      <button
-        class="nav-button"
-        data-page="clients"
+      <a
+        href="client-management.html"
+        class="nav-item"
       >
+
         <span class="nav-icon">♙</span>
-        Clients
-      </button>
+
+        <span>Clients</span>
+
+      </a>
 
 
-      <button
-        class="nav-button"
-        data-page="applications"
+      <a
+        href="applications.html"
+        class="nav-item"
       >
+
         <span class="nav-icon">▣</span>
-        Applications
-      </button>
+
+        <span>Applications</span>
+
+      </a>
 
 
-      <button
-        class="nav-button"
-        data-page="assessments"
+      <a
+        href="assessments.html"
+        class="nav-item"
       >
-        <span class="nav-icon">☑</span>
-        Assessments
-      </button>
+
+        <span class="nav-icon">✓</span>
+
+        <span>Assessments</span>
+
+      </a>
 
 
       <div class="nav-label">
-        PROGRAMS
+        Programs
       </div>
 
 
-      <button
-        class="nav-button"
-        data-page="1on1"
+      <a
+        href="program-1on1.html"
+        class="nav-item"
       >
-        <span class="nav-icon">◉</span>
-        1:1 Coaching
-      </button>
+
+        <span class="nav-icon">◇</span>
+
+        <span>1:1 Coaching</span>
+
+      </a>
 
 
-      <button
-        class="nav-button"
-        data-page="club"
+      <a
+        href="program-club.html"
+        class="nav-item"
       >
-        <span class="nav-icon">◌</span>
-        Freedom Women's Health Club
-      </button>
+
+        <span class="nav-icon">♧</span>
+
+        <span>Women's Health Club</span>
+
+      </a>
 
 
-      <button
-        class="nav-button"
-        data-page="short"
+      <a
+        href="program-short.html"
+        class="nav-item"
       >
+
         <span class="nav-icon">◆</span>
-        Short Programs
-      </button>
+
+        <span>Short Programs</span>
+
+      </a>
 
 
       <div class="nav-label">
-        BUSINESS
+        Management
       </div>
 
 
-      <button
-        class="nav-button"
-        data-page="payments"
+      <a
+        href="payments.html"
+        class="nav-item"
       >
-        <span class="nav-icon">₨</span>
-        Payments
-      </button>
+
+        <span class="nav-icon">Rs</span>
+
+        <span>Payments</span>
+
+      </a>
 
 
-      <button
-        class="nav-button"
-        data-page="notifications"
+      <a
+        href="notifications.html"
+        class="nav-item"
       >
-        <span class="nav-icon">♢</span>
-        Notifications
-      </button>
+
+        <span class="nav-icon">●</span>
+
+        <span>Notifications</span>
+
+      </a>
 
 
-      <button
-        class="nav-button"
-        data-page="settings"
+      <a
+        href="admin-settings.html"
+        class="nav-item"
       >
+
         <span class="nav-icon">⚙</span>
-        Settings
-      </button>
+
+        <span>Settings</span>
+
+      </a>
+
 
     </nav>
 
 
-    <div class="sidebar-bottom">
-
-      <button
-        class="logout-btn"
-        id="logoutBtn"
-      >
-        Logout
-      </button>
-
-    </div>
-
   </aside>
 
 
-  <!-- ==================================================
+
+  <!-- ===================================================
        MAIN
-  =================================================== -->
+  ==================================================== -->
 
   <main class="main">
 
-    <div class="mobile-header">
 
-      <div class="mobile-brand">
-        Mahnoor Dietitian
-      </div>
-
-      <button
-        class="logout-btn"
-        id="mobileLogout"
-        style="width:auto;padding:8px 12px;"
-      >
-        Logout
-      </button>
-
-    </div>
-
+    <!-- TOP BAR -->
 
     <header class="topbar">
 
-      <div class="page-title">
-        Admin Dashboard
+
+      <div class="topbar-title">
+        Admin Control Center
       </div>
 
-      <div
-        class="admin-email"
-        id="adminEmail"
-      >
-        Loading...
+
+      <div class="admin-area">
+
+        <span
+          class="admin-email"
+          id="adminEmail"
+        >
+          Loading...
+        </span>
+
+
+        <button
+          class="logout"
+          id="logoutBtn"
+        >
+          Logout
+        </button>
+
       </div>
+
 
     </header>
 
 
+
+    <!-- CONTENT -->
+
     <div class="content">
 
-      <!-- ==================================================
-           WELCOME
-      =================================================== -->
 
-      <div class="welcome">
+      <!-- WELCOME -->
+
+      <section class="welcome">
 
         <h1>
-          Hi, Mahnoor!
+          Hi, <span>Mahnoor!</span>
         </h1>
 
         <p>
           Welcome to your client management panel.
         </p>
 
-      </div>
+      </section>
 
 
-      <!-- ==================================================
-           STATISTICS
-      =================================================== -->
 
-      <div class="stats">
+      <!-- =================================================
+           STATS
+      ================================================== -->
+
+      <section class="stats">
+
 
         <div class="stat-card">
 
@@ -689,7 +1356,7 @@
 
           <div
             class="stat-number"
-            id="totalClients"
+            id="clientCount"
           >
             0
           </div>
@@ -701,6 +1368,7 @@
         </div>
 
 
+
         <div class="stat-card">
 
           <div class="stat-label">
@@ -709,7 +1377,7 @@
 
           <div
             class="stat-number"
-            id="activePrograms"
+            id="activeProgramCount"
           >
             0
           </div>
@@ -721,6 +1389,7 @@
         </div>
 
 
+
         <div class="stat-card">
 
           <div class="stat-label">
@@ -729,16 +1398,17 @@
 
           <div
             class="stat-number"
-            id="checkinsDue"
+            id="checkinCount"
           >
             0
           </div>
 
           <div class="stat-note">
-            Requires your attention
+            Coming soon
           </div>
 
         </div>
+
 
 
         <div class="stat-card">
@@ -749,351 +1419,305 @@
 
           <div
             class="stat-number"
-            id="paymentsReceived"
+            id="paymentTotal"
           >
             Rs. 0
           </div>
 
           <div class="stat-note">
-            Total amount paid
+            Total amount received
           </div>
 
         </div>
 
-      </div>
+
+      </section>
 
 
-      <!-- ==================================================
-           DASHBOARD COLUMNS
-      =================================================== -->
 
-      <div class="dashboard-grid">
+      <!-- =================================================
+           QUICK ACTIONS
+      ================================================== -->
 
-
-        <!-- LEFT -->
-
-        <div>
+      <section class="section">
 
 
-          <!-- PROGRAMS -->
+        <div class="section-header">
 
-          <section class="section">
+          <div>
 
-            <div class="section-header">
+            <h2>
+              Quick Actions
+            </h2>
 
-              <h2>
-                Programs
-              </h2>
+            <p>
+              Manage your coaching platform from one place.
+            </p>
 
+          </div>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+
+          <a
+            href="client-management.html"
+            class="quick-card"
+          >
+
+            <div class="quick-icon">
+              ♙
             </div>
 
+            <strong>
+              Manage Clients
+            </strong>
 
-            <div class="program-grid">
+            <span>
+              Add, edit and manage client accounts.
+            </span>
 
-
-              <div
-                class="program-card"
-                data-program="1on1"
-              >
-
-                <h3>
-                  1:1 Coaching
-                </h3>
-
-                <p>
-                  Manage private coaching clients,
-                  personalized plans, check-ins,
-                  progress and private communication.
-                </p>
-
-                <span class="program-link">
-                  Open 1:1 →
-                </span>
-
-              </div>
+          </a>
 
 
-              <div
-                class="program-card"
-                data-program="club"
-              >
 
-                <h3>
-                  Freedom Women's Health Club
-                </h3>
+          <a
+            href="program-1on1.html"
+            class="quick-card"
+          >
 
-                <p>
-                  Manage memberships, classroom,
-                  community, check-ins and member progress.
-                </p>
-
-                <span class="program-link">
-                  Open Club →
-                </span>
-
-              </div>
-
-
-              <div
-                class="program-card"
-                data-program="short"
-              >
-
-                <h3>
-                  Short Programs
-                </h3>
-
-                <p>
-                  Manage challenges and flexible
-                  programs such as 30, 45 or 60-day programs.
-                </p>
-
-                <span class="program-link">
-                  Open Short Programs →
-                </span>
-
-              </div>
-
-
-              <div
-                class="program-card"
-                id="createProgramCard"
-              >
-
-                <h3>
-                  + Create New Program
-                </h3>
-
-                <p>
-                  Create a new program without changing
-                  the website code.
-                </p>
-
-                <span class="program-link">
-                  Coming in Program Management →
-                </span>
-
-              </div>
-
-
+            <div class="quick-icon">
+              ◇
             </div>
 
-          </section>
+            <strong>
+              1:1 Coaching
+            </strong>
+
+            <span>
+              Manage individual coaching clients.
+            </span>
+
+          </a>
 
 
-          <!-- QUICK ACTIONS -->
 
-          <section class="section">
+          <a
+            href="program-club.html"
+            class="quick-card"
+          >
 
-            <div class="section-header">
-
-              <h2>
-                Quick Actions
-              </h2>
-
+            <div class="quick-icon">
+              ♧
             </div>
 
+            <strong>
+              Women's Health Club
+            </strong>
 
-            <div class="quick-actions">
+            <span>
+              Manage membership, classroom and community.
+            </span>
 
-
-              <button
-                class="quick-btn"
-                data-action="clients"
-              >
-
-                <strong>
-                  + Add Client
-                </strong>
-
-                <span>
-                  Create a client enrollment
-                </span>
-
-              </button>
+          </a>
 
 
-              <button
-                class="quick-btn"
-                data-action="applications"
-              >
 
-                <strong>
-                  Applications
-                </strong>
+          <a
+            href="program-short.html"
+            class="quick-card"
+          >
 
-                <span>
-                  Review new applications
-                </span>
-
-              </button>
-
-
-              <button
-                class="quick-btn"
-                data-action="payments"
-              >
-
-                <strong>
-                  Payments
-                </strong>
-
-                <span>
-                  View payment records
-                </span>
-
-              </button>
-
-
-              <button
-                class="quick-btn"
-                data-action="notifications"
-              >
-
-                <strong>
-                  Notifications
-                </strong>
-
-                <span>
-                  View important alerts
-                </span>
-
-              </button>
-
-
+            <div class="quick-icon">
+              ◆
             </div>
 
-          </section>
+            <strong>
+              Short Programs
+            </strong>
+
+            <span>
+              Manage challenges and temporary programs.
+            </span>
+
+          </a>
 
 
         </div>
 
 
-        <!-- RIGHT -->
-
-        <div>
+      </section>
 
 
-          <!-- RECENT ACTIVITY -->
 
-          <section class="section">
+      <!-- =================================================
+           PROGRAMS
+      ================================================== -->
 
-            <div class="section-header">
+      <section class="section">
 
-              <h2>
-                Recent Activity
-              </h2>
 
+        <div class="section-header">
+
+          <div>
+
+            <h2>
+              Programs
+            </h2>
+
+            <p>
+              Each program will have its own management space.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="program-grid">
+
+
+          <div class="program-card">
+
+            <div class="program-type">
+              1:1 Coaching
             </div>
 
+            <h3>
+              Personalized Coaching
+            </h3>
 
-            <div
-              class="activity"
-              id="activityArea"
+            <p>
+              Manage individual clients, meal plans,
+              workouts, check-ins, progress and private notes.
+            </p>
+
+            <a
+              href="program-1on1.html"
+              class="program-link"
             >
+              Open 1:1 Management →
+            </a>
 
-              <div class="activity-item">
+          </div>
 
-                <div class="activity-title">
-                  Admin dashboard loaded
-                </div>
 
-                <div class="activity-time">
-                  Just now
-                </div>
 
-              </div>
+          <div class="program-card">
 
-              <div class="activity-item">
-
-                <div class="activity-title">
-                  Client activity will appear here
-                </div>
-
-                <div class="activity-time">
-                  Activity system will be connected
-                  as the remaining modules are built.
-                </div>
-
-              </div>
-
+            <div class="program-type">
+              Membership
             </div>
 
-          </section>
+            <h3>
+              Freedom Women's Health Club
+            </h3>
+
+            <p>
+              Manage memberships, classroom content,
+              community posts, comments, members and access.
+            </p>
+
+            <a
+              href="program-club.html"
+              class="program-link"
+            >
+              Open Club Management →
+            </a>
+
+          </div>
 
 
-          <!-- SYSTEM STATUS -->
 
-          <section class="section">
+          <div class="program-card">
 
-            <div class="section-header">
-
-              <h2>
-                System Status
-              </h2>
-
+            <div class="program-type">
+              Short Programs
             </div>
 
+            <h3>
+              Challenges & Resets
+            </h3>
 
-            <div class="activity-item">
+            <p>
+              Create and manage flexible programs such as
+              14, 21, 30, 45 or custom-day challenges.
+            </p>
 
-              <div class="activity-title">
-                Firebase Authentication
-              </div>
+            <a
+              href="program-short.html"
+              class="program-link"
+            >
+              Open Short Programs →
+            </a>
 
-              <div
-                class="activity-time"
-                id="authStatus"
-              >
-                Checking...
-              </div>
-
-            </div>
-
-
-            <div class="activity-item">
-
-              <div class="activity-title">
-                Firestore
-              </div>
-
-              <div
-                class="activity-time"
-                id="firestoreStatus"
-              >
-                Checking...
-              </div>
-
-            </div>
-
-
-            <div class="activity-item">
-
-              <div class="activity-title">
-                Admin Access
-              </div>
-
-              <div
-                class="activity-time"
-                id="adminStatus"
-              >
-                Checking...
-              </div>
-
-            </div>
-
-          </section>
+          </div>
 
 
         </div>
 
-      </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           RECENT CLIENTS
+      ================================================== -->
+
+      <section class="section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <h2>
+              Recent Clients
+            </h2>
+
+            <p>
+              Your latest client enrollments.
+            </p>
+
+          </div>
+
+
+          <a
+            href="client-management.html"
+            class="program-link"
+          >
+            View All →
+          </a>
+
+        </div>
+
+
+        <div
+          class="client-list"
+          id="clientsArea"
+        >
+
+          <div class="empty">
+            Loading clients...
+          </div>
+
+        </div>
+
+
+      </section>
+
 
     </div>
 
+
   </main>
 
+
 </div>
+
 
 
 <!-- =====================================================
@@ -1102,10 +1726,11 @@
 
 <script type="module">
 
+
   import {
     initializeApp
   } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
   import {
@@ -1113,7 +1738,7 @@
     onAuthStateChanged,
     signOut
   } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
   import {
@@ -1121,12 +1746,13 @@
     collection,
     getDocs
   } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-  // =====================================================
-  // FIREBASE CONFIG
-  // =====================================================
+
+  /* =====================================================
+     FIREBASE CONFIG
+  ===================================================== */
 
   const firebaseConfig = {
 
@@ -1163,62 +1789,55 @@
     getFirestore(app);
 
 
+
   const ADMIN_EMAIL =
     "mahnoordietitian3@gmail.com";
 
 
-  // =====================================================
-  // ELEMENTS
-  // =====================================================
 
-  const totalClients =
+  /* =====================================================
+     ELEMENTS
+  ===================================================== */
+
+  const clientCount =
     document.getElementById(
-      "totalClients"
+      "clientCount"
     );
 
-  const activePrograms =
+
+  const activeProgramCount =
     document.getElementById(
-      "activePrograms"
+      "activeProgramCount"
     );
 
-  const checkinsDue =
+
+  const paymentTotal =
     document.getElementById(
-      "checkinsDue"
+      "paymentTotal"
     );
 
-  const paymentsReceived =
+
+  const clientsArea =
     document.getElementById(
-      "paymentsReceived"
+      "clientsArea"
     );
+
 
   const adminEmail =
     document.getElementById(
       "adminEmail"
     );
 
-  const authStatus =
-    document.getElementById(
-      "authStatus"
-    );
-
-  const firestoreStatus =
-    document.getElementById(
-      "firestoreStatus"
-    );
-
-  const adminStatus =
-    document.getElementById(
-      "adminStatus"
-    );
 
 
-  // =====================================================
-  // AUTHENTICATION
-  // =====================================================
+  /* =====================================================
+     AUTH
+  ===================================================== */
 
   onAuthStateChanged(
     auth,
     async user => {
+
 
       if (!user) {
 
@@ -1230,14 +1849,6 @@
       }
 
 
-      adminEmail.textContent =
-        user.email || "";
-
-
-      authStatus.textContent =
-        "Connected";
-
-
       if (
         user.email
           ?.toLowerCase()
@@ -1245,9 +1856,6 @@
         ADMIN_EMAIL
           .toLowerCase()
       ) {
-
-        adminStatus.textContent =
-          "Access denied";
 
         alert(
           "You do not have permission to access the Admin Panel."
@@ -1263,23 +1871,33 @@
       }
 
 
-      adminStatus.textContent =
-        "Authorized";
+      adminEmail.textContent =
+        user.email;
 
 
-      await loadDashboard();
+      await loadClients();
 
     }
   );
 
 
-  // =====================================================
-  // LOAD DASHBOARD
-  // =====================================================
 
-  async function loadDashboard() {
+  /* =====================================================
+     LOAD CLIENTS
+  ===================================================== */
+
+  async function loadClients() {
+
+
+    clientsArea.innerHTML = `
+      <div class="empty">
+        Loading clients...
+      </div>
+    `;
+
 
     try {
+
 
       const snapshot =
         await getDocs(
@@ -1293,126 +1911,306 @@
       const clients =
         snapshot.docs.map(
           item => ({
-            id: item.id,
+
+            id:
+              item.id,
+
             ...item.data()
+
           })
         );
 
 
-      totalClients.textContent =
-        clients.length;
+      updateStats(
+        clients
+      );
 
 
-      const today =
-        getToday();
+      if (
+        clients.length === 0
+      ) {
+
+        clientsArea.innerHTML = `
+          <div class="empty">
+            No clients have been added yet.
+          </div>
+        `;
+
+        return;
+
+      }
 
 
-      const active =
-        clients.filter(
-          client => {
+      /*
+        Show newest clients first.
+      */
 
-            return (
-              client.startDate &&
-              client.endDate &&
-              client.startDate <= today &&
-              client.endDate >= today
+      clients.sort(
+        (a,b) => {
+
+          const aDate =
+            a.createdAt?.seconds ||
+            0;
+
+          const bDate =
+            b.createdAt?.seconds ||
+            0;
+
+          return bDate - aDate;
+
+        }
+      );
+
+
+      /*
+        Only show the latest 5
+        on the main dashboard.
+      */
+
+      const recent =
+        clients.slice(
+          0,
+          5
+        );
+
+
+      clientsArea.innerHTML =
+        recent
+          .map(
+            client => {
+
+
+              const connected =
+                Boolean(
+                  client.uid
+                );
+
+
+              return `
+
+                <div class="client">
+
+                  <div class="client-info">
+
+                    <strong>
+                      ${escapeHtml(
+                        client.name ||
+                        "Unnamed Client"
+                      )}
+                    </strong>
+
+                    <p>
+                      ${escapeHtml(
+                        client.email ||
+                        ""
+                      )}
+                    </p>
+
+                    <p>
+                      ${escapeHtml(
+                        client.programName ||
+                        "No program"
+                      )}
+
+                      ${
+                        client.duration
+                          ? " • " +
+                            escapeHtml(
+                              String(
+                                client.duration
+                              )
+                            ) +
+                            " days"
+                          : ""
+                      }
+                    </p>
+
+
+                    <span
+                      class="status ${
+                        connected
+                          ? "connected"
+                          : "pending"
+                      }"
+                    >
+
+                      ${
+                        connected
+                          ? "✓ Account connected"
+                          : "Account not created yet"
+                      }
+
+                    </span>
+
+                  </div>
+
+
+                  <div class="client-actions">
+
+                    <button
+                      class="small-btn view-btn"
+                      data-client-id="${escapeHtml(
+                        client.id
+                      )}"
+                    >
+                      Manage
+                    </button>
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join("");
+
+
+      document
+        .querySelectorAll(
+          "[data-client-id]"
+        )
+        .forEach(
+          button => {
+
+            button.addEventListener(
+              "click",
+              () => {
+
+                /*
+                  Later this will open:
+                  client-management.html
+                  with the selected client.
+                */
+
+                window.location.href =
+                  "client-management.html?id=" +
+                  encodeURIComponent(
+                    button.dataset.clientId
+                  );
+
+              }
             );
 
           }
         );
 
 
-      activePrograms.textContent =
-        active.length;
-
-
-      /*
-        Check-ins are not yet stored in the
-        current client structure.
-
-        Therefore we deliberately show 0
-        until the Check-in system is built.
-      */
-
-      checkinsDue.textContent =
-        "0";
-
-
-      const paid =
-        clients.reduce(
-          (
-            total,
-            client
-          ) => {
-
-            return (
-              total +
-              Number(
-                client.amountPaid || 0
-              )
-            );
-
-          },
-          0
-        );
-
-
-      paymentsReceived.textContent =
-        "Rs. " +
-        paid.toLocaleString();
-
-
-      firestoreStatus.textContent =
-        "Connected";
-
     }
 
     catch (error) {
 
+
       console.error(
-        "Dashboard error:",
         error
       );
 
 
-      firestoreStatus.textContent =
-        "Connection error";
+      clientsArea.innerHTML = `
 
+        <div class="empty">
 
-      totalClients.textContent =
-        "—";
+          Unable to load clients.
 
-      activePrograms.textContent =
-        "—";
+          <br><br>
 
-      checkinsDue.textContent =
-        "—";
+          ${escapeHtml(
+            error.message
+          )}
 
-      paymentsReceived.textContent =
-        "—";
+        </div>
+
+      `;
 
     }
 
   }
 
 
-  // =====================================================
-  // TODAY
-  // =====================================================
 
-  function getToday() {
+  /* =====================================================
+     UPDATE STATS
+  ===================================================== */
 
-    const date =
+  function updateStats(
+    clients
+  ) {
+
+
+    clientCount.textContent =
+      clients.length;
+
+
+    const today =
+      getLocalDate();
+
+
+    const active =
+      clients.filter(
+        client => {
+
+          return (
+            client.startDate &&
+            client.endDate &&
+            client.startDate <= today &&
+            client.endDate >= today
+          );
+
+        }
+      );
+
+
+    activeProgramCount.textContent =
+      active.length;
+
+
+    const totalPaid =
+      clients.reduce(
+        (
+          total,
+          client
+        ) => {
+
+          return (
+            total +
+            Number(
+              client.amountPaid ||
+              0
+            )
+          );
+
+        },
+        0
+      );
+
+
+    paymentTotal.textContent =
+      "Rs. " +
+      totalPaid.toLocaleString();
+
+  }
+
+
+
+  /* =====================================================
+     LOCAL DATE
+  ===================================================== */
+
+  function getLocalDate() {
+
+
+    const now =
       new Date();
 
 
     const year =
-      date.getFullYear();
+      now.getFullYear();
 
 
     const month =
       String(
-        date.getMonth() + 1
+        now.getMonth() + 1
       ).padStart(
         2,
         "0"
@@ -1421,7 +2219,7 @@
 
     const day =
       String(
-        date.getDate()
+        now.getDate()
       ).padStart(
         2,
         "0"
@@ -1439,163 +2237,10 @@
   }
 
 
-  // =====================================================
-  // NAVIGATION
-  // =====================================================
 
-  function navigate(page) {
-
-    const routes = {
-
-      dashboard:
-        "admin-panel.html",
-
-      clients:
-        "client-management.html",
-
-      applications:
-        "applications.html",
-
-      assessments:
-        "assessments.html",
-
-      "1on1":
-        "program-1on1.html",
-
-      club:
-        "program-club.html",
-
-      short:
-        "program-short.html",
-
-      payments:
-        "payments.html",
-
-      notifications:
-        "notifications.html",
-
-      settings:
-        "admin-settings.html"
-
-    };
-
-
-    if (
-      routes[page]
-    ) {
-
-      window.location.href =
-        routes[page];
-
-    }
-
-  }
-
-
-  // =====================================================
-  // SIDEBAR NAVIGATION
-  // =====================================================
-
-  document
-    .querySelectorAll(
-      ".nav-button"
-    )
-    .forEach(
-      button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            navigate(
-              button.dataset.page
-            );
-
-          }
-        );
-
-      }
-    );
-
-
-  // =====================================================
-  // PROGRAM CARDS
-  // =====================================================
-
-  document
-    .querySelectorAll(
-      ".program-card[data-program]"
-    )
-    .forEach(
-      card => {
-
-        card.addEventListener(
-          "click",
-          () => {
-
-            navigate(
-              card.dataset.program
-            );
-
-          }
-        );
-
-      }
-    );
-
-
-  // =====================================================
-  // QUICK ACTIONS
-  // =====================================================
-
-  document
-    .querySelectorAll(
-      ".quick-btn"
-    )
-    .forEach(
-      button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            navigate(
-              button.dataset.action
-            );
-
-          }
-        );
-
-      }
-    );
-
-
-  // =====================================================
-  // LOGOUT
-  // =====================================================
-
-  async function logout() {
-
-    try {
-
-      await signOut(auth);
-
-      window.location.href =
-        "login.html";
-
-    }
-
-    catch (error) {
-
-      console.error(
-        "Logout error:",
-        error
-      );
-
-    }
-
-  }
-
+  /* =====================================================
+     LOGOUT
+  ===================================================== */
 
   document
     .getElementById(
@@ -1603,22 +2248,63 @@
     )
     .addEventListener(
       "click",
-      logout
+      async () => {
+
+        await signOut(
+          auth
+        );
+
+        window.location.href =
+          "login.html";
+
+      }
     );
 
 
-  document
-    .getElementById(
-      "mobileLogout"
+
+  /* =====================================================
+     ESCAPE HTML
+  ===================================================== */
+
+  function escapeHtml(
+    value
+  ) {
+
+    return String(
+      value
     )
-    .addEventListener(
-      "click",
-      logout
-    );
+
+      .replaceAll(
+        "&",
+        "&amp;"
+      )
+
+      .replaceAll(
+        "<",
+        "&lt;"
+      )
+
+      .replaceAll(
+        ">",
+        "&gt;"
+      )
+
+      .replaceAll(
+        '"',
+        "&quot;"
+      )
+
+      .replaceAll(
+        "'",
+        "&#039;"
+      );
+
+  }
+
 
 </script>
+
 
 </body>
 
 </html>
-```
