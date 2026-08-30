@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>1:1 Coaching | Mahnoor Dietitian</title>
+<title>My 1:1 Coaching | Mahnoor Dietitian</title>
 
 <style>
 
@@ -26,77 +27,124 @@ body{
 ===================================================== */
 
 header{
+  height:72px;
   background:#ffffff;
   border-bottom:1px solid #eadfe9;
-  padding:18px 30px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:100;
 }
 
 .brand{
   color:#6E4A7E;
-  font-size:24px;
+  font-size:22px;
   font-weight:700;
 }
 
 .header-right{
   display:flex;
-  gap:10px;
   align-items:center;
+  gap:14px;
 }
 
-.back-btn,
+.welcome{
+  font-size:13px;
+  color:#777;
+}
+
 .logout-btn{
   border:none;
+  background:#6E4A7E;
+  color:white;
+  padding:9px 15px;
   border-radius:8px;
-  padding:10px 16px;
   cursor:pointer;
   font-weight:600;
 }
 
-.back-btn{
-  background:#f1eaf2;
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 72px);
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+  width:250px;
+  background:#ffffff;
+  border-right:1px solid #eadfe9;
+  padding:25px 15px;
+  flex-shrink:0;
+}
+
+.sidebar-title{
+  font-size:11px;
+  color:#999;
+  text-transform:uppercase;
+  letter-spacing:.7px;
+  padding:0 12px;
+  margin-bottom:10px;
+}
+
+.nav-btn{
+  width:100%;
+  border:none;
+  background:transparent;
+  color:#555;
+  padding:12px;
+  border-radius:9px;
+  text-align:left;
+  cursor:pointer;
+  margin-bottom:4px;
+  font-size:14px;
+}
+
+.nav-btn:hover{
+  background:#f5eff6;
   color:#6E4A7E;
 }
 
-.logout-btn{
-  background:#6E4A7E;
-  color:#ffffff;
+.nav-btn.active{
+  background:#eee5f0;
+  color:#6E4A7E;
+  font-weight:700;
 }
-
-.back-btn:hover,
-.logout-btn:hover,
-.primary-btn:hover,
-.action-btn:hover{
-  opacity:.92;
-}
-
 
 /* =====================================================
    MAIN
 ===================================================== */
 
 main{
-  max-width:1300px;
-  margin:auto;
-  padding:35px 20px 70px;
+  flex:1;
+  min-width:0;
+  padding:35px;
+  max-width:1200px;
 }
 
-.page-heading{
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header{
   margin-bottom:28px;
 }
 
-.page-heading h1{
+.page-header h1{
   margin:0 0 8px;
-  font-size:34px;
-  color:#2D2D2D;
+  font-size:32px;
 }
 
-.page-heading p{
+.page-header p{
   margin:0;
   color:#777;
   line-height:1.6;
@@ -104,580 +152,455 @@ main{
 
 .program-badge{
   display:inline-block;
-  margin-top:14px;
+  margin-top:13px;
   background:#eee5f0;
   color:#6E4A7E;
   padding:7px 12px;
   border-radius:20px;
-  font-size:12px;
+  font-size:11px;
   font-weight:700;
 }
 
-
 /* =====================================================
-   SUMMARY
+   HERO
 ===================================================== */
 
-.summary{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:15px;
-  margin-bottom:28px;
+.hero{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:17px;
+  padding:28px;
+  margin-bottom:25px;
 }
 
-.summary-card{
+.hero h2{
+  margin:0 0 8px;
+  color:#6E4A7E;
+}
+
+.hero p{
+  color:#666;
+  line-height:1.7;
+  margin:0;
+}
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.page-section{
+  display:none;
+}
+
+.page-section.active{
+  display:block;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:22px;
+}
+
+.section-title span{
+  font-size:12px;
+  color:#888;
+}
+
+/* =====================================================
+   WEEK CARDS
+===================================================== */
+
+.week-list{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.week-card{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.week-header{
+  padding:19px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.week-header:hover{
+  background:#fcfafc;
+}
+
+.week-number{
+  color:#6E4A7E;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.week-title{
+  font-size:18px;
+  font-weight:700;
+}
+
+.week-description{
+  color:#777;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.arrow{
+  color:#6E4A7E;
+  font-size:20px;
+}
+
+.week-days{
+  display:none;
+  border-top:1px solid #eee6ee;
+  padding:15px;
+  background:#fcfafc;
+}
+
+.week-card.open .week-days{
+  display:block;
+}
+
+.day-card{
+  background:#ffffff;
+  border:1px solid #eee6ee;
+  border-radius:11px;
+  padding:17px;
+  margin-bottom:10px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.day-card:last-child{
+  margin-bottom:0;
+}
+
+.day-card:hover{
+  border-color:#cdb9d1;
+}
+
+.day-left{
+  min-width:0;
+}
+
+.day-label{
+  color:#6E4A7E;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.day-title{
+  font-weight:700;
+  font-size:15px;
+}
+
+.day-description{
+  color:#777;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.day-arrow{
+  color:#6E4A7E;
+}
+
+/* =====================================================
+   CONTENT CARDS
+===================================================== */
+
+.content-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.content-card{
   background:#ffffff;
   border:1px solid #eadfe9;
   border-radius:14px;
   padding:20px;
 }
 
-.summary-label{
-  color:#777;
-  font-size:13px;
-  margin-bottom:9px;
-}
-
-.summary-number{
+.content-icon{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:#eee5f0;
   color:#6E4A7E;
-  font-size:28px;
-  font-weight:700;
-}
-
-
-/* =====================================================
-   PROGRAM CONTROL
-===================================================== */
-
-.program-control{
-  background:#ffffff;
-  border:1px solid #eadfe9;
-  border-radius:16px;
-  padding:22px;
-  margin-bottom:24px;
-}
-
-.control-header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:15px;
-  margin-bottom:18px;
-}
-
-.control-header h2{
-  margin:0;
-  color:#6E4A7E;
+  justify-content:center;
   font-size:20px;
+  margin-bottom:13px;
 }
 
-.control-header p{
-  margin:5px 0 0;
+.content-card h3{
+  margin:0 0 7px;
+  font-size:17px;
+}
+
+.content-card p{
+  margin:0;
   color:#777;
   font-size:13px;
+  line-height:1.6;
 }
 
-.control-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.primary-btn{
-  border:none;
+.content-link{
+  display:inline-block;
+  margin-top:14px;
   background:#6E4A7E;
   color:#ffffff;
+  text-decoration:none;
+  padding:9px 13px;
   border-radius:8px;
-  padding:11px 17px;
-  cursor:pointer;
+  font-size:12px;
   font-weight:600;
 }
 
-.secondary-btn{
-  border:1px solid #d8cbd9;
-  background:#ffffff;
+/* =====================================================
+   DAY CONTENT
+===================================================== */
+
+.back-link{
+  border:none;
+  background:#eee5f0;
   color:#6E4A7E;
+  padding:9px 13px;
   border-radius:8px;
-  padding:11px 17px;
   cursor:pointer;
+  margin-bottom:18px;
   font-weight:600;
 }
 
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-.toolbar{
-  display:grid;
-  grid-template-columns:1fr 190px 190px;
-  gap:12px;
-}
-
-input,
-select{
-  width:100%;
-  padding:12px 13px;
-  border:1px solid #d9d0d9;
-  border-radius:8px;
-  font-family:inherit;
-  font-size:14px;
-  background:#ffffff;
-}
-
-input:focus,
-select:focus{
-  outline:none;
-  border-color:#6E4A7E;
-  box-shadow:0 0 0 3px rgba(110,74,126,.08);
-}
-
-
-/* =====================================================
-   CLIENT SECTION
-===================================================== */
-
-.section{
+.day-content-box{
   background:#ffffff;
   border:1px solid #eadfe9;
   border-radius:16px;
   padding:25px;
 }
 
-.section-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.section-heading h2{
-  margin:0;
-  font-size:21px;
-}
-
-.section-heading span{
-  color:#777;
-  font-size:13px;
-}
-
-
-/* =====================================================
-   CLIENT LIST
-===================================================== */
-
-.client-list{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-.client-card{
-  border:1px solid #ece5ec;
-  border-radius:13px;
-  padding:19px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  transition:.15s;
-}
-
-.client-card:hover{
-  border-color:#cdb9d1;
-  box-shadow:0 4px 15px rgba(110,74,126,.06);
-}
-
-.client-left{
-  min-width:0;
-  flex:1;
-}
-
-.client-top{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:6px;
-}
-
-.client-name{
-  font-size:18px;
-  font-weight:700;
-}
-
-.client-email{
-  color:#777;
-  font-size:13px;
-  margin-bottom:9px;
-  word-break:break-word;
-}
-
-.client-info{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.info-chip{
-  background:#FBF8F3;
-  border:1px solid #eee6ee;
-  border-radius:7px;
-  padding:7px 9px;
-  font-size:12px;
-  color:#555;
-}
-
-.info-chip strong{
+.day-content-box h2{
+  margin:0 0 8px;
   color:#6E4A7E;
 }
 
-.client-actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
+.day-content-box .day-subtitle{
+  color:#777;
+  margin-bottom:25px;
 }
 
-.action-btn{
-  border:none;
+.lesson{
+  border-top:1px solid #eee6ee;
+  padding:20px 0;
+}
+
+.lesson:first-child{
+  border-top:none;
+  padding-top:0;
+}
+
+.lesson h3{
+  margin:0 0 9px;
+}
+
+.lesson p{
+  color:#555;
+  line-height:1.7;
+}
+
+.video-wrapper{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  margin-top:15px;
+  border-radius:12px;
+  overflow:hidden;
+  background:#f3edf4;
+}
+
+.video-wrapper iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.resource-button{
+  display:inline-block;
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:10px 14px;
   border-radius:8px;
-  padding:9px 12px;
-  cursor:pointer;
+  text-decoration:none;
+  margin:6px 5px 0 0;
   font-size:12px;
   font-weight:600;
 }
 
-.open-btn{
-  background:#6E4A7E;
-  color:#ffffff;
+/* =====================================================
+   CHECKINS
+===================================================== */
+
+.checkin-box{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:25px;
 }
 
-.checkin-btn{
-  background:#eee5f0;
+.checkin-box h2{
+  margin-top:0;
   color:#6E4A7E;
 }
 
-.assessment-btn{
-  background:#f3eee8;
-  color:#66594d;
-}
-
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-.status{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:700;
-}
-
-.status.active{
-  background:#e8f5eb;
-  color:#28733a;
-}
-
-.status.expired{
-  background:#f5e7e7;
-  color:#8b3333;
-}
-
-.status.pending{
-  background:#f5efe1;
-  color:#86651e;
-}
-
-.status.connected{
-  background:#e9f5ec;
-  color:#28733a;
-}
-
-.status.not-connected{
-  background:#f4eeee;
+.checkin-box p{
   color:#777;
-}
-
-.status.paid{
-  background:#e9f5ec;
-  color:#28733a;
-}
-
-.status.partial{
-  background:#f5efe1;
-  color:#86651e;
-}
-
-
-/* =====================================================
-   EMPTY / ERROR
-===================================================== */
-
-.empty{
-  text-align:center;
-  padding:55px 20px;
-  color:#777;
-}
-
-.empty-icon{
-  font-size:34px;
-  margin-bottom:12px;
-  color:#6E4A7E;
-}
-
-.error-box{
-  background:#fff0f0;
-  border:1px solid #efd2d2;
-  color:#8b3333;
-  padding:15px;
-  border-radius:9px;
   line-height:1.6;
 }
 
-
-/* =====================================================
-   PROGRAM INFORMATION
-===================================================== */
-
-.info-section{
-  margin-top:25px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+textarea{
+  width:100%;
+  min-height:130px;
+  padding:13px;
+  border:1px solid #d9d0d9;
+  border-radius:9px;
+  resize:vertical;
+  font-family:inherit;
 }
 
-.info-card{
+textarea:focus{
+  outline:none;
+  border-color:#6E4A7E;
+}
+
+.save-btn{
+  margin-top:12px;
+  border:none;
+  background:#6E4A7E;
+  color:white;
+  padding:11px 17px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* =====================================================
+   COMMUNITY
+===================================================== */
+
+.post{
   background:#ffffff;
   border:1px solid #eadfe9;
   border-radius:14px;
   padding:20px;
+  margin-bottom:14px;
 }
 
-.info-card h3{
-  margin:0 0 8px;
-  color:#6E4A7E;
-  font-size:16px;
-}
-
-.info-card p{
-  margin:0;
-  color:#666;
-  font-size:13px;
-  line-height:1.6;
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(45,45,45,.45);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:100;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  width:100%;
-  max-width:850px;
-  max-height:90vh;
-  overflow:auto;
-  background:#ffffff;
-  border-radius:17px;
-  padding:28px;
-}
-
-.modal-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  margin-bottom:22px;
-}
-
-.modal-header h2{
-  margin:0;
-  color:#6E4A7E;
-}
-
-.close-btn{
-  border:none;
-  background:#f0eaf2;
-  color:#6E4A7E;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  cursor:pointer;
-  font-size:19px;
-}
-
-.modal-content{
-  color:#555;
-}
-
-
-/* =====================================================
-   CLIENT OVERVIEW
-===================================================== */
-
-.overview-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.overview-item{
-  background:#FBF8F3;
-  border-radius:9px;
-  padding:13px;
-}
-
-.overview-label{
-  color:#777;
+.post-date{
+  color:#999;
   font-size:11px;
-  margin-bottom:5px;
+  margin-bottom:7px;
 }
 
-.overview-value{
-  color:#2D2D2D;
-  font-size:14px;
-  font-weight:600;
-  word-break:break-word;
+.post h3{
+  margin:0 0 8px;
 }
 
-.space-actions{
-  margin-top:22px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+.post p{
+  color:#555;
+  line-height:1.7;
 }
-
-.space-btn{
-  border:none;
-  border-radius:8px;
-  padding:11px 16px;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.space-primary{
-  background:#6E4A7E;
-  color:#ffffff;
-}
-
-.space-secondary{
-  background:#f0eaf2;
-  color:#6E4A7E;
-}
-
 
 /* =====================================================
    LOADING
 ===================================================== */
 
 .loading{
+  padding:50px;
   text-align:center;
-  padding:45px;
   color:#777;
 }
 
-.loading-dot{
-  color:#6E4A7E;
-  font-weight:700;
+.empty{
+  background:#ffffff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:40px;
+  text-align:center;
+  color:#777;
 }
-
 
 /* =====================================================
-   RESPONSIVE
+   MOBILE
 ===================================================== */
 
-@media(max-width:1000px){
-
-  .summary{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .info-section{
-    grid-template-columns:1fr;
-  }
-
-}
-
-@media(max-width:750px){
+@media(max-width:800px){
 
   header{
-    padding:15px;
+    padding:0 15px;
   }
 
-  .brand{
-    font-size:19px;
-  }
-
-  .back-btn{
+  .welcome{
     display:none;
+  }
+
+  .layout{
+    display:block;
+  }
+
+  .sidebar{
+    width:100%;
+    border-right:none;
+    border-bottom:1px solid #eadfe9;
+    padding:10px;
+    display:flex;
+    overflow-x:auto;
+    gap:5px;
+  }
+
+  .sidebar-title{
+    display:none;
+  }
+
+  .nav-btn{
+    width:auto;
+    white-space:nowrap;
+    margin:0;
   }
 
   main{
     padding:25px 15px 50px;
   }
 
-  .page-heading h1{
-    font-size:28px;
-  }
-
-  .summary{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .toolbar{
+  .content-grid{
     grid-template-columns:1fr;
   }
 
-  .client-card{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .client-actions{
-    width:100%;
-    justify-content:flex-start;
-  }
-
-  .client-actions button{
-    flex:1;
-  }
-
-  .overview-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-@media(max-width:450px){
-
-  .summary{
-    grid-template-columns:1fr;
-  }
-
-  .summary-number{
-    font-size:25px;
-  }
-
-  .section{
-    padding:18px;
+  .page-header h1{
+    font-size:27px;
   }
 
 }
@@ -702,12 +625,12 @@ select:focus{
 
   <div class="header-right">
 
-    <button
-      class="back-btn"
-      id="dashboardBtn"
+    <div
+      class="welcome"
+      id="welcomeText"
     >
-      ← Admin Dashboard
-    </button>
+      Welcome
+    </div>
 
     <button
       class="logout-btn"
@@ -721,6 +644,64 @@ select:focus{
 </header>
 
 
+<div class="layout">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+  <div class="sidebar-title">
+    My Coaching
+  </div>
+
+  <button
+    class="nav-btn active"
+    data-section="program"
+  >
+    📚 My Program
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="mealplans"
+  >
+    🥗 Meal Plans
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="workouts"
+  >
+    🏋️ Workouts
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="resources"
+  >
+    📄 Resources
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="checkins"
+  >
+    ✅ Check-ins
+  </button>
+
+  <button
+    class="nav-btn"
+    data-section="community"
+  >
+    💬 Private Community
+  </button>
+
+</aside>
+
+
 <!-- =====================================================
      MAIN
 ===================================================== -->
@@ -728,348 +709,317 @@ select:focus{
 <main>
 
 
-  <!-- PAGE HEADING -->
+<!-- =====================================================
+     PROGRAM
+===================================================== -->
 
-  <div class="page-heading">
+<section
+  class="page-section active"
+  id="program"
+>
+
+  <div class="page-header">
 
     <h1>
-      1:1 Coaching
+      My 1:1 Coaching
     </h1>
 
-    <p>
-      Manage your individual coaching clients, private spaces,
-      check-ins, assessments and program progress.
+    <p id="programSubtitle">
+      Your private coaching classroom.
     </p>
 
     <span class="program-badge">
-      PRIVATE 1:1 PROGRAM
+      PRIVATE 1:1 COACHING
     </span>
 
   </div>
 
 
-  <!-- ===================================================
-       SUMMARY
-  ==================================================== -->
+  <div class="hero">
 
-  <div class="summary">
+    <h2>
+      Welcome to your coaching journey
+    </h2>
 
-    <div class="summary-card">
-
-      <div class="summary-label">
-        Total 1:1 Clients
-      </div>
-
-      <div
-        class="summary-number"
-        id="totalClients"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <div class="summary-label">
-        Active Clients
-      </div>
-
-      <div
-        class="summary-number"
-        id="activeClients"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <div class="summary-label">
-        Pending / Upcoming
-      </div>
-
-      <div
-        class="summary-number"
-        id="pendingClients"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <div class="summary-label">
-        Connected Accounts
-      </div>
-
-      <div
-        class="summary-number"
-        id="connectedClients"
-      >
-        0
-      </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-      <div class="summary-label">
-        Payments Received
-      </div>
-
-      <div
-        class="summary-number"
-        id="totalPayments"
-      >
-        Rs. 0
-      </div>
-
-    </div>
+    <p>
+      Your program is organized week by week.
+      Open each week to see your daily lessons,
+      guidance and resources. Follow the program
+      in order and complete each day as you go.
+    </p>
 
   </div>
 
 
-  <!-- ===================================================
-       PROGRAM CONTROL
-  ==================================================== -->
+  <div class="section-title">
 
-  <section class="program-control">
+    <h2>
+      Your Program
+    </h2>
 
-    <div class="control-header">
-
-      <div>
-
-        <h2>
-          1:1 Program Management
-        </h2>
-
-        <p>
-          Your 1:1 clients are kept separate from the community
-          and other programs.
-        </p>
-
-      </div>
-
-      <div class="control-actions">
-
-        <button
-          class="primary-btn"
-          id="addClientBtn"
-        >
-          + Add 1:1 Client
-        </button>
-
-        <button
-          class="secondary-btn"
-          id="refreshBtn"
-        >
-          ↻ Refresh
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="toolbar">
-
-      <input
-        type="search"
-        id="searchInput"
-        placeholder="Search 1:1 clients by name or email..."
-      >
-
-
-      <select id="statusFilter">
-
-        <option value="all">
-          All Clients
-        </option>
-
-        <option value="active">
-          Active
-        </option>
-
-        <option value="upcoming">
-          Upcoming
-        </option>
-
-        <option value="expired">
-          Expired
-        </option>
-
-      </select>
-
-
-      <select id="connectionFilter">
-
-        <option value="all">
-          All Accounts
-        </option>
-
-        <option value="connected">
-          Connected
-        </option>
-
-        <option value="not-connected">
-          Not Connected
-        </option>
-
-      </select>
-
-    </div>
-
-  </section>
-
-
-  <!-- ===================================================
-       CLIENTS
-  ==================================================== -->
-
-  <section class="section">
-
-    <div class="section-heading">
-
-      <h2>
-        My 1:1 Clients
-      </h2>
-
-      <span id="clientCountText">
-        0 clients
-      </span>
-
-    </div>
-
-
-    <div
-      class="client-list"
-      id="clientList"
-    >
-
-      <div class="loading">
-        Loading 1:1 clients<span class="loading-dot">...</span>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ===================================================
-       PROGRAM INFORMATION
-  ==================================================== -->
-
-  <div class="info-section">
-
-    <div class="info-card">
-
-      <h3>
-        Private Client Space
-      </h3>
-
-      <p>
-        Each 1:1 client can have an individual private space
-        containing their messages, progress, check-ins,
-        assessments, meal plans and other coaching resources.
-      </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-      <h3>
-        Check-ins
-      </h3>
-
-      <p>
-        Keep client check-ins separate from the general
-        community so private progress and coaching information
-        remains within the individual client space.
-      </p>
-
-    </div>
-
-
-    <div class="info-card">
-
-      <h3>
-        Assessments
-      </h3>
-
-      <p>
-        Client assessments can be connected to the individual
-        client rather than being mixed with your other programs.
-      </p>
-
-    </div>
+    <span id="weekCount">
+      Loading...
+    </span>
 
   </div>
 
 
-</main>
+  <div
+    class="week-list"
+    id="weekList"
+  >
+
+    <div class="loading">
+      Loading your program...
+    </div>
+
+  </div>
+
+</section>
 
 
 <!-- =====================================================
-     CLIENT OVERVIEW MODAL
+     DAY CONTENT
 ===================================================== -->
 
-<div
-  class="modal"
-  id="clientModal"
+<section
+  class="page-section"
+  id="dayContent"
 >
 
-  <div class="modal-box">
+  <button
+    class="back-link"
+    id="backToProgram"
+  >
+    ← Back to My Program
+  </button>
 
-    <div class="modal-header">
 
-      <h2>
-        1:1 Client Overview
-      </h2>
+  <div
+    class="day-content-box"
+    id="dayContentBox"
+  >
 
-      <button
-        class="close-btn"
-        id="closeModal"
-      >
-        ×
-      </button>
+  </div>
 
+</section>
+
+
+<!-- =====================================================
+     MEAL PLANS
+===================================================== -->
+
+<section
+  class="page-section"
+  id="mealplans"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Meal Plans
+    </h1>
+
+    <p>
+      Your personalized nutrition plans and meal guidance.
+    </p>
+
+  </div>
+
+
+  <div
+    class="content-grid"
+    id="mealPlanList"
+  >
+
+    <div class="loading">
+      Loading meal plans...
     </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     WORKOUTS
+===================================================== -->
+
+<section
+  class="page-section"
+  id="workouts"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Workouts
+    </h1>
+
+    <p>
+      Your assigned workouts and movement guidance.
+    </p>
+
+  </div>
+
+
+  <div
+    class="content-grid"
+    id="workoutList"
+  >
+
+    <div class="loading">
+      Loading workouts...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     RESOURCES
+===================================================== -->
+
+<section
+  class="page-section"
+  id="resources"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Resources
+    </h1>
+
+    <p>
+      Videos, PDFs, guides and other resources from your coach.
+    </p>
+
+  </div>
+
+
+  <div
+    class="content-grid"
+    id="resourceList"
+  >
+
+    <div class="loading">
+      Loading resources...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CHECKINS
+===================================================== -->
+
+<section
+  class="page-section"
+  id="checkins"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Check-ins
+    </h1>
+
+    <p>
+      Share your weekly progress privately with your coach.
+    </p>
+
+  </div>
+
+
+  <div class="checkin-box">
+
+    <h2>
+      Weekly Check-in
+    </h2>
+
+    <p>
+      Tell your coach how your week went, what felt easy,
+      what felt difficult and where you need support.
+    </p>
+
+
+    <textarea
+      id="checkinText"
+      placeholder="Write your check-in here..."
+    ></textarea>
+
+
+    <button
+      class="save-btn"
+      id="saveCheckin"
+    >
+      Submit Check-in
+    </button>
 
 
     <div
-      class="modal-content"
-      id="clientModalContent"
+      id="checkinMessage"
+      style="margin-top:12px;font-size:13px;"
     ></div>
 
   </div>
+
+</section>
+
+
+<!-- =====================================================
+     COMMUNITY
+===================================================== -->
+
+<section
+  class="page-section"
+  id="community"
+>
+
+  <div class="page-header">
+
+    <h1>
+      Private Community
+    </h1>
+
+    <p>
+      Updates and conversations shared inside your private
+      coaching space.
+    </p>
+
+  </div>
+
+
+  <div id="communityList">
+
+    <div class="loading">
+      Loading community...
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
 
 </div>
 
 
 <!-- =====================================================
-     JAVASCRIPT
+     FIREBASE
 ===================================================== -->
 
 <script type="module">
-
-
-/* =====================================================
-   FIREBASE IMPORTS
-===================================================== */
 
 import {
   initializeApp
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
 
 import {
   getAuth,
@@ -1078,11 +1028,14 @@ import {
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-
 import {
   getFirestore,
   collection,
-  getDocs
+  query,
+  where,
+  getDocs,
+  addDoc,
+  serverTimestamp
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
@@ -1114,10 +1067,6 @@ const firebaseConfig = {
 };
 
 
-/* =====================================================
-   INITIALIZE FIREBASE
-===================================================== */
-
 const app =
   initializeApp(firebaseConfig);
 
@@ -1129,57 +1078,21 @@ const db =
 
 
 /* =====================================================
-   ADMIN EMAIL
+   GLOBAL DATA
 ===================================================== */
 
-const ADMIN_EMAIL =
-  "mahnoordietitian3@gmail.com";
+let currentUser = null;
+let currentClient = null;
+
+let weeks = [];
+let mealPlans = [];
+let workouts = [];
+let resources = [];
+let communityPosts = [];
 
 
 /* =====================================================
-   ELEMENTS
-===================================================== */
-
-const clientList =
-  document.getElementById(
-    "clientList"
-  );
-
-const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
-
-const statusFilter =
-  document.getElementById(
-    "statusFilter"
-  );
-
-const connectionFilter =
-  document.getElementById(
-    "connectionFilter"
-  );
-
-const clientModal =
-  document.getElementById(
-    "clientModal"
-  );
-
-const clientModalContent =
-  document.getElementById(
-    "clientModalContent"
-  );
-
-
-/* =====================================================
-   DATA
-===================================================== */
-
-let clients = [];
-
-
-/* =====================================================
-   AUTHENTICATION
+   AUTH
 ===================================================== */
 
 onAuthStateChanged(
@@ -1195,651 +1108,1198 @@ onAuthStateChanged(
 
     }
 
+    currentUser = user;
 
-    if(
-      user.email?.toLowerCase()
-      !==
-      ADMIN_EMAIL.toLowerCase()
-    ){
+    document.getElementById(
+      "welcomeText"
+    ).textContent =
+      "Welcome, " +
+      (user.displayName || user.email);
 
-      alert(
-        "You do not have permission to access the Admin Panel."
+
+    await loadClient();
+
+  }
+);
+
+
+/* =====================================================
+   LOAD CLIENT
+===================================================== */
+
+async function loadClient(){
+
+  try{
+
+    const q =
+      query(
+        collection(db,"clients"),
+        where("uid","==",currentUser.uid)
       );
 
-      await signOut(auth);
+    const snapshot =
+      await getDocs(q);
 
-      window.location.href =
-        "login.html";
+
+    if(snapshot.empty){
+
+      showClientError(
+        "Your coaching account has not been connected yet. Please contact Mahnoor Dietitian."
+      );
 
       return;
 
     }
 
 
-    await loadClients();
+    const doc =
+      snapshot.docs[0];
+
+
+    currentClient = {
+
+      id:doc.id,
+
+      ...doc.data()
+
+    };
+
+
+    document.getElementById(
+      "programSubtitle"
+    ).textContent =
+      currentClient.programName ||
+      "Your private 1:1 coaching classroom.";
+
+
+    await loadAllContent();
 
   }
-);
+  catch(error){
+
+    console.error(error);
+
+    showClientError(
+      "Unable to load your coaching account."
+    );
+
+  }
+
+}
 
 
 /* =====================================================
-   LOAD CLIENTS
+   LOAD ALL PROGRAM CONTENT
 ===================================================== */
 
-async function loadClients(){
+async function loadAllContent(){
 
-  clientList.innerHTML = `
+  await Promise.all([
+
+    loadWeeks(),
+
+    loadMealPlans(),
+
+    loadWorkouts(),
+
+    loadResources(),
+
+    loadCommunity()
+
+  ]);
+
+}
+
+
+/* =====================================================
+   WEEKS
+===================================================== */
+
+async function loadWeeks(){
+
+  const list =
+    document.getElementById(
+      "weekList"
+    );
+
+  try{
+
+    /*
+      Expected Firestore:
+
+      programs
+        oneOnOne
+          weeks
+            week1
+            week2
+              days
+                day1
+                day2
+    */
+
+    const weeksRef =
+      collection(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks"
+      );
+
+
+    const snapshot =
+      await getDocs(weeksRef);
+
+
+    weeks =
+      snapshot.docs.map(doc => ({
+
+        id:doc.id,
+
+        ...doc.data()
+
+      }));
+
+
+    weeks.sort(
+      (a,b) =>
+        Number(a.order || 0)
+        -
+        Number(b.order || 0)
+    );
+
+
+    renderWeeks();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    list.innerHTML = `
+      <div class="empty">
+        Your program content is being prepared.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER WEEKS
+===================================================== */
+
+function renderWeeks(){
+
+  const list =
+    document.getElementById(
+      "weekList"
+    );
+
+
+  document.getElementById(
+    "weekCount"
+  ).textContent =
+    weeks.length +
+    (
+      weeks.length === 1
+      ? " week"
+      : " weeks"
+    );
+
+
+  if(!weeks.length){
+
+    list.innerHTML = `
+      <div class="empty">
+        Your coaching program content will appear here.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    weeks.map(
+      week => `
+
+        <div
+          class="week-card"
+          data-week="${week.id}"
+        >
+
+          <div
+            class="week-header"
+            data-toggle-week="${week.id}"
+          >
+
+            <div>
+
+              <div class="week-number">
+                Week ${escapeHtml(
+                  week.number ||
+                  week.order ||
+                  ""
+                )}
+              </div>
+
+              <div class="week-title">
+                ${escapeHtml(
+                  week.title ||
+                  "Untitled Week"
+                )}
+              </div>
+
+              ${
+                week.description
+                ?
+                `
+                <div class="week-description">
+                  ${escapeHtml(
+                    week.description
+                  )}
+                </div>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+            <div class="arrow">
+              ›
+            </div>
+
+          </div>
+
+
+          <div
+            class="week-days"
+            id="days-${week.id}"
+          >
+
+            <div class="loading">
+              Loading days...
+            </div>
+
+          </div>
+
+        </div>
+
+      `
+    ).join("");
+
+
+  document
+    .querySelectorAll(
+      "[data-toggle-week]"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        async () => {
+
+          const id =
+            button.dataset.toggleWeek;
+
+          const card =
+            document.querySelector(
+              `[data-week="${id}"]`
+            );
+
+          card.classList.toggle(
+            "open"
+          );
+
+
+          if(
+            card.classList.contains("open")
+          ){
+
+            await loadDays(id);
+
+          }
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =====================================================
+   LOAD DAYS
+===================================================== */
+
+async function loadDays(weekId){
+
+  const container =
+    document.getElementById(
+      "days-" + weekId
+    );
+
+
+  try{
+
+    const daysRef =
+      collection(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks",
+        weekId,
+        "days"
+      );
+
+
+    const snapshot =
+      await getDocs(daysRef);
+
+
+    let days =
+      snapshot.docs.map(doc => ({
+
+        id:doc.id,
+
+        ...doc.data()
+
+      }));
+
+
+    days.sort(
+      (a,b) =>
+        Number(a.order || 0)
+        -
+        Number(b.order || 0)
+    );
+
+
+    if(!days.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          Content for this week is being prepared.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      days.map(
+        day => `
+
+          <div
+            class="day-card"
+            data-day-id="${day.id}"
+            data-week-id="${weekId}"
+          >
+
+            <div class="day-left">
+
+              <div class="day-label">
+                Day ${escapeHtml(
+                  day.number ||
+                  day.order ||
+                  ""
+                )}
+              </div>
+
+              <div class="day-title">
+                ${escapeHtml(
+                  day.title ||
+                  "Daily Coaching"
+                )}
+              </div>
+
+              ${
+                day.description
+                ?
+                `
+                <div class="day-description">
+                  ${escapeHtml(
+                    day.description
+                  )}
+                </div>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+            <div class="day-arrow">
+              →
+            </div>
+
+          </div>
+
+        `
+      ).join("");
+
+
+    container
+      .querySelectorAll(
+        "[data-day-id]"
+      )
+      .forEach(card => {
+
+        card.addEventListener(
+          "click",
+          () => {
+
+            openDay(
+              card.dataset.weekId,
+              card.dataset.dayId
+            );
+
+          }
+        );
+
+      });
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="empty">
+        Unable to load this week's content.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   OPEN DAY
+===================================================== */
+
+async function openDay(
+  weekId,
+  dayId
+){
+
+  document
+    .querySelectorAll(
+      ".page-section"
+    )
+    .forEach(section => {
+
+      section.classList.remove(
+        "active"
+      );
+
+    });
+
+
+  document
+    .getElementById(
+      "dayContent"
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  const box =
+    document.getElementById(
+      "dayContentBox"
+    );
+
+
+  box.innerHTML = `
     <div class="loading">
-      Loading 1:1 clients<span class="loading-dot">...</span>
+      Loading today's content...
     </div>
   `;
 
 
   try{
 
-    const snapshot =
-      await getDocs(
-        collection(
-          db,
-          "clients"
-        )
+    const dayRef =
+      collection(
+        db,
+        "programs",
+        "oneOnOne",
+        "weeks",
+        weekId,
+        "days",
+        dayId,
+        "lessons"
       );
 
 
-    /*
-      We intentionally load the existing clients collection
-      and filter it locally.
-
-      This means your current Firestore structure does not
-      need to change just to create this program page.
-    */
-
-    clients =
-      snapshot.docs
-        .map(item => ({
-
-          id:item.id,
-
-          ...item.data()
-
-        }))
-        .filter(client => {
-
-          const type =
-            String(
-              client.programType || ""
-            )
-            .trim()
-            .toLowerCase();
+    const snapshot =
+      await getDocs(dayRef);
 
 
-          return (
-            type === "1:1 coaching"
-            ||
-            type === "1:1"
-            ||
-            type.includes("1:1")
-          );
+    const lessons =
+      snapshot.docs.map(doc => ({
 
-        });
+        id:doc.id,
+
+        ...doc.data()
+
+      }));
 
 
-    updateSummary();
+    lessons.sort(
+      (a,b) =>
+        Number(a.order || 0)
+        -
+        Number(b.order || 0)
+    );
 
-    renderClients();
+
+    let dayTitle =
+      "Your Daily Lesson";
+
+
+    const week =
+      weeks.find(
+        item =>
+          item.id === weekId
+      );
+
+
+    if(week){
+
+      dayTitle =
+        "Week " +
+        (
+          week.number ||
+          week.order ||
+          ""
+        );
+
+    }
+
+
+    let html = `
+
+      <h2>
+        ${escapeHtml(dayTitle)}
+      </h2>
+
+      <div class="day-subtitle">
+        Your coaching lessons and resources
+      </div>
+
+    `;
+
+
+    if(!lessons.length){
+
+      html += `
+        <div class="empty">
+          Your coach is preparing this day's content.
+        </div>
+      `;
+
+    }
+    else{
+
+      html +=
+        lessons
+          .map(
+            renderLesson
+          )
+          .join("");
+
+    }
+
+
+    box.innerHTML =
+      html;
 
   }
   catch(error){
 
-    console.error(
-      "Error loading clients:",
-      error
-    );
+    console.error(error);
 
-
-    clientList.innerHTML = `
-      <div class="error-box">
-
-        <strong>
-          Unable to load 1:1 clients.
-        </strong>
-
-        <br><br>
-
-        ${escapeHtml(
-          error.message ||
-          "Unknown Firebase error."
-        )}
-
-        <br><br>
-
-        Make sure your Firestore rules allow the admin
-        account to read the clients collection.
-
-      </div>
-    `;
-
-  }
-
-}
-
-
-/* =====================================================
-   SUMMARY
-===================================================== */
-
-function updateSummary(){
-
-  const today =
-    getToday();
-
-
-  document.getElementById(
-    "totalClients"
-  ).textContent =
-    clients.length;
-
-
-  const active =
-    clients.filter(client => {
-
-      return (
-        client.startDate
-        &&
-        client.endDate
-        &&
-        client.startDate <= today
-        &&
-        client.endDate >= today
-      );
-
-    });
-
-
-  document.getElementById(
-    "activeClients"
-  ).textContent =
-    active.length;
-
-
-  const upcoming =
-    clients.filter(client => {
-
-      return (
-        client.startDate
-        &&
-        client.startDate > today
-      );
-
-    });
-
-
-  document.getElementById(
-    "pendingClients"
-  ).textContent =
-    upcoming.length;
-
-
-  const connected =
-    clients.filter(client =>
-      Boolean(client.uid)
-    );
-
-
-  document.getElementById(
-    "connectedClients"
-  ).textContent =
-    connected.length;
-
-
-  const payments =
-    clients.reduce(
-      (sum,client) => {
-
-        return (
-          sum +
-          Number(
-            client.amountPaid || 0
-          )
-        );
-
-      },
-      0
-    );
-
-
-  document.getElementById(
-    "totalPayments"
-  ).textContent =
-    "Rs. " +
-    payments.toLocaleString();
-
-}
-
-
-/* =====================================================
-   RENDER CLIENTS
-===================================================== */
-
-function renderClients(){
-
-  const search =
-    searchInput.value
-      .trim()
-      .toLowerCase();
-
-
-  const status =
-    statusFilter.value;
-
-
-  const connection =
-    connectionFilter.value;
-
-
-  const filtered =
-    clients.filter(client => {
-
-      const name =
-        String(
-          client.name || ""
-        )
-        .toLowerCase();
-
-
-      const email =
-        String(
-          client.email || ""
-        )
-        .toLowerCase();
-
-
-      const matchesSearch =
-        !search
-        ||
-        name.includes(search)
-        ||
-        email.includes(search);
-
-
-      if(!matchesSearch){
-
-        return false;
-
-      }
-
-
-      const active =
-        isActive(client);
-
-
-      const upcoming =
-        isUpcoming(client);
-
-
-      if(
-        status === "active"
-        &&
-        !active
-      ){
-
-        return false;
-
-      }
-
-
-      if(
-        status === "upcoming"
-        &&
-        !upcoming
-      ){
-
-        return false;
-
-      }
-
-
-      if(
-        status === "expired"
-        &&
-        (
-          active
-          ||
-          upcoming
-        )
-      ){
-
-        return false;
-
-      }
-
-
-      const connected =
-        Boolean(client.uid);
-
-
-      if(
-        connection === "connected"
-        &&
-        !connected
-      ){
-
-        return false;
-
-      }
-
-
-      if(
-        connection === "not-connected"
-        &&
-        connected
-      ){
-
-        return false;
-
-      }
-
-
-      return true;
-
-    });
-
-
-  document.getElementById(
-    "clientCountText"
-  ).textContent =
-    filtered.length +
-    (
-      filtered.length === 1
-      ? " client"
-      : " clients"
-    );
-
-
-  if(filtered.length === 0){
-
-    clientList.innerHTML = `
-
+    box.innerHTML = `
       <div class="empty">
-
-        <div class="empty-icon">
-          ♡
-        </div>
-
-        <strong>
-          No 1:1 clients found
-        </strong>
-
-        <br><br>
-
-        ${
-          clients.length === 0
-          ? "No 1:1 coaching clients have been added yet."
-          : "Try changing your search or filters."
-        }
-
+        Unable to load today's content.
       </div>
-
     `;
 
-    return;
-
   }
-
-
-  clientList.innerHTML =
-    filtered
-      .map(
-        clientHTML
-      )
-      .join("");
-
-
-  attachClientEvents();
 
 }
 
 
 /* =====================================================
-   CLIENT HTML
+   LESSON RENDER
 ===================================================== */
 
-function clientHTML(client){
+function renderLesson(lesson){
 
-  const active =
-    isActive(client);
+  let html = `
 
+    <div class="lesson">
 
-  const upcoming =
-    isUpcoming(client);
+      <h3>
+        ${escapeHtml(
+          lesson.title ||
+          "Lesson"
+        )}
+      </h3>
 
-
-  const connected =
-    Boolean(client.uid);
-
-
-  let statusClass =
-    "expired";
+  `;
 
 
-  let statusText =
-    "Expired";
+  if(lesson.description){
 
-
-  if(active){
-
-    statusClass =
-      "active";
-
-    statusText =
-      "Active";
-
-  }
-  else if(upcoming){
-
-    statusClass =
-      "pending";
-
-    statusText =
-      "Upcoming";
+    html += `
+      <p>
+        ${escapeHtml(
+          lesson.description
+        )}
+      </p>
+    `;
 
   }
 
 
-  let paymentClass =
-    "pending";
+  if(lesson.content){
+
+    html += `
+      <p>
+        ${escapeHtml(
+          lesson.content
+        )}
+      </p>
+    `;
+
+  }
 
 
   if(
-    client.paymentStatus
-      ?.toLowerCase()
-      ===
-      "paid"
+    lesson.videoUrl
   ){
 
-    paymentClass =
-      "paid";
+    html += `
+      <div class="video-wrapper">
 
-  }
-  else if(
-    client.paymentStatus
-      ?.toLowerCase()
-      .includes("partial")
-  ){
+        <iframe
+          src="${safeUrl(
+            lesson.videoUrl
+          )}"
+          allowfullscreen
+        ></iframe>
 
-    paymentClass =
-      "partial";
+      </div>
+    `;
 
   }
 
+
+  if(
+    lesson.pdfUrl
+  ){
+
+    html += `
+      <a
+        class="resource-button"
+        href="${safeUrl(
+          lesson.pdfUrl
+        )}"
+        target="_blank"
+        rel="noopener"
+      >
+        📄 Open PDF
+      </a>
+    `;
+
+  }
+
+
+  if(
+    lesson.imageUrl
+  ){
+
+    html += `
+      <img
+        src="${safeUrl(
+          lesson.imageUrl
+        )}"
+        alt=""
+        style="
+          width:100%;
+          max-height:500px;
+          object-fit:contain;
+          border-radius:12px;
+          margin-top:15px;
+        "
+      >
+    `;
+
+  }
+
+
+  if(
+    lesson.linkUrl
+  ){
+
+    html += `
+      <a
+        class="resource-button"
+        href="${safeUrl(
+          lesson.linkUrl
+        )}"
+        target="_blank"
+        rel="noopener"
+      >
+        🔗 Open Resource
+      </a>
+    `;
+
+  }
+
+
+  html += `
+    </div>
+  `;
+
+
+  return html;
+
+}
+
+
+/* =====================================================
+   MEAL PLANS
+===================================================== */
+
+async function loadMealPlans(){
+
+  const container =
+    document.getElementById(
+      "mealPlanList"
+    );
+
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneMealPlans"
+        ),
+        where(
+          "clientId",
+          "==",
+          currentClient.id
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    mealPlans =
+      snapshot.docs.map(doc => ({
+
+        id:doc.id,
+
+        ...doc.data()
+
+      }));
+
+
+    if(!mealPlans.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          Your meal plans will appear here.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      mealPlans
+        .map(
+          item => contentCard(
+            "🥗",
+            item.title ||
+            "Meal Plan",
+            item.description ||
+            "Your personalized meal plan.",
+            item.url ||
+            item.pdfUrl
+          )
+        )
+        .join("");
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="empty">
+        Meal plans will appear here once assigned.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   WORKOUTS
+===================================================== */
+
+async function loadWorkouts(){
+
+  const container =
+    document.getElementById(
+      "workoutList"
+    );
+
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneWorkouts"
+        ),
+        where(
+          "clientId",
+          "==",
+          currentClient.id
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    workouts =
+      snapshot.docs.map(doc => ({
+
+        id:doc.id,
+
+        ...doc.data()
+
+      }));
+
+
+    if(!workouts.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          Your assigned workouts will appear here.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      workouts
+        .map(
+          item => contentCard(
+            "🏋️",
+            item.title ||
+            "Workout",
+            item.description ||
+            "Your assigned workout.",
+            item.url ||
+            item.videoUrl
+          )
+        )
+        .join("");
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="empty">
+        Workouts will appear here once assigned.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   RESOURCES
+===================================================== */
+
+async function loadResources(){
+
+  const container =
+    document.getElementById(
+      "resourceList"
+    );
+
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneResources"
+        ),
+        where(
+          "clientId",
+          "==",
+          currentClient.id
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    resources =
+      snapshot.docs.map(doc => ({
+
+        id:doc.id,
+
+        ...doc.data()
+
+      }));
+
+
+    if(!resources.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          Your resources will appear here.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      resources
+        .map(
+          item => contentCard(
+            "📄",
+            item.title ||
+            "Resource",
+            item.description ||
+            "A resource from your coach.",
+            item.url ||
+            item.pdfUrl
+          )
+        )
+        .join("");
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="empty">
+        Resources will appear here once added.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   COMMUNITY
+===================================================== */
+
+async function loadCommunity(){
+
+  const container =
+    document.getElementById(
+      "communityList"
+    );
+
+
+  try{
+
+    const q =
+      query(
+        collection(
+          db,
+          "oneOnOneCommunity"
+        ),
+        where(
+          "clientId",
+          "==",
+          currentClient.id
+        )
+      );
+
+
+    const snapshot =
+      await getDocs(q);
+
+
+    communityPosts =
+      snapshot.docs.map(doc => ({
+
+        id:doc.id,
+
+        ...doc.data()
+
+      }));
+
+
+    if(!communityPosts.length){
+
+      container.innerHTML = `
+        <div class="empty">
+          No private community updates yet.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    communityPosts.sort(
+      (a,b) => {
+
+        const aTime =
+          a.createdAt?.seconds ||
+          0;
+
+        const bTime =
+          b.createdAt?.seconds ||
+          0;
+
+        return bTime - aTime;
+
+      }
+    );
+
+
+    container.innerHTML =
+      communityPosts
+        .map(
+          post => `
+
+            <div class="post">
+
+              <div class="post-date">
+                ${formatTimestamp(
+                  post.createdAt
+                )}
+              </div>
+
+              <h3>
+                ${escapeHtml(
+                  post.title ||
+                  "Update"
+                )}
+              </h3>
+
+              <p>
+                ${escapeHtml(
+                  post.content ||
+                  ""
+                )}
+              </p>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="empty">
+        Private community updates will appear here.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   CONTENT CARD
+===================================================== */
+
+function contentCard(
+  icon,
+  title,
+  description,
+  url
+){
 
   return `
 
-    <div class="client-card">
+    <div class="content-card">
 
-
-      <div class="client-left">
-
-        <div class="client-top">
-
-          <div class="client-name">
-
-            ${escapeHtml(
-              client.name ||
-              "Unnamed Client"
-            )}
-
-          </div>
-
-
-          <span class="status ${statusClass}">
-
-            ${statusText}
-
-          </span>
-
-
-          <span class="status ${
-            connected
-            ? "connected"
-            : "not-connected"
-          }">
-
-            ${
-              connected
-              ? "✓ Connected"
-              : "Not Connected"
-            }
-
-          </span>
-
-        </div>
-
-
-        <div class="client-email">
-
-          ${escapeHtml(
-            client.email || ""
-          )}
-
-        </div>
-
-
-        <div class="client-info">
-
-
-          <div class="info-chip">
-
-            Program:
-            <strong>
-              ${escapeHtml(
-                client.programName ||
-                "1:1 Coaching"
-              )}
-            </strong>
-
-          </div>
-
-
-          <div class="info-chip">
-
-            Start:
-            <strong>
-              ${escapeHtml(
-                client.startDate || "—"
-              )}
-            </strong>
-
-          </div>
-
-
-          <div class="info-chip">
-
-            End:
-            <strong>
-              ${escapeHtml(
-                client.endDate || "—"
-              )}
-            </strong>
-
-          </div>
-
-
-          <div class="info-chip">
-
-            Paid:
-            <strong>
-              Rs.
-              ${Number(
-                client.amountPaid || 0
-              ).toLocaleString()}
-            </strong>
-
-          </div>
-
-
-          <div class="info-chip">
-
-            Payment:
-            <strong>
-              ${escapeHtml(
-                client.paymentStatus ||
-                "Pending"
-              )}
-            </strong>
-
-          </div>
-
-
-          <div class="info-chip">
-
-            ${
-              client.duration
-              ? escapeHtml(
-                  String(
-                    client.duration
-                  )
-                ) + " days"
-              : "Duration not set"
-            }
-
-          </div>
-
-
-        </div>
-
+      <div class="content-icon">
+        ${icon}
       </div>
 
+      <h3>
+        ${escapeHtml(title)}
+      </h3>
 
-      <div class="client-actions">
+      <p>
+        ${escapeHtml(description)}
+      </p>
 
-
-        <button
-          class="action-btn open-btn"
-          data-open="${client.id}"
+      ${
+        url
+        ?
+        `
+        <a
+          class="content-link"
+          href="${safeUrl(url)}"
+          target="_blank"
+          rel="noopener"
         >
-          Open Space
-        </button>
-
-
-        <button
-          class="action-btn checkin-btn"
-          data-checkin="${client.id}"
-        >
-          Check-ins
-        </button>
-
-
-        <button
-          class="action-btn assessment-btn"
-          data-assessment="${client.id}"
-        >
-          Assessment
-        </button>
-
-
-      </div>
-
+          Open
+        </a>
+        `
+        :
+        ""
+      }
 
     </div>
 
@@ -1849,259 +2309,209 @@ function clientHTML(client){
 
 
 /* =====================================================
-   EVENTS
+   NAVIGATION
 ===================================================== */
 
-function attachClientEvents(){
+document
+  .querySelectorAll(
+    ".nav-btn"
+  )
+  .forEach(button => {
 
-  document
-    .querySelectorAll(
-      "[data-open]"
-    )
-    .forEach(button => {
+    button.addEventListener(
+      "click",
+      () => {
 
-      button.addEventListener(
-        "click",
-        () => {
+        const section =
+          button.dataset.section;
 
-          openClientSpace(
-            button.dataset.open
+
+        document
+          .querySelectorAll(
+            ".nav-btn"
+          )
+          .forEach(btn => {
+
+            btn.classList.remove(
+              "active"
+            );
+
+          });
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        document
+          .querySelectorAll(
+            ".page-section"
+          )
+          .forEach(page => {
+
+            page.classList.remove(
+              "active"
+            );
+
+          });
+
+
+        document
+          .getElementById(
+            section
+          )
+          .classList.add(
+            "active"
           );
 
-        }
-      );
-
-    });
-
-
-  document
-    .querySelectorAll(
-      "[data-checkin]"
-    )
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          openCheckins(
-            button.dataset.checkin
-          );
-
-        }
-      );
-
-    });
-
-
-  document
-    .querySelectorAll(
-      "[data-assessment]"
-    )
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          openAssessment(
-            button.dataset.assessment
-          );
-
-        }
-      );
-
-    });
-
-}
-
-
-/* =====================================================
-   OPEN CLIENT SPACE
-===================================================== */
-
-function openClientSpace(id){
-
-  const client =
-    clients.find(
-      item =>
-        item.id === id
+      }
     );
 
-
-  if(!client){
-
-    return;
-
-  }
-
-
-  /*
-    For now this uses the individual client page.
-
-    The real Firestore document ID is passed.
-
-    This keeps the connection intact even when the
-    Firestore document has a random ID.
-  */
-
-  window.location.href =
-    "admin-client.html?id=" +
-    encodeURIComponent(id);
-
-}
+  });
 
 
 /* =====================================================
-   CHECK-INS
-===================================================== */
-
-function openCheckins(id){
-
-  const client =
-    clients.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!client){
-
-    return;
-
-  }
-
-
-  /*
-    Future dedicated private check-in page.
-
-    The client ID is passed so the page can load only
-    this client's check-ins.
-  */
-
-  window.location.href =
-    "admin-client.html?id=" +
-    encodeURIComponent(id) +
-    "&section=checkins";
-
-}
-
-
-/* =====================================================
-   ASSESSMENT
-===================================================== */
-
-function openAssessment(id){
-
-  const client =
-    clients.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!client){
-
-    return;
-
-  }
-
-
-  /*
-    The assessment page can later use this client ID
-    to display only this client's assessment information.
-  */
-
-  window.location.href =
-    "assessments.html?clientId=" +
-    encodeURIComponent(id);
-
-}
-
-
-/* =====================================================
-   ADD CLIENT
+   BACK TO PROGRAM
 ===================================================== */
 
 document
   .getElementById(
-    "addClientBtn"
+    "backToProgram"
   )
   .addEventListener(
     "click",
     () => {
 
-      /*
-        We send the admin to your existing client management
-        page where the complete client enrollment form exists.
-      */
+      document
+        .getElementById(
+          "dayContent"
+        )
+        .classList.remove(
+          "active"
+        );
 
-      window.location.href =
-        "client-management.html?program=1on1";
+
+      document
+        .getElementById(
+          "program"
+        )
+        .classList.add(
+          "active"
+        );
 
     }
   );
 
 
 /* =====================================================
-   REFRESH
+   CHECK-IN
 ===================================================== */
 
 document
   .getElementById(
-    "refreshBtn"
+    "saveCheckin"
   )
   .addEventListener(
     "click",
     async () => {
 
-      await loadClients();
-
-    }
-  );
-
-
-/* =====================================================
-   SEARCH / FILTER
-===================================================== */
-
-searchInput.addEventListener(
-  "input",
-  renderClients
-);
+      const text =
+        document
+          .getElementById(
+            "checkinText"
+          )
+          .value
+          .trim();
 
 
-statusFilter.addEventListener(
-  "change",
-  renderClients
-);
+      const message =
+        document.getElementById(
+          "checkinMessage"
+        );
 
 
-connectionFilter.addEventListener(
-  "change",
-  renderClients
-);
+      if(!text){
+
+        message.textContent =
+          "Please write your check-in first.";
+
+        return;
+
+      }
 
 
-/* =====================================================
-   ADMIN DASHBOARD
-===================================================== */
+      const button =
+        document.getElementById(
+          "saveCheckin"
+        );
 
-document
-  .getElementById(
-    "dashboardBtn"
-  )
-  .addEventListener(
-    "click",
-    () => {
 
-      /*
-        IMPORTANT:
-        Your main admin file is admin.html.
-      */
+      button.disabled = true;
 
-      window.location.href =
-        "admin.html";
+      button.textContent =
+        "Submitting...";
+
+
+      try{
+
+        await addDoc(
+          collection(
+            db,
+            "oneOnOneCheckins"
+          ),
+          {
+
+            clientId:
+              currentClient.id,
+
+            uid:
+              currentUser.uid,
+
+            text:text,
+
+            createdAt:
+              serverTimestamp(),
+
+            status:
+              "submitted"
+
+          }
+        );
+
+
+        document
+          .getElementById(
+            "checkinText"
+          )
+          .value = "";
+
+
+        message.style.color =
+          "#28733a";
+
+
+        message.textContent =
+          "Your check-in has been submitted to your coach.";
+
+      }
+      catch(error){
+
+        console.error(error);
+
+        message.style.color =
+          "#8b3333";
+
+        message.textContent =
+          "Unable to submit your check-in. Please try again.";
+
+      }
+
+
+      button.disabled = false;
+
+      button.textContent =
+        "Submit Check-in";
 
     }
   );
@@ -2119,149 +2529,67 @@ document
     "click",
     async () => {
 
-      try{
+      await signOut(auth);
 
-        await signOut(auth);
-
-        window.location.href =
-          "login.html";
-
-      }
-      catch(error){
-
-        console.error(error);
-
-        alert(
-          "Unable to logout. Please try again."
-        );
-
-      }
+      window.location.href =
+        "login.html";
 
     }
   );
 
 
 /* =====================================================
-   MODAL CLOSE
+   ERROR
 ===================================================== */
 
-document
-  .getElementById(
-    "closeModal"
-  )
-  .addEventListener(
-    "click",
-    closeModal
-  );
+function showClientError(message){
+
+  document.getElementById(
+    "weekList"
+  ).innerHTML = `
+
+    <div class="empty">
+
+      ${escapeHtml(message)}
+
+    </div>
+
+  `;
+
+}
 
 
-clientModal.addEventListener(
-  "click",
-  event => {
+/* =====================================================
+   URL SAFETY
+===================================================== */
 
-    if(
-      event.target ===
-      clientModal
-    ){
+function safeUrl(value){
 
-      closeModal();
+  const url =
+    String(value || "")
+      .trim();
 
-    }
+
+  if(
+    url.startsWith("https://")
+    ||
+    url.startsWith("http://")
+  ){
+
+    return escapeAttribute(
+      url
+    );
 
   }
-);
 
 
-function closeModal(){
-
-  clientModal.classList.remove(
-    "show"
-  );
+  return "#";
 
 }
 
 
 /* =====================================================
-   DATE HELPERS
-===================================================== */
-
-function getToday(){
-
-  const now =
-    new Date();
-
-  return formatDate(
-    now
-  );
-
-}
-
-
-function isActive(client){
-
-  const today =
-    getToday();
-
-
-  return Boolean(
-
-    client.startDate
-    &&
-    client.endDate
-    &&
-    client.startDate <= today
-    &&
-    client.endDate >= today
-
-  );
-
-}
-
-
-function isUpcoming(client){
-
-  const today =
-    getToday();
-
-
-  return Boolean(
-
-    client.startDate
-    &&
-    client.startDate > today
-
-  );
-
-}
-
-
-function formatDate(date){
-
-  return [
-
-    date.getFullYear(),
-
-    String(
-      date.getMonth() + 1
-    ).padStart(
-      2,
-      "0"
-    ),
-
-    String(
-      date.getDate()
-    ).padStart(
-      2,
-      "0"
-    )
-
-  ].join("-");
-
-}
-
-
-/* =====================================================
-   HTML ESCAPE
+   ESCAPE HTML
 ===================================================== */
 
 function escapeHtml(value){
@@ -2269,37 +2597,59 @@ function escapeHtml(value){
   return String(
     value ?? ""
   )
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
 
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
+}
 
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
 
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
+function escapeAttribute(value){
 
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
+  return escapeHtml(
+    value
+  );
 
-    .replaceAll(
-      "'",
-      "&#039;"
+}
+
+
+/* =====================================================
+   TIMESTAMP
+===================================================== */
+
+function formatTimestamp(timestamp){
+
+  if(
+    !timestamp ||
+    !timestamp.seconds
+  ){
+
+    return "";
+
+  }
+
+
+  const date =
+    new Date(
+      timestamp.seconds * 1000
     );
+
+
+  return date.toLocaleDateString(
+    "en-PK",
+    {
+      day:"numeric",
+      month:"short",
+      year:"numeric"
+    }
+  );
 
 }
 
 </script>
 
-
 </body>
-
 </html>
+```
