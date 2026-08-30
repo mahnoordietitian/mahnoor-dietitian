@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Admin Panel | Mahnoor Dietitian</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -96,6 +98,7 @@
       padding: 25px;
       border-radius: 14px;
       border: 1px solid #eee;
+      margin-bottom: 25px;
     }
 
     .section-header {
@@ -103,10 +106,15 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
+      gap: 15px;
     }
 
     .section-header h2 {
       margin: 0;
+    }
+
+    button {
+      cursor: pointer;
     }
 
     .add-btn {
@@ -115,7 +123,147 @@
       border: none;
       border-radius: 8px;
       padding: 11px 18px;
-      cursor: pointer;
+    }
+
+    .form-container {
+      display: none;
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 1px solid #eee;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+
+      border: 1px solid #ddd;
+      border-radius: 8px;
+
+      font-family: inherit;
+      font-size: 15px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #6E4A7E;
+    }
+
+    .calculated {
+      background: #FBF8F3;
+      border-color: #DCCBB3;
+    }
+
+    .form-actions {
+      margin-top: 25px;
+
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .save-btn {
+      background: #6E4A7E;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 25px;
+    }
+
+    .cancel-btn {
+      background: white;
+      color: #2D2D2D;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 13px 25px;
+    }
+
+    .message {
+      margin-top: 15px;
+      min-height: 20px;
+      font-size: 14px;
+    }
+
+    .client-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .client {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 18px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+    }
+
+    .client-info strong {
+      font-size: 17px;
+    }
+
+    .client-info p {
+      margin: 5px 0 0;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .client-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .small-btn {
+      border: none;
+      border-radius: 7px;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    .edit-btn {
+      background: #eee;
+    }
+
+    .delete-btn {
+      background: #f5dddd;
+      color: #8b2222;
     }
 
     .empty {
@@ -123,10 +271,41 @@
       text-align: center;
       color: #777;
     }
+
+    .program-note {
+      margin-top: 6px;
+      color: #777;
+      font-size: 12px;
+    }
+
+    @media (max-width: 650px) {
+
+      header {
+        padding: 15px;
+      }
+
+      main {
+        padding: 25px 15px;
+      }
+
+      .section {
+        padding: 18px;
+      }
+
+      .client {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+    }
+
   </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -134,18 +313,27 @@
     Mahnoor Dietitian
   </div>
 
-  <button class="logout" id="logoutBtn">
+  <button
+    class="logout"
+    id="logoutBtn"
+  >
     Logout
   </button>
 
 </header>
 
 
+
 <main>
+
+
+  <!-- WELCOME -->
 
   <div class="welcome">
 
-    <h1>Hi, Mahnoor!</h1>
+    <h1>
+      Hi, Mahnoor!
+    </h1>
 
     <p>
       Welcome from Mahnoor Dietitian.
@@ -154,9 +342,11 @@
   </div>
 
 
-  <!-- Dashboard cards -->
+
+  <!-- DASHBOARD CARDS -->
 
   <div class="cards">
+
 
     <div class="card">
 
@@ -174,17 +364,22 @@
     </div>
 
 
+
     <div class="card">
 
       <div class="card-title">
         Active Programs
       </div>
 
-      <div class="card-number">
+      <div
+        class="card-number"
+        id="activeProgramCount"
+      >
         0
       </div>
 
     </div>
+
 
 
     <div class="card">
@@ -193,31 +388,41 @@
         Check-ins Due
       </div>
 
-      <div class="card-number">
+      <div
+        class="card-number"
+        id="checkinCount"
+      >
         0
       </div>
 
     </div>
 
 
+
     <div class="card">
 
       <div class="card-title">
-        Payments
+        Payments Received
       </div>
 
-      <div class="card-number">
+      <div
+        class="card-number"
+        id="paymentTotal"
+      >
         Rs. 0
       </div>
 
     </div>
 
+
   </div>
 
 
-  <!-- Clients -->
+
+  <!-- CLIENTS -->
 
   <div class="section">
+
 
     <div class="section-header">
 
@@ -235,37 +440,509 @@
     </div>
 
 
+
+    <!-- ADD CLIENT FORM -->
+
     <div
-      class="empty"
-      id="clientsArea"
+      class="form-container"
+      id="clientFormContainer"
     >
-      Loading clients...
+
+
+      <form id="clientForm">
+
+
+        <div class="form-grid">
+
+
+          <!-- BASIC INFORMATION -->
+
+          <div class="field full">
+
+            <h3>
+              Client Information
+            </h3>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="name">
+              Full Name *
+            </label>
+
+            <input
+              type="text"
+              id="name"
+              required
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="email">
+              Email *
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              required
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="phone">
+              Phone
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="dob">
+              Date of Birth
+            </label>
+
+            <input
+              type="date"
+              id="dob"
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="city">
+              City
+            </label>
+
+            <input
+              type="text"
+              id="city"
+            >
+
+          </div>
+
+
+
+          <!-- PROGRAM -->
+
+          <div class="field full">
+
+            <h3>
+              Enrollment
+            </h3>
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="programType">
+              Program Type *
+            </label>
+
+            <select
+              id="programType"
+              required
+            >
+
+              <option value="">
+                Select program type
+              </option>
+
+              <option value="1:1 Coaching">
+                1:1 Coaching
+              </option>
+
+              <option value="Membership">
+                Freedom Women's Health Club
+              </option>
+
+              <option value="Short Program">
+                Short Program
+              </option>
+
+            </select>
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="programName">
+              Program Name *
+            </label>
+
+            <input
+              type="text"
+              id="programName"
+              placeholder="e.g. 90-Day Freedom Mentorship"
+              required
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="duration">
+              Duration *
+            </label>
+
+            <select
+              id="duration"
+              required
+            >
+
+              <option value="">
+                Select duration
+              </option>
+
+              <option value="30">
+                30 Days
+              </option>
+
+              <option value="45">
+                45 Days
+              </option>
+
+              <option value="60">
+                60 Days
+              </option>
+
+              <option value="90">
+                90 Days
+              </option>
+
+              <option value="30">
+                1 Month
+              </option>
+
+              <option value="90">
+                3 Months
+              </option>
+
+              <option value="180">
+                6 Months
+              </option>
+
+              <option value="365">
+                12 Months
+              </option>
+
+            </select>
+
+            <div class="program-note">
+              You can add custom durations later.
+            </div>
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="startDate">
+              Start Date *
+            </label>
+
+            <input
+              type="date"
+              id="startDate"
+              required
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="endDate">
+              End Date
+            </label>
+
+            <input
+              type="date"
+              id="endDate"
+              class="calculated"
+              readonly
+            >
+
+          </div>
+
+
+
+          <!-- PAYMENT -->
+
+          <div class="field full">
+
+            <h3>
+              Payment
+            </h3>
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="programPrice">
+              Program Price (Rs.) *
+            </label>
+
+            <input
+              type="number"
+              id="programPrice"
+              min="0"
+              step="1"
+              required
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="amountPaid">
+              Amount Paid (Rs.) *
+            </label>
+
+            <input
+              type="number"
+              id="amountPaid"
+              min="0"
+              step="1"
+              required
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="remainingAmount">
+              Remaining Amount
+            </label>
+
+            <input
+              type="number"
+              id="remainingAmount"
+              class="calculated"
+              readonly
+            >
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="paymentStatus">
+              Payment Status *
+            </label>
+
+            <select
+              id="paymentStatus"
+              required
+            >
+
+              <option value="">
+                Select status
+              </option>
+
+              <option value="Paid">
+                Paid
+              </option>
+
+              <option value="Partially Paid">
+                Partially Paid
+              </option>
+
+              <option value="Pending">
+                Pending
+              </option>
+
+            </select>
+
+          </div>
+
+
+
+          <div class="field">
+
+            <label for="paymentMethod">
+              Payment Method
+            </label>
+
+            <select
+              id="paymentMethod"
+            >
+
+              <option value="">
+                Select method
+              </option>
+
+              <option value="Cash">
+                Cash
+              </option>
+
+              <option value="Bank Transfer">
+                Bank Transfer
+              </option>
+
+              <option value="JazzCash">
+                JazzCash
+              </option>
+
+              <option value="EasyPaisa">
+                EasyPaisa
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+
+          <!-- NOTES -->
+
+          <div class="field full">
+
+            <label for="notes">
+              Admin Notes
+            </label>
+
+            <textarea
+              id="notes"
+              placeholder="Private notes about this client..."
+            ></textarea>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="save-btn"
+            id="saveClientBtn"
+          >
+            Save Client
+          </button>
+
+          <button
+            type="button"
+            class="cancel-btn"
+            id="cancelClientBtn"
+          >
+            Cancel
+          </button>
+
+        </div>
+
+
+
+        <div
+          class="message"
+          id="formMessage"
+        ></div>
+
+
+      </form>
+
+
     </div>
 
+
+    <!-- CLIENT LIST -->
+
+    <div
+      class="client-list"
+      id="clientsArea"
+    >
+
+      <div class="empty">
+        Loading clients...
+      </div>
+
+    </div>
+
+
   </div>
+
 
 </main>
 
 
+
 <script type="module">
 
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+  import {
+    initializeApp
+  } from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
   import {
     getAuth,
     onAuthStateChanged,
     signOut
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
 
   import {
     getFirestore,
     collection,
-    getDocs
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    getDocs,
+    addDoc,
+    doc,
+    updateDoc,
+    deleteDoc,
+    serverTimestamp
+  } from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-  // Firebase configuration
+
+  // =========================================
+  // FIREBASE
+  // =========================================
+
 
   const firebaseConfig = {
 
@@ -290,71 +967,121 @@
   };
 
 
-  // Initialize Firebase
-
   const app =
     initializeApp(firebaseConfig);
+
 
   const auth =
     getAuth(app);
 
+
   const db =
     getFirestore(app);
+
 
 
   const ADMIN_EMAIL =
     "mahnoordietitian3@gmail.com";
 
 
-  // Check admin login
 
-  onAuthStateChanged(auth, async (user) => {
+  // =========================================
+  // ELEMENTS
+  // =========================================
 
-    if (!user) {
 
-      window.location.href =
-        "login.html";
+  const clientForm =
+    document.getElementById("clientForm");
 
-      return;
+
+  const formContainer =
+    document.getElementById("clientFormContainer");
+
+
+  const clientsArea =
+    document.getElementById("clientsArea");
+
+
+  const clientCount =
+    document.getElementById("clientCount");
+
+
+  const activeProgramCount =
+    document.getElementById("activeProgramCount");
+
+
+  const paymentTotal =
+    document.getElementById("paymentTotal");
+
+
+  const formMessage =
+    document.getElementById("formMessage");
+
+
+  let editingClientId = null;
+
+
+
+  // =========================================
+  // AUTHENTICATION
+  // =========================================
+
+
+  onAuthStateChanged(
+    auth,
+    async (user) => {
+
+
+      if (!user) {
+
+        window.location.href =
+          "login.html";
+
+        return;
+
+      }
+
+
+      if (user.email !== ADMIN_EMAIL) {
+
+        alert(
+          "You do not have permission to access the Admin Panel."
+        );
+
+        await signOut(auth);
+
+        window.location.href =
+          "login.html";
+
+        return;
+
+      }
+
+
+      await loadClients();
 
     }
+  );
 
 
-    if (user.email !== ADMIN_EMAIL) {
 
-      alert(
-        "You do not have permission to access the Admin Panel."
-      );
+  // =========================================
+  // LOAD CLIENTS
+  // =========================================
 
-      await signOut(auth);
-
-      window.location.href =
-        "login.html";
-
-      return;
-
-    }
-
-
-    // Load clients
-
-    await loadClients();
-
-  });
-
-
-  // Load clients from Firestore
 
   async function loadClients() {
 
-    const clientsArea =
-      document.getElementById("clientsArea");
 
-    const clientCount =
-      document.getElementById("clientCount");
+    clientsArea.innerHTML = `
+      <div class="empty">
+        Loading clients...
+      </div>
+    `;
 
 
     try {
+
 
       const snapshot =
         await getDocs(
@@ -363,14 +1090,18 @@
 
 
       const clients =
-        snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
+        snapshot.docs.map(
+          document => ({
+
+            id: document.id,
+
+            ...document.data()
+
+          })
+        );
 
 
-      clientCount.textContent =
-        clients.length;
+      updateDashboard(clients);
 
 
       if (clients.length === 0) {
@@ -389,34 +1120,136 @@
 
 
       clientsArea.innerHTML =
-        clients.map(client => `
-          <div style="
-            padding:15px;
-            border-bottom:1px solid #eee;
-          ">
-            <strong>
-              ${client.name || "Unnamed Client"}
-            </strong>
+        clients
+          .map(client => {
 
-            <br>
 
-            <span style="color:#777;">
-              ${client.email || ""}
-            </span>
-          </div>
-        `).join("");
+            return `
+
+              <div class="client">
+
+                <div class="client-info">
+
+                  <strong>
+                    ${escapeHtml(client.name || "Unnamed Client")}
+                  </strong>
+
+                  <p>
+                    ${escapeHtml(client.email || "")}
+                  </p>
+
+                  <p>
+                    ${escapeHtml(client.programName || "No program")}
+                    •
+                    ${escapeHtml(String(client.duration || ""))}
+                    days
+                  </p>
+
+                  <p>
+                    Start:
+                    ${escapeHtml(client.startDate || "-")}
+                    |
+                    End:
+                    ${escapeHtml(client.endDate || "-")}
+                  </p>
+
+                  <p>
+                    Paid:
+                    Rs. ${Number(client.amountPaid || 0).toLocaleString()}
+                    |
+                    Remaining:
+                    Rs. ${Number(client.remainingAmount || 0).toLocaleString()}
+                  </p>
+
+                </div>
+
+
+                <div class="client-actions">
+
+                  <button
+                    class="small-btn edit-btn"
+                    data-edit="${client.id}"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    class="small-btn delete-btn"
+                    data-delete="${client.id}"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </div>
+
+            `;
+
+          })
+          .join("");
+
+
+      // Edit buttons
+
+      document
+        .querySelectorAll("[data-edit]")
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const id =
+                button.dataset.edit;
+
+              editClient(id, clients);
+
+            }
+          );
+
+        });
+
+
+      // Delete buttons
+
+      document
+        .querySelectorAll("[data-delete]")
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const id =
+                button.dataset.delete;
+
+              deleteClient(id);
+
+            }
+          );
+
+        });
 
 
     } catch (error) {
 
+
       console.error(error);
 
+
       clientsArea.innerHTML = `
+
         <div class="empty">
+
           Unable to load clients.
+
           <br>
-          Please check your Firebase settings.
+
+          ${escapeHtml(error.message)}
+
         </div>
+
       `;
 
     }
@@ -424,33 +1257,815 @@
   }
 
 
-  // Add client button
+
+  // =========================================
+  // DASHBOARD
+  // =========================================
+
+
+  function updateDashboard(clients) {
+
+
+    clientCount.textContent =
+      clients.length;
+
+
+    const today =
+      new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+    const active =
+      clients.filter(client => {
+
+        return (
+          client.startDate &&
+          client.endDate &&
+          client.startDate <= today &&
+          client.endDate >= today
+        );
+
+      });
+
+
+    activeProgramCount.textContent =
+      active.length;
+
+
+    const totalPaid =
+      clients.reduce(
+        (sum, client) =>
+          sum +
+          Number(client.amountPaid || 0),
+        0
+      );
+
+
+    paymentTotal.textContent =
+      "Rs. " +
+      totalPaid.toLocaleString();
+
+
+  }
+
+
+
+  // =========================================
+  // OPEN FORM
+  // =========================================
+
 
   document
     .getElementById("addClientBtn")
-    .addEventListener("click", () => {
+    .addEventListener(
+      "click",
+      () => {
 
-      alert(
-        "Client enrollment form will be added in the next step."
+        editingClientId = null;
+
+        clientForm.reset();
+
+        formMessage.textContent = "";
+
+        document
+          .getElementById("saveClientBtn")
+          .textContent =
+          "Save Client";
+
+        formContainer.style.display =
+          "block";
+
+        document
+          .getElementById("name")
+          .focus();
+
+      }
+    );
+
+
+
+  // =========================================
+  // CANCEL
+  // =========================================
+
+
+  document
+    .getElementById("cancelClientBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        clientForm.reset();
+
+        editingClientId = null;
+
+        formMessage.textContent = "";
+
+        formContainer.style.display =
+          "none";
+
+      }
+    );
+
+
+
+  // =========================================
+  // PROGRAM NAME AUTO SUGGESTION
+  // =========================================
+
+
+  document
+    .getElementById("programType")
+    .addEventListener(
+      "change",
+      event => {
+
+
+        const type =
+          event.target.value;
+
+
+        const programName =
+          document.getElementById(
+            "programName"
+          );
+
+
+        if (
+          type ===
+          "1:1 Coaching"
+        ) {
+
+          programName.value =
+            "90-Day Freedom Mentorship™";
+
+        }
+
+
+        if (
+          type ===
+          "Membership"
+        ) {
+
+          programName.value =
+            "Freedom Women's Health Club";
+
+        }
+
+
+        if (
+          type ===
+          "Short Program"
+        ) {
+
+          programName.value =
+            "";
+
+          programName.focus();
+
+        }
+
+      }
+    );
+
+
+
+  // =========================================
+  // CALCULATE END DATE
+  // =========================================
+
+
+  function calculateEndDate() {
+
+
+    const startDate =
+      document.getElementById(
+        "startDate"
+      ).value;
+
+
+    const duration =
+      Number(
+        document.getElementById(
+          "duration"
+        ).value
       );
 
+
+    if (
+      !startDate ||
+      !duration
+    ) {
+
+      document.getElementById(
+        "endDate"
+      ).value = "";
+
+      return;
+
+    }
+
+
+    const date =
+      new Date(
+        startDate + "T00:00:00"
+      );
+
+
+    /*
+      The client has access starting
+      on the selected start date.
+
+      Example:
+
+      Start: August 30
+      Duration: 90 days
+
+      End: November 27
+    */
+
+
+    date.setDate(
+      date.getDate() +
+      duration -
+      1
+    );
+
+
+    document.getElementById(
+      "endDate"
+    ).value =
+      formatDate(date);
+
+  }
+
+
+
+  document
+    .getElementById("startDate")
+    .addEventListener(
+      "change",
+      calculateEndDate
+    );
+
+
+  document
+    .getElementById("duration")
+    .addEventListener(
+      "change",
+      calculateEndDate
+    );
+
+
+
+  // =========================================
+  // CALCULATE REMAINING PAYMENT
+  // =========================================
+
+
+  function calculateRemaining() {
+
+
+    const price =
+      Number(
+        document.getElementById(
+          "programPrice"
+        ).value
+      ) || 0;
+
+
+    const paid =
+      Number(
+        document.getElementById(
+          "amountPaid"
+        ).value
+      ) || 0;
+
+
+    const remaining =
+      Math.max(
+        price - paid,
+        0
+      );
+
+
+    document.getElementById(
+      "remainingAmount"
+    ).value =
+      remaining;
+
+  }
+
+
+
+  document
+    .getElementById("programPrice")
+    .addEventListener(
+      "input",
+      calculateRemaining
+    );
+
+
+  document
+    .getElementById("amountPaid")
+    .addEventListener(
+      "input",
+      calculateRemaining
+    );
+
+
+
+  // =========================================
+  // SAVE CLIENT
+  // =========================================
+
+
+  clientForm.addEventListener(
+    "submit",
+    async event => {
+
+
+      event.preventDefault();
+
+
+      formMessage.textContent =
+        "Saving client...";
+
+
+      const price =
+        Number(
+          document.getElementById(
+            "programPrice"
+          ).value
+        ) || 0;
+
+
+      const paid =
+        Number(
+          document.getElementById(
+            "amountPaid"
+          ).value
+        ) || 0;
+
+
+      const remaining =
+        Math.max(
+          price - paid,
+          0
+        );
+
+
+      const clientData = {
+
+
+        name:
+          document
+            .getElementById("name")
+            .value
+            .trim(),
+
+
+        email:
+          document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase(),
+
+
+        phone:
+          document
+            .getElementById("phone")
+            .value
+            .trim(),
+
+
+        dob:
+          document
+            .getElementById("dob")
+            .value,
+
+
+        city:
+          document
+            .getElementById("city")
+            .value
+            .trim(),
+
+
+        programType:
+          document
+            .getElementById("programType")
+            .value,
+
+
+        programName:
+          document
+            .getElementById("programName")
+            .value
+            .trim(),
+
+
+        duration:
+          Number(
+            document
+              .getElementById("duration")
+              .value
+          ),
+
+
+        startDate:
+          document
+            .getElementById("startDate")
+            .value,
+
+
+        endDate:
+          document
+            .getElementById("endDate")
+            .value,
+
+
+        programPrice:
+          price,
+
+
+        amountPaid:
+          paid,
+
+
+        remainingAmount:
+          remaining,
+
+
+        paymentStatus:
+          document
+            .getElementById("paymentStatus")
+            .value,
+
+
+        paymentMethod:
+          document
+            .getElementById("paymentMethod")
+            .value,
+
+
+        notes:
+          document
+            .getElementById("notes")
+            .value
+            .trim(),
+
+
+        updatedAt:
+          serverTimestamp()
+
+      };
+
+
+
+      try {
+
+
+        if (editingClientId) {
+
+
+          await updateDoc(
+
+            doc(
+              db,
+              "clients",
+              editingClientId
+            ),
+
+            clientData
+
+          );
+
+
+          formMessage.textContent =
+            "Client updated successfully ✓";
+
+
+        } else {
+
+
+          clientData.createdAt =
+            serverTimestamp();
+
+
+          await addDoc(
+
+            collection(
+              db,
+              "clients"
+            ),
+
+            clientData
+
+          );
+
+
+          formMessage.textContent =
+            "Client added successfully ✓";
+
+        }
+
+
+        await loadClients();
+
+
+        setTimeout(
+          () => {
+
+            clientForm.reset();
+
+            editingClientId = null;
+
+            formContainer.style.display =
+              "none";
+
+            formMessage.textContent = "";
+
+          },
+          800
+        );
+
+
+      } catch (error) {
+
+
+        console.error(error);
+
+
+        formMessage.textContent =
+          "Unable to save client: " +
+          error.message;
+
+      }
+
+    }
+  );
+
+
+
+  // =========================================
+  // EDIT CLIENT
+  // =========================================
+
+
+  function editClient(
+    id,
+    clients
+  ) {
+
+
+    const client =
+      clients.find(
+        item => item.id === id
+      );
+
+
+    if (!client) return;
+
+
+    editingClientId =
+      id;
+
+
+    document.getElementById("name")
+      .value =
+      client.name || "";
+
+
+    document.getElementById("email")
+      .value =
+      client.email || "";
+
+
+    document.getElementById("phone")
+      .value =
+      client.phone || "";
+
+
+    document.getElementById("dob")
+      .value =
+      client.dob || "";
+
+
+    document.getElementById("city")
+      .value =
+      client.city || "";
+
+
+    document.getElementById("programType")
+      .value =
+      client.programType || "";
+
+
+    document.getElementById("programName")
+      .value =
+      client.programName || "";
+
+
+    document.getElementById("duration")
+      .value =
+      client.duration || "";
+
+
+    document.getElementById("startDate")
+      .value =
+      client.startDate || "";
+
+
+    document.getElementById("endDate")
+      .value =
+      client.endDate || "";
+
+
+    document.getElementById("programPrice")
+      .value =
+      client.programPrice || 0;
+
+
+    document.getElementById("amountPaid")
+      .value =
+      client.amountPaid || 0;
+
+
+    document.getElementById("remainingAmount")
+      .value =
+      client.remainingAmount || 0;
+
+
+    document.getElementById("paymentStatus")
+      .value =
+      client.paymentStatus || "";
+
+
+    document.getElementById("paymentMethod")
+      .value =
+      client.paymentMethod || "";
+
+
+    document.getElementById("notes")
+      .value =
+      client.notes || "";
+
+
+    document.getElementById(
+      "saveClientBtn"
+    ).textContent =
+      "Update Client";
+
+
+    formMessage.textContent = "";
+
+
+    formContainer.style.display =
+      "block";
+
+
+    window.scrollTo({
+      top:
+        formContainer.offsetTop -
+        30,
+      behavior:
+        "smooth"
     });
 
+  }
 
-  // Logout
+
+
+  // =========================================
+  // DELETE CLIENT
+  // =========================================
+
+
+  async function deleteClient(id) {
+
+
+    const confirmed =
+      confirm(
+        "Are you sure you want to delete this client?"
+      );
+
+
+    if (!confirmed) return;
+
+
+    try {
+
+
+      await deleteDoc(
+        doc(
+          db,
+          "clients",
+          id
+        )
+      );
+
+
+      await loadClients();
+
+
+    } catch (error) {
+
+
+      console.error(error);
+
+
+      alert(
+        "Unable to delete client: " +
+        error.message
+      );
+
+    }
+
+  }
+
+
+
+  // =========================================
+  // LOGOUT
+  // =========================================
+
 
   document
     .getElementById("logoutBtn")
-    .addEventListener("click", async () => {
+    .addEventListener(
+      "click",
+      async () => {
 
-      await signOut(auth);
+        await signOut(auth);
 
-      window.location.href =
-        "login.html";
+        window.location.href =
+          "login.html";
 
-    });
+      }
+    );
+
+
+
+  // =========================================
+  // HELPERS
+  // =========================================
+
+
+  function formatDate(date) {
+
+
+    const year =
+      date.getFullYear();
+
+
+    const month =
+      String(
+        date.getMonth() + 1
+      ).padStart(2, "0");
+
+
+    const day =
+      String(
+        date.getDate()
+      ).padStart(2, "0");
+
+
+    return (
+      year +
+      "-" +
+      month +
+      "-" +
+      day
+    );
+
+  }
+
+
+
+  function escapeHtml(value) {
+
+
+    return String(value)
+
+      .replaceAll("&", "&amp;")
+
+      .replaceAll("<", "&lt;")
+
+      .replaceAll(">", "&gt;")
+
+      .replaceAll('"', "&quot;")
+
+      .replaceAll("'", "&#039;");
+
+  }
+
 
 </script>
 
+
 </body>
+
 </html>
