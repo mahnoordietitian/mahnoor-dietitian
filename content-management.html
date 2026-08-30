@@ -1,0 +1,2735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Content Management | Mahnoor Dietitian</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#FBF8F3;
+  color:#2D2D2D;
+}
+
+button,
+input,
+textarea,
+select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+  background:#fff;
+  border-bottom:1px solid #eadfe9;
+  padding:17px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+
+.brand{
+  color:#6E4A7E;
+  font-size:23px;
+  font-weight:700;
+}
+
+.header-actions{
+  display:flex;
+  gap:9px;
+  align-items:center;
+}
+
+.header-btn{
+  border:none;
+  border-radius:8px;
+  padding:10px 15px;
+  font-weight:600;
+}
+
+.dashboard-btn{
+  background:#f1eaf2;
+  color:#6E4A7E;
+}
+
+.logout-btn{
+  background:#6E4A7E;
+  color:#fff;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+  max-width:1450px;
+  margin:auto;
+  padding:30px 20px 70px;
+}
+
+.page-heading{
+  margin-bottom:25px;
+}
+
+.page-heading h1{
+  margin:0 0 8px;
+  font-size:32px;
+}
+
+.page-heading p{
+  margin:0;
+  color:#777;
+  line-height:1.6;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:13px;
+  padding:7px 12px;
+  border-radius:20px;
+  background:#eee5f0;
+  color:#6E4A7E;
+  font-size:11px;
+  font-weight:700;
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.content-layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:22px;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:15px;
+  height:max-content;
+  position:sticky;
+  top:90px;
+}
+
+.sidebar-title{
+  font-size:12px;
+  color:#888;
+  font-weight:700;
+  text-transform:uppercase;
+  margin:6px 10px 12px;
+}
+
+.nav-item{
+  width:100%;
+  border:none;
+  background:transparent;
+  color:#555;
+  text-align:left;
+  padding:12px 13px;
+  border-radius:9px;
+  margin-bottom:4px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.nav-item:hover{
+  background:#f7f1f8;
+  color:#6E4A7E;
+}
+
+.nav-item.active{
+  background:#eee5f0;
+  color:#6E4A7E;
+}
+
+
+/* =====================================================
+   CONTENT AREA
+===================================================== */
+
+.content-area{
+  min-width:0;
+}
+
+.toolbar{
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.toolbar-left{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.toolbar-title{
+  font-size:19px;
+  font-weight:700;
+}
+
+.count{
+  color:#777;
+  font-size:13px;
+}
+
+.primary-btn{
+  border:none;
+  background:#6E4A7E;
+  color:#fff;
+  border-radius:8px;
+  padding:11px 17px;
+  font-weight:600;
+}
+
+.secondary-btn{
+  border:1px solid #d8cbd9;
+  background:#fff;
+  color:#6E4A7E;
+  border-radius:8px;
+  padding:10px 15px;
+  font-weight:600;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box{
+  width:100%;
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:15px;
+  margin-bottom:18px;
+}
+
+.search-box input{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd4dd;
+  border-radius:8px;
+}
+
+
+/* =====================================================
+   CONTENT LIST
+===================================================== */
+
+.content-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.content-card{
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+}
+
+.content-card:hover{
+  border-color:#cdb9d1;
+  box-shadow:0 4px 15px rgba(110,74,126,.06);
+}
+
+.content-main{
+  flex:1;
+  min-width:0;
+}
+
+.content-top{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-bottom:8px;
+}
+
+.content-title{
+  font-size:17px;
+  font-weight:700;
+}
+
+.type-badge{
+  background:#eee5f0;
+  color:#6E4A7E;
+  padding:5px 8px;
+  border-radius:15px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.content-description{
+  color:#666;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.meta span{
+  background:#FBF8F3;
+  border:1px solid #eee6ee;
+  border-radius:6px;
+  padding:6px 8px;
+  color:#666;
+  font-size:11px;
+}
+
+.content-actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.edit-btn,
+.delete-btn{
+  border:none;
+  border-radius:7px;
+  padding:9px 12px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.edit-btn{
+  background:#eee5f0;
+  color:#6E4A7E;
+}
+
+.delete-btn{
+  background:#f8eaea;
+  color:#963d3d;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:15px;
+  padding:55px 20px;
+  text-align:center;
+  color:#777;
+}
+
+.empty-icon{
+  font-size:35px;
+  color:#6E4A7E;
+  margin-bottom:12px;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(45,45,45,.48);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:100;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:850px;
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:17px;
+  padding:27px;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:22px;
+}
+
+.modal-header h2{
+  margin:0;
+  color:#6E4A7E;
+}
+
+.close-btn{
+  width:36px;
+  height:36px;
+  border:none;
+  border-radius:50%;
+  background:#f0eaf2;
+  color:#6E4A7E;
+  font-size:20px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.form-group{
+  margin-bottom:16px;
+}
+
+.form-group.full{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+  font-weight:700;
+  color:#555;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:12px;
+  border:1px solid #d9d0d9;
+  border-radius:8px;
+  background:#fff;
+  font-size:14px;
+}
+
+.form-group textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  outline:none;
+  border-color:#6E4A7E;
+  box-shadow:0 0 0 3px rgba(110,74,126,.08);
+}
+
+.help-text{
+  display:block;
+  color:#888;
+  font-size:11px;
+  margin-top:5px;
+  line-height:1.5;
+}
+
+.form-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px solid #eee;
+}
+
+
+/* =====================================================
+   TYPE-SPECIFIC
+===================================================== */
+
+.type-section{
+  background:#FBF8F3;
+  border:1px solid #eee5ee;
+  border-radius:11px;
+  padding:15px;
+  margin-bottom:18px;
+}
+
+.type-section-title{
+  font-size:13px;
+  color:#6E4A7E;
+  font-weight:700;
+  margin-bottom:13px;
+}
+
+
+/* =====================================================
+   IMAGE PREVIEW
+===================================================== */
+
+.image-preview{
+  display:none;
+  margin-top:10px;
+  border:1px solid #ddd;
+  border-radius:9px;
+  padding:8px;
+  background:#fff;
+}
+
+.image-preview img{
+  max-width:100%;
+  max-height:200px;
+  display:block;
+  margin:auto;
+  border-radius:7px;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#2D2D2D;
+  color:#fff;
+  padding:13px 17px;
+  border-radius:9px;
+  display:none;
+  z-index:200;
+  font-size:13px;
+  max-width:350px;
+}
+
+.toast.show{
+  display:block;
+}
+
+.toast.success{
+  background:#28733a;
+}
+
+.toast.error{
+  background:#963d3d;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+  background:#fff;
+  border:1px solid #eadfe9;
+  border-radius:14px;
+  padding:45px;
+  text-align:center;
+  color:#777;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+  .content-layout{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    position:static;
+    display:flex;
+    gap:5px;
+    overflow-x:auto;
+  }
+
+  .sidebar-title{
+    display:none;
+  }
+
+  .nav-item{
+    width:auto;
+    white-space:nowrap;
+  }
+
+}
+
+@media(max-width:650px){
+
+  header{
+    padding:14px;
+  }
+
+  .brand{
+    font-size:18px;
+  }
+
+  .dashboard-btn{
+    display:none;
+  }
+
+  main{
+    padding:22px 14px 50px;
+  }
+
+  .page-heading h1{
+    font-size:27px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-group.full{
+    grid-column:auto;
+  }
+
+  .content-card{
+    flex-direction:column;
+  }
+
+  .content-actions{
+    width:100%;
+  }
+
+  .content-actions button{
+    flex:1;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+  <div class="brand">
+    Mahnoor Dietitian
+  </div>
+
+  <div class="header-actions">
+
+    <button
+      class="header-btn dashboard-btn"
+      id="dashboardBtn"
+    >
+      ← Admin Dashboard
+    </button>
+
+    <button
+      class="header-btn logout-btn"
+      id="logoutBtn"
+    >
+      Logout
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+  <div class="page-heading">
+
+    <h1>
+      Content Management
+    </h1>
+
+    <p>
+      Build and manage your programs like a private classroom.
+      Add weeks, days, lessons, videos, PDFs, meal plans,
+      workouts and community content.
+    </p>
+
+    <span class="badge">
+      ADMIN CONTENT LIBRARY
+    </span>
+
+  </div>
+
+
+  <div class="content-layout">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-title">
+        Content
+      </div>
+
+      <button
+        class="nav-item active"
+        data-type="all"
+      >
+        All Content
+      </button>
+
+      <button
+        class="nav-item"
+        data-type="week"
+      >
+        Weeks
+      </button>
+
+      <button
+        class="nav-item"
+        data-type="day"
+      >
+        Days
+      </button>
+
+      <button
+        class="nav-item"
+        data-type="lesson"
+      >
+        Lessons
+      </button>
+
+      <button
+        class="nav-item"
+        data-type="video"
+      >
+        Videos
+      </button>
+
+      <button
+        class="nav-item"
+        data-type="pdf"
+      >
+        PDFs / Resources
+      </button>
+
+      <button
+        class="nav-item"
+        data-type="meal-plan"
+      >
+        Meal Plans
+      </button>
+
+      <button
+        class="nav-item"
+        data-type="workout"
+      >
+        Workouts
+      </button>
+
+      <div class="sidebar-title" style="margin-top:20px;">
+        Community
+      </div>
+
+      <button
+        class="nav-item"
+        data-type="community"
+      >
+        Community Posts
+      </button>
+
+    </aside>
+
+
+    <!-- =================================================
+         CONTENT AREA
+    ================================================== -->
+
+    <section class="content-area">
+
+
+      <div class="toolbar">
+
+        <div class="toolbar-left">
+
+          <div
+            class="toolbar-title"
+            id="currentTitle"
+          >
+            All Content
+          </div>
+
+          <div
+            class="count"
+            id="contentCount"
+          >
+            0 items
+          </div>
+
+        </div>
+
+
+        <button
+          class="primary-btn"
+          id="addContentBtn"
+        >
+          + Add Content
+        </button>
+
+      </div>
+
+
+      <div class="search-box">
+
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search content by title, description, week, day or program..."
+        >
+
+      </div>
+
+
+      <div
+        class="content-list"
+        id="contentList"
+      >
+
+        <div class="loading">
+          Loading content...
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<!-- =====================================================
+     CONTENT MODAL
+===================================================== -->
+
+<div
+  class="modal"
+  id="contentModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2 id="modalTitle">
+        Add Content
+      </h2>
+
+      <button
+        class="close-btn"
+        id="closeModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <form id="contentForm">
+
+
+      <div class="form-grid">
+
+
+        <!-- TYPE -->
+
+        <div class="form-group">
+
+          <label>
+            Content Type
+          </label>
+
+          <select
+            id="contentType"
+            required
+          >
+
+            <option value="">
+              Select content type
+            </option>
+
+            <option value="week">
+              Week
+            </option>
+
+            <option value="day">
+              Day
+            </option>
+
+            <option value="lesson">
+              Lesson
+            </option>
+
+            <option value="video">
+              Video
+            </option>
+
+            <option value="pdf">
+              PDF / Resource
+            </option>
+
+            <option value="meal-plan">
+              Meal Plan
+            </option>
+
+            <option value="workout">
+              Workout
+            </option>
+
+            <option value="community">
+              Community Post
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- PROGRAM -->
+
+        <div class="form-group">
+
+          <label>
+            Program
+          </label>
+
+          <select id="program">
+
+            <option value="1:1 Coaching">
+              1:1 Coaching
+            </option>
+
+            <option value="Freedom Women's Health Club">
+              Freedom Women's Health Club
+            </option>
+
+            <option value="Short Program">
+              Short Program
+            </option>
+
+            <option value="General">
+              General
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <div class="form-group full">
+
+          <label>
+            Title *
+          </label>
+
+          <input
+            type="text"
+            id="title"
+            required
+            placeholder="Example: Week 1 — Reset & Foundation"
+          >
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group full">
+
+          <label>
+            Short Description
+          </label>
+
+          <textarea
+            id="description"
+            placeholder="Short description visible in the classroom..."
+          ></textarea>
+
+        </div>
+
+
+        <!-- WEEK -->
+
+        <div class="form-group">
+
+          <label>
+            Week Number
+          </label>
+
+          <input
+            type="number"
+            id="weekNumber"
+            min="1"
+            placeholder="Example: 1"
+          >
+
+          <span class="help-text">
+            Useful for organizing lessons inside Week 1, Week 2, etc.
+          </span>
+
+        </div>
+
+
+        <!-- DAY -->
+
+        <div class="form-group">
+
+          <label>
+            Day Number
+          </label>
+
+          <input
+            type="number"
+            id="dayNumber"
+            min="1"
+            placeholder="Example: 1"
+          >
+
+          <span class="help-text">
+            Example: Day 1, Day 2, Day 3.
+          </span>
+
+        </div>
+
+
+        <!-- ORDER -->
+
+        <div class="form-group">
+
+          <label>
+            Display Order
+          </label>
+
+          <input
+            type="number"
+            id="order"
+            min="0"
+            value="0"
+          >
+
+          <span class="help-text">
+            Lower numbers appear first.
+          </span>
+
+        </div>
+
+
+        <!-- PUBLISH -->
+
+        <div class="form-group">
+
+          <label>
+            Visibility
+          </label>
+
+          <select id="visibility">
+
+            <option value="published">
+              Published
+            </option>
+
+            <option value="draft">
+              Draft
+            </option>
+
+          </select>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- =================================================
+           MEDIA
+      ================================================== -->
+
+      <div class="type-section">
+
+        <div class="type-section-title">
+          Media & Links
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label>
+              Image URL
+            </label>
+
+            <input
+              type="url"
+              id="imageUrl"
+              placeholder="https://..."
+            >
+
+            <span class="help-text">
+              Paste a Canva image URL, hosted image URL, etc.
+            </span>
+
+            <div
+              class="image-preview"
+              id="imagePreview"
+            >
+              <img
+                id="previewImage"
+                alt="Preview"
+              >
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Video URL
+            </label>
+
+            <input
+              type="url"
+              id="videoUrl"
+              placeholder="YouTube / Vimeo / video link"
+            >
+
+            <span class="help-text">
+              Paste the video URL. The member page can use this URL to display the video.
+            </span>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              PDF / Resource URL
+            </label>
+
+            <input
+              type="url"
+              id="resourceUrl"
+              placeholder="Google Drive / PDF / resource link"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              External Link
+            </label>
+
+            <input
+              type="url"
+              id="externalUrl"
+              placeholder="https://..."
+            >
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           MAIN CONTENT
+      ================================================== -->
+
+      <div class="form-group">
+
+        <label>
+          Full Content
+        </label>
+
+        <textarea
+          id="body"
+          style="min-height:240px;"
+          placeholder="Write the complete lesson, instructions, meal plan, workout, education content, etc."
+        ></textarea>
+
+        <span class="help-text">
+          You can write your complete classroom content here.
+        </span>
+
+      </div>
+
+
+      <!-- =================================================
+           VIDEO SETTINGS
+      ================================================== -->
+
+      <div class="type-section">
+
+        <div class="type-section-title">
+          Video / Lesson Settings
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label>
+              Video Duration
+            </label>
+
+            <input
+              type="text"
+              id="videoDuration"
+              placeholder="Example: 12 minutes"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Lesson Button Text
+            </label>
+
+            <input
+              type="text"
+              id="buttonText"
+              placeholder="Example: Start Lesson"
+            >
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           FORM ACTIONS
+      ================================================== -->
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="secondary-btn"
+          id="cancelBtn"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="primary-btn"
+          id="saveBtn"
+        >
+          Save Content
+        </button>
+
+      </div>
+
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script type="module">
+
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+    "AIzaSyD2ujbndGIuDHuDz4vF2u39raGIPqqFLJs",
+
+  authDomain:
+    "mahnoor-dietitian.firebaseapp.com",
+
+  projectId:
+    "mahnoor-dietitian",
+
+  storageBucket:
+    "mahnoor-dietitian.firebasestorage.app",
+
+  messagingSenderId:
+    "900688855173",
+
+  appId:
+    "1:900688855173:web:d4f64047d5d2f80dfbe9ec"
+
+};
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+const ADMIN_EMAIL =
+  "mahnoordietitian3@gmail.com";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const contentList =
+  document.getElementById("contentList");
+
+const contentModal =
+  document.getElementById("contentModal");
+
+const contentForm =
+  document.getElementById("contentForm");
+
+const contentType =
+  document.getElementById("contentType");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const modalTitle =
+  document.getElementById("modalTitle");
+
+const saveBtn =
+  document.getElementById("saveBtn");
+
+const toast =
+  document.getElementById("toast");
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let contents = [];
+
+let editingId = null;
+
+let currentFilter = "all";
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    if(!user){
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    if(
+      user.email?.toLowerCase()
+      !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      alert(
+        "You do not have permission to access Content Management."
+      );
+
+      await signOut(auth);
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    await loadContent();
+
+  }
+);
+
+
+/* =====================================================
+   LOAD CONTENT
+===================================================== */
+
+async function loadContent(){
+
+  contentList.innerHTML = `
+    <div class="loading">
+      Loading content...
+    </div>
+  `;
+
+
+  try{
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "programContent"
+        )
+      );
+
+
+    contents =
+      snapshot.docs.map(item => ({
+
+        id:item.id,
+
+        ...item.data()
+
+      }));
+
+
+    contents.sort(
+      (a,b) =>
+        Number(a.order || 0)
+        -
+        Number(b.order || 0)
+    );
+
+
+    renderContent();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    contentList.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          !
+        </div>
+
+        <strong>
+          Unable to load content
+        </strong>
+
+        <br><br>
+
+        ${escapeHtml(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderContent(){
+
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  const filtered =
+    contents.filter(item => {
+
+      const matchesType =
+        currentFilter === "all"
+        ||
+        item.type === currentFilter;
+
+
+      if(!matchesType){
+
+        return false;
+
+      }
+
+
+      if(!search){
+
+        return true;
+
+      }
+
+
+      const searchable = [
+
+        item.title,
+        item.description,
+        item.program,
+        item.type,
+        item.body,
+        item.weekNumber,
+        item.dayNumber
+
+      ]
+      .join(" ")
+      .toLowerCase();
+
+
+      return searchable.includes(search);
+
+    });
+
+
+  document.getElementById(
+    "contentCount"
+  ).textContent =
+    filtered.length +
+    (
+      filtered.length === 1
+      ? " item"
+      : " items"
+    );
+
+
+  if(filtered.length === 0){
+
+    contentList.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          +
+        </div>
+
+        <strong>
+          No content found
+        </strong>
+
+        <br><br>
+
+        Add your first piece of classroom content.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  contentList.innerHTML =
+    filtered
+      .map(contentHTML)
+      .join("");
+
+
+  attachEvents();
+
+}
+
+
+/* =====================================================
+   CONTENT CARD
+===================================================== */
+
+function contentHTML(item){
+
+  const typeLabel =
+    formatType(item.type);
+
+
+  const status =
+    item.visibility || "published";
+
+
+  return `
+
+    <div class="content-card">
+
+
+      <div class="content-main">
+
+        <div class="content-top">
+
+          <div class="content-title">
+
+            ${escapeHtml(
+              item.title ||
+              "Untitled"
+            )}
+
+          </div>
+
+
+          <span class="type-badge">
+
+            ${escapeHtml(
+              typeLabel
+            )}
+
+          </span>
+
+
+          <span
+            class="type-badge"
+            style="
+              background:${
+                status === "published"
+                ? "#e8f5eb"
+                : "#f5efe1"
+              };
+              color:${
+                status === "published"
+                ? "#28733a"
+                : "#86651e"
+              };
+            "
+          >
+
+            ${
+              status === "published"
+              ? "Published"
+              : "Draft"
+            }
+
+          </span>
+
+        </div>
+
+
+        <div class="content-description">
+
+          ${escapeHtml(
+            item.description ||
+            item.body ||
+            "No description"
+          ).substring(0,280)}
+
+        </div>
+
+
+        <div class="meta">
+
+
+          ${
+            item.program
+            ? `
+              <span>
+                Program:
+                ${escapeHtml(
+                  item.program
+                )}
+              </span>
+            `
+            : ""
+          }
+
+
+          ${
+            item.weekNumber
+            ? `
+              <span>
+                Week ${escapeHtml(
+                  item.weekNumber
+                )}
+              </span>
+            `
+            : ""
+          }
+
+
+          ${
+            item.dayNumber
+            ? `
+              <span>
+                Day ${escapeHtml(
+                  item.dayNumber
+                )}
+              </span>
+            `
+            : ""
+          }
+
+
+          ${
+            item.videoUrl
+            ? `
+              <span>
+                Video
+              </span>
+            `
+            : ""
+          }
+
+
+          ${
+            item.resourceUrl
+            ? `
+              <span>
+                PDF / Resource
+              </span>
+            `
+            : ""
+          }
+
+
+          ${
+            item.imageUrl
+            ? `
+              <span>
+                Image
+              </span>
+            `
+            : ""
+          }
+
+
+        </div>
+
+      </div>
+
+
+      <div class="content-actions">
+
+
+        <button
+          class="edit-btn"
+          data-edit="${item.id}"
+        >
+          Edit
+        </button>
+
+
+        <button
+          class="delete-btn"
+          data-delete="${item.id}"
+        >
+          Delete
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+function attachEvents(){
+
+  document
+    .querySelectorAll("[data-edit]")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          editContent(
+            button.dataset.edit
+          );
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll("[data-delete]")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          deleteContent(
+            button.dataset.delete
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =====================================================
+   ADD CONTENT
+===================================================== */
+
+document
+  .getElementById("addContentBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      openAddModal();
+
+    }
+  );
+
+
+function openAddModal(){
+
+  editingId = null;
+
+  modalTitle.textContent =
+    "Add Content";
+
+  saveBtn.textContent =
+    "Save Content";
+
+
+  contentForm.reset();
+
+
+  document.getElementById(
+    "order"
+  ).value = 0;
+
+
+  document.getElementById(
+    "visibility"
+  ).value =
+    "published";
+
+
+  contentModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   EDIT CONTENT
+===================================================== */
+
+function editContent(id){
+
+  const item =
+    contents.find(
+      content =>
+        content.id === id
+    );
+
+
+  if(!item){
+
+    return;
+
+  }
+
+
+  editingId = id;
+
+
+  modalTitle.textContent =
+    "Edit Content";
+
+
+  saveBtn.textContent =
+    "Update Content";
+
+
+  document.getElementById(
+    "contentType"
+  ).value =
+    item.type || "";
+
+
+  document.getElementById(
+    "program"
+  ).value =
+    item.program || "General";
+
+
+  document.getElementById(
+    "title"
+  ).value =
+    item.title || "";
+
+
+  document.getElementById(
+    "description"
+  ).value =
+    item.description || "";
+
+
+  document.getElementById(
+    "weekNumber"
+  ).value =
+    item.weekNumber || "";
+
+
+  document.getElementById(
+    "dayNumber"
+  ).value =
+    item.dayNumber || "";
+
+
+  document.getElementById(
+    "order"
+  ).value =
+    item.order || 0;
+
+
+  document.getElementById(
+    "visibility"
+  ).value =
+    item.visibility || "published";
+
+
+  document.getElementById(
+    "imageUrl"
+  ).value =
+    item.imageUrl || "";
+
+
+  document.getElementById(
+    "videoUrl"
+  ).value =
+    item.videoUrl || "";
+
+
+  document.getElementById(
+    "resourceUrl"
+  ).value =
+    item.resourceUrl || "";
+
+
+  document.getElementById(
+    "externalUrl"
+  ).value =
+    item.externalUrl || "";
+
+
+  document.getElementById(
+    "body"
+  ).value =
+    item.body || "";
+
+
+  document.getElementById(
+    "videoDuration"
+  ).value =
+    item.videoDuration || "";
+
+
+  document.getElementById(
+    "buttonText"
+  ).value =
+    item.buttonText || "";
+
+
+  updateImagePreview();
+
+
+  contentModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+contentForm.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+
+    const data = {
+
+      type:
+        document.getElementById(
+          "contentType"
+        ).value,
+
+      program:
+        document.getElementById(
+          "program"
+        ).value,
+
+      title:
+        document.getElementById(
+          "title"
+        ).value.trim(),
+
+      description:
+        document.getElementById(
+          "description"
+        ).value.trim(),
+
+      weekNumber:
+        getNumberOrNull(
+          document.getElementById(
+            "weekNumber"
+          ).value
+        ),
+
+      dayNumber:
+        getNumberOrNull(
+          document.getElementById(
+            "dayNumber"
+          ).value
+        ),
+
+      order:
+        Number(
+          document.getElementById(
+            "order"
+          ).value
+        ) || 0,
+
+      visibility:
+        document.getElementById(
+          "visibility"
+        ).value,
+
+      imageUrl:
+        document.getElementById(
+          "imageUrl"
+        ).value.trim(),
+
+      videoUrl:
+        document.getElementById(
+          "videoUrl"
+        ).value.trim(),
+
+      resourceUrl:
+        document.getElementById(
+          "resourceUrl"
+        ).value.trim(),
+
+      externalUrl:
+        document.getElementById(
+          "externalUrl"
+        ).value.trim(),
+
+      body:
+        document.getElementById(
+          "body"
+        ).value.trim(),
+
+      videoDuration:
+        document.getElementById(
+          "videoDuration"
+        ).value.trim(),
+
+      buttonText:
+        document.getElementById(
+          "buttonText"
+        ).value.trim(),
+
+      updatedAt:
+        serverTimestamp()
+
+    };
+
+
+    if(!data.type){
+
+      showToast(
+        "Please select a content type.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(!data.title){
+
+      showToast(
+        "Please enter a title.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    saveBtn.disabled = true;
+
+    saveBtn.textContent =
+      "Saving...";
+
+
+    try{
+
+      if(editingId){
+
+        await updateDoc(
+
+          doc(
+            db,
+            "programContent",
+            editingId
+          ),
+
+          data
+
+        );
+
+
+        showToast(
+          "Content updated successfully.",
+          "success"
+        );
+
+      }
+      else{
+
+        await addDoc(
+
+          collection(
+            db,
+            "programContent"
+          ),
+
+          {
+
+            ...data,
+
+            createdAt:
+              serverTimestamp(),
+
+            createdBy:
+              auth.currentUser.uid
+
+          }
+
+        );
+
+
+        showToast(
+          "Content added successfully.",
+          "success"
+        );
+
+      }
+
+
+      closeModal();
+
+      await loadContent();
+
+    }
+    catch(error){
+
+      console.error(error);
+
+      showToast(
+        error.message ||
+        "Unable to save content.",
+        "error"
+      );
+
+    }
+    finally{
+
+      saveBtn.disabled =
+        false;
+
+      saveBtn.textContent =
+        editingId
+        ? "Update Content"
+        : "Save Content";
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+async function deleteContent(id){
+
+  const item =
+    contents.find(
+      content =>
+        content.id === id
+    );
+
+
+  if(!item){
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      `Delete "${item.title}"?\n\nThis cannot be undone.`
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+
+      doc(
+        db,
+        "programContent",
+        id
+      )
+
+    );
+
+
+    showToast(
+      "Content deleted.",
+      "success"
+    );
+
+
+    await loadContent();
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    showToast(
+      error.message ||
+      "Unable to delete content.",
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   FILTER NAVIGATION
+===================================================== */
+
+document
+  .querySelectorAll(".nav-item")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelectorAll(".nav-item")
+          .forEach(item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          });
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        currentFilter =
+          button.dataset.type;
+
+
+        const title =
+          button.textContent.trim();
+
+
+        document.getElementById(
+          "currentTitle"
+        ).textContent =
+          title;
+
+
+        renderContent();
+
+      }
+    );
+
+  });
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInput.addEventListener(
+  "input",
+  renderContent
+);
+
+
+/* =====================================================
+   MODAL CLOSE
+===================================================== */
+
+document
+  .getElementById("closeModal")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+document
+  .getElementById("cancelBtn")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+contentModal.addEventListener(
+  "click",
+  event => {
+
+    if(
+      event.target ===
+      contentModal
+    ){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+function closeModal(){
+
+  contentModal.classList.remove(
+    "show"
+  );
+
+  editingId = null;
+
+}
+
+
+/* =====================================================
+   IMAGE PREVIEW
+===================================================== */
+
+document
+  .getElementById("imageUrl")
+  .addEventListener(
+    "input",
+    updateImagePreview
+  );
+
+
+function updateImagePreview(){
+
+  const url =
+    document.getElementById(
+      "imageUrl"
+    ).value.trim();
+
+
+  const preview =
+    document.getElementById(
+      "imagePreview"
+    );
+
+  const image =
+    document.getElementById(
+      "previewImage"
+    );
+
+
+  if(!url){
+
+    preview.style.display =
+      "none";
+
+    image.src =
+      "";
+
+    return;
+
+  }
+
+
+  image.src =
+    url;
+
+
+  image.onload = () => {
+
+    preview.style.display =
+      "block";
+
+  };
+
+
+  image.onerror = () => {
+
+    preview.style.display =
+      "none";
+
+  };
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+document
+  .getElementById("dashboardBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      window.location.href =
+        "admin.html";
+
+    }
+  );
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document
+  .getElementById("logoutBtn")
+  .addEventListener(
+    "click",
+    async () => {
+
+      try{
+
+        await signOut(auth);
+
+        window.location.href =
+          "login.html";
+
+      }
+      catch(error){
+
+        console.error(error);
+
+        showToast(
+          "Unable to logout.",
+          "error"
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function formatType(type){
+
+  const names = {
+
+    week:
+      "Week",
+
+    day:
+      "Day",
+
+    lesson:
+      "Lesson",
+
+    video:
+      "Video",
+
+    pdf:
+      "PDF / Resource",
+
+    "meal-plan":
+      "Meal Plan",
+
+    workout:
+      "Workout",
+
+    community:
+      "Community"
+
+  };
+
+
+  return (
+    names[type]
+    ||
+    type
+    ||
+    "Content"
+  );
+
+}
+
+
+function getNumberOrNull(value){
+
+  if(
+    value === null
+    ||
+    value === undefined
+    ||
+    value === ""
+  ){
+
+    return null;
+
+  }
+
+
+  const number =
+    Number(value);
+
+
+  return Number.isNaN(number)
+    ? null
+    : number;
+
+}
+
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+function showToast(
+  message,
+  type=""
+){
+
+  toast.textContent =
+    message;
+
+
+  toast.className =
+    "toast show " +
+    type;
+
+
+  setTimeout(
+    () => {
+
+      toast.className =
+        "toast";
+
+    },
+    3500
+  );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
